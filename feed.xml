@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-01-31T01:39:36-06:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle></subtitle><entry><title type="html">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/" rel="alternate" type="text/html" title="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T12:33:38-06:00</published><updated>2024-01-30T12:33:38-06:00</updated><id>https://llava-vl.github.io/blog/llava-1-6</id><content type="html" xml:base="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"><![CDATA[<!-- for mathjax support -->
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-01-31T01:40:36-06:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle></subtitle><entry><title type="html">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/" rel="alternate" type="text/html" title="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T12:33:38-06:00</published><updated>2024-01-30T12:33:38-06:00</updated><id>https://llava-vl.github.io/blog/llava-1-6</id><content type="html" xml:base="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"><![CDATA[<!-- for mathjax support -->
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -115,7 +115,7 @@
 <h3 id="qualitative-results">Qualitative Results</h3>
 
 <details>
-<summary><b>Mark Zuckerberg talks about Llama-3</b></summary>
+<summary><b>Mark Zuckerberg talks about Llama-3 and 600K H100s</b></summary>
 
 <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
