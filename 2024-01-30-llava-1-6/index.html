@@ -14,11 +14,11 @@
 <meta property="og:url" content="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/" />
 <meta property="og:site_name" content="LLaVA" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-01-30T12:33:38-06:00" />
+<meta property="article:published_time" content="2024-01-30T10:33:38-08:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan Zhang, Sheng Shen, Yong Jae Lee"},"dateModified":"2024-01-30T12:33:38-06:00","datePublished":"2024-01-30T12:33:38-06:00","description":"LLaVA team presents LLaVA-1.6, with improved reasoning, OCR, and world knowledge. LLaVA-1.6 even exceeds Gemini Pro on several benchmarks.","headline":"LLaVA-1.6: Improved reasoning, OCR, and world knowledge","mainEntityOfPage":{"@type":"WebPage","@id":"https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"},"url":"https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan Zhang, Sheng Shen, Yong Jae Lee"},"dateModified":"2024-01-30T10:33:38-08:00","datePublished":"2024-01-30T10:33:38-08:00","description":"LLaVA team presents LLaVA-1.6, with improved reasoning, OCR, and world knowledge. LLaVA-1.6 even exceeds Gemini Pro on several benchmarks.","headline":"LLaVA-1.6: Improved reasoning, OCR, and world knowledge","mainEntityOfPage":{"@type":"WebPage","@id":"https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"},"url":"https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" /></head>
 <body><header class="site-header" role="banner">
@@ -43,7 +43,7 @@
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2024-01-30T12:33:38-06:00" itemprop="datePublished">Jan 30, 2024
+      <time class="dt-published" datetime="2024-01-30T10:33:38-08:00" itemprop="datePublished">Jan 30, 2024
       </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan Zhang, Sheng Shen, Yong Jae Lee</span></span></p>
   </header>
 
@@ -227,7 +227,7 @@
 <h3 id="1-dynamic-high-resolution">(1) Dynamic High Resolution</h3>
 
 <p>We design our model at high resolution with an aim to <strong>preserve its data efficiency</strong>.
-When provided with high-resolution images and representations that preserve these details, the model’s capacity to perceive intricate details in an image is significantly improved. It reduces the model hallucination that conjectures the imagined visual content when confronted with low-resolution images. Our ‘AnyRes’ technique is designed to accommodate images of various high resolutions. We employ a grid configuration of $\{2 \times 2, 1 \times \{2,3,4\}, \{2,3,4\} \times 1\}$, balancing performance efficiency with operational costs. See our updated technical report for more details.</p>
+When provided with high-resolution images and representations that preserve these details, the model’s capacity to perceive intricate details in an image is significantly improved. It reduces the model hallucination that conjectures the imagined visual content when confronted with low-resolution images. Our ‘AnyRes’ technique is designed to accommodate images of various high resolutions. We employ a grid configuration of $\{2 \times 2, 1 \times \{2,3,4\}, \{2,3,4\} \times 1\}$, balancing performance efficiency with operational costs. See our <a href="https://static.hliu.cc/files/llava/improved_llava.pdf">updated LLaVA-1.5 technical report</a> for more details.</p>
 
 <p align="center">
   <img width="90%" src="/blog/assets/images/llava-1-6/high_res_arch_v2.png" />
