@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-01-30T22:22:51-06:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle>We announce LLaVA updates.</subtitle><entry><title type="html">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/announcement/2024/01/30/llava-1-6.html" rel="alternate" type="text/html" title="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T12:33:38-06:00</published><updated>2024-01-30T12:33:38-06:00</updated><id>https://llava-vl.github.io/blog/announcement/2024/01/30/llava-1-6</id><content type="html" xml:base="https://llava-vl.github.io/blog/announcement/2024/01/30/llava-1-6.html"><![CDATA[<!-- for mathjax support -->
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-01-30T22:42:39-06:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle></subtitle><entry><title type="html">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/announcement/2024/01/30/llava-1-6.html" rel="alternate" type="text/html" title="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T12:33:38-06:00</published><updated>2024-01-30T12:33:38-06:00</updated><id>https://llava-vl.github.io/blog/announcement/2024/01/30/llava-1-6</id><content type="html" xml:base="https://llava-vl.github.io/blog/announcement/2024/01/30/llava-1-6.html"><![CDATA[<!-- for mathjax support -->
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -136,6 +136,23 @@ When provided with high-resolution images and representations that preserve thes
 <h3 id="3-scaling-llm-backbone">(3) Scaling LLM backbone</h3>
 
 <p>In addition to Vicuna-1.5 (<a href="https://huggingface.co/lmsys/vicuna-7b-v1.5">7B</a> and <a href="https://huggingface.co/lmsys/vicuna-13b-v1.5">13B</a>), we consider more LLMs, including <a href="https://mistral.ai/news/announcing-mistral-7b/">Mistral-7B</a> and <a href="https://huggingface.co/NousResearch/Nous-Hermes-2-Yi-34B">Nous-Hermes-2-Yi-34B</a>. These LLMs possess nice properties, flexible commercial use terms, strong bilingual support and larger language model capacity. It allows LLaVA to support a wider spectrum of users and more scenarios in the community. The LLaVA recipe works well with various LLMs, and scales up smoothly with the LLM up to 34B.</p>
+
+<h2 id="model-card">Model Card</h2>
+
+<table>
+  <tr><th colspan="2">Name</th><th>LLaVA-1.6-7B</th><th>LLaVA-1.6-13B</th><th>LLaVA-1.6-34B</th></tr>
+  <tr><th rowspan="4">Model Size</th><td>Total</td><td><b>7.06B</b></td><td><b>13.35B</b></td><td><b>34.75B</b></td></tr>
+  <tr><td>Vision Encoder</td><td>303.5M</td><td>303.5M</td><td>303.5M</td></tr>
+  <tr><td>Connector</td><td>21M</td><td>31.5M</td><td>58.7M</td></tr>
+  <tr><td>LLM</td><td>6.74B</td><td>13B</td><td>34.39B</td></tr>
+  <tr><th colspan="2">Resolution</th><td colspan="3">336 x [(2,2),(1,2),(2,1),(4,1),(1,4)]</td></tr>
+  <tr><th>Stage-1</th><th>Training Data</th><td colspan="3">558K</td></tr>
+  <tr><th></th><th>Trainable Module</th><td colspan="3">Connector</td></tr>
+  <tr><th>Stage-2</th><th>Training Data</th><td colspan="3">760K</td></tr>
+  <tr><th></th><th>Trainable Module</th><td colspan="3">Full model</td></tr>
+  <tr><th colspan="2">Compute (#GPU x #Hours)</th><td>8x20</td><td>16x24</td><td>32x30</td></tr>
+  <tr><th colspan="2">Training Data (#Samples)</th><td colspan="3">1318K</td></tr>
+</table>
 
 <h2 id="team">Team</h2>
 
