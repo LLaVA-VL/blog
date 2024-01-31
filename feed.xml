@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-01-30T23:24:33-06:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle></subtitle><entry><title type="html">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/" rel="alternate" type="text/html" title="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T12:33:38-06:00</published><updated>2024-01-30T12:33:38-06:00</updated><id>https://llava-vl.github.io/blog/llava-1-6</id><content type="html" xml:base="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"><![CDATA[<!-- for mathjax support -->
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-01-31T00:02:03-06:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle></subtitle><entry><title type="html">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/" rel="alternate" type="text/html" title="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T12:33:38-06:00</published><updated>2024-01-30T12:33:38-06:00</updated><id>https://llava-vl.github.io/blog/llava-1-6</id><content type="html" xml:base="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"><![CDATA[<!-- for mathjax support -->
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -53,15 +53,15 @@
   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>N/A</td><td>N/A</td><td>GPT-4V</td><td>56.8</td><td>49.9</td><td>75.8</td><td>73.9</td><td>67.6</td><td>-</td><td>71.6</td></tr>
   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>N/A</td><td>N/A</td><td>Gemini Ultra</td><td>59.4</td><td>53</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>N/A</td><td>N/A</td><td>Gemini Pro</td><td>47.9</td><td>45.2</td><td>73.6</td><td>74.3</td><td>64.3</td><td>-</td><td>70.7</td></tr>
+  <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>1.4B</td><td>50M</td><td>Qwen-VL-Plus</td><td>45.2</td><td>43.3</td><td>-</td><td>-</td><td>55.7</td><td>-</td><td>65.7</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>1.5B</td><td>5.12M</td><td>CogVLM-30B</td><td>32.1</td><td>-</td><td>-</td><td>-</td><td>56.8</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>125M</td><td>~1M</td><td>Yi-VL-34B</td><td>45.9</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-  <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>1.4B</td><td>50M</td><td>Qwen-VL-Plus</td><td>45.2</td><td>43.3</td><td>-</td><td>-</td><td>55.7</td><td>-</td><td>65.7</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>665K</td><td>LLaVA-1.5-13B</td><td>36.4</td><td>27.6</td><td>67.8</td><td>63.3</td><td>36.3</td><td>72.5</td><td>68.2</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-34B</td><td>51.1</td><td>46.5</td><td>79.3</td><td>79</td><td>57.4</td><td>89.6</td><td>75.9</td></tr>
 </table>
 
 <details>
-<summary><b>More Results</b></summary>
+<summary><b><em>For more results, please unfold to see expanded tables</em></b></summary>
 
 <i>More benchmarks will be added soon.</i>
 
@@ -92,19 +92,20 @@
   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>N/A</td><td>N/A</td><td>GPT-4V</td><td>56.8</td><td>55.7</td><td>49.9</td><td>75.8</td><td>73.9</td><td>67.6</td><td>-</td><td>71.6</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>N/A</td><td>N/A</td><td>Gemini Ultra</td><td>59.4</td><td>-</td><td>53</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>N/A</td><td>N/A</td><td>Gemini Pro</td><td>47.9</td><td>-</td><td>45.2</td><td>73.6</td><td>74.3</td><td>64.3</td><td>-</td><td>70.7</td><td>-</td><td>-</td></tr>
+   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>1.4B</td><td>50M</td><td>Qwen-VL-Plus</td><td>45.2</td><td>40.8</td><td>43.3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> 
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>1.5B</td><td>5.12M</td><td>CogVLM-30B</td><td>32.1</td><td>30.1</td><td>-</td><td>-</td><td>-</td><td>56.8</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-  <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>1.4B</td><td>50M</td><td>Qwen-VL-Plus</td><td>45.2</td><td>40.8</td><td>43.3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>665K</td><td>LLaVA-1.5-13B (336$^2$)</td><td>36.4</td><td>33.6</td><td>27.6</td><td>67.8</td><td>63.3</td><td>36.3</td><td>72.5</td><td>68.2</td><td>1531/295</td><td>85.93</td><td></td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-Vicuna-7B (672$^2$)</td><td>35.8</td><td>-</td><td>34.6</td><td>67.4</td><td>60.6</td><td>43.9</td><td>81.6</td><td>70.2</td><td>1519/332</td><td>86.53</td><td></td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-Mistral-7B (672$^2$)</td><td>35.3</td><td>-</td><td>37.7</td><td>68.7</td><td>61.2</td><td>47.3</td><td>83.2</td><td>72.2</td><td>1498/321</td><td>86.73</td><td></td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-13B (672$^2$)</td><td>36.2</td><td>-</td><td>35.3</td><td>70</td><td>64.4</td><td>48.4</td><td>87.3</td><td>71.9</td><td>1575/326</td><td>86.23</td><td></td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-34B (672$^2$)</td><td>51.1</td><td>44.4</td><td>46.5</td><td>79.3</td><td>79</td><td>57.4</td><td>89.6</td><td>75.9</td><td>1631/397</td><td>87.73</td><td></td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>665K</td><td>LLaVA-1.5-13B (336$^2$)</td><td>36.4</td><td>33.6</td><td>27.6</td><td>67.8</td><td>63.3</td><td>36.3</td><td>72.5</td><td>68.2</td><td>1531/295</td><td>85.93</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-Vicuna-7B (672$^2$)</td><td>35.8</td><td>-</td><td>34.6</td><td>67.4</td><td>60.6</td><td>43.9</td><td>81.6</td><td>70.2</td><td>1519/332</td><td>86.53</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-Mistral-7B (672$^2$)</td><td>35.3</td><td>-</td><td>37.7</td><td>68.7</td><td>61.2</td><td>47.3</td><td>83.2</td><td>72.2</td><td>1498/321</td><td>86.73</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-13B (672$^2$)</td><td>36.2</td><td>-</td><td>35.3</td><td>70</td><td>64.4</td><td>48.4</td><td>87.3</td><td>71.9</td><td>1575/326</td><td>86.23</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-34B (672$^2$)</td><td>51.1</td><td>44.4</td><td>46.5</td><td>79.3</td><td>79</td><td>57.4</td><td>89.6</td><td>75.9</td><td>1631/397</td><td>87.73</td></tr>
 </table>
 
 </details>
 
 <div>&nbsp;</div>
 
+<p>✨ Highlights:</p>
 <ul>
   <li><strong>SoTA Performance!</strong> LLaVA-1.6 achieves the best performance compared with open-source LMMs such as <a href="https://github.com/THUDM/CogVLM" target="_blank">CogVLM</a> or <a href="https://huggingface.co/01-ai/Yi-VL-34B" target="_blank">Yi-VL</a>. Compared with commercial ones, it catches up to Gemini Pro and outperforms <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus" target="_blank">Qwen-VL-Plus</a> on selected benchmarks.</li>
   <li><strong>Zero-shot Chinese capability</strong>. LLaVA-1.6’s Chinese capability is an emerging zero-shot capability (i.e., only English multimodal data is considered). Its performance on Chinese multimodal scenarios is surprisingly good, e.g., SoTA on MMBench-CN.</li>
@@ -157,19 +158,19 @@ When provided with high-resolution images and representations that preserve thes
 <h2 id="team">Team</h2>
 
 <ul>
-  <li>Haotian Liu: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
-  <li>Chunyuan Li: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
-  <li>Yuheng Li: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
-  <li>Bo Li: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work performed with ByteDance/TikTok</em>)</li>
-  <li>Yuanhan Zhang: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work performed with ByteDance/TikTok</em>)</li>
-  <li>Sheng Shen: University of California, Berkeley<img width="16" src="/blog/assets/images/logos/berkeley.png" /></li>
-  <li>Yong Jae Lee: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
+  <li><a href="https://hliu.cc/">Haotian Liu</a>: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
+  <li><a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
+  <li><a href="https://yuheng-li.github.io/">Yuheng Li</a>: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
+  <li><a href="https://brianboli.com/">Bo Li</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work performed with ByteDance/TikTok</em>)</li>
+  <li><a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work performed with ByteDance/TikTok</em>)</li>
+  <li><a href="https://sincerass.github.io/">Sheng Shen</a>: University of California, Berkeley<img width="16" src="/blog/assets/images/logos/berkeley.png" /></li>
+  <li><a href="https://pages.cs.wisc.edu/~yongjaelee/">Yong Jae Lee</a>: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
 </ul>
 
 <h2 id="acknowledgement">Acknowledgement</h2>
 
 <ul>
-  <li>a16z Open Source AI Grants Program.</li>
+  <li>A16Z Open Source AI Grants Program.</li>
   <li>We thank Lianmin Zheng, Ying Sheng, Shiyi Cao for the integration of LLaVA to SGLang.</li>
   <li>This work was supported in part by NSF CAREER IIS2150012, Microsoft Accelerate Foundation Models Research, and Institute of Information &amp; communications Technology Planning &amp; Evaluation(IITP) grants funded by the Korea government(MSIT) (No. 2022-0-00871, Development of AI Autonomy and Knowledge Enhancement for AI Agent Collaboration) and (No. RS-2022-00187238, Development of Large Korean Language Model Technology for Efficient Pre-training).</li>
 </ul>
