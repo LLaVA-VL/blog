@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-01-31T13:30:51-08:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle></subtitle><entry><title type="html">LLaVA-1.6: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/" rel="alternate" type="text/html" title="LLaVA-1.6: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T10:33:38-08:00</published><updated>2024-01-30T10:33:38-08:00</updated><id>https://llava-vl.github.io/blog/llava-1-6</id><content type="html" xml:base="https://llava-vl.github.io/blog/2024-01-30-llava-1-6/"><![CDATA[<!-- for mathjax support -->
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.4">Jekyll</generator><link href="https://llava-vl.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://llava-vl.github.io/blog/" rel="alternate" type="text/html" /><updated>2024-02-06T23:41:23-06:00</updated><id>https://llava-vl.github.io/blog/feed.xml</id><title type="html">LLaVA</title><subtitle></subtitle><entry><title type="html">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</title><link href="https://llava-vl.github.io/blog/2024-01-30-llava-next/" rel="alternate" type="text/html" title="LLaVA-NeXT: Improved reasoning, OCR, and world knowledge" /><published>2024-01-30T12:33:38-06:00</published><updated>2024-01-30T12:33:38-06:00</updated><id>https://llava-vl.github.io/blog/llava-next</id><content type="html" xml:base="https://llava-vl.github.io/blog/2024-01-30-llava-next/"><![CDATA[<!-- for mathjax support -->
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -17,9 +17,9 @@
 
 <p>In October 2023, we released <a href="https://arxiv.org/abs/2310.03744">LLaVA-1.5</a> with a simple and efficient design along with great performance on a benchmark suite of 12 datasets. It has since served as the foundation of many comprehensive studies of data, model, and capabilities of large multimodal models (LMM), and has enabled various new applications.</p>
 
-<p><strong>Today, we are thrilled to present LLaVA-1.6, with improved reasoning, OCR, and world knowledge. LLaVA-1.6 even exceeds Gemini Pro on several benchmarks.</strong></p>
+<p><strong>Today, we are thrilled to present LLaVA-NeXT, with improved reasoning, OCR, and world knowledge. LLaVA-NeXT even exceeds Gemini Pro on several benchmarks.</strong></p>
 
-<p>Compared with LLaVA-1.5, LLaVA-1.6 has several improvements:</p>
+<p>Compared with LLaVA-1.5, LLaVA-NeXT has several improvements:</p>
 
 <ol>
   <li><strong>Increasing the input image resolution</strong> to 4x more pixels. This allows it to grasp more visual details. It supports three aspect ratios, up to 672x672, 336x1344, 1344x336 resolution.</li>
@@ -28,11 +28,11 @@
   <li><strong>Efficient deployment and inference</strong> with <a href="https://github.com/sgl-project/sglang">SGLang</a>.</li>
 </ol>
 
-<p>Along with performance improvements, <strong>LLaVA-1.6 maintains the minimalist design and data efficiency of LLaVA-1.5</strong>. It re-uses the pretrained connector of LLaVA-1.5, and still uses less than 1M visual instruction tuning samples. The largest 34B variant finishes training in ~1 day with 32 A100s. <strong>Code, data, model will be made publicly available.</strong></p>
+<p>Along with performance improvements, <strong>LLaVA-NeXT maintains the minimalist design and data efficiency of LLaVA-1.5</strong>. It re-uses the pretrained connector of LLaVA-1.5, and still uses less than 1M visual instruction tuning samples. The largest 34B variant finishes training in ~1 day with 32 A100s. <strong>Code, data, model will be made publicly available.</strong></p>
 
 <h2 id="open-source-release">Open-Source Release</h2>
 
-<p>We open-source the LLaVA-1.6 to facilitate future development of LMM in the community. Code, data, model will be made publicly available.</p>
+<p>We open-source the LLaVA-NeXT to facilitate future development of LMM in the community. Code, data, model will be made publicly available.</p>
 
 <ul>
   <li><a href="https://llava.hliu.cc" target="_blank">Demo</a></li>
@@ -57,7 +57,7 @@
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>1.5B</td><td>5.12M</td><td>CogVLM-30B</td><td>32.1</td><td>-</td><td>-</td><td>-</td><td>56.8</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>125M</td><td>~1M</td><td>Yi-VL-34B</td><td>45.9</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>665K</td><td>LLaVA-1.5-13B</td><td>36.4</td><td>27.6</td><td>67.8</td><td>63.3</td><td>36.3</td><td>72.5</td><td>68.2</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-34B</td><td>51.1</td><td>46.5</td><td>79.3</td><td>79</td><td>57.4</td><td>89.6</td><td>75.9</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-NeXT-34B</td><td>51.1</td><td>46.5</td><td>79.3</td><td>79</td><td>57.4</td><td>89.6</td><td>75.9</td></tr>
 </table>
 
 <details>
@@ -80,10 +80,10 @@
   <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>PALI-X</td><td style="color: gray">86.0$^\dagger$</td><td>-</td><td style="color: gray">70.9$^\dagger$</td><td style="color: gray">71.4$^\dagger$</td><td>-</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>CogVLM-30B</td><td style="color: gray">83.4 (84.7$^\dagger$)</td><td style="color: gray">65.2$^\dagger$</td><td style="color: gray">76.4$^\dagger$</td><td style="color: gray">68.1 (69.3$^\dagger$)</td><td style="color: gray">92.7$^\dagger$</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-1.5-13B</td><td style="color: gray">80</td><td style="color: gray">63.3</td><td>53.6</td><td>61.3$^*$</td><td>71.6</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-1.6-Vicuna-7B</td><td style="color: gray">81.8</td><td style="color: gray">64.2</td><td>57.6</td><td>64.9</td><td>70.1</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-1.6-Vicuna-13B</td><td style="color: gray">82.8</td><td style="color: gray">65.4</td><td>60.5</td><td>67.1</td><td>73.6</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-1.6-Mistral-7B</td><td style="color: gray">82.2</td><td style="color: gray">64.8</td><td>60.0</td><td>65.7</td><td>72.8</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-1.6-34B</td><td style="color: gray">83.7</td><td style="color: gray">67.1</td><td>63.8</td><td>69.5</td><td>81.8</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-NeXT-Vicuna-7B</td><td style="color: gray">81.8</td><td style="color: gray">64.2</td><td>57.6</td><td>64.9</td><td>70.1</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-NeXT-Vicuna-13B</td><td style="color: gray">82.8</td><td style="color: gray">65.4</td><td>60.5</td><td>67.1</td><td>73.6</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-NeXT-Mistral-7B</td><td style="color: gray">82.2</td><td style="color: gray">64.8</td><td>60.0</td><td>65.7</td><td>72.8</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>LLaVA-NeXT-34B</td><td style="color: gray">83.7</td><td style="color: gray">67.1</td><td>63.8</td><td>69.5</td><td>81.8</td></tr>
 </table>
 
 
@@ -95,10 +95,10 @@
    <tr style="background-color: rgba(117, 209, 215, 0.1);"><td>1.4B</td><td>50M</td><td>Qwen-VL-Plus</td><td>45.2</td><td>40.8</td><td>43.3</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr> 
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>1.5B</td><td>5.12M</td><td>CogVLM-30B</td><td>32.1</td><td>30.1</td><td>-</td><td>-</td><td>-</td><td>56.8</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>665K</td><td>LLaVA-1.5-13B (336$^2$)</td><td>36.4</td><td>33.6</td><td>27.6</td><td>67.8</td><td>63.3</td><td>36.3</td><td>72.5</td><td>68.2</td><td>1531/295</td><td>85.93</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-Vicuna-7B (672$^2$)</td><td>35.8</td><td>-</td><td>34.6</td><td>67.4</td><td>60.6</td><td>43.9</td><td>81.6</td><td>70.2</td><td>1519/332</td><td>86.53</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-Mistral-7B (672$^2$)</td><td>35.3</td><td>-</td><td>37.7</td><td>68.7</td><td>61.2</td><td>47.3</td><td>83.2</td><td>72.2</td><td>1498/321</td><td>86.73</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-13B (672$^2$)</td><td>36.2</td><td>-</td><td>35.3</td><td>70</td><td>64.4</td><td>48.4</td><td>87.3</td><td>71.9</td><td>1575/326</td><td>86.23</td></tr>
-  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-1.6-34B (672$^2$)</td><td>51.1</td><td>44.7</td><td>46.5</td><td>79.3</td><td>79</td><td>57.4</td><td>89.6</td><td>75.9</td><td>1631/397</td><td>87.73</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-NeXT-Vicuna-7B (672$^2$)</td><td>35.8</td><td>-</td><td>34.6</td><td>67.4</td><td>60.6</td><td>43.9</td><td>81.6</td><td>70.2</td><td>1519/332</td><td>86.53</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-NeXT-Mistral-7B (672$^2$)</td><td>35.3</td><td>-</td><td>37.7</td><td>68.7</td><td>61.2</td><td>47.3</td><td>83.2</td><td>72.2</td><td>1498/321</td><td>86.73</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-NeXT-13B (672$^2$)</td><td>36.2</td><td>-</td><td>35.3</td><td>70</td><td>64.4</td><td>48.4</td><td>87.3</td><td>71.9</td><td>1575/326</td><td>86.23</td></tr>
+  <tr style="background-color: rgba(249, 242, 248, 1);"><td>558K</td><td>760K</td><td>LLaVA-NeXT-34B (672$^2$)</td><td>51.1</td><td>44.7</td><td>46.5</td><td>79.3</td><td>79</td><td>57.4</td><td>89.6</td><td>75.9</td><td>1631/397</td><td>87.73</td></tr>
 </table>
 
 </details>
@@ -107,9 +107,9 @@
 
 <p>✨ Highlights:</p>
 <ul>
-  <li><strong>SoTA Performance!</strong> LLaVA-1.6 achieves the best performance compared with open-source LMMs such as <a href="https://github.com/THUDM/CogVLM" target="_blank">CogVLM</a> or <a href="https://huggingface.co/01-ai/Yi-VL-34B" target="_blank">Yi-VL</a>. Compared with commercial ones, it catches up to Gemini Pro and outperforms <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus" target="_blank">Qwen-VL-Plus</a> on selected benchmarks.</li>
-  <li><strong>Zero-shot Chinese capability</strong>. LLaVA-1.6’s Chinese capability is an emerging zero-shot capability (i.e., only English multimodal data is considered). Its performance on Chinese multimodal scenarios is surprisingly good, e.g., SoTA on MMBench-CN.</li>
-  <li><strong>Low Training Cost</strong>. LLaVA-1.6 is trained with 32 GPUs for ~1 day, with 1.3M data samples in total. The compute / training data cost is 100-1000 times smaller than others.</li>
+  <li><strong>SoTA Performance!</strong> LLaVA-NeXT achieves the best performance compared with open-source LMMs such as <a href="https://github.com/THUDM/CogVLM" target="_blank">CogVLM</a> or <a href="https://huggingface.co/01-ai/Yi-VL-34B" target="_blank">Yi-VL</a>. Compared with commercial ones, it catches up to Gemini Pro and outperforms <a href="https://huggingface.co/spaces/Qwen/Qwen-VL-Plus" target="_blank">Qwen-VL-Plus</a> on selected benchmarks.</li>
+  <li><strong>Zero-shot Chinese capability</strong>. LLaVA-NeXT’s Chinese capability is an emerging zero-shot capability (i.e., only English multimodal data is considered). Its performance on Chinese multimodal scenarios is surprisingly good, e.g., SoTA on MMBench-CN.</li>
+  <li><strong>Low Training Cost</strong>. LLaVA-NeXT is trained with 32 GPUs for ~1 day, with 1.3M data samples in total. The compute / training data cost is 100-1000 times smaller than others.</li>
 </ul>
 
 <h3 id="qualitative-results">Qualitative Results</h3>
@@ -127,7 +127,7 @@
 
 <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 
-  <h4>LLaVA-1.6-34B</h4>
+  <h4>LLaVA-NeXT-34B</h4>
 
   <p>The image you've provided appears to be a screenshot of a social media post, specifically from Instagram, featuring a man speaking and a text overlay. The man in the image is wearing a black t-shirt and appears to be in the middle of a conversation or presentation. The text overlay is a quote from a post by a user named "zuck," which is presumably a reference to Mark Zuckerberg, the CEO of Meta (formerly known as Facebook).</p>
 
@@ -160,7 +160,7 @@
 
 <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 
-  <h4>LLaVA-1.6-34B</h4>
+  <h4>LLaVA-NeXT-34B</h4>
 
   <p>Based on the information provided in the image, the flight is scheduled to arrive at 11:51 AM at San Francisco International Airport (SFO). If you live in San Jose, you should consider the travel time between San Jose and San Francisco, which is approximately 45-60 minutes depending on traffic conditions.</p>
 
@@ -200,7 +200,7 @@ When provided with high-resolution images and representations that preserve thes
 <h2 id="model-card">Model Card</h2>
 
 <table>
-  <tr><th colspan="2">Name</th><th>LLaVA-1.6-7B</th><th>LLaVA-1.6-13B</th><th>LLaVA-1.6-34B</th></tr>
+  <tr><th colspan="2">Name</th><th>LLaVA-NeXT-7B</th><th>LLaVA-NeXT-13B</th><th>LLaVA-NeXT-34B</th></tr>
   <tr><th rowspan="4">Model Size</th><td>Total</td><td><b>7.06B</b></td><td><b>13.35B</b></td><td><b>34.75B</b></td></tr>
   <tr><td>Vision Encoder</td><td>303.5M</td><td>303.5M</td><td>303.5M</td></tr>
   <tr><td>Connector</td><td>21M</td><td>31.5M</td><td>58.7M</td></tr>
@@ -237,8 +237,8 @@ When provided with high-resolution images and representations that preserve thes
 <h2 id="citation">Citation</h2>
 
 <div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2024llava16</span><span class="p">,</span>
-    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-1.6: Improved reasoning, OCR, and world knowledge}</span><span class="p">,</span>
-    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-01-30-llava-1-6/}</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Improved reasoning, OCR, and world knowledge}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-01-30-llava-next/}</span><span class="p">,</span>
     <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Li, Bo and Zhang, Yuanhan and Shen, Sheng and Lee, Yong Jae}</span><span class="p">,</span>
     <span class="na">month</span><span class="p">=</span><span class="s">{January}</span><span class="p">,</span>
     <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
@@ -257,4 +257,4 @@ When provided with high-resolution images and representations that preserve thes
       <span class="na">publisher</span><span class="p">=</span><span class="s">{NeurIPS}</span><span class="p">,</span>
       <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
 <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan Zhang, Sheng Shen, Yong Jae Lee</name></author><category term="announcement" /><summary type="html"><![CDATA[LLaVA team presents LLaVA-1.6, with improved reasoning, OCR, and world knowledge. LLaVA-1.6 even exceeds Gemini Pro on several benchmarks.]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan Zhang, Sheng Shen, Yong Jae Lee</name></author><category term="announcement" /><summary type="html"><![CDATA[LLaVA team presents LLaVA-NeXT, with improved reasoning, OCR, and world knowledge. LLaVA-NeXT even exceeds Gemini Pro on several benchmarks.]]></summary></entry></feed>
