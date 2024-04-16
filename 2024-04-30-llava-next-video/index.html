@@ -65,7 +65,7 @@
 
 <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-<p>On January 30, 2024, we released LLaVA-NeXT, an open-source Large Multimodal Model (LMM) that has been trained exclusively on text-image data. With the proposed AnyRes technique, it boosts capabilities in reasoning, OCR, and world knowledge, demonstrating remarkable performance across a spectrum of image-based multimodal understanding tasks, and even exceeding Gemini-Pro on several image benchmarks, e.g. MMMU and MathVista.</p>
+<p>On January 30, 2024, we released <a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT</a>, an open-source Large Multimodal Model (LMM) that has been trained exclusively on text-image data. With the proposed AnyRes technique, it boosts capabilities in reasoning, OCR, and world knowledge, demonstrating remarkable performance across a spectrum of image-based multimodal understanding tasks, and even exceeding Gemini-Pro on several image benchmarks, e.g. MMMU and MathVista.</p>
 
 <p>In today’s exploration, we delve into the performance of LLaVA-NeXT within the realm of video understanding tasks. We reveal that LLaVA-NeXT surprisingly has strong performance in understanding video content. The current version of LLaVA-NeXT for videos has several improvements::</p>
 
@@ -112,15 +112,15 @@
   <table class="tg">
   <thead>
     <tr>
-      <th class="tg-i5bh" rowspan="2">Data&nbsp;&nbsp;(Pre-training)</th>
-      <th class="tg-i5bh" rowspan="2">Data&nbsp;&nbsp;(Post-training)</th>
+      <th class="tg-i5bh" rowspan="2">Data<br>(Pre-training)</th>
+      <th class="tg-i5bh" rowspan="2">Data<br>(Post-training)</th>
       <th class="tg-i5bh" colspan="2">Max Sequence Length</th>
       <th class="tg-i5bh" rowspan="2">Model</th>
       <th class="tg-i5bh" rowspan="2">Throughput<br>(seconds/video)</th>
       <th class="tg-i5bh" rowspan="2">NextQA<br>(WUPS@All)</th>
-      <th class="tg-i5bh" rowspan="2">ActivityNet-QA (Acc/Score)</th>
-      <th class="tg-i5bh" rowspan="2">Video Detailed Description (Score)</th>
-      <th class="tg-i5bh" colspan="5">VideoChat-GPT (Score)</th>
+      <th class="tg-i5bh" rowspan="2">ActivityNet-QA<br> (Acc/Score)</th>
+      <th class="tg-i5bh" rowspan="2">Video Detailed Description<br> (Score)</th>
+      <th class="tg-i5bh" colspan="5">VideoChat-GPT<br> (Score)</th>
     </tr>
     <tr>
       <th class="tg-lg4c">Training</th>
@@ -472,7 +472,7 @@
 
 <p>✨ Highlights:</p>
 <ul>
-  <li><strong>SoTA Performance!</strong> Without seeing any video data, LLaVA-Next demonstrates strong zero-shot modality transfer ability, outperforming all the existing open-source LMMs (e.g., LLaMA-VID) that have been specifically trained for videos. Compared with proprietary ones, it achieves comparable performance with Gemini Pro on NextQA and ActivityNet-QA.</li>
+  <li><strong>SoTA Performance!</strong> Without seeing any video data, LLaVA-Next demonstrates strong zero-shot modality transfer ability, outperforming all the existing open-source LMMs (e.g., <a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a>) that have been specifically trained for videos. Compared with proprietary ones, it achieves comparable performance with Gemini Pro on NextQA and ActivityNet-QA.</li>
   <li><strong>Strong length generalization ability</strong>. Despite being trained under the sequence length constraint of a 4096-token limit, LLaVA-Next demonstrates remarkable ability to generalize to longer sequences. This capability ensures robust performance even when processing long-frame content that exceeds the original token length limitation.</li>
 </ul>
 
@@ -485,6 +485,8 @@
 
   <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
 
+  <p>Prompt for T2V: A realistic image of clouds forming the word "SORA"</p>
+
   <video width="50%" controls>
     <source src="/blog/assets/videos/sora/xU25MMA2N4aVtYay.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -496,19 +498,7 @@
 
   <h4>LLaVA-NeXT-Video-34B</h4>
 
-  <p>The video you've provided appears to be a digital artwork that features a large, fluffy white cloud in the sky with the word \"SORA\" written across it. The cloud is the main subject of the video, and it is positioned against a clear blue sky with a few wispy clouds in the background. The cloud itself is dense and appears to be a cumulus cloud, which is characterized by its fluffy, rounded shape and white color, suggesting that it could be a cloud that is forming or about to rain. The background is a gradient of blue, indicating that the sky is clear and possibly sunny, with a few wispy clouds scattered around, which adds depth to the scene. The overall atmosphere of the video is serene and somewhat dreamlike, with the cloud's formation and the clear sky creating a peaceful and somewhat surreal visual effect..</p>
-
-  <!-- <p>The text overlay reads:</p>
-
-  <p>"Some updates on our AI efforts. Our long term vision is to build general intelligence, open source it responsibly, and make it widely available so everyone can benefit. We're bringing our two major AI research efforts (FAIR and GenAI) closer together to support this. We're currently training our next-gen model Llama 3, and we're building massive compute infrastructure to support our future roadmap, including 35k H100s by the end of this year — and overall almost 600k H100s equivalents of compute if you include other GPUs. Also really excited about our progress building new AI-centric computing devices like Ray Ban Meta smart glasses. Lots more to come."</p>
-
-  <p>This text provides insights into Meta's artificial intelligence (AI) initiatives. It mentions that the company's long-term goal is to develop general intelligence and make it accessible to everyone. The post also discusses the integration of Meta's two AI research efforts, FAIR (Facebook AI Research) and GenAI, to support this goal.</p>
-
-  <p>The text also mentions the training of a next-generation AI model called Llama 3 and the construction of massive compute infrastructure to support Meta's future plans. It highlights the company's investment in NVIDIA's H100 GPUs, with a total of 35,000 H100s by the end of the year and almost 600,000 H100s equivalents of compute if other GPUs are included.</p>
-
-  <p>Lastly, the post expresses excitement about Meta's progress in developing AI-centric computing devices, specifically Ray Ban Meta smart glasses. The post concludes with a statement that there is more to come, suggesting that Meta has additional AI-related announcements or developments in the pipeline.</p>
-
-  <p>The image of the man speaking could be from a video or a live stream where he is discussing these AI updates. The context of the image suggests that it is part of a larger conversation or announcement related to Meta's AI strategy and advancements.</p> -->
+  <p>The video you've provided appears to be a digital artwork that features a large, fluffy white cloud in the sky with the word \"SORA\" written across it. The cloud is the main subject of the video, and it is positioned against a clear <span style="color: rgba(117, 209, 215, 0.1);">blue</span> sky with a few wispy clouds in the background. The cloud itself is dense and appears to be a cumulus cloud, which is characterized by its fluffy, rounded shape and white color, suggesting that it could be a cloud that is forming or about to rain. The background is a gradient of blue, indicating that the sky is clear and possibly sunny, with a few wispy clouds scattered around, which adds depth to the scene. The overall atmosphere of the video is serene and somewhat dreamlike, with the cloud's formation and the clear sky creating a peaceful and somewhat surreal visual effect.</p>
 
 </div>
 
@@ -521,8 +511,10 @@
 
   <h4>User: Which part of the video goes against common sense?</h4>
 
+  <p>Prompt for T2V: Step-printing scene of a person running, cinematic film shot in 35mm."</p>
+
   <video width="50%" controls>
-    <source src="blog/assets/videos/sora/backward-jogger.mp4" type="video/mp4">
+    <source src="/blog/assets/videos/sora/backward-jogger.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </div>
@@ -550,7 +542,7 @@
 
 <h3 id="1-anyframe">(1) AnyRes: From multi-patch to multi-frame</h3>
 
-<p>The AnyRes algorithm, introduced in LLaVA-NeXT, achieves an optimal balance between performance efficiency and operational costs to deal with images of any high-resolution. It segments the image into a grid of sub-images with various configurations, such as {2x2, 1x{2,3,4}, {2,3,4}x1}. </p>
+<p>The <strong>AnyRes</strong> algorithm, introduced in LLaVA-NeXT, achieves an optimal balance between performance efficiency and operational costs to deal with images of any high-resolution. It segments the image into a grid of sub-images with various configurations, such as {2x2, 1x{2,3,4}, {2,3,4}x1}. </p>
 
 <p align="center">
   <img width="90%" src="/blog/assets/images/llava-next-video/multi_frame.png" />
@@ -558,11 +550,11 @@
   <em>Illustration that AnyRes digests a set of image as a sequence of concatenated visual tokens, allowing unified image and video input, which natually suppots the evolution from multi-image to multi-frame</em>
 </p>
 
-<p>With minor code adjustments, LLaVA-NeXT can process N video frames arranged in a {1xN} grid. Assuming each frame comprises 24x24 tokens, the total token count for a video would be 24x24xN. However, considering the "max_token_length" limit of 4096 for the LLM, it is crucial to ensure that 24x24xN + the number of text tokens < 4096 to avoid nonsensical outputs. This necessitates a careful balance between the tokens per frame and the total number of frames. For example, applying spatial pooling with a stride of 2 reduces the tokens per frame from 24x24 to 12x12, accommodating up to 16 frames. Our findings indicate that a configuration of 12x12 tokens across 16 frames yields optimal performance. However, 16 frames may not sufficiently capture the essence of most videos. Next, we focus on enabling LLaVA-NeXT to handle more frames.</p>
+<p>With minor code adjustments, LLaVA-NeXT can process  <strong>N</strong> video frames arranged in a {1xN} grid. Assuming each frame comprises 24x24 tokens, the total token count for a video would be 24x24xN.  <strong>However, considering the "max_token_length" limit of 4096 for the LLM, it is crucial to ensure that 24x24xN + the number of text tokens < 4096 to avoid nonsensical outputs</strong>. This necessitates a careful balance between the tokens per frame and the total number of frames. For example, applying spatial pooling with a stride of 2 reduces the tokens per frame from 24x24 to 12x12, accommodating up to 16 frames. Our findings indicate that a configuration of 12x12 tokens across 16 frames yields optimal performance. However, 16 frames may not sufficiently capture the essence of most videos. Next, we focus on enabling LLaVA-NeXT to handle more frames.</p>
 
 <h3 id="2-length_generalization">(2) Length generalization: From multi-frame to long-video.</h3>
 
-<p>Inspired by recent advance in dealing with long sequences in LLMs, such as the implementation of linear scaling in rotary position embeddings (RoPE), we apply a similar scaling approach in LLaVA-NeXT. By introducing a scaling factor of 2, for instance, we effectively double the "max_token_length" capacity of the model, enabling it to process sequences up to 8192 tokens. With this technique, LLaVA-NeXT can process up to 56 frames with a per frame token count of 12x12, significantly expanding the model's applicability in analyzing longer video sequences.</p>
+<p>Inspired by recent advance in dealing with long sequences in LLMs, such as the implementation of <strong>linear scaling</strong> in rotary position embeddings (RoPE), we apply a similar scaling approach in LLaVA-NeXT. By introducing a scaling factor of 2, for instance, we effectively double the "max_token_length" capacity of the model, enabling it to process sequences up to 8192 tokens. With this technique, LLaVA-NeXT can process up to 56 frames with a per frame token count of 12x12, significantly expanding the model's applicability in analyzing longer video sequences.</p>
 
 <p align="center">
   <img width="90%" src="/blog/assets/images/llava-next-video/rope_scale.png" />
@@ -575,7 +567,7 @@
 
 <h3 id="3-dpo">(3) Direct Preference Optimization from AI Feedback</h3>
 
-<p>Recent advancements in reinforcement learning from human feedback (RLHF) have been effective in guiding LLMs towards generating more honest, helpful, and harmless content. Their effectiveness in multimodal contexts remains limited. The critical obstacle lies in (1) developing a robust reward system capable of distinguishing preferred responses from less preferred ones, and (2) acquiring high-quality preference data from humans is both costly and labor-intensive, especially for video inputs with multiple frames.  As a cost-efficient alternative, AI feedback using LLM reward is considered in our recent study LLaVA-Hound. DPO is used to train LMM, based on the preference data generated by LLM, where videos are represented with their detailed captions as supporting evidence. Following the same recipe, we explore DPO based on the stronger SFT LMM LLaVA-NeXT-Video, leading to the final model LLaVA-NeXT-Video-DPO.</p>
+<p>Recent advancements in reinforcement learning from human feedback (RLHF) have been effective in guiding LLMs towards generating more honest, helpful, and harmless content. Their effectiveness in multimodal contexts remains limited. The critical obstacle lies in (1) developing a robust reward system capable of distinguishing preferred responses from less preferred ones, and (2) acquiring high-quality preference data from humans is both costly and labor-intensive, especially for video inputs with multiple frames.  As a cost-efficient alternative, AI feedback using LLM reward is considered in <a href="https://arxiv.org/abs/2404.01258">our recent study LLaVA-Hound</a>. DPO is used to train LMM, based on the preference data generated by LLM, where videos are represented with their detailed captions as supporting evidence. Following the same recipe, we explore DPO based on the stronger SFT LMM LLaVA-NeXT-Video, leading to the final model LLaVA-NeXT-Video-DPO.</p>
 
 <p>The results are presented in the main table at the beginning of the blog, showcasing DPO's significant improved performance gain, sometimes even surpassing the gains from supervised fine-tuning with video data. This highlights the promising future of exploring training methods that utilize AI or human feedback.</p>
 
@@ -584,7 +576,7 @@
 <details>
   <summary><b>[Fold / Unfold] to see the examples with DPO</b></summary>
 
-  <p>We illustrate two examples to demonstrate the superiority of DPO. Texts of interest are highlighted in blue, while parts that might contain hallucinations are marked in red. LLaVA-NeXT-Video-DPO reduces hallucinations, and follows the instructions very well, as it responds clearly to different parts of the instructions in separate sections. This resonates with the objective of alignment research: to better follow human intent. Note that we utilize Genimi-Pro, which supports video input, to assess the quality of the model's responses with and without DPO in the last column. </p>
+  <p>We illustrate two examples to demonstrate the superiority of DPO. Texts of interest are highlighted in <span style="color: rgb(10, 53, 242);">blue</span>, while parts that might contain hallucinations are marked in <span style="color: rgb(235, 53, 208);">red</span>. LLaVA-NeXT-Video-DPO reduces hallucinations, and follows the instructions very well, as it responds clearly to different parts of the instructions in separate sections. This resonates with the objective of alignment research: to better follow human intent. Note that we utilize Genimi-Pro, which supports video input, to assess the quality of the model's responses with and without DPO in the last column. </p>
   
   <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
   
@@ -599,9 +591,9 @@
   
     <h4>LLaVA-NeXT-Video-DPO-34B</h4>
   
-    <p>The video depicts a dynamic and surreal scene where the action of surfing is juxtaposed with an indoor setting. In the foreground, there are two surfers riding waves, one slightly ahead of the other, maintaining their balance on surfboards. The surfer in the foreground is skillfully navigating the crest of a wave, while the one behind is positioned on the face of the wave, both displaying athletic postures typical of surfing. The waves are large and crashing, with the wave in the background creating a dramatic arc that suggests motion and power.
-      The background is an opulent interior space with high vaulted ceilings, ornate detailing, and classical architecture, including arches and what appears to be marble or stone work. The lighting is warm, with a golden hue that contrasts with the cool tones of the water. The architecture suggests a grand hall or a space designed for public gatherings or performances, possibly inspired by classical or neoclassical styles.
-      The temporal transition in the video is interesting as it captures a moment of action (the surfers riding the wave) within a stationary, non-moving environment (the interior space). This creates a surreal effect, blending the dynamic motion of the ocean with the static elegance of a building interior. The image is a blend of two disparate subjects—the exhilarating sport of surfing and the serene grandeur of architectural design—into a single, captivating composition.</p>
+    <p>The video depicts a dynamic and surreal scene where the action of surfing is juxtaposed with an indoor setting. In the foreground, there are two surfers riding waves, one slightly ahead of the other, maintaining their balance on surfboards. The surfer in the foreground is skillfully navigating the crest of a wave, while the one behind is positioned on the face of the wave, both displaying athletic postures typical of surfing. The waves are large and crashing, with the wave in the background creating a dramatic arc that suggests motion and power.</p>
+    <p>The background is an opulent interior space with high vaulted ceilings, ornate detailing, and classical architecture, including arches and what appears to be marble or stone work. The lighting is warm, with a golden hue that contrasts with the cool tones of the water. The architecture suggests a grand hall or a space designed for public gatherings or performances, possibly inspired by classical or neoclassical styles.</p>
+    <p><span style="color: rgb(10, 53, 242);">The temporal transition in the video is interesting as it captures a moment of action (the surfers riding the wave) within a stationary, non-moving environment (the interior space). This creates a surreal effect, blending the dynamic motion of the ocean with the static elegance of a building interior. The image is a blend of two disparate subjects—the exhilarating sport of surfing and the serene grandeur of architectural design—into a single, captivating composition.</span></p>
   
   </div>
 
@@ -609,7 +601,7 @@
   
     <h4>LLaVA-NeXT-Video-34B</h4>
   
-    <p>The video depicts a large wave crashing inside a building, with a surfer riding the wave. The surfer is positioned in the center of the frame, skillfully navigating the wave's crest. The wave is massive, filling the majority of the space from the top to the bottom of the frame, with its white foam and water spray creating a dynamic and powerful visual effect. The background of the scene is a grand hall with high ceilings and ornate architecture, featuring arches and columns that add a sense of grandeur to the setting. The lighting is dim, with the focus on the surfer and the wave, casting shadows and highlighting the contours of the wave's movement. The camera captures the surfer from a low angle, emphasizing the height of the wave and the surfer's skill in maintaining balance. As the wave begins to break, the surfer is seen riding it towards the right side of the frame, creating a sense of motion and direction. The video transitions from a close-up of the surfer to a wider shot, showing the full scale of the wave and the grand hall. The sound of the crashing wave is prominent, adding to the immersive experience. The video concludes with a shot of the surfer disappearing from view as the wave subsides, leaving the grand hall empty and still.</p>
+    <p>The video depicts a large wave crashing inside a building, with a surfer riding the wave. The surfer is positioned in the center of the frame, skillfully navigating the wave's crest. The wave is massive, filling the majority of the space from the top to the bottom of the frame, with its white foam and water spray creating a dynamic and powerful visual effect. The background of the scene is a grand hall with high ceilings and ornate architecture, featuring arches and columns that add a sense of grandeur to the setting. The lighting is dim, with the focus on the surfer and the wave, casting shadows and highlighting the contours of the wave's movement. The camera captures the surfer from a low angle, emphasizing the height of the wave and the surfer's skill in maintaining balance. As the wave begins to break, the surfer is seen riding it towards the right side of the frame, creating a sense of motion and direction. The video transitions from a close-up of the surfer to a wider shot, showing the full scale of the wave and the grand hall. <span style="color: rgb(235, 53, 208);">The sound of the crashing wave is prominent, adding to the immersive experience. The video concludes with a shot of the surfer disappearing from view as the wave subsides, leaving the grand hall empty and still.</span></p>
   
   </div>
 
@@ -618,14 +610,14 @@
   
     <h4>Evaluation and Comments</h4>
   
-    <p>
-      Description A: LLaVA-NeXT-Video-DPO
-      Description B: LLaVA-NeXT-Video
-      Comparison:
-      Description A provides a more comprehensive and evocative description of the video, capturing the surreal juxtaposition of surfing with the opulent indoor setting. It highlights the dynamic motion of the surfers and the contrasting serenity of the architecture, creating a unique and captivating image.
-      Description B, on the other hand, focuses more on the surfer riding the wave within the grand hall. While it describes the visual elements and motion of the surfer, it lacks the depth and nuance of Description A in capturing the surreal and immersive nature of the scene.
-      Conclusion:
-      Description A is the better description for this video as it provides a more complete and engaging portrayal of the surreal scene, capturing the blend of dynamic action and serene grandeur, while also highlighting the unique juxtaposition of surfing with the opulent indoor setting.</p>
+    
+    <p>Description A: <strong>LLaVA-NeXT-Video-DPO</strong></p>
+    <p>Description B: <strong>LLaVA-NeXT-Video</strong></p>
+    <p><strong>Comparison:</strong></p>
+    <p>Description A provides a more comprehensive and evocative description of the video, capturing the surreal juxtaposition of surfing with the opulent indoor setting. It highlights the dynamic motion of the surfers and the contrasting serenity of the architecture, creating a unique and captivating image.</p>
+    <p>Description B, on the other hand, focuses more on the surfer riding the wave within the grand hall. While it describes the visual elements and motion of the surfer, it lacks the depth and nuance of Description A in capturing the surreal and immersive nature of the scene.</p>
+    <p><strong>Conclusion:</strong></p>
+    <p>Description A is the better description for this video as it provides a more complete and engaging portrayal of the surreal scene, capturing the blend of dynamic action and serene grandeur, while also highlighting the unique juxtaposition of surfing with the opulent indoor setting.</p>
   
   </div>
 
@@ -659,34 +651,33 @@
       <th class="tg-i5bh">Pooling Stride</th>
       <th class="tg-i5bh"># Tokens/Frame</th>
       <th class="tg-i5bh"># Frames</th>
-      <th class="tg-i5bh">Video Detailed Description (Score)</th>
+      <th class="tg-i5bh">Video Detailed Description<br>(Score)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="tg-5frq" rowspan="11">LLaVA-NeXT-Image-7B<br></td>
-      <td class="tg-6t3r" colspan="4">Max inference tokens=4096</td>
+      <td class="tg-5frq" rowspan="11" style="vertical-align: middle;">LLaVA-NeXT-Image-7B<br></td>      <td class="tg-6t3r" colspan="4">Max inference tokens=4096</td>
     </tr>
     <tr>
-      <td class="tg-0lax">4</td>
+      <td class="tg-baqh">4</td>
       <td class="tg-baqh">6X6</td>
       <td class="tg-baqh">32</td>
       <td class="tg-baqh">2.73</td>
     </tr>
     <tr>
-      <td class="tg-0lax">4</td>
+      <td class="tg-baqh">4</td>
       <td class="tg-baqh">6X6</td>
       <td class="tg-baqh">64</td>
       <td class="tg-baqh">2.24</td>
     </tr>
     <tr>
-      <td class="tg-0lax">2</td>
+      <td class="tg-baqh">2</td>
       <td class="tg-baqh">12X12 </td>
       <td class="tg-baqh">16</td>
       <td class="tg-baqh">2.76</td>
     </tr>
     <tr>
-      <td class="tg-0lax">1</td>
+      <td class="tg-baqh">1</td>
       <td class="tg-baqh">24X24</td>
       <td class="tg-baqh">4</td>
       <td class="tg-baqh">2.71</td>
@@ -695,13 +686,13 @@
       <td class="tg-6t3r" colspan="4">Max inference tokens=8192 (with linear scale factor=2)</td>
     </tr>
     <tr>
-      <td class="tg-0lax">2</td>
+      <td class="tg-baqh">2</td>
       <td class="tg-baqh">12X12 </td>
       <td class="tg-baqh">32 </td>
       <td class="tg-baqh">3.12 </td>
     </tr>
     <tr>
-      <td class="tg-0lax">1</td>
+      <td class="tg-baqh">1</td>
       <td class="tg-baqh">24X24</td>
       <td class="tg-baqh">8</td>
       <td class="tg-baqh">3.08</td>
@@ -710,13 +701,13 @@
       <td class="tg-6t3r" colspan="4">Max inference tokens=16384 (with linear scale factor=4)</td>
     </tr>
     <tr>
-      <td class="tg-0lax">2</td>
+      <td class="tg-baqh">2</td>
       <td class="tg-baqh">12X12 </td>
       <td class="tg-baqh">64 </td>
       <td class="tg-baqh">3.12</td>
     </tr>
     <tr>
-      <td class="tg-0lax">1</td>
+      <td class="tg-baqh">1</td>
       <td class="tg-baqh">24X24</td>
       <td class="tg-baqh">16 </td>
       <td class="tg-baqh">3.16</td>
@@ -757,37 +748,37 @@
   <table class="tg">
   <thead>
     <tr>
-      <th class="tg-1wig" rowspan="2">Model</th>
-      <th class="tg-1wig" rowspan="2">Training recipes</th>
-      <th class="tg-1wig" rowspan="2">Pooling Stride</th>
-      <th class="tg-1wig" rowspan="2">#Tokens/Frame</th>
-      <th class="tg-1wig" rowspan="2"># Frames</th>
-      <th class="tg-1wig" rowspan="2">Video Detailed Description (Score)</th>
+      <th class="tg-i5bh" rowspan="2">Model</th>
+      <th class="tg-i5bh" rowspan="2">Training recipes</th>
+      <th class="tg-i5bh" rowspan="2">Pooling Stride</th>
+      <th class="tg-i5bh" rowspan="2">#Tokens/Frame</th>
+      <th class="tg-i5bh" rowspan="2"># Frames</th>
+      <th class="tg-i5bh" rowspan="2">Video Detailed Description<br>(Score)</th>
     </tr>
     <tr>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="tg-0lax">LLaVA-NeXT-Image-7B</td>
-      <td class="tg-0lax">-</td>
-      <td class="tg-0lax" rowspan="4">2</td>
-      <td class="tg-0lax" rowspan="4">12X12 </td>
-      <td class="tg-0lax" rowspan="4">32 </td>
-      <td class="tg-0lax">3.14</td>
+      <td class="tg-baqh">LLaVA-NeXT-Image-7B</td>
+      <td class="tg-baqh">-</td>
+      <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">2</td>
+      <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">12X12 </td>
+      <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">32 </td>
+      <td class="tg-baqh">3.14</td>
     </tr>
     <tr>
-      <td class="tg-0lax" rowspan="3">LLaVA-NeXT-Video-7B</td>
-      <td class="tg-0lax">Continual fine-tuning on videos</td>
-      <td class="tg-0lax">3.02</td>
+      <td class="tg-baqh" rowspan="3" style="vertical-align: middle;">LLaVA-NeXT-Video-7B</td>
+      <td class="tg-baqh">Continual fine-tuning on videos</td>
+      <td class="tg-baqh">3.02</td>
     </tr>
     <tr>
-      <td class="tg-0lax">Joint video-image: Batch data <span style="font-weight:bold">split</span></td>
-      <td class="tg-0lax">3.00 </td>
+      <td class="tg-baqh">Joint video-image: Batch data <span style="font-weight:bold">split</span></td>
+      <td class="tg-baqh">3.00 </td>
     </tr>
     <tr>
-      <td class="tg-0lax">Joint video-image: Batch data <span style="font-weight:bold">mixed</span></td>
-      <td class="tg-0lax">3.32 </td>
+      <td class="tg-baqh">Joint video-image: Batch data <span style="font-weight:bold">mixed</span></td>
+      <td class="tg-baqh">3.32 </td>
     </tr>
   </tbody>
   </table>
@@ -810,6 +801,7 @@
 
 <ul>
   <li>We thank Lianmin Zheng, for the integration of LLaVA to SGLang.</li>
+  <li>We thank Kaichen Zhang, Kairui Hu, Fanyi Pu, for the building of video benchmark.</li>
 </ul>
 
 <h2 id="citation">Citation</h2>
@@ -822,7 +814,7 @@
   <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
 <span class="p">}</span>
 
-<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2024llavanext</span><span class="p">,</span>
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2024llavanext</span><span class="p">,</span>
     <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Improved reasoning, OCR, and world knowledge}</span><span class="p">,</span>
     <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-01-30-llava-next/}</span><span class="p">,</span>
     <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Li, Bo and Zhang, Yuanhan and Shen, Sheng and Lee, Yong Jae}</span><span class="p">,</span>
