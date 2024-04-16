@@ -112,9 +112,9 @@
   <table class="tg">
   <thead>
     <tr>
-      <th class="tg-lg4c" rowspan="2">Data&nbsp;&nbsp;(Pre-training)</th>
-      <th class="tg-lg4c" rowspan="2">Data&nbsp;&nbsp;(Post-training)</th>
-      <th class="tg-lg4c" colspan="2">Max Sequence Length</th>
+      <th class="tg-i5bh" rowspan="2">Data&nbsp;&nbsp;(Pre-training)</th>
+      <th class="tg-i5bh" rowspan="2">Data&nbsp;&nbsp;(Post-training)</th>
+      <th class="tg-i5bh" colspan="2">Max Sequence Length</th>
       <th class="tg-i5bh" rowspan="2">Model</th>
       <th class="tg-i5bh" rowspan="2">Throughput<br>(seconds/video)</th>
       <th class="tg-i5bh" rowspan="2">NextQA<br>(WUPS@All)</th>
@@ -134,7 +134,7 @@
   </thead>
   <tbody>
     <tr>
-      <td class="tg-4erg" colspan="14">Proprietary</td>
+      <td class="tg-6t3r" colspan="14">Proprietary</td>
     </tr>
     <tr>
       <td class="tg-58td">N/A</td>
@@ -483,9 +483,12 @@
 
 <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
-  <h4>User: : Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+  <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
 
-  <img width="90%" src="/blog/assets/videos/sora/xU25MMA2N4aVtYay.mp4" />
+  <video width="50%" controls>
+    <source src="/blog/assets/videos/sora/xU25MMA2N4aVtYay.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
 </div>
 
@@ -518,25 +521,25 @@
 
   <h4>User: Which part of the video goes against common sense?</h4>
 
-  <img width="90%" src="/blog/assets/videos/sora/backward-jogger.mp4" />
-
+  <video width="50%" controls>
+    <source src="blog/assets/videos/sora/backward-jogger.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </div>
 
 <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 
   <h4>LLaVA-NeXT-Video-34B</h4>
 
-  <p>Based on the information provided in the image, the flight is scheduled to arrive at 11:51 AM at San Francisco International Airport (SFO). If you live in San Jose, you should consider the travel time between San Jose and San Francisco, which is approximately 45-60 minutes depending on traffic conditions.</p>
-
-  <p>To ensure you have enough time to pick up your wife, you should leave San Jose no later than 11:00 AM to account for traffic and any unexpected delays. However, it's always a good idea to leave earlier than necessary to ensure you arrive on time.</p>
+  <p>The video you've provided appears to show a person running on a treadmill, but the unusual aspect is that the person's legs are not aligned with the treadmill's belt. This defies common sense because when running on a treadmill, one would expect the person's legs to be in sync with the belt's motion, either moving forward or backward in a coordinated manner. In this video, the person's legs are positioned as if they are running in a different direction or at a different pace than the belt, which is not possible in reality and thus goes against common sense. This suggests that the video may have been manipulated or is a composite of two different scenes to create an illusion.</p>
 
 </div>
 </details>
 
-<details>
+<!-- <details> -->
 <summary><b><a href="https://docs.google.com/presentation/d/1euRcHTteQIWIjEonDJoMKFi9anWAvO6QVxpAEnnQf1I/edit?usp=sharing" target="_blank">More Result</a></b></summary>
 
-</details>
+<!-- </details> -->
 
 
 
@@ -550,7 +553,7 @@
 <p>The AnyRes algorithm, introduced in LLaVA-NeXT, achieves an optimal balance between performance efficiency and operational costs to deal with images of any high-resolution. It segments the image into a grid of sub-images with various configurations, such as {2x2, 1x{2,3,4}, {2,3,4}x1}. </p>
 
 <p align="center">
-  <img width="90%" src="blog/assets/images/llava-next-video/multi_frame.png" />
+  <img width="90%" src="/blog/assets/images/llava-next-video/multi_frame.png" />
   <br />
   <em>Illustration that AnyRes digests a set of image as a sequence of concatenated visual tokens, allowing unified image and video input, which natually suppots the evolution from multi-image to multi-frame</em>
 </p>
@@ -562,7 +565,7 @@
 <p>Inspired by recent advance in dealing with long sequences in LLMs, such as the implementation of linear scaling in rotary position embeddings (RoPE), we apply a similar scaling approach in LLaVA-NeXT. By introducing a scaling factor of 2, for instance, we effectively double the "max_token_length" capacity of the model, enabling it to process sequences up to 8192 tokens. With this technique, LLaVA-NeXT can process up to 56 frames with a per frame token count of 12x12, significantly expanding the model's applicability in analyzing longer video sequences.</p>
 
 <p align="center">
-  <img width="90%" src="blog/assets/images/llava-next-video/rope_scale.png" />
+  <img width="90%" src="/blog/assets/images/llava-next-video/rope_scale.png" />
   <br />
   <em>Illustration of length generalization to deal with a long sequence with much more frames, where the sequence length in inference can be longer than the sequence length in training.</em>
 </p>
@@ -587,7 +590,7 @@
   
     <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, the background scenes, and the temporal transitions.</h4>
   
-    <img width="90%" src="blog/assets/videos/sora/cpRSZOcJrs029ixB.mp4" />
+    <img width="90%" src="/blog/assets/videos/sora/cpRSZOcJrs029ixB.mp4" />
   
   </div>
   
@@ -811,7 +814,7 @@
 
 <h2 id="citation">Citation</h2>
 
-<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2024llavanext</span><span class="p">,</span>
+<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">zhang2024llavanextvideo</span><span class="p">,</span>
   <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: A Strong Zero-shot Video Understanding Model}</span><span class="p">,</span>
   <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-04-30-llava-next-video/}</span><span class="p">,</span>
   <span class="na">author</span><span class="p">=</span><span class="s">{Zhang, Yuanhan and Li, Bo and Liu, haotian and Lee, Yong jae and Gui, Liangke and Fu, Di and Feng, Jiashi and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
