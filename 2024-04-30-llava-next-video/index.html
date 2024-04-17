@@ -737,9 +737,7 @@
 <p>The <strong>AnyRes</strong> algorithm, introduced in LLaVA-NeXT, achieves an optimal balance between performance efficiency and operational costs to deal with images of any high-resolution. It segments the image into a grid of sub-images with various configurations, such as {2x2, 1x{2,3,4}, {2,3,4}x1}. </p>
 
 <p align="center">
-  <object width="90%" height="500" type="application/pdf" data="/blog/assets/images/llava-next-video/multi_frame.pdf">
-    <p>Your browser does not support PDFs.</p>
-  </object>
+  <img width="90%" src="/blog/assets/images/llava-next-video/multi_frame.png" />
   <br />
   <em>Illustration that AnyRes digests a set of image as a sequence of concatenated visual tokens, allowing unified image and video input, which natually suppots the evolution from multi-image to multi-frame</em>
 </p>
@@ -751,9 +749,8 @@
 <p>Inspired by recent advance in dealing with long sequences in LLMs, such as the implementation of <strong>linear scaling</strong> in rotary position embeddings (RoPE), we apply a similar scaling approach in LLaVA-NeXT. By introducing a scaling factor of 2, for instance, we effectively double the "max_token_length" capacity of the model, enabling it to process sequences up to 8192 tokens. With this technique, LLaVA-NeXT can process up to 56 frames with a per frame token count of 12x12, significantly expanding the model's applicability in analyzing longer video sequences.</p>
 
 <p align="center">
-  <object width="90%" height="500" type="application/pdf" data="/blog/assets/images/llava-next-video/rope_scale.pdf">
-    <p>Your browser does not support PDFs.</p>
-  </object>  <br />
+  <img width="90%" src="/blog/assets/images/llava-next-video/rope_scale.png" />
+  <br />
   <em>Illustration of length generalization to deal with a long sequence with much more frames, where the sequence length in inference can be longer than the sequence length in training.</em>
 </p>
 
