@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild  | LLaVA</title>
+<meta name="generator" content="Jekyll v3.9.4" />
+<meta property="og:title" content="LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild " />
+<meta name="author" content="Bo Li, Kaichen Zhang, Hao Zhang, Dong Guo, Renrui Zhang, Feng Li, Yuanhan Zhang, Ziwei Liu, Chunyuan Li" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="LLaVA team presents LLaVA-NeXT, Stronger LLMs Supercharge Multimodal Capabilities in the Wild" />
+<meta property="og:description" content="LLaVA team presents LLaVA-NeXT, Stronger LLMs Supercharge Multimodal Capabilities in the Wild" />
+<link rel="canonical" href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/" />
+<meta property="og:url" content="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/" />
+<meta property="og:site_name" content="LLaVA" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-05-10T12:33:38-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild " />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Bo Li, Kaichen Zhang, Hao Zhang, Dong Guo, Renrui Zhang, Feng Li, Yuanhan Zhang, Ziwei Liu, Chunyuan Li"},"dateModified":"2024-05-10T12:33:38-06:00","datePublished":"2024-05-10T12:33:38-06:00","description":"LLaVA team presents LLaVA-NeXT, Stronger LLMs Supercharge Multimodal Capabilities in the Wild","headline":"LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild ","mainEntityOfPage":{"@type":"WebPage","@id":"https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"},"url":"https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">LLaVA</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild </h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-01-30T12:33:38-06:00" itemprop="datePublished">Jan 30, 2024
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan Zhang, Sheng Shen, Yong Jae Lee</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!-- for mathjax support -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      TeX: {
+        equationNumbers: { autoNumber: "AMS" }
+      }
+    });
+  </script>
+
+<script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<p>
+On January 30, 2024, we unveiled <a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT</a>, a state-of-the-art Large Multimodal Model (LMM) developed using a cost-effective training method leveraging open resources. It enhances reasoning, OCR, and world knowledge across multimodal capabilities using the leading LLM of that time, Yi-34B. LLaVA-NeXT has showcased outstanding performance across various multimodal understanding tasks, even surpassing Gemini-Pro on benchmarks such as MMMU and MathVista.
+Recently, the community has witnessed  the emergence of open-source LLM with stronger language capability, exemplified by LLaMA3 and Qwen-1.5 family. Simultaneously,  there is speculation that proprietary LMMs like OpenAI GPT-V are supported with stronger LLMs such as GPT-4. This naturally raises the question: as the disparity between open and proprietary LLMs diminishes with the introduction of potent new language models, does the gap between open and proprietary multimodal models also narrow, when powered by these stronger LLMs?
+</p> 
+
+<p>
+<strong>Today, we expanded the LLaVA-NeXT with recent stronger open LLMs</strong>, reporting our findings on more capable language models:
+
+</strong>1. Increasing multimodal capaiblies with stronger & larger language models, up to 3x model size.</strong> This allows LMMs to present better visual world knowledge and logical reasoning inherited from LLM. It supports LLaMA3 (8B) and Qwen-1.5 (72B and 110B).
+<strong>2. Better visual chat for more real-life scenarios, covering different applications.</strong> To evaluate the improved multimodal capabilities in the wild,  we collect and develop new LLaVA-Bench (in-the-wild) datasets. 
+
+To clearly highlight the impact of LLM in supercharging multimodal performance improvements, we re-use the same training recipe with LLaVA-NeXT, thereby maintaining the minimalist design and data efficiency of LLaVA family. The largest 110B variant finishes training in 18 hours with 128 H800s. <strong>Our code, data, and model will be made accessible to the public.</strong>
+</p>
+
+
+<h2 id="open-source-release">Open-Source Release</h2>
+
+<p>We open-source the LLaVA-NeXT to facilitate future development of LMM in the community. Code, data, model will be made publicly available.</p>
+
+<ul>
+  <li><a href="https://huggingface.co/collections/lmms-lab/llava-next-6623288e2d61edba3ddbf5ff">Checkpoints</a></li>
+  <li><a href="https://github.com/LLaVA-VL/LLaVA-NeXT">Code</a></li>
+  <li><a href="https://llava-next.lmms-lab.com/">Demo</a></li>
+</ul>
+
+
+<h2 id="results">🚀 Benchmark Performance</h2>
+
+<h3 id="qualitative-results">Benchmark Results</h3>
+<div style="display: flex; justify-content: center;">
+    <table style="text-align: center;">
+    <tr style="background-color: rgba(108,122,123,0.1);"><th colspan="4">Results with <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">lmms-eval</a></th><th rowspan="2" style="background-color: rgba(255,229,152,0.5);">GPT4-V</th><th colspan="3" style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-NeXT (2024-05 Release)</th><th colspan="4" style="background-color: rgba(0, 242, 234, 0.5);">LLaVA-NeXT (2024-01 Release)</th></tr>
+  <tr style="background-color: rgba(108,122,123,0.1);"><th>Datasets</th><th>Split</th><th>Metric</th><th>Instances</th><th>Qwen1.5-110B</th><th>Qwen1.5-72B</th><th>LLaMA3-8B</th><th>Yi-34B</th><th>Vicuna-1.5-13B</th><th>Vicuna-1.5-7B</th><th>Mistral-7B</th></tr>
+  <tr ><td>AI2D*</td><td>test</td><td>Acc.</td><td>3088</td><td>78.2</td><td>80.4</td><td>77.4</td><td>71.6</td><td>74.9</td><td>70.0</td><td>66.6</td><td>60.8</td></tr>
+  <tr ><td>ChartQA*</td><td>test</td><td>RelaxedAcc.</td><td>2500</td><td>78.5</td><td>79.7</td><td>77.0</td><td>69.5</td><td>68.7</td><td>62.2</td><td>54.8</td><td>38.8</td></tr>
+  <tr ><td>DocVQA*</td><td>val</td><td>ANLS</td><td>5349</td><td>-</td><td>85.7</td><td>84.4</td><td>78.2</td><td>84.0</td><td>77.5</td><td>74.4</td><td>72.2</td></tr>
+  <tr ><td>LLaVA-in-the-wild**</td><td>test</td><td>GPT-Eval-Avg</td><td>60</td><td>98.0</td><td>90.4</td><td>89.2</td><td>80.1</td><td>88.8</td><td>72.3</td><td>72.3</td><td>71.7</td></tr>
+  <tr ><td>MathVista</td><td>test</td><td>Acc.</td><td>1000</td><td>49.9</td><td>49.0</td><td>46.6</td><td>37.5</td><td>46.0</td><td>35.1</td><td>34.4</td><td>37.4</td></tr>
+  <tr ><td>MMBench</td><td>dev</td><td>Acc.</td><td>4377</td><td>75.0</td><td>80.5</td><td>80.5</td><td>72.1</td><td>72.1</td><td>72.1</td><td>72.1</td><td>72.1</td></tr>
+  <tr ><td>MME-Cognition</td><td>test</td><td>Total Score</td><td rowspan="2">2374</td><td>517.1</td><td>453.9</td><td>459.6</td><td>367.8</td><td>397.1</td><td>316.8</td><td>322.5</td><td>323.9</td></tr>
+  <tr ><td>MME-Perception</td><td>test</td><td>Total Score</td><td>1409.4</td><td>1746.5</td><td>1699.3</td><td>1603.7</td><td>1633.2</td><td>1575.1</td><td>1519.3</td><td>1500.9</td></tr>
+  <tr ><td>MMMU</td><td>val</td><td>Acc.</td><td>900</td><td>56.8</td><td>49.1</td><td>46.4</td><td>41.7</td><td>46.7</td><td>35.9</td><td>35.1</td><td>33.4</td></tr>
+  <tr ><td>RealWorldQA</td><td>test</td><td>Acc.</td><td>765</td><td>61.4</td><td>63.1</td><td>65.4</td><td>60.0</td><td>61.0</td><td>61.0</td><td>61.0</td><td>54.4</td></tr>
+  <tr style="background-color: rgba(108,122,123,0.1);"><td colspan="12" style="text-align: left; font-style: italic;">* Training dataset observed during SFT stage.</td></tr>
+  <tr style="background-color: rgba(108,122,123,0.1);"><td colspan="12" style="text-align: left; font-style: italic;">**We report the evaluation results with GPT-4-0613 on LLaVA-in-the-wild.</td></tr>
+</table>
+</div>
+
+<div>&nbsp;</div>
+
+<p>Highlights:</p>
+<ul>
+  <li><strong>SoTA Performance!</strong> LLaVA-NeXT achieves consistently better performance compared with prior open-source LMMs by simply increasing the LLM capability. It catches up to GPT-4V on selected benchmarks.</li>
+  <li><strong>Low Training Cost!</strong> We maintain an efficient training strategy like previous LLaVA models. We only supervised finetuned our model on less than 800K examples<sup>*</sup>. Our current largest model LLaVA-NeXT-110B is trained on 128 H800-80G for 18 hours.</li>
+</ul>
+
+<h3 id="qualitative-results">Qualitative Examples</h3>
+
+<details>
+    <summary><b>用中文写一首诗</b></summary>
+
+<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+  <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.jpg" />
+
+</div>
+</details>
+
+<details>
+<summary><b>What is the LaTeX code for this image?</b></summary>
+
+<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+  <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/latex_code.png" />
+
+</div>
+
+</details>
+<p><br /></p>
+
+<h2 id="exploring-the-capability-limit-of-large-language-models">✨ Exploring the Capability Limit of Large Language Models</h2>
+
+In our exploration with LLaVA-NeXT, we witnessed a significant performance leap when scaling LLM from 13B to 34B. With the emergence of more powerful open LLMs, there arises a natural curiosity to push the boundaries of multimodal performance, prompting the question: How effectively can the language capabilities of LLMs be transferred to multimodal settings?
+
+To measure the language capability of LLMs, we employ evaluation scores from the Massive Multitask Language Understanding (MMLU) benchmark. To measure the multimodal capability after applying the same LLaVA-NeXT training recipe,  we examine four key benchmarks: MMMU for multidisciplinary understanding, Mathvista for visual math reasoning, AI2D for science diagram comprehension, and LLaVA-W for daily visual chat scenarios. These benchmarks encapsulate diverse real-world applications of LMM in the wild.
+
+The correlation between multimodal and language capabilities is visually depicted in Figure 1, utilizing regression lines to illustrate trends across each benchmark.
+
+<h3>(1) Improved Language Capability:</h3> Across LLMs of comparable sizes (e.g., 7B Mistral/Vicuna, 7B Qwen, 8B LLaMa3), there exists a consistent pattern where higher language proficiency, as measured by MMMU scores, corresponds to improved multimodal capabilities.
+<h3>(2) Influence of Model Size:</h3> Within the same LLM family (e.g., Qwen LLM: 7B, 72B, 110B), larger models consistently demonstrate superior performance on multimodal benchmarks. This underscores the notion that larger models tend to possess enhanced language capabilities, leading to improved performance across multimodal tasks.
+
+In both of the aforementioned analyses, it's likely that stronger LLMs yield superior multimodal capabilities. This phenomenon can be attributed to broader world knowledge, robust logical reasoning, and conversational prowess typically associated with stronger LLMs. These language capabilities are well maintained and transferred across the vision-language domain by applying the lightweight training of LLaVA-NeXT, owing to the alignment of cross-modality concepts, as well as the alignment with human intent in visual instruction tuning.
+
+<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+    <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
+
+</div>
+
+<!-- 		Language Performance	Multimodal Performance with LLaVA-NeXT Recipe			
+Model Name	MMLU	MMMU	Mathvista	AI2D	LLaVA-W
+GPT-4 (0613)	86.4	56.8	49.9	78.2	98.0
+Qwen1.5 (110B)	80.4	49.1	49.0	80.4	90.4
+Qwen1.5 (72B)	77.5	46.4	46.6	77.4	89.2
+Yi (34B)	76.3	46.7	46.0	74.9	88.8
+Llama 3 (8B)	66.6	41.7	37.5	71.6	80.1
+Qwen1.5 (7B)	61.0	37.3	33.5	72.5	74.5
+Mistral-Instruct-v0.2 (7B)	60.1	33.4	37.4	60.8	71.7
+Vicuna1.5 (13B)	52.1	35.9	35.1	70.0	72.3
+Vicuna1.5 (7B)	47.1	35.1	34.4	66.6	72.3 -->
+
+<details>
+    <summary> <b>[Fold / Unfold to see the table that report the numbers of language and multimodal performance]</b> </summary>
+<div style="display: flex; justify-content: center;">
+    <table style="text-align: center;">
+  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th style="background-color: rgba(255, 0, 80, 0.5);">Language Performance</th><th style="background-color: rgba(0, 242, 234, 0.5);" colspan="4">Multimodal Performance</th></tr>
+  <tr ><td>-</td><td>MMLU</td><td>MMMU</td><td>MathVista</td><td>AI2D</td><td>LLaVA-W</td></tr>
+  <tr ><td>GPT4-V</td><td>86.4</td><td>56.8</td><td>49.9</td><td>78.2</td><td>98.0</td></tr>
+  <tr ><td>Qwen1.5 (110B)</td><td>80.4</td><td>49.1</td><td>49.0</td><td>80.4</td><td>90.4</td></tr>
+  <tr ><td>Qwen1.5 (72B)</td><td>77.5</td><td>46.4</td><td>46.6</td><td>77.4</td><td>89.2</td></tr>
+  <tr ><td>Yi (34B)</td><td>76.3</td><td>46.7</td><td>46.0</td><td>74.9</td><td>88.8</td></tr>
+  <tr ><td>Llama 3 (8B)</td><td>66.6</td><td>41.7</td><td>37.5</td><td>71.6</td><td>80.1</td></tr>
+  <tr ><td>Qwen1.5 (7B)</td><td>61.0</td><td>37.3</td><td>33.5</td><td>72.5</td><td>74.5</td></tr>
+  <tr ><td>Mistral-Instruct-v0.2 (7B)</td><td>60.1</td><td>33.4</td><td>37.4</td><td>60.8</td><td>71.7</td></tr>
+  <tr ><td>Vicuna1.5 (13B)</td><td>52.1</td><td>35.9</td><td>35.1</td><td>70.0</td><td>72.3</td></tr>
+  <tr ><td>Vicuna1.5 (7B)</td><td>47.1</td><td>35.1</td><td>34.4</td><td>66.6</td><td>72.3</td></tr>
+</table>
+</div>
+</details>
+
+<h2 id="3-llava-bench-wilder">🌐 LLaVA-Bench (Wilder): Daily-life Visual Chat Benchmarks</h2>
+
+One of the ultimate goals to develop LLMs is to build general-purpose assistant of aiding humans in various multimodal tasks in their daily lives. It is thus important to have robust benchmarks to precisely measure the related progresses. LLaVA-Bench (In-the-Wild), also known as LLaVA-W, is such a benchmark to measure the daily-life visual chat capability of LMMs. However, with only 60 examples available, we recognized the need for a more expansive dataset. In line with this spirit, we introduce LLaVA-Bench (Wilder), comprising two versions: a smaller iteration featuring 124 examples for swift assessment, and a medium-sized version with 1024 examples for comprehensive measurement. These datasets encompass diverse scenarios such as mathematical problem-solving, image comprehension, code generation, visual AI assistance, and image-based reasoning. To construct these datasets, we gathered instructions and images reflecting real-world user requests from an online service. Subsequently, we meticulously filtered samples to address privacy concerns and mitigate potential harm. Responses to these prompts were generated using GPT-4V.
+
+<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+    <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/llava_wilder.png" />
+  
+</div>
+
+<!-- Benchmarks	Instances	Multimodal Capabilities	Instruction Format	Response Format	Evaluation Metric
+AI2D	3088	Science Diagrams Understanding	Multiple Choices	Options	Exact Match
+MMMU	900	Multi-dimensional Understanding & Reasoning	Multiple Choices, Short Responses	Options & Short Responses	Exact Match
+MathVista	1000	Math Reasoning	Multiple Choices, Short Responses	Options & Short Responses	GPT-4 Extract & Exact Match
+RealWorldQA	765	Real-world Visual Question Answering	Multiple Choices, Short Responses	Options & Short Responses	Filtered Match
+"LLaVA-Bench
+(in-the-Wild)"	60	Real-life Visual Chat	Free-form	Free-form	GPT-4 Evaluation
+"LLaVA-Bench  
+(Wilder)"	Small: 124	Real-life Visual Chat	Free-form	Free-form	GPT-4V Evaluation
+	Medium: 1024				 -->
+
+<details>
+    <summary> <b>[Fold / Unfold to see the table that report the numbers of language and multimodal performance]</b> </summary>
+<div style="display: flex; justify-content: center;">
+    <table style="text-align: center;">
+    <tr style="background-color: rgba(108,122,123,0.1);"><th>Benchmarks</th><th>Instances</th><th>Multimodal Capabilities</th><th>Instruction Format</th><th>Response Format</th><th>Evaluation Metric</th></tr>
+    <tr ><td style="background-color: rgba(0, 242, 234, 0.3);">AI2D</td><td>3088</td><td>Science Diagrams Understanding</td><td>Multiple Choices</td><td>Options</td><td>Exact Match</td></tr>
+    <tr ><td style="background-color: rgba(0, 242, 234, 0.3);">MMMU</td><td>900</td><td>Multi-dimensional Understanding & Reasoning</td><td>Multiple Choices, Short Responses</td><td>Options & Short Responses</td><td>Exact Match</td></tr>
+    <tr ><td style="background-color: rgba(0, 242, 234, 0.3);">MathVista</td><td>1000</td><td>Math Reasoning</td><td>Multiple Choices, Short Responses</td><td>Options & Short Responses</td><td>GPT-4 Extract & Exact Match</td></tr>
+    <tr ><td style="background-color: rgba(0, 242, 234, 0.3);">RealWorldQA</td><td>765</td><td>Real-world Visual Question Answering</td><td>Multiple Choices, Short Responses</td><td>Options & Short Responses</td><td>Filtered Match</td></tr>
+    <tr><td style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (in-the-Wild)</td><td>60</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4 Evaluation</td></tr>
+    <tr><td style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (Wilder)</td><td>Small: 120</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4V Evaluation</td></tr>  
+    <tr><td style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (Wilder)</td><td>Medium: 1020</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4V Evaluation</td></tr>     
+</table>
+</div>
+</details>
+
+<h3><strong>Comparison with other benchmarks.</strong></h3> 
+Figure 2 provides a visual comparison between LLaVA-Bench (Wider) and existing LMM evaluation benchmarks. Many current benchmarks adopt a fixed-form question-and-answer (QA) format, chosen for its ease of use in evaluating metrics and presenting model comparisons. Reflecting this trend, benchmarks like MMMU, Mathvista, and AI2D are tailored to assess LMM performance in specific knowledge-intensive domains.  In contrast, RealWorldQA focuses on everyday scenarios but is confined to short-answer formats. However, as assistant models, possessing the ability to engage users in free-form conversations is crucial for eliciting interest, surpassing the limitations of simple short-answer interactions. Hence, the inclusion of free-form conversation in daily-life visual chat scenarios becomes pivotal. LLaVA-W sets the precedent by introducing such a benchmark prototype, and LLaVA-Bench-Wilder endeavors to build upon this 
+
+<h3><strong>Construction & Evaluation Metrics.</strong></h3> 
+For a larget of queries from the online services, we used the ONE-PEACE embedding model to generate embeddings. Next, we applied weighted K-Means clustering, using the min-max normalized total pixel values of the image as weights, ensuring images with higher pixel values were more likely to be included in our test set. After removing duplicates, we ended up with a small version containing 124 questions and a medium version containing 1024 questions. We also conducted decontamination checks to ensure the dataset is clean and not contaminated. Both versions have less than 2% image overlap. For comparison, the original llava-in-the-wild had 5% image overlap. The evaluation data is excluded and decontainminated from LLaVA-NeXT's training data.
+
+We adopted the same evaluation process as LLaVA-W, but we substituted GPT-4 with GPT-4v. Instead of using multiple categories as in LLaVA-W, we simply calculated the overall score ratio between the GPT-4V reference answer and the model's response.
+
+<h3 id="evaluation-results">Evaluation Results</h3>
+
+<strong>Quantative Results.</strong> The distinctive measurement provided by LLaVA-Bench (Wilder) compared to other benchmarks becomes evident due to the substantial performance gap among state-of-the-art (SoTA) LMMs. Certain highly proficient LMMs in knowledge-intensive tasks may not excel in daily-life visual chat scenarios as assessed by LLaVA-Bench (Wilder). The LLaVA-NeXT models featured in this release persist in advancing performance across various domains.
+
+<!-- Results with lmms-eval	LLaVA-Bench (Wilder)		LLaVA-W	RealWorldQA	AI2D	MME	MMMU	MathVista
+	Small (124)	Medium (1024)	60					
+LLaVA-NeXT in this release								
+LLaVA-Next-110B	95.6	98.7	90.4	63.2	80.4	2200.4	49.1	49.0
+LLaVA-Next-72B	107.1**	100.3**	89.2	65.4	77.4	2158.9	46.4	46.6
+LLaMA3-LLaVA-Next-8B	91.3	92.7	80.1	60.0	71.6	1971.5	41.7	37.5
+Previous Open-sourced State-of-the-Art Models*								
+LLaVA-Next-34B	102.4**	99.8	88.8	61.7	74.9	2030.4	46.7	46.5
+Intern-VL-1.5	73.5	78.7	-	66.0	80.7	2187.8	46.8	54.7
+XComposer-4KHD	53.6	55.3	38.8	-	81.2	2220.4	41.4	59.5
+Commercial State-of-the-Art Models								
+Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
+"GPT-4V
+(gpt-4-vision-preview)"	110.2	105.9	98.0	61.4	78.2	1926.0	56.8	49.9
+"Claude-3-Opus
+(claude-3-opus-20240229)"	129.9	-	-	49.8	88.1	-	59.4	50.5
+"*According to ranks on OpenCompass: https://rank.opencompass.org.cn/leaderboard-multimodal
+**If the number > 100, it means during evaluation, GPT-4V agrees the Model Response is better than provided Ground Truth"	 -->
+
+<div style="display: flex; justify-content: center;">
+    <table style="text-align: center;">
+  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th colspan="2" style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (Wilder)</th><th style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-W</th><th style="background-color: rgba(0, 242, 234, 0.5);">RealWorldQA</th><th style="background-color: rgba(255,229,152,0.5);">AI2D</th><th style="background-color: rgba(255,229,152,0.5);">MME</th><th style="background-color: rgba(255,229,152,0.5);">MMMU</th><th style="background-color: rgba(255,229,152,0.5);">MathVista</th></tr>
+  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9">LLaVA-NeXT in this release</td></tr>
+  <tr ><td>LLaVA-Next-110B</td><td>99.8</td><td>98.7</td><td>90.4</td><td>63.2</td><td>80.4</td><td>2200.4</td><td>49.1</td><td>49.0</td></tr>
+  <tr ><td>LLaVA-Next-72B</td><td>107.1</td><td>100.3</td><td>89.2</td><td>65.4</td><td>77.4</td><td>2158.9</td><td>46.4</td><td>46.6</td></tr>
+  <tr ><td>LLaMA3-LLaVA-Next-8B</td><td>91.3</td><td>92.7</td><td>80.1</td><td>60.0</td><td>71.6</td><td>1971.5</td><td>41.7</td><td>37.5</td></tr>
+  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9">Previous Open-sourced State-of-the-Art Models*</td></tr>
+  <tr ><td>LLaVA-Next-34B</td><td>102.4</td><td>99.8</td><td>88.8</td><td>61.7</td><td>74.9</td><td>2030.4</td><td>46.7</td><td>46.5</td></tr>
+    <tr ><td>Intern-VL-1.5</td><td>91.5</td><td>87.5</td><td>83.3</td><td>66.0</td><td>80.7</td><td>2187.8</td><td>46.8</td><td>54.7</td></tr>
+    <tr ><td>XComposer-4KHD</td><td>53.6</td><td>55.3</td><td>38.8</td><td>-</td><td>81.2</td><td>2220.4</td><td>41.4</td><td>59.5</td></tr>
+  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9">Commercial State-of-the-Art Models</td></tr>
+    <tr ><td>Qwen-VL-Max</td><td>101.7</td><td>-</td><td>-</td><td>-</td><td>79.3</td><td>2281.7</td><td>51.4</td><td>51.0</td></tr>
+    <tr ><td>GPT-4V</td><td>110.2</td><td>105.9</td><td>98.0</td><td>61.4</td><td>78.2</td><td>1926.0</td><td>56.8</td><td>49.9</td></tr>
+  <tr ><td>Claude-3-Opus</td><td>129.9</td><td>-</td><td>98.5</td><td>49.8</td><td>88.1</td><td>59.4</td><td>50.5</td><td>-</td></tr>
+</table>
+</div>
+
+<h2 id="model-card">🔍 Model Card</h2>
+
+<table>
+  <tr><th colspan="2">Name</th><th>LLaMA-3-LLaVA-NeXT-8B</th><th>LLaVA-NeXT-72B</th><th>LLaVA-NeXT-110B</th></tr>
+  <tr><th rowspan="4">Model Size</th><td>Total</td><td><b>8.35B</b></td><td><b>72.7B</b></td><td><b>111.5B</b></td></tr>
+  <tr><td>Vision Encoder</td><td>303.5M</td><td>303.5M</td><td>303.5M</td></tr>
+  <tr><td>Connector</td><td>21M</td><td>31.5M</td><td>58.7M</td></tr>
+  <tr><td>LLM</td><td>8.03B</td><td>72.3B</td><td>111.0B</td></tr>
+  <tr><th colspan="2">Resolution</th><td colspan="3">336 x [(2,2), (1,2), (2,1), (1,3), (3,1), (1,4), (4,1)]</td></tr>
+  <tr><th>Stage-1</th><th>Training Data</th><td colspan="3">558K</td></tr>
+  <tr><th></th><th>Trainable Module</th><td colspan="3">Connector</td></tr>
+  <tr><th>Stage-2</th><th>Training Data</th><td colspan="3">~790K</td></tr>
+  <tr><th></th><th>Trainable Module</th><td colspan="3">Full model</td></tr>
+  <tr><th colspan="2">Compute (#GPU x #Hours)</th><td>8 A100-80G x 20 hours</td><td>64 A100-80G x 18 hours</td><td>128 H800-80G x 18 hours</td></tr>
+  <tr><th colspan="2">Total Training Data (#Samples)</th><td colspan="3">1348K</td></tr>
+</table>
+
+<h2 id="team">👨‍🚀🧑‍🚀 Team</h2>
+
+<ul>
+  <li><a href="https://brianboli.com/">Bo Li</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+  <li><a href="https://haozhang534.github.io/">Kaichen Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" />  (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+    <li><a href="https://haozhang534.github.io/">Hao Zhang</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+    <li><a href="https://www.linkedin.com/in/dongguoset">Dong Guo</a>: ByteDance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" />
+    <li><a href="https://zrrskywalker.github.io/">Renrui Zhang</a>: The Chinese University of Hong Kong<img width="16" src="/blog/assets/images/logos/cuhk.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+    <li><a href="https://fengli-ust.github.io/">Feng Li</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+  <li><a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+    <li><a href="https://liuziwei7.github.io/">Ziwei Liu</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" />  (<em>Part of the work was done at Microsoft Research</em>)</li>
+  <li><a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" />  (<em>Part of the work was done at Microsoft Research</em>)</li>
+</ul>
+
+<h3 id="acknowledgement">Acknowledgement</h3>
+
+<ul>
+  <li>We thank Fanyi Pu, Shuai Liu, Kairui Hu for the continuous contribution of <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">lmms-eval</a> to accelerate our development of LLaVA-NeXT.</li>
+</ul>
+
+<h2 id="citation">Citation</h2>
+
+<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">li2024llavanext-strong</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Li, Bo and Zhang, Kaichen and Zhang, Hao and Guo, Dong and Zhang, Renrui and Li, Feng and Zhang, Yuanhan and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{May}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+    
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2024llavanext</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Improved reasoning, OCR, and world knowledge}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-01-30-llava-next/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Li, Bo and Zhang, Yuanhan and Shen, Sheng and Lee, Yong Jae}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{January}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2023improvedllava</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">=</span><span class="s">{Improved Baselines with Visual Instruction Tuning}</span><span class="p">,</span> 
+      <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Lee, Yong Jae}</span><span class="p">,</span>
+      <span class="na">publisher</span><span class="p">=</span><span class="s">{arXiv:2310.03744}</span><span class="p">,</span>
+      <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2023llava</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">=</span><span class="s">{Visual Instruction Tuning}</span><span class="p">,</span> 
+      <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Wu, Qingyang and Lee, Yong Jae}</span><span class="p">,</span>
+      <span class="na">publisher</span><span class="p">=</span><span class="s">{NeurIPS}</span><span class="p">,</span>
+      <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </div><a class="u-url" href="/blog/2024-05-10-llava-next-stronger-llms/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">LLaVA</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">LLaVA</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
