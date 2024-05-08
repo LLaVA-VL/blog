@@ -3,16 +3,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild  | LLaVA</title>
+<title>LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</title>
 <meta name="generator" content="Jekyll v3.9.4" />
 <meta property="og:title" content="LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild" />
 <meta name="author" content="Bo Li, Kaichen Zhang, Hao Zhang, Dong Guo, Renrui Zhang, Feng Li, Yuanhan Zhang, Ziwei Liu, Chunyuan Li" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="LLaVA team presents LLaVA-NeXT, Stronger LLMs Supercharge Multimodal Capabilities in the Wild" />
-<meta property="og:description" content="LLaVA team presents LLaVA-NeXT, Stronger LLMs Supercharge Multimodal Capabilities in the Wild" />
+<meta name="description" content="LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild" />
+<meta property="og:description" content="LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild" />
 <link rel="canonical" href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/" />
 <meta property="og:url" content="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/" />
-<meta property="og:site_name" content="LLaVA" />
+<meta property="og:site_name" content="LLaVA-NeXT" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-05-10T12:33:38-06:00" />
 <meta name="twitter:card" content="summary" />
@@ -43,8 +43,8 @@
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild </h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2024-01-30T12:33:38-06:00" itemprop="datePublished">Jan 30, 2024
-      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Haotian Liu, Chunyuan Li, Yuheng Li, Bo Li, Yuanhan Zhang, Sheng Shen, Yong Jae Lee</span></span></p>
+      <time class="dt-published" datetime="2024-05-10T123:33:38-06:00" itemprop="datePublished">May 10, 2024
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Bo Li, Kaichen Zhang, Hao Zhang, Dong Guo, Renrui Zhang, Feng Li, Yuanhan Zhang, Ziwei Liu, Chunyuan Li</span></span></p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
@@ -80,8 +80,9 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
 </p>
 
 
-<h2 id="open-source-release">Open-Source Release</h2>
+<h2 id="open-source-release">🚀 Release & Performance</h2>
 
+<h3 id="open-source-release">Open-Source Release</h3>
 <p>We open-source the LLaVA-NeXT to facilitate future development of LMM in the community. Code, data, model will be made publicly available.</p>
 
 <ul>
@@ -90,13 +91,10 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
   <li><a href="https://llava-next.lmms-lab.com/">Demo</a></li>
 </ul>
 
-
-<h2 id="results">🚀 Benchmark Performance</h2>
-
 <h3 id="qualitative-results">Benchmark Results</h3>
-<div style="display: flex; justify-content: center;">
+<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
     <table style="text-align: center;">
-    <tr style="background-color: rgba(108,122,123,0.1);"><th colspan="4">Results with <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">lmms-eval</a></th><th rowspan="2" style="background-color: rgba(255,229,152,0.5);">GPT4-V</th><th colspan="3" style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-NeXT (2024-05 Release)</th><th colspan="4" style="background-color: rgba(0, 242, 234, 0.5);">LLaVA-NeXT (2024-01 Release)</th></tr>
+    <tr style="background-color: rgba(108,122,123,0.1);"><th colspan="4">Results with <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">LMMs-Eval</a></th><th rowspan="2" style="background-color: rgba(255,229,152,0.6);">GPT4-V</th><th colspan="3" style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-NeXT (2024-05 Release)</th><th colspan="4" style="background-color: rgba(0, 242, 234, 0.6);">LLaVA-NeXT (2024-01 Release)</th></tr>
   <tr style="background-color: rgba(108,122,123,0.1);"><th>Datasets</th><th>Split</th><th>Metric</th><th>Instances</th><th>Qwen1.5-110B</th><th>Qwen1.5-72B</th><th>LLaMA3-8B</th><th>Yi-34B</th><th>Vicuna-1.5-13B</th><th>Vicuna-1.5-7B</th><th>Mistral-7B</th></tr>
   <tr ><td>AI2D*</td><td>test</td><td>Acc.</td><td>3088</td><td>78.2</td><td>80.4</td><td>77.4</td><td>71.6</td><td>74.9</td><td>70.0</td><td>66.6</td><td>60.8</td></tr>
   <tr ><td>ChartQA*</td><td>test</td><td>RelaxedAcc.</td><td>2500</td><td>78.5</td><td>79.7</td><td>77.0</td><td>69.5</td><td>68.7</td><td>62.2</td><td>54.8</td><td>38.8</td></tr>
@@ -104,8 +102,8 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
   <tr ><td>LLaVA-in-the-wild**</td><td>test</td><td>GPT-Eval-Avg</td><td>60</td><td>98.0</td><td>90.4</td><td>89.2</td><td>80.1</td><td>88.8</td><td>72.3</td><td>72.3</td><td>71.7</td></tr>
   <tr ><td>MathVista</td><td>test</td><td>Acc.</td><td>1000</td><td>49.9</td><td>49.0</td><td>46.6</td><td>37.5</td><td>46.0</td><td>35.1</td><td>34.4</td><td>37.4</td></tr>
   <tr ><td>MMBench</td><td>dev</td><td>Acc.</td><td>4377</td><td>75.0</td><td>80.5</td><td>80.5</td><td>72.1</td><td>72.1</td><td>72.1</td><td>72.1</td><td>72.1</td></tr>
-  <tr ><td>MME-Cognition</td><td>test</td><td>Total Score</td><td rowspan="2">2374</td><td>517.1</td><td>453.9</td><td>459.6</td><td>367.8</td><td>397.1</td><td>316.8</td><td>322.5</td><td>323.9</td></tr>
-  <tr ><td>MME-Perception</td><td>test</td><td>Total Score</td><td>1409.4</td><td>1746.5</td><td>1699.3</td><td>1603.7</td><td>1633.2</td><td>1575.1</td><td>1519.3</td><td>1500.9</td></tr>
+  <tr ><td>MME-Cognition</td><td>test</td><td rowspan="2">Total Score</td><td rowspan="2">2374</td><td>517.1</td><td>453.9</td><td>459.6</td><td>367.8</td><td>397.1</td><td>316.8</td><td>322.5</td><td>323.9</td></tr>
+  <tr ><td>MME-Perception</td><td>test</td><td>1409.4</td><td>1746.5</td><td>1699.3</td><td>1603.7</td><td>1633.2</td><td>1575.1</td><td>1519.3</td><td>1500.9</td></tr>
   <tr ><td>MMMU</td><td>val</td><td>Acc.</td><td>900</td><td>56.8</td><td>49.1</td><td>46.4</td><td>41.7</td><td>46.7</td><td>35.9</td><td>35.1</td><td>33.4</td></tr>
   <tr ><td>RealWorldQA</td><td>test</td><td>Acc.</td><td>765</td><td>61.4</td><td>63.1</td><td>65.4</td><td>60.0</td><td>61.0</td><td>61.0</td><td>61.0</td><td>54.4</td></tr>
   <tr style="background-color: rgba(108,122,123,0.1);"><td colspan="12" style="text-align: left; font-style: italic;">* Training dataset observed during SFT stage.</td></tr>
@@ -115,34 +113,92 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
 
 <div>&nbsp;</div>
 
-<p>Highlights:</p>
+<h3>Highlights</h3>
 <ul>
   <li><strong>SoTA Performance!</strong> LLaVA-NeXT achieves consistently better performance compared with prior open-source LMMs by simply increasing the LLM capability. It catches up to GPT-4V on selected benchmarks.</li>
   <li><strong>Low Training Cost!</strong> We maintain an efficient training strategy like previous LLaVA models. We only supervised finetuned our model on less than 800K examples<sup>*</sup>. Our current largest model LLaVA-NeXT-110B is trained on 128 H800-80G for 18 hours.</li>
 </ul>
 
 <h3 id="qualitative-results">Qualitative Examples</h3>
+<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+    <style>
+      .slider-container {
+        width: 100%;
+        overflow: hidden;
+      }
+      
+      .slider-wrapper {
+        display: flex;
+        transition: transform 0.3s ease-out;
+      }
+      
+      .slider-item {
+        min-width: 100%;
+      }
+    </style>
+  
+  <div class="slider-container">
+    <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+                <img height="800px" src="/Users/luodian/Downloads/codes/blog/assets/images/llava-next-stronger-llms/notion_tables.png" style="object-fit: contain; border-radius: 20px;" />
+            </div>
+          </div>
+          <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      
+                <img height="800px" src="/Users/luodian/Downloads/codes/blog/assets/images/llava-next-stronger-llms/ja_cats.png" style="object-fit: contain; border-radius: 20px;" />
+                
+            </div>
+          </div>
+          <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      <!-- <img width="70%" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.jpg" /> -->
+                <img height="800px" src="/Users/luodian/Downloads/codes/blog/assets/images/llava-next-stronger-llms/chinese_poem.png" style="object-fit: contain; border-radius: 20px;" />
+            </div>
+          </div>
+        <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      
+                <img height="800px" src="/Users/luodian/Downloads/codes/blog/assets/images/llava-next-stronger-llms/latex_code.png" style="object-fit: contain; border-radius: 20px;" />
+                
+            </div>
+          </div>
+      <div class="slider-item">
+        <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+            <img height="800px" src="/Users/luodian/Downloads/codes/blog/assets/images/llava-next-stronger-llms/ocr_true.png" style="object-fit: contain; border-radius: 20px;" />
+        </div>
+      </div>
+      <div class="slider-item">
+        <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+            <img height="800px" src="/Users/luodian/Downloads/codes/blog/assets/images/llava-next-stronger-llms/ocr_false.png" style="object-fit: contain; border-radius: 20px;" />
+        </div>
+      </div>
+    </div>
+  </div>
 
-<details>
-    <summary><b>用中文写一首诗</b></summary>
+  <div style="position: relative;">
+    <button id="prevBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
+    <button id="nextBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
+  </div>
 
-<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-
-  <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.jpg" />
-
+  <script>
+    const wrapper = document.getElementById('sliderWrapper');
+    let index = 0;
+  
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      index = Math.max(index - 1, 0);
+      wrapper.style.transform = `translateX(-${index * 100}%)`;
+    });
+  
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      index = Math.min(index + 1, wrapper.children.length - 1);
+      wrapper.style.transform = `translateX(-${index * 100}%)`;
+    });
+  </script>
 </div>
-</details>
 
-<details>
-<summary><b>What is the LaTeX code for this image?</b></summary>
-
-<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-
-  <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/latex_code.png" />
-
-</div>
-
-</details>
+<!-- </details> -->
 <p><br /></p>
 
 <h2 id="exploring-the-capability-limit-of-large-language-models">✨ Exploring the Capability Limit of Large Language Models</h2>
@@ -152,35 +208,24 @@ In our exploration with LLaVA-NeXT, we witnessed a significant performance leap 
 To measure the language capability of LLMs, we employ evaluation scores from the Massive Multitask Language Understanding (MMLU) benchmark. To measure the multimodal capability after applying the same LLaVA-NeXT training recipe,  we examine four key benchmarks: MMMU for multidisciplinary understanding, Mathvista for visual math reasoning, AI2D for science diagram comprehension, and LLaVA-W for daily visual chat scenarios. These benchmarks encapsulate diverse real-world applications of LMM in the wild.
 
 The correlation between multimodal and language capabilities is visually depicted in Figure 1, utilizing regression lines to illustrate trends across each benchmark.
-
+<br>
 <h3>(1) Improved Language Capability:</h3> Across LLMs of comparable sizes (e.g., 7B Mistral/Vicuna, 7B Qwen, 8B LLaMa3), there exists a consistent pattern where higher language proficiency, as measured by MMMU scores, corresponds to improved multimodal capabilities.
+<br>
 <h3>(2) Influence of Model Size:</h3> Within the same LLM family (e.g., Qwen LLM: 7B, 72B, 110B), larger models consistently demonstrate superior performance on multimodal benchmarks. This underscores the notion that larger models tend to possess enhanced language capabilities, leading to improved performance across multimodal tasks.
-
+<br><br>
 In both of the aforementioned analyses, it's likely that stronger LLMs yield superior multimodal capabilities. This phenomenon can be attributed to broader world knowledge, robust logical reasoning, and conversational prowess typically associated with stronger LLMs. These language capabilities are well maintained and transferred across the vision-language domain by applying the lightweight training of LLaVA-NeXT, owing to the alignment of cross-modality concepts, as well as the alignment with human intent in visual instruction tuning.
 
-<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+<div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
 
-    <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
+    <img width="100%" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
 
 </div>
-
-<!-- 		Language Performance	Multimodal Performance with LLaVA-NeXT Recipe			
-Model Name	MMLU	MMMU	Mathvista	AI2D	LLaVA-W
-GPT-4 (0613)	86.4	56.8	49.9	78.2	98.0
-Qwen1.5 (110B)	80.4	49.1	49.0	80.4	90.4
-Qwen1.5 (72B)	77.5	46.4	46.6	77.4	89.2
-Yi (34B)	76.3	46.7	46.0	74.9	88.8
-Llama 3 (8B)	66.6	41.7	37.5	71.6	80.1
-Qwen1.5 (7B)	61.0	37.3	33.5	72.5	74.5
-Mistral-Instruct-v0.2 (7B)	60.1	33.4	37.4	60.8	71.7
-Vicuna1.5 (13B)	52.1	35.9	35.1	70.0	72.3
-Vicuna1.5 (7B)	47.1	35.1	34.4	66.6	72.3 -->
 
 <details>
     <summary> <b>[Fold / Unfold to see the table that report the numbers of language and multimodal performance]</b> </summary>
 <div style="display: flex; justify-content: center;">
     <table style="text-align: center;">
-  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th style="background-color: rgba(255, 0, 80, 0.5);">Language Performance</th><th style="background-color: rgba(0, 242, 234, 0.5);" colspan="4">Multimodal Performance</th></tr>
+  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th style="background-color: rgba(255, 0, 80, 0.6);">Language Performance</th><th style="background-color: rgba(0, 242, 234, 0.6);" colspan="4">Multimodal Performance</th></tr>
   <tr ><td>-</td><td>MMLU</td><td>MMMU</td><td>MathVista</td><td>AI2D</td><td>LLaVA-W</td></tr>
   <tr ><td>GPT4-V</td><td>86.4</td><td>56.8</td><td>49.9</td><td>78.2</td><td>98.0</td></tr>
   <tr ><td>Qwen1.5 (110B)</td><td>80.4</td><td>49.1</td><td>49.0</td><td>80.4</td><td>90.4</td></tr>
@@ -225,9 +270,9 @@ RealWorldQA	765	Real-world Visual Question Answering	Multiple Choices, Short Res
     <tr ><td style="background-color: rgba(0, 242, 234, 0.3);">MMMU</td><td>900</td><td>Multi-dimensional Understanding & Reasoning</td><td>Multiple Choices, Short Responses</td><td>Options & Short Responses</td><td>Exact Match</td></tr>
     <tr ><td style="background-color: rgba(0, 242, 234, 0.3);">MathVista</td><td>1000</td><td>Math Reasoning</td><td>Multiple Choices, Short Responses</td><td>Options & Short Responses</td><td>GPT-4 Extract & Exact Match</td></tr>
     <tr ><td style="background-color: rgba(0, 242, 234, 0.3);">RealWorldQA</td><td>765</td><td>Real-world Visual Question Answering</td><td>Multiple Choices, Short Responses</td><td>Options & Short Responses</td><td>Filtered Match</td></tr>
-    <tr><td style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (in-the-Wild)</td><td>60</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4 Evaluation</td></tr>
-    <tr><td style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (Wilder)</td><td>Small: 120</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4V Evaluation</td></tr>  
-    <tr><td style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (Wilder)</td><td>Medium: 1020</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4V Evaluation</td></tr>     
+    <tr><td style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-Bench (in-the-Wild)</td><td>60</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4 Evaluation</td></tr>
+    <tr><td style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-Bench (Wilder)</td><td>Small: 120</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4V Evaluation</td></tr>  
+    <tr><td style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-Bench (Wilder)</td><td>Medium: 1020</td><td>Real-life Visual Chat</td><td>Free-form</td><td>Free-form</td><td>GPT-4V Evaluation</td></tr>     
 </table>
 </div>
 </details>
@@ -265,16 +310,16 @@ Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
 
 <div style="display: flex; justify-content: center;">
     <table style="text-align: center;">
-  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th colspan="2" style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-Bench (Wilder)</th><th style="background-color: rgba(255, 0, 80, 0.5);">LLaVA-W</th><th style="background-color: rgba(0, 242, 234, 0.5);">RealWorldQA</th><th style="background-color: rgba(255,229,152,0.5);">AI2D</th><th style="background-color: rgba(255,229,152,0.5);">MME</th><th style="background-color: rgba(255,229,152,0.5);">MMMU</th><th style="background-color: rgba(255,229,152,0.5);">MathVista</th></tr>
-  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9">LLaVA-NeXT in this release</td></tr>
+  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th colspan="2" style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-Bench (Wilder)</th><th style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-W</th><th style="background-color: rgba(0, 242, 234, 0.6);">RealWorldQA</th><th style="background-color: rgba(255,229,152,0.6);">AI2D</th><th style="background-color: rgba(255,229,152,0.6);">MME</th><th style="background-color: rgba(255,229,152,0.6);">MMMU</th><th style="background-color: rgba(255,229,152,0.6);">MathVista</th></tr>
+  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9" style="font-style: italic;">LLaVA-NeXT in this release</td></tr>
   <tr ><td>LLaVA-Next-110B</td><td>99.8</td><td>98.7</td><td>90.4</td><td>63.2</td><td>80.4</td><td>2200.4</td><td>49.1</td><td>49.0</td></tr>
   <tr ><td>LLaVA-Next-72B</td><td>107.1</td><td>100.3</td><td>89.2</td><td>65.4</td><td>77.4</td><td>2158.9</td><td>46.4</td><td>46.6</td></tr>
   <tr ><td>LLaMA3-LLaVA-Next-8B</td><td>91.3</td><td>92.7</td><td>80.1</td><td>60.0</td><td>71.6</td><td>1971.5</td><td>41.7</td><td>37.5</td></tr>
-  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9">Previous Open-sourced State-of-the-Art Models*</td></tr>
+  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9" style="font-style: italic;">Previous Open-sourced State-of-the-Art Models</td></tr>
   <tr ><td>LLaVA-Next-34B</td><td>102.4</td><td>99.8</td><td>88.8</td><td>61.7</td><td>74.9</td><td>2030.4</td><td>46.7</td><td>46.5</td></tr>
     <tr ><td>Intern-VL-1.5</td><td>91.5</td><td>87.5</td><td>83.3</td><td>66.0</td><td>80.7</td><td>2187.8</td><td>46.8</td><td>54.7</td></tr>
     <tr ><td>XComposer-4KHD</td><td>53.6</td><td>55.3</td><td>38.8</td><td>-</td><td>81.2</td><td>2220.4</td><td>41.4</td><td>59.5</td></tr>
-  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9">Commercial State-of-the-Art Models</td></tr>
+  <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9" style="font-style: italic;">Commercial State-of-the-Art Models</td></tr>
     <tr ><td>Qwen-VL-Max</td><td>101.7</td><td>-</td><td>-</td><td>-</td><td>79.3</td><td>2281.7</td><td>51.4</td><td>51.0</td></tr>
     <tr ><td>GPT-4V</td><td>110.2</td><td>105.9</td><td>98.0</td><td>61.4</td><td>78.2</td><td>1926.0</td><td>56.8</td><td>49.9</td></tr>
   <tr ><td>Claude-3-Opus</td><td>129.9</td><td>-</td><td>98.5</td><td>49.8</td><td>88.1</td><td>59.4</td><td>50.5</td><td>-</td></tr>
@@ -283,7 +328,7 @@ Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
 
 <h2 id="model-card">🔍 Model Card</h2>
 
-<table>
+<table style="text-align: center;">
   <tr><th colspan="2">Name</th><th>LLaMA-3-LLaVA-NeXT-8B</th><th>LLaVA-NeXT-72B</th><th>LLaVA-NeXT-110B</th></tr>
   <tr><th rowspan="4">Model Size</th><td>Total</td><td><b>8.35B</b></td><td><b>72.7B</b></td><td><b>111.5B</b></td></tr>
   <tr><td>Vision Encoder</td><td>303.5M</td><td>303.5M</td><td>303.5M</td></tr>
@@ -305,11 +350,11 @@ Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
   <li><a href="https://haozhang534.github.io/">Kaichen Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" />  (<em>Work collaborated with ByteDance/TikTok</em>)</li>
     <li><a href="https://haozhang534.github.io/">Hao Zhang</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
     <li><a href="https://www.linkedin.com/in/dongguoset">Dong Guo</a>: ByteDance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" />
-    <li><a href="https://zrrskywalker.github.io/">Renrui Zhang</a>: The Chinese University of Hong Kong<img width="16" src="/blog/assets/images/logos/cuhk.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
-    <li><a href="https://fengli-ust.github.io/">Feng Li</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+    <li><a href="https://zrrskywalker.github.io/">Renrui Zhang</a>: The Chinese University of Hong Kong<img width="16" src="/blog/assets/images/logos/cuhk.jpg" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+    <li><a href="https://fengli-ust.github.io/">Feng Li</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.jpg" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
   <li><a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
     <li><a href="https://liuziwei7.github.io/">Ziwei Liu</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" />  (<em>Part of the work was done at Microsoft Research</em>)</li>
-  <li><a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" />  (<em>Part of the work was done at Microsoft Research</em>)</li>
+  <li><a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" />
 </ul>
 
 <h3 id="acknowledgement">Acknowledgement</h3>
@@ -362,12 +407,12 @@ Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">LLaVA</h2>
+    <h2 class="footer-heading">LLaVA-NeXT</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">LLaVA</li></ul>
+          <li class="p-name">LLaVA-NeXT</li></ul>
       </div>
 
       <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
