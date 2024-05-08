@@ -159,6 +159,18 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
                 <img height="600px" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.png" style="object-fit: contain; border-radius: 20px;" />
             </div>
           </div>
+          <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      <!-- <img width="70%" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.jpg" /> -->
+                <img height="600px" src="/blog/assets/images/llava-next-stronger-llms/html_code1.png" style="object-fit: contain; border-radius: 20px;" />
+            </div>
+          </div>
+          <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      <!-- <img width="70%" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.jpg" /> -->
+                <img height="600px" src="/blog/assets/images/llava-next-stronger-llms/html_code2.png" style="object-fit: contain; border-radius: 20px;" />
+            </div>
+          </div>
         <div class="slider-item">
             <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
       
@@ -217,11 +229,10 @@ The correlation between multimodal and language capabilities is visually depicte
 <br><br>
 In both of the aforementioned analyses, it's likely that stronger LLMs yield superior multimodal capabilities. This phenomenon can be attributed to broader world knowledge, robust logical reasoning, and conversational prowess typically associated with stronger LLMs. These language capabilities are well maintained and transferred across the vision-language domain by applying the lightweight training of LLaVA-NeXT, owing to the alignment of cross-modality concepts, as well as the alignment with human intent in visual instruction tuning.
 
-<div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
-
-    <img width="100%" height="650px" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
-
-</div>
+<figure style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+    <img width="100%" height="800px" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
+    <figcaption style="text-align: center;">Figure 1: The performance correlation between multimodal and langauge capability on four benchmarks. The circle size represents model size.</figcaption>
+</figure>
 
 <details>
     <summary> <b>[Fold / Unfold to see the table that report the numbers of language and multimodal performance]</b> </summary>
@@ -249,9 +260,8 @@ In both of the aforementioned analyses, it's likely that stronger LLMs yield sup
 One of the ultimate goals to develop LLMs is to build general-purpose assistant of aiding humans in various multimodal tasks in their daily lives. It is thus important to have robust benchmarks to precisely measure the related progresses. LLaVA-Bench (In-the-Wild), also known as LLaVA-W, is such a benchmark to measure the daily-life visual chat capability of LMMs. However, with only 60 examples available, we recognized the need for a more expansive dataset. In line with this spirit, we introduce LLaVA-Bench (Wilder), comprising two versions: a smaller iteration featuring 124 examples for swift assessment, and a medium-sized version with 1024 examples for comprehensive measurement. These datasets encompass diverse scenarios such as mathematical problem-solving, image comprehension, code generation, visual AI assistance, and image-based reasoning. To construct these datasets, we gathered instructions and images reflecting real-world user requests from an online service. Subsequently, we meticulously filtered samples to address privacy concerns and mitigate potential harm. Responses to these prompts were generated using GPT-4V.
 
 <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
-
-    <img width="100%" height="520px" src="/blog/assets/images/llava-next-stronger-llms/llava_wilder.jpg" />
-  
+    <img width="100%" height="550px" src="/blog/assets/images/llava-next-stronger-llms/llava_wilder.jpg" />
+    <figcaption style="text-align: center;">Figure 2: Comparison of different benchmakrs. The circle size indicate the dataset size.</figcaption> 
 </div>
 
 <!-- Benchmarks	Instances	Multimodal Capabilities	Instruction Format	Response Format	Evaluation Metric
