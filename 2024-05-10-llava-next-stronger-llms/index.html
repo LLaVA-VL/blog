@@ -217,7 +217,7 @@ In both of the aforementioned analyses, it's likely that stronger LLMs yield sup
 
 <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
 
-    <img width="100%" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
+    <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
 
 </div>
 
@@ -246,7 +246,7 @@ One of the ultimate goals to develop LLMs is to build general-purpose assistant 
 
 <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
-    <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/llava_wilder.png" />
+    <img width="90%" src="/blog/assets/images/llava-next-stronger-llms/llava_wilder.jpg" />
   
 </div>
 
@@ -289,25 +289,6 @@ We adopted the same evaluation process as LLaVA-W, but we substituted GPT-4 with
 
 <strong>Quantative Results.</strong> The distinctive measurement provided by LLaVA-Bench (Wilder) compared to other benchmarks becomes evident due to the substantial performance gap among state-of-the-art (SoTA) LMMs. Certain highly proficient LMMs in knowledge-intensive tasks may not excel in daily-life visual chat scenarios as assessed by LLaVA-Bench (Wilder). The LLaVA-NeXT models featured in this release persist in advancing performance across various domains.
 
-<!-- Results with lmms-eval	LLaVA-Bench (Wilder)		LLaVA-W	RealWorldQA	AI2D	MME	MMMU	MathVista
-	Small (124)	Medium (1024)	60					
-LLaVA-NeXT in this release								
-LLaVA-Next-110B	95.6	98.7	90.4	63.2	80.4	2200.4	49.1	49.0
-LLaVA-Next-72B	107.1**	100.3**	89.2	65.4	77.4	2158.9	46.4	46.6
-LLaMA3-LLaVA-Next-8B	91.3	92.7	80.1	60.0	71.6	1971.5	41.7	37.5
-Previous Open-sourced State-of-the-Art Models*								
-LLaVA-Next-34B	102.4**	99.8	88.8	61.7	74.9	2030.4	46.7	46.5
-Intern-VL-1.5	73.5	78.7	-	66.0	80.7	2187.8	46.8	54.7
-XComposer-4KHD	53.6	55.3	38.8	-	81.2	2220.4	41.4	59.5
-Commercial State-of-the-Art Models								
-Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
-"GPT-4V
-(gpt-4-vision-preview)"	110.2	105.9	98.0	61.4	78.2	1926.0	56.8	49.9
-"Claude-3-Opus
-(claude-3-opus-20240229)"	129.9	-	-	49.8	88.1	-	59.4	50.5
-"*According to ranks on OpenCompass: https://rank.opencompass.org.cn/leaderboard-multimodal
-**If the number > 100, it means during evaluation, GPT-4V agrees the Model Response is better than provided Ground Truth"	 -->
-
 <div style="display: flex; justify-content: center;">
     <table style="text-align: center;">
   <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th colspan="2" style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-Bench (Wilder)</th><th style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-W</th><th style="background-color: rgba(0, 242, 234, 0.6);">RealWorldQA</th><th style="background-color: rgba(255,229,152,0.6);">AI2D</th><th style="background-color: rgba(255,229,152,0.6);">MME</th><th style="background-color: rgba(255,229,152,0.6);">MMMU</th><th style="background-color: rgba(255,229,152,0.6);">MathVista</th></tr>
@@ -324,6 +305,85 @@ Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
     <tr ><td>GPT-4V</td><td>110.2</td><td>105.9</td><td>98.0</td><td>61.4</td><td>78.2</td><td>1926.0</td><td>56.8</td><td>49.9</td></tr>
   <tr ><td>Claude-3-Opus</td><td>129.9</td><td>-</td><td>98.5</td><td>49.8</td><td>88.1</td><td>59.4</td><td>50.5</td><td>-</td></tr>
 </table>
+</div>
+
+<h3 id="qualitative-results">Qualitative Examples</h3>
+<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+    <style>
+      .slider-container {
+        width: 100%;
+        overflow: hidden;
+      }
+      
+      .slider-wrapper {
+        display: flex;
+        transition: transform 0.3s ease-out;
+      }
+      
+      .slider-item {
+        min-width: 100%;
+      }
+    </style>
+  
+  <div class="slider-container">
+    <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+                <img height="800px" src="/blog/assets/images/llava-next-stronger-llms/notion_tables.png" style="object-fit: contain; border-radius: 20px;" />
+            </div>
+          </div>
+          <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      
+                <img height="800px" src="/blog/assets/images/llava-next-stronger-llms/ja_cats.png" style="object-fit: contain; border-radius: 20px;" />
+                
+            </div>
+          </div>
+          <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      <!-- <img width="70%" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.jpg" /> -->
+                <img height="800px" src="/blog/assets/images/llava-next-stronger-llms/chinese_poem.png" style="object-fit: contain; border-radius: 20px;" />
+            </div>
+          </div>
+        <div class="slider-item">
+            <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+      
+                <img height="800px" src="/blog/assets/images/llava-next-stronger-llms/latex_code.png" style="object-fit: contain; border-radius: 20px;" />
+                
+            </div>
+          </div>
+      <div class="slider-item">
+        <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+            <img height="800px" src="/blog/assets/images/llava-next-stronger-llms/ocr_true.png" style="object-fit: contain; border-radius: 20px;" />
+        </div>
+      </div>
+      <div class="slider-item">
+        <div style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
+            <img height="800px" src="/blog/assets/images/llava-next-stronger-llms/ocr_false.png" style="object-fit: contain; border-radius: 20px;" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: relative;">
+    <button id="prevBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
+    <button id="nextBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
+  </div>
+
+  <script>
+    const wrapper2 = document.getElementById('sliderWrapper');
+    let index2 = 0;
+  
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        index2 = Math.max(index2 - 1, 0);
+      wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+    });
+  
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      index2 = Math.min(index2 + 1, wrapper2.children.length - 1);
+      wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+    });
+  </script>
 </div>
 
 <h2 id="model-card">🔍 Model Card</h2>
@@ -348,7 +408,7 @@ Qwen-VL-Max	101.7	-	-	-	79.3	2281.7	51.4	51.0
 <ul>
   <li><a href="https://brianboli.com/">Bo Li</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
   <li><a href="https://haozhang534.github.io/">Kaichen Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" />  (<em>Work collaborated with ByteDance/TikTok</em>)</li>
-    <li><a href="https://haozhang534.github.io/">Hao Zhang</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+    <li><a href="https://haozhang534.github.io/">Hao Zhang</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.jpg" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
     <li><a href="https://www.linkedin.com/in/dongguoset">Dong Guo</a>: ByteDance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" />
     <li><a href="https://zrrskywalker.github.io/">Renrui Zhang</a>: The Chinese University of Hong Kong<img width="16" src="/blog/assets/images/logos/cuhk.jpg" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
     <li><a href="https://fengli-ust.github.io/">Feng Li</a>: Hong Kong University of Science and Technology<img width="16" src="/blog/assets/images/logos/hkust.jpg" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
