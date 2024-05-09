@@ -77,7 +77,7 @@ Recently, the community has witnessed  the emergence of open-source LLM with str
 
 <ol>
 <li><strong> Increasing multimodal capaiblies with stronger & larger language models, up to 3x model size.</strong> This allows LMMs to present better visual world knowledge and logical reasoning inherited from LLM. It supports LLaMA3 (8B) and Qwen-1.5 (72B and 110B).
-<li><strong> Better visual chat for more real-life scenarios, covering different applications.</strong> To evaluate the improved multimodal capabilities in the wild, we collect and develop new evaluation datasets, LLaVA-Bench (Wilder), which inherit the spirit of LLaVA-Bench (in-the-wild) to study daily-life visual chat and enlarge the data size for comprehensive evaluation.
+<li><strong> Better visual chat for more real-life scenarios, covering different applications.</strong> To evaluate the improved multimodal capabilities in the wild, we collect and develop new evaluation datasets, <a href="https://github.com/haotian-liu/LLaVA/blob/main/docs/LLaVA_Bench.md">LLaVA-Bench (Wilder)</a>, which inherit the spirit of <a href="#3-llava-bench-wilder">LLaVA-Bench (in-the-wild)</a> to study daily-life visual chat and enlarge the data size for comprehensive evaluation.
 </ol>
 To clearly highlight the impact of LLM in supercharging multimodal performance improvements, we re-use the same training recipe with LLaVA-NeXT, thereby maintaining the minimalist design and data efficiency of LLaVA family. The largest 110B variant finishes training in 18 hours with 128 H800s. <strong>Our code, data, and model will be made accessible to the public.</strong>
 </p>
@@ -346,15 +346,14 @@ For a larget set of queries from the online services, we used the ONE-PEACE embe
 
 <br>
 <strong>Reference Answer Construction.</strong>
-For each screened question, we used GPT4V to generate a reference response and involved human annotators to manually verify the accuracy of both the question and the reference answer. A considerable number of users' inquiries were vague, involving queries about image resolution, grammar errors, or being unrelated to uploaded images. In these cases, GPT4V may decline to respond, or the reference answers provided could be incorrect. We corrected these answers manually to maintain the quality of the evaluation data.
+For each screened question, we first used GPT4V to generate a reference response and involved human annotators to manually verify the accuracy of both the question and the reference answer. A considerable number of users' inquiries were vague, involving queries about image resolution, grammar errors, or being unrelated to uploaded images. In these cases, GPT4V may decline to respond, or the reference answers provided could be incorrect. To maintain the evaluation data's quality, we manually reviewed and revised problematic answers, ensuring accuracy and reliability.
 
 <br>
 <strong>Scoring Methodology.</strong>
 We adopted the same evaluation process as LLaVA-W, but we substituted GPT-4 with GPT4-V. Instead of using multiple categories as in LLaVA-W, we simply calculated the overall score ratio between the GPT4-V reference answer and the model's response. In our evaluation, we noticed that the score doesn't show the problems well in different models and might unfairly lower the scores of the reference answers, resulting the bad cases of model can not be correctly reflected in the overall score. To fix this, we made GPT4-V always think the right answers are perfect and give them a score of ten. This means the other models get lower scores and get punished more for their mistakes. This helps us to evaluate abilities of the model better for real-life situations.
 
-<br>
+<br><br>
 <h3 id="evaluation-results">Comparison of Benchmarks & Models</h3>
-
 <strong>Quantative Results.</strong> The distinctive measurement provided by LLaVA-Bench (Wilder) compared to other benchmarks becomes evident due to the substantial performance gap among state-of-the-art (SoTA) LMMs. Certain highly proficient LMMs in knowledge-intensive tasks may not excel in daily-life visual chat scenarios as assessed by LLaVA-Bench (Wilder). The LLaVA-NeXT models featured in this release persist in advancing performance across various domains.
 
 <br>
@@ -375,7 +374,7 @@ We adopted the same evaluation process as LLaVA-W, but we substituted GPT-4 with
   <tr ><td>Claude-3-Opus</td><td>68.6</td><td>79.7</td><td>98.5</td><td>49.8</td><td>88.1</td><td>59.4</td><td>50.5</td><td>-</td></tr>
 </table>
 </div>
-
+<br>
 <strong>Daily-life Scenarios & Qualitative Comparisons</strong> 
 <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
     <style>
