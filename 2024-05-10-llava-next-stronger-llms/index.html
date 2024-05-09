@@ -122,7 +122,11 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
 </ol>
 
 <details>
-<summary style="font-style: italic;">[Fold / Unfold to see qualitative examples]</summary>
+    <summary style="font-style: italic; font-size: 16px;">[Fold / Unfold to see full tables for comparison with LLaVA Family and SoTA LMMs]</summary>
+</details>
+
+<details>
+<summary style="font-style: italic; font-size: 16px;">[Fold / Unfold to see qualitative examples]</summary>
 <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
     <style>
       .slider-container {
@@ -214,7 +218,6 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
 </div>
 </details>
 <!-- </details> -->
-<p><br /></p>
 
 <h2 id="exploring-the-capability-limit-of-large-language-models">Exploring the Capability Limit of Large Language Models</h2>
 
@@ -253,8 +256,6 @@ In both of the aforementioned analyses, it's likely that stronger LLMs yield sup
 </div>
 </details>
 
-<br>
-<br>
 <h2 id="3-llava-bench-wilder">LLaVA-Bench (Wilder): Daily-life Visual Chat Benchmarks</h2>
 
 One of the ultimate goals to develop LLMs is to build general-purpose assistant of aiding humans in various multimodal tasks in their daily lives. It is thus important to have robust benchmarks to precisely measure the related progresses. LLaVA-Bench (In-the-Wild), also known as LLaVA-W, is such a benchmark to measure the daily-life visual chat capability of LMMs. However, with only 60 examples available, we recognized the need for a more expansive dataset. In line with this spirit, we introduce LLaVA-Bench (Wilder), comprising two versions: a smaller iteration featuring 120 examples for swift assessment, and a medium-sized version with 1020 examples for comprehensive measurement. These datasets encompass diverse scenarios such as mathematical problem-solving, image comprehension, code generation, visual AI assistance, and image-based reasoning. To construct these datasets, we gathered instructions and images reflecting real-world user requests from an online service. Subsequently, we meticulously filtered samples to address privacy concerns and mitigate potential harm. Responses to these prompts were generated using GPT4-V.
@@ -291,13 +292,13 @@ For a larget of queries from the online services, we used the ONE-PEACE embeddin
 We adopted the same evaluation process as LLaVA-W, but we substituted GPT-4 with GPT4-V. Instead of using multiple categories as in LLaVA-W, we simply calculated the overall score ratio between the GPT4-V reference answer and the model's response.
 
 <br><br>
-<h3 id="evaluation-results">Evaluation Results</h3>
+<h3 id="evaluation-results">Comparison of Benchmarks & Models</h3>
 
 <strong>Quantative Results.</strong> The distinctive measurement provided by LLaVA-Bench (Wilder) compared to other benchmarks becomes evident due to the substantial performance gap among state-of-the-art (SoTA) LMMs. Certain highly proficient LMMs in knowledge-intensive tasks may not excel in daily-life visual chat scenarios as assessed by LLaVA-Bench (Wilder). The LLaVA-NeXT models featured in this release persist in advancing performance across various domains.
 
 <div style="display: flex; justify-content: center;">
     <table style="text-align: center;">
-  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th colspan="2" style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-Bench (Wilder)</th><th style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-W</th><th style="background-color: rgba(0, 242, 234, 0.6);">RealWorldQA</th><th style="background-color: rgba(255,229,152,0.6);">AI2D</th><th style="background-color: rgba(255,229,152,0.6);">MME</th><th style="background-color: rgba(255,229,152,0.6);">MMMU</th><th style="background-color: rgba(255,229,152,0.6);">MathVista</th></tr>
+  <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th colspan="2" style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-Bench Wilder (Small | Medium)</th><th style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-W</th><th style="background-color: rgba(0, 242, 234, 0.6);">RealWorldQA</th><th style="background-color: rgba(255,229,152,0.6);">AI2D</th><th style="background-color: rgba(255,229,152,0.6);">MME</th><th style="background-color: rgba(255,229,152,0.6);">MMMU</th><th style="background-color: rgba(255,229,152,0.6);">MathVista</th></tr>
   <tr style="background-color: rgba(191, 191, 191, 0.5);"><td colspan="9" style="font-style: italic;">LLaVA-NeXT in this release</td></tr>
   <tr ><td>LLaVA-Next-110B</td><td>99.8</td><td>98.7</td><td>90.4</td><td>63.2</td><td>80.4</td><td>2200.4</td><td>49.1</td><td>49.0</td></tr>
   <tr ><td>LLaVA-Next-72B</td><td>107.1</td><td>100.3</td><td>89.2</td><td>65.4</td><td>77.4</td><td>2158.9</td><td>46.4</td><td>46.6</td></tr>
