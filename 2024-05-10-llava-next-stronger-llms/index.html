@@ -123,6 +123,8 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
     <summary style="font-style: italic; font-size: 16px;">[Fold / Unfold to see full tables for comparison with LLaVA Family and SoTA LMMs]</summary>
 </details>
 
+<br><br>
+
 <details>
 <summary style="font-style: italic; font-size: 16px;">[Fold / Unfold to see qualitative examples]</summary>
 <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
@@ -224,17 +226,21 @@ In our exploration with LLaVA-NeXT, we witnessed a significant performance leap 
 To measure the language capability of LLMs, we employ evaluation scores from the Massive Multitask Language Understanding (MMLU) benchmark. To measure the multimodal capability after applying the same LLaVA-NeXT training recipe,  we examine four key benchmarks: MMMU for multidisciplinary understanding, Mathvista for visual math reasoning, AI2D for science diagram comprehension, and LLaVA-W for daily visual chat scenarios. These benchmarks encapsulate diverse real-world applications of LMM in the wild.
 <br>
 The correlation between multimodal and language capabilities is visually depicted in Figure 1, utilizing regression lines to illustrate trends across each benchmark.
+
+<br>
 <ol>
 <li><strong>Improved Language Capability:</strong> Across LLMs of comparable sizes (e.g., 7B Mistral/Vicuna, 7B Qwen, 8B LLaMa3), there exists a consistent pattern where higher language proficiency, as measured by MMMU scores, corresponds to improved multimodal capabilities.</li>
 <li><strong>Influence of Model Size:</strong> Within the same LLM family (e.g., Qwen LLM: 7B, 72B, 110B), larger models consistently demonstrate superior performance on multimodal benchmarks. This underscores the notion that larger models tend to possess enhanced language capabilities, leading to improved performance across multimodal tasks.</li>
 </ol>
 In both of the aforementioned analyses, it's likely that stronger LLMs yield superior multimodal capabilities. This phenomenon can be attributed to broader world knowledge, robust logical reasoning, and conversational prowess typically associated with stronger LLMs. These language capabilities are well maintained and transferred across the vision-language domain by applying the lightweight training of LLaVA-NeXT, owing to the alignment of cross-modality concepts, as well as the alignment with human intent in visual instruction tuning.
 
+<br><br>
 <figure style="display: block; padding: 4px 10px; margin: 5px auto; border-radius: 3px; width: fit-content;">
     <img width="90%" height="800px" src="/blog/assets/images/llava-next-stronger-llms/correlation.png" />
     <figcaption style="text-align: center;">Figure 1: The performance correlation between multimodal and langauge capability on four benchmarks. The circle size represents model size.</figcaption>
 </figure>
 
+<br><br>
 <details>
     <summary style="font-style: italic;">[Fold / Unfold to see the table for details]</summary>
 <div style="display: flex; justify-content: center;">
@@ -254,6 +260,7 @@ In both of the aforementioned analyses, it's likely that stronger LLMs yield sup
 </div>
 </details>
 
+<br><br>
 <h2 id="3-llava-bench-wilder">LLaVA-Bench (Wilder): Daily-life Visual Chat Benchmarks</h2>
 
 One of the ultimate goals to develop LLMs is to build general-purpose assistant of aiding humans in various multimodal tasks in their daily lives. It is thus important to have robust benchmarks to precisely measure the related progresses. LLaVA-Bench (In-the-Wild), also known as LLaVA-W, is such a benchmark to measure the daily-life visual chat capability of LMMs. However, with only 60 examples available, we recognized the need for a more expansive dataset. In line with this spirit, we introduce LLaVA-Bench (Wilder), comprising two versions: a smaller iteration featuring 120 examples for swift assessment, and a medium-sized version with 1020 examples for comprehensive measurement. These datasets encompass diverse scenarios such as mathematical problem-solving, image comprehension, code generation, visual AI assistance, and image-based reasoning. To construct these datasets, we gathered instructions and images reflecting real-world user requests from an online service. Subsequently, we meticulously filtered samples to address privacy concerns and mitigate potential harm. Responses to these prompts were generated using GPT4-V.
@@ -285,7 +292,7 @@ Figure 2 provides a visual comparison between LLaVA-Bench (Wider) and existing L
 
 <br><br>
 <strong>Construction & Evaluation Metrics.</strong> 
-For a larget of queries from the online services, we used the ONE-PEACE embedding model to generate embeddings. Next, we applied weighted K-Means clustering, using the min-max normalized total pixel values of the image as weights, ensuring images with higher pixel values were more likely to be included in our test set. After removing duplicates, we ended up with a small version containing 120 questions and a medium version containing 1020 questions. We also conducted decontamination checks to ensure the dataset is clean and not contaminated. Both versions have less than 2% image overlap. For comparison, the original LLaVA-W had 5% image overlap. The evaluation data is excluded and decontainminated from LLaVA-NeXT's training data.
+For a larget set of queries from the online services, we used the ONE-PEACE embedding model to generate embeddings. Next, we applied weighted K-Means clustering, using the min-max normalized total pixel values of the image as weights, ensuring images with higher pixel values were more likely to be included in our test set. After removing duplicates, we ended up with a small version containing 120 questions and a medium version containing 1020 questions. We also conducted decontamination checks to ensure the dataset is clean and not contaminated. Both versions have less than 2% image overlap. For comparison, the original LLaVA-W had 5% image overlap. The evaluation data is excluded and decontainminated from LLaVA-NeXT's training data.
 
 We adopted the same evaluation process as LLaVA-W, but we substituted GPT-4 with GPT4-V. Instead of using multiple categories as in LLaVA-W, we simply calculated the overall score ratio between the GPT4-V reference answer and the model's response.
 
