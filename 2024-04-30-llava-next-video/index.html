@@ -101,6 +101,8 @@
 <ul>
   <li><a href="https://github.com/LLaVA-VL/LLaVA-NeXT-Video" target="_blank">Code</a> (Training code coming soon)</li>
   <li><a href="https://huggingface.co/collections/lmms-lab/llava-next-video-661e86f5e8dabc3ff793c944" target="_blank">Model</a></li>
+  <li><a href="https://huggingface.co/collections/lmms-lab/llava-next-video-661e86f5e8dabc3ff793c944" target="_blank">Demo</a></li>
+
 
 </ul>
 
@@ -495,12 +497,14 @@
 <p>✨ Highlights:</p>
 <ul>
   <li><strong>SoTA Performance!</strong> Without seeing any video data, LLaVA-Next demonstrates strong zero-shot modality transfer ability, outperforming all the existing open-source LMMs (e.g., <a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a>) that have been specifically trained for videos. Compared with proprietary ones, it achieves comparable performance with Gemini Pro on NextQA and ActivityNet-QA.</li>
-  <li><strong>Strong length generalization ability</strong>. Despite being trained under the sequence length constraint of a 4096-token limit, LLaVA-Next demonstrates remarkable ability to generalize to longer sequences. This capability ensures robust performance even when processing long-frame content that exceeds the original token length limitation.</li>
+  <li><strong>Strong length generalization ability.</strong> Despite being trained under the sequence length constraint of a 4096-token limit, LLaVA-Next demonstrates remarkable ability to generalize to longer sequences. This capability ensures robust performance even when processing long-frame content that exceeds the original token length limitation.</li>
+  <li><strong>DPO pushs performance.</strong> We explore DPO based on the stronger SFT LMM LLaVA-NeXT-Video, leading to the final model LLaVA-NeXT-Video-DPO.</li>
+
 </ul>
 
 <h3 id="qualitative-results">Qualitative Results</h3>
 
-<!-- <details> -->
+<details open>
 <summary><b>Video Detailed Caption Tasks</b></summary>
 
 <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1); text-align: center;">
@@ -523,10 +527,12 @@
 
 </div>
 
-<!-- </details> -->
+</details>
 
-<!-- <details> -->
 <p><br/></p>
+
+
+<details open>
 
 <summary><b>Video QA Tasks</b></summary>
 
@@ -550,7 +556,7 @@
   <p style="text-align: left;">The video you've provided appears to show a person running on a treadmill, but the unusual aspect is that the person's legs are not aligned with the treadmill's belt. This defies common sense because when running on a treadmill, one would expect the person's legs to be in sync with the belt's motion, either moving forward or backward in a coordinated manner. In this video, the person's legs are positioned as if they are running in a different direction or at a different pace than the belt, which is not possible in reality and thus goes against common sense. This suggests that the video may have been manipulated or is a composite of two different scenes to create an illusion.</p>
 
 </div>
-<!-- </details> -->
+</details>
 
 <p><br/></p>
 
@@ -830,6 +836,37 @@
 
 <div class="slider-container">
   <div class="slider-wrapper" id="sliderWrapper">
+
+    <div class="slider-item">
+      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+      
+        <p style="font-style: italic; color: grey;"> Prompt for T2V: The story of a robot’s life in a cyberpunk setting.</p>
+      
+        <video width="50%" controls loop autoplay>
+          <source src="/blog/assets/videos/sora/robot-video-game.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      
+      </div>
+      
+      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+      
+        <h4>LLaVA-NeXT-Video</h4>
+      
+        <p style="text-align: left;">The video you've provided appears to be a still from a science fiction or cyberpunk-themed movie or video game. It features a humanoid robot standing in a bustling urban environment. The robot has a sleek, futuristic design with a dark color scheme and a prominent head that seems to have a visor or helmet-like feature. It is standing upright and facing the camera, with its arms at its sides, suggesting a calm or neutral stance.
+          In the background, there are various elements that contribute to the dystopian atmosphere:<br>
+          1. A large, imposing structure that resembles a futuristic building or part of a cityscape, with a metallic sheen and angular architecture.<br>
+          2. A flying vehicle, which could be a drone or a futuristic aircraft, adding to the advanced technology theme.<br>
+          3. Other robots or machines that are less humanoid, possibly indicating a variety of robotic forms in this setting.<br>
+          4. A street scene with blurred figures that suggest a busy, possibly crowded environment, possibly indicating a market or a public area.<br>
+          5. A neon sign that adds to the cyberpunk aesthetic, with its bright, artificial glow against the darker tones of the surroundings.<br>
+          The overall scene conveys a sense of a technologically advanced world where robots and humans coexist, possibly in a future where robots have become commonplace and integrated into daily life. The setting is dense with detail, suggesting a complex and possibly overpopulated urban environment. The lighting and color palette are moody, with a mix of dark and bright elements that create a contrast that is typical of the cyberpunk genre.</p>
+      
+      </div>
+    </div>
+
     <div class="slider-item">
       <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
@@ -880,35 +917,6 @@
           - A graduated cylinder, a glass tube with markings to measure the volume of liquid.<br>
           - A flask with a long neck and a rounded bottom, which is often used for holding and measuring gases or liquids.<br>
           The scene suggests a controlled environment for scientific research or experimentation, possibly related to botany, plant growth, or biological studies. The focus is on the plant in the container, indicating that it may be the subject of observation or experimentation. The background equipment implies that this is a space where scientific work is conducted, and the overall setting is clean and organized.</p>
-      
-      </div>
-    </div>
-    <div class="slider-item">
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-
-        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
-      
-        <p style="font-style: italic; color: grey;"> Prompt for T2V: The story of a robot’s life in a cyberpunk setting.</p>
-      
-        <video width="50%" controls loop autoplay>
-          <source src="/blog/assets/videos/sora/robot-video-game.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      
-      </div>
-      
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-      
-        <h4>LLaVA-NeXT-Video</h4>
-      
-        <p style="text-align: left;">The video you've provided appears to be a still from a science fiction or cyberpunk-themed movie or video game. It features a humanoid robot standing in a bustling urban environment. The robot has a sleek, futuristic design with a dark color scheme and a prominent head that seems to have a visor or helmet-like feature. It is standing upright and facing the camera, with its arms at its sides, suggesting a calm or neutral stance.
-          In the background, there are various elements that contribute to the dystopian atmosphere:<br>
-          1. A large, imposing structure that resembles a futuristic building or part of a cityscape, with a metallic sheen and angular architecture.<br>
-          2. A flying vehicle, which could be a drone or a futuristic aircraft, adding to the advanced technology theme.<br>
-          3. Other robots or machines that are less humanoid, possibly indicating a variety of robotic forms in this setting.<br>
-          4. A street scene with blurred figures that suggest a busy, possibly crowded environment, possibly indicating a market or a public area.<br>
-          5. A neon sign that adds to the cyberpunk aesthetic, with its bright, artificial glow against the darker tones of the surroundings.<br>
-          The overall scene conveys a sense of a technologically advanced world where robots and humans coexist, possibly in a future where robots have become commonplace and integrated into daily life. The setting is dense with detail, suggesting a complex and possibly overpopulated urban environment. The lighting and color palette are moody, with a mix of dark and bright elements that create a contrast that is typical of the cyberpunk genre.</p>
       
       </div>
     </div>
