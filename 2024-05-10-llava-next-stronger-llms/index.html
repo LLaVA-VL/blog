@@ -106,6 +106,8 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
   <tr ><td>MMMU</td><td>val</td><td>Acc.</td><td>900</td><td><strong>56.8</strong></td><td>49.1</td><td>46.4</td><td>41.7</td><td>46.7</td><td>35.9</td><td>35.1</td><td>33.4</td></tr>
   <tr ><td>RealWorldQA</td><td>test</td><td>Acc.</td><td>765</td><td>61.4</td><td>63.1</td><td><strong>65.4</strong></td><td>60.0</td><td>61.0</td><td>61.0</td><td>61.0</td><td>54.4</td></tr>
   <tr ><td>LLaVA-W<sup>**</sup></td><td>test</td><td>GPT4-Eval</td><td>60</td><td><strong>98.0</strong></td><td>90.4</td><td>89.2</td><td>80.1</td><td>88.8</td><td>72.3</td><td>72.3</td><td>71.7</td></tr>
+  <tr ><td>LLaVA-Wilder</td><td>test</td><td>GPT4V-Eval</td><td>120</td><td><strong>71.5</strong></td><td>70.5</td><td>71.2</td><td>62.5</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+  <tr ><td>LLaVA-Wilder</td><td>test</td><td>GPT4V-Eval</td><td>1020</td><td><strong>78.5</strong></td><td>72.5</td><td>73.4</td><td>63.1</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
   <tr style="background-color: rgba(108,122,123,0.1);"><td colspan="12" style="text-align: left; font-style: italic;"><sup>*</sup>Training dataset observed during SFT stage.</td></tr>
   <tr style="background-color: rgba(108,122,123,0.1);"><td colspan="12" style="text-align: left; font-style: italic;"><sup>**</sup>We report the evaluation results with GPT-4-0613 on LLaVA-W.</td></tr>
 </table>
@@ -120,25 +122,9 @@ To clearly highlight the impact of LLM in supercharging multimodal performance i
 </ol>
 
 <br>
-<!-- Results with lmms-eval				Claude3-Opus	GPT4V	Gemini Pro 1.5	Qwen-VL-Max	LLaVA-NEXT (2024-05 Release)			LLaVA-NEXT (2024-01 Release)	LLaVA 1.5
-Datasets	Meta Info			-	-	-	-	Qwen1.5-110B	Qwen1.5-72B	LLaMA3-8B	Yi-34B	Vicuna-1.5-13B
-	Split	Metric	#Num	Opus	gpt-4-vision-preview	Opus	VL-Max	lmms-lab/llava-next-110b	lmms-lab/llava-next-72b	lmms-lab/llama3-llava-next-8b	liuhaotian/llava-v1.6-34b	liuhaotian/llava-v1.5-13b
-AI2D*	test	Acc.	3088	88.1	78.2	80.3	79.3	80.4	77.4	71.6	74.9	54.8
-ChartQA*	test	RelaxedAcc.	2500	80.8	78.5(4-shot)	81.3	79.8	79.7	77.0	69.5	68.7	18.2
-DocVQA*	val	ANLS	5349	-	-	-	-	85.7	84.4	78.2	84.0	28.1
-MathVista	testmini	Acc.	1000	50.5	49.9	52.1	51.0	49.0	46.6	37.5	46.0	26.7
-MMBench	en-dev	Acc.	4377	-	75.0	-	-	80.5	80.5	72.1	79.3	67.8
-MME-Cognition	test	Total Score	2374	-	517.1	-	2281.7	453.9	459.6	367.8	397.1	348.2
-MME-Perception	test	Total Score		-	1409.4	-		1746.5	1699.3	1603.7	1633.2	1510.8
-MMMU	val	Acc.	900	59.4	56.8	58.5	51.4	49.1	46.4	41.7	46.7	35.3
-RealWorldQA	test	Acc.	765	51.9	61.4	51.9	-	63.1	65.4	60.0	61.0	-
-LLaVA-W**	test	GPT-Eval-Avg	60	-	98.0	-	82.3	90.4	89.2	80.1	88.8	59.6(0613)
-"For fair comparison, all evaluation results above are reported via lmms-eval: https://github.com/EvolvingLMMs-Lab/lmms-eval 
-* Training dataset observed during SFT stage.
-**We report the evaluation results with GPT-4-0613 on LLaVA-in-the-wild."												 -->
-
 <details>
     <summary style="font-style: italic; font-size: 16px;">[Fold / Unfold to see full tables for comparison with LLaVA Family and SoTA LMMs]</summary>
+    <br>
     <div style="display: flex; justify-content: center;">
         <table style="text-align: center;">
         <tr style="background-color: rgba(108,122,123,0.1);"><th colspan="4">Results with <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">LMMs-Eval</a></th><th rowspan="2" style="background-color: rgba(255,229,152,0.6);">Claude3-Opus</th><th rowspan="2" style="background-color: rgba(255,229,152,0.6); width: 120px;">GPT4-V</th><th rowspan="2" style="background-color: rgba(255,229,152,0.6);">Gemini 1.5 Pro</th><th rowspan="2" style="background-color: rgba(255,229,152,0.6);">Qwen-VL-Max</th><th colspan="3" style="background-color: rgba(255, 0, 80, 0.6);">LLaVA-NeXT (2024-05 Release)</th><th colspan="1" style="background-color: rgba(0, 242, 234, 0.6);width: 120px;">LLaVA-NeXT (2024-01)</th><th colspan="1" style="background-color: rgba(255,229,152,0.6);">LLaVA-1.5</th></tr>
@@ -155,6 +141,8 @@ LLaVA-W**	test	GPT-Eval-Avg	60	-	98.0	-	82.3	90.4	89.2	80.1	88.8	59.6(0613)
       <tr ><td>MMMU</td><td>val</td><td>Acc.</td><td>900</td><td>59.4</td><td>56.8</td><td>58.5</td><td>51.4</td><td>49.1</td><td>46.4</td><td>41.7</td><td>46.7</td><td>35.3</td></tr>
       <tr ><td>RealWorldQA</td><td>test</td><td>Acc.</td><td>765</td><td>51.9</td><td>61.4</td><td>67.5</td><td>-</td><td>63.1</td><td>65.4</td><td>60.0</td><td>61.0</td><td>-</td></tr>
       <tr ><td>LLaVA-W<sup>**</sup></td><td>test</td><td>GPT4-Eval</td><td>60</td><td>-</td><td>98.0</td><td>-</td><td>82.3</td><td>90.4</td><td>89.2</td><td>80.1</td><td>88.8</td><td>59.6</td></tr>
+      <tr ><td>LLaVA-Bench (Wilder)</td><td>test</td><td>GPT4V-Eval</td><td>120</td><td>68.6</td><td>71.5</td><td>70.5</td><td>-</td><td>-</td><td>89.2</td><td>80.1</td><td>88.8</td><td>59.6</td></tr>
+      <tr ><td>LLaVA-Bench (Wilder)</td><td>test</td><td>GPT4V-Eval</td><td>1020</td><td>79.7</td><td>78.5</td><td>-</td><td>-</td><td>72.5</td><td>73.4</td><td>63.1</td><td>-</td><td>-</td></tr>
       <tr style="background-color: rgba(108,122,123,0.1);"><td colspan="13" style="text-align: left; font-style: italic;"><sup>*</sup>Training dataset observed during SFT stage.</td></tr>
       <tr style="background-color: rgba(108,122,123,0.1);"><td colspan="13" style="text-align: left; font-style: italic;"><sup>**</sup>We report the evaluation results with GPT-4-0613 on LLaVA-W.</td></tr>
     </table>
@@ -281,6 +269,7 @@ In both of the aforementioned analyses, it's likely that stronger LLMs yield sup
 <br><br>
 <details>
     <summary style="font-style: italic;">[Fold / Unfold to see the table for details]</summary>
+<br>
 <div style="display: flex; justify-content: center;">
     <table style="text-align: center;">
   <tr style="background-color: rgba(108,122,123,0.1);"><th>Models</th><th style="background-color: rgba(255, 0, 80, 0.6);">Language Performance</th><th style="background-color: rgba(0, 242, 234, 0.6);" colspan="4">Multimodal Performance</th></tr>
@@ -298,7 +287,7 @@ In both of the aforementioned analyses, it's likely that stronger LLMs yield sup
 </div>
 </details>
 
-<br><br>
+<br>
 <h2 id="3-llava-bench-wilder">LLaVA-Bench (Wilder): Daily-life Visual Chat Benchmarks</h2>
 
 One of the ultimate goals to develop LLMs is to build general-purpose assistant of aiding humans in various multimodal tasks in their daily lives. It is thus important to have robust benchmarks to precisely measure the related progresses. LLaVA-Bench (In-the-Wild), also known as LLaVA-W, is such a benchmark to measure the daily-life visual chat capability of LMMs. However, with only 60 examples available, we recognized the need for a more expansive dataset. In line with this spirit, we introduce LLaVA-Bench (Wilder), comprising two versions: a smaller iteration featuring 120 examples for swift assessment, and a medium-sized version with 1020 examples for comprehensive measurement. These datasets encompass diverse scenarios such as mathematical problem-solving, image comprehension, code generation, visual AI assistance, and image-based reasoning. To construct these datasets, we gathered instructions and images reflecting real-world user requests from an online service. Subsequently, we meticulously filtered samples to address privacy concerns and mitigate potential harm. Responses to these prompts were generated using GPT4-V.
