@@ -239,6 +239,22 @@ pre>code {
   * Icons
   */
 
+.sticky {
+    position: -webkit-sticky;
+    /* For Safari */
+    position: sticky;
+    top: 0;
+    /* Distance from the top of the page */
+    overflow-y: auto;
+    /* Add scroll if content is larger than screen */
+    height: 100vh;
+    /* Full height */
+    padding: 1em;
+    /* Space around content */
+    background-color: #f9f9f9;
+    /* Optional: you can change the background color */
+}
+
 .svg-icon {
     width: 16px;
     height: 16px;

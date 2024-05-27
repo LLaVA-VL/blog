@@ -112,9 +112,19 @@
                             async=""
                             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
                         ></script> -->
-
+                        <style>
+                            .table-of-contents {
+                                border: 1px solid #ccc;
+                                border-radius: 15px;
+                                padding: 30px;
+                                margin-bottom: 20px;
+                            }
+                            .table-of-contents ul {
+                                margin-left: 20px;
+                            }
+                        </style>
                         <div class="table-of-contents">
-                            <h2>Table of Contents</h2>
+                            <h3>Table of Contents</h3>
                             <ul>
                                 <li><a href="#section-1-insights-on-architectures">Section 1 - Insights on Architectures</a></li>
                                 <!-- <li><a href="#section-1-1-language-models">Section 1.1 - Language Models</a></li>
@@ -236,7 +246,7 @@
 										<tbody>
 											<tr>
 												<td colspan="2">Architecture<br /></td>
-												<td style="text-align: left;"><strong>Image Encoder:</strong> OpenAI CLIP-Large (336x336)<br /><strong>Connector:</strong> 2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B</td>
+												<td><strong>Image Encoder:</strong> OpenAI CLIP-Large (336x336)<br /><strong>Connector:</strong> 2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B</td>
 											</tr>
 											<tr>
 												<!-- <td rowspan="1">Model Size</td> -->
@@ -887,7 +897,7 @@
 										<tbody>
 											<tr>
 												<td colspan="2">Architecture<br /></td>
-												<td style="text-align: left;">Image Encoder: Google SO400M (384x384)<br />Connector: 2-Layer Relu MLP <br />LLM: Qwen-1.5 0.5B</td>
+												<td>Image Encoder: Google SO400M (384x384)<br />Connector: 2-Layer Relu MLP <br />LLM: Qwen-1.5 0.5B</td>
 											</tr>
 											<tr>
 												<td colspan="2"># Total parameters</td>
@@ -1003,7 +1013,7 @@
 						<details>
 							<br />
 							<summary
-								>[We put the setting of our baseline experiment here. Please fold/unfold to see the details.]</summary
+								>[Fold / Unfold to See the Details of Baseline Settings of CLIP-L-336 + Vicuna-1.5 7B.]</summary
 							>
 							<div style="display: flex; justify-content: left;">
 								<div class="tg-wrap">
@@ -1016,24 +1026,11 @@
 										<tbody>
 											<tr>
 												<td colspan="2">Architecture<br /></td>
-												<td>Image Encoder: OpenAI CLIP-Large (336x336)<br />Connector: 2-Layer Relu MLP</td>
+												<td><strong>Image Encoder:</strong> OpenAI CLIP-Large (336x3336)<br /><strong>Connector:</strong> 2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B</td>
 											</tr>
 											<tr>
-												<td rowspan="4">Model Size</td>
-												<td># Total parameters</td>
+												<td colspan="2"># Total parameters</td>
 												<td>7.06B</td>
-											</tr>
-											<tr>
-												<td>Vision Encoder</td>
-												<td>303.5M (CLIP-VIT-L-336)</td>
-											</tr>
-											<tr>
-												<td>Connector</td>
-												<td>21M (2-Layer Relu MLP)</td>
-											</tr>
-											<tr>
-												<td>LLM</td>
-												<td>6.74B (Vicuna)</td>
 											</tr>
 											<tr>
 												<td colspan="2">Visual Representations</td>
@@ -1627,6 +1624,9 @@
 							</div>
 						</div>
 						<h3>Section 3.3 - Conclusion</h3>
+                        <p>
+                            Observing the results in above tables, we can make the following observations:
+                        </p>
 						<ol>
 							<li>
 								<strong>Enhanced Performance with Recaptioned Data:</strong> Models trained with recaptioned data
