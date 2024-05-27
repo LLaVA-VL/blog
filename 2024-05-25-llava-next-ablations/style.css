@@ -159,10 +159,10 @@ a:hover {
   */
 
 blockquote {
-    color: #828282;
+    color: #8f8f8f;
     border-left: 4px solid #e8e8e8;
     padding-left: 15px;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: -1px;
     font-style: italic;
 }
