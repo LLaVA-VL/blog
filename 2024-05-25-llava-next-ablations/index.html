@@ -897,7 +897,7 @@
 							overhead. This section aims to investigate the best (resolution, #token) configuration for a balance of
 							performance and cost.
 						</p>
-                        <figure style="width: 80%; text-align: center; margin: 0 auto;">
+						<figure style="width: 80%; text-align: center; margin: 0 auto;">
 							<img src="/blog/assets/images/llava-next-ablations/anyres.png" alt="anyres_grid" />
 							<br />
 							<figcaption style="font-size: 16px;">
@@ -912,7 +912,7 @@
 								Figure 2. The overview of our Higher-Anyres mode and interpolation.
 							</figcaption>
 						</figure>
-                        <br>
+						<br />
 
 						<p>
 							The previous AnyRes technique employs a grid configuration of \(\{2×2, 1×\{2,3,4\}, \{2,3,4\}×1\}\) to
@@ -925,7 +925,7 @@
 							more grids. Additionally, to maintain efficiency, we propose an adaptive pooling strategy to prevent an
 							excessive number of visual tokens from being fed into the LLM.
 						</p>
-                        <details>
+						<details>
 							<br />
 							<summary
 								>[Fold / Unfold to See the Details of Baseline Experiment Settings with SO400M + Qwen-1.5 0.5B]</summary
@@ -1007,11 +1007,171 @@
 							<strong>Impact on Max. # Grids in Anyres and Max. # Tokens.</strong> We study the influence of resolution
 							and #tokens on training time, and summarize the insights below.
 						</p>
-                        <div style="display: flex; justify-content: center;">
-                            <div class="tg-wrap"><table><thead><tr><th rowspan="2">Max. # Grids</th><th rowspan="2">Max. # Tokens</th><th rowspan="2">Training Time</th><th rowspan="2">Adaptive Interpolation</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>Image-DC</th><th>Video-DC</th><th>SynthDOG*</th><th>OKVQA</th><th>POPE</th><th>ScienceQA-IMG</th><th>VizWiz</th><th>MMMU</th></tr><tr><th>test</th><th>test</th><th>val</th><th>val</th><th>EN</th><th>32 frames</th><th>EN/TED Score</th><th>val</th><th>test/f1-score</th><th>img</th><th>val</th><th>val</th></tr></thead><tbody><tr><td>2x2</td><td>(4+1)*729</td><td>6h30min</td><td>FALSE</td><td>51.1</td><td>49.2</td><td>58.8</td><td>25.7</td><td>71.1</td><td>64.1</td><td>425.7</td><td>36.5</td><td>85.4</td><td>59.6</td><td>29.2</td><td>28.2</td></tr>
-                                <tr><td>4x4</td><td>(4+1)*729</td><td>7h30min</td><td rowspan="5">TRUE</td><td>52.8</td><td>49.4</td><td>58.1</td><td>26.0</td><td>69.9</td><td>63.5</td><td>433.6</td><td>36.0</td><td>85.8</td><td>57.9</td><td>31.0</td><td>28.6</td></tr><tr><td>5x5</td><td>(4+1)*729</td><td>7h50min</td><td>52.4</td><td>49.6</td><td>57.6</td><td>26.9</td><td>72.9</td><td>63.8</td><td>435.6</td><td>36.5</td><td>86.1</td><td>58.5</td><td>28.7</td><td>28.4</td></tr><tr><td>6x6</td><td>(4+1)*729</td><td>8h05min</td><td>52.7</td><td>50.1</td><td>56.7</td><td>27.1</td><td>71.0</td><td>64.2</td><td>437.2</td><td>35.9</td><td>85.9</td><td>58.4</td><td>32.2</td><td>28.3</td></tr><tr><td>6x6</td><td>(9+1)*729</td><td>11h14min</td><td>52.7</td><td>55.8</td><td>62.7</td><td>26.7</td><td>71.7</td><td>64.6</td><td>438.9</td><td>42.0</td><td>86.1</td><td>58.7</td><td>34.7</td><td>29.3</td></tr>
-                                <tr><td>6x6</td><td>(16+1)*729</td><td>13h10min</td><td>52.7</td><td>56.1</td><td>62.2</td><td>27.1</td><td>70.2</td><td>65.2</td><td>443.5</td><td>42.5</td><td>87.4</td><td>58.2</td><td>32.8</td><td>27.4</td></tr></tbody></table></div>
-                        </div>
+						<div style="display: flex; justify-content: center;">
+							<div class="tg-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th rowspan="2">Max. # Grids</th>
+											<th rowspan="2">Max. # Tokens</th>
+											<th rowspan="2">Training Time</th>
+											<th rowspan="2">Adaptive Interpolation</th>
+											<th>AI2D</th>
+											<th>ChartQA</th>
+											<th>DocVQA</th>
+											<th>InfoVQA</th>
+											<th>Image-DC</th>
+											<th><sup>*</sup>Video-DC</th>
+											<th><sup>**</sup>SynthDOG</th>
+											<th>OK-VQA</th>
+											<th><sup>***</sup>POPE</th>
+											<th>ScienceQA</th>
+											<th>VizWiz-VQA</th>
+											<th>MMMU</th>
+										</tr>
+										<tr>
+											<th>test</th>
+											<th>test</th>
+											<th>val</th>
+											<th>val</th>
+											<th>EN</th>
+											<th>32 frames</th>
+											<th>EN/TED Score</th>
+											<th>val</th>
+											<th>test/f1-score</th>
+											<th>img</th>
+											<th>val</th>
+											<th>val</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>2x2</td>
+											<td>(4+1)*729</td>
+											<td>6h30min</td>
+											<td>FALSE</td>
+											<td>51.1</td>
+											<td>49.2</td>
+											<td>58.8</td>
+											<td>25.7</td>
+											<td>71.1</td>
+											<td>64.1</td>
+											<td>425.7</td>
+											<td>36.5</td>
+											<td>85.4</td>
+											<td>59.6</td>
+											<td>29.2</td>
+											<td>28.2</td>
+										</tr>
+										<tr>
+											<td>4x4</td>
+											<td>(4+1)*729</td>
+											<td>7h30min</td>
+											<td rowspan="5">TRUE</td>
+											<td>52.8</td>
+											<td>49.4</td>
+											<td>58.1</td>
+											<td>26.0</td>
+											<td>69.9</td>
+											<td>63.5</td>
+											<td>433.6</td>
+											<td>36.0</td>
+											<td>85.8</td>
+											<td>57.9</td>
+											<td>31.0</td>
+											<td>28.6</td>
+										</tr>
+										<tr>
+											<td>5x5</td>
+											<td>(4+1)*729</td>
+											<td>7h50min</td>
+											<td>52.4</td>
+											<td>49.6</td>
+											<td>57.6</td>
+											<td>26.9</td>
+											<td>72.9</td>
+											<td>63.8</td>
+											<td>435.6</td>
+											<td>36.5</td>
+											<td>86.1</td>
+											<td>58.5</td>
+											<td>28.7</td>
+											<td>28.4</td>
+										</tr>
+										<tr>
+											<td>6x6</td>
+											<td>(4+1)*729</td>
+											<td>8h05min</td>
+											<td>52.7</td>
+											<td>50.1</td>
+											<td>56.7</td>
+											<td>27.1</td>
+											<td>71.0</td>
+											<td>64.2</td>
+											<td>437.2</td>
+											<td>35.9</td>
+											<td>85.9</td>
+											<td>58.4</td>
+											<td>32.2</td>
+											<td>28.3</td>
+										</tr>
+										<tr>
+											<td>6x6</td>
+											<td>(9+1)*729</td>
+											<td>11h14min</td>
+											<td>52.7</td>
+											<td>55.8</td>
+											<td>62.7</td>
+											<td>26.7</td>
+											<td>71.7</td>
+											<td>64.6</td>
+											<td>438.9</td>
+											<td>42.0</td>
+											<td>86.1</td>
+											<td>58.7</td>
+											<td>34.7</td>
+											<td>29.3</td>
+										</tr>
+										<tr>
+											<td>6x6</td>
+											<td>(16+1)*729</td>
+											<td>13h10min</td>
+											<td>52.7</td>
+											<td>56.1</td>
+											<td>62.2</td>
+											<td>27.1</td>
+											<td>70.2</td>
+											<td>65.2</td>
+											<td>443.5</td>
+											<td>42.5</td>
+											<td>87.4</td>
+											<td>58.2</td>
+											<td>32.8</td>
+											<td>27.4</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+                        <blockquote>
+							<style>
+								.compact-paragraph {
+									margin-bottom: 1px; /* Adjust this value to your liking */
+								}
+							</style>
+							<p class="compact-paragraph">
+								*Video Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed
+								captioning ability towards given images. The task is described in the Benchmark Card section.
+							</p>
+							<p class="compact-paragraph">
+								**SynthDOG is a benchmark that evaluates model's OCR ability, we report the tree edit distance score on
+								SynthDOG's OCR task.
+							</p>
+							<p class="compact-paragraph">
+								***POPE is a benchmark that evaluates model's ability on judging the existence of a given object in an
+								image, we report the F1 score on POPE.
+							</p>
+						</blockquote>
 						<ul>
 							<li>
 								We increase the maximum number of AnyRes grids from 2×2 to 6×6 to better support higher resolution, and
@@ -1048,10 +1208,10 @@
 											<th>DocVQA</th>
 											<th>InfoVQA</th>
 											<th>Image-DC</th>
-											<th><sup>*</sup>Video-DC</th>
-											<th><sup>**</sup>SynthDOG</th>
-											<th>OK-VQA</th>
-											<th><sup>***</sup>POPE</th>
+											<th>Video-DC</th>
+											<th>SynthDOG</th>
+											<th>OKVQA</th>
+											<th>POPE</th>
 											<th>ScienceQA</th>
 											<th>VizWiz-VQA</th>
 											<th>MMMU</th>
@@ -1256,25 +1416,6 @@
 								</table>
 							</div>
 						</div>
-						<blockquote>
-							<style>
-								.compact-paragraph {
-									margin-bottom: 1px; /* Adjust this value to your liking */
-								}
-							</style>
-							<p class="compact-paragraph">
-								*Video Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed
-								captioning ability towards given images. The task is described in the Benchmark Card section.
-							</p>
-							<p class="compact-paragraph">
-								**SynthDOG is a benchmark that evaluates model's OCR ability, we report the tree edit distance score on
-								SynthDOG's OCR task.
-							</p>
-							<p class="compact-paragraph">
-								***POPE is a benchmark that evaluates model's ability on judging the existence of a given object in an
-								image, we report the F1 score on POPE.
-							</p>
-						</blockquote>
 
 						<br />
 						<details>
@@ -2690,7 +2831,7 @@
 							</p>
 						</details>
 
-                        <br>
+						<br />
 						<h2>Reference</h2>
 						<ol>
 							<li>
@@ -2804,9 +2945,10 @@
 						<h2 id="acknowledgement">Related Blogs</h2>
 
 						<ul>
-                            <li>
+							<li>
 								<a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
-									>LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a>
+									>LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a
+								>
 							</li>
 							<li>
 								<a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/"
