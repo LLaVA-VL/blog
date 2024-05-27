@@ -919,7 +919,7 @@
 							higher than the maximum supported \(768 \times 768\), the original AnyRes method resizes them to \(768
 							\times 768\). This resizing results in a loss of detail for high-resolution images. To address this issue,
 							we explore grid configurations for higher resolutions, as shown in Fig. 2, where the image is divided into
-							more grids. Additionally, to maintain efficiency, we propose an adaptive pooling strategy to prevent an
+							more grids. Additionally, to maintain efficiency, we propose an thresholded bilinear interpolation strategy to prevent an
 							excessive number of visual tokens from being fed into the LLM.
 						</p>
 						<details>
@@ -1559,7 +1559,7 @@
 							</div>
 							<p>
 								<strong>Adptive Pooling before or after projector.</strong> We compared the performance of pooling
-								before and after the projector. The results indicate that the adaptive pooling method performs better
+								before and after the projector. The results indicate that the thresholded bilinear interpolation method performs better
 								when applied after the projector.
 							</p>
 							<div style="display: flex; justify-content: center;">
