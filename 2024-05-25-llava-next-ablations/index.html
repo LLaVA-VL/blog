@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?</title>
+    <meta name="generator" content="Jekyll v3.9.4" />
+    <meta property="og:title" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+    <meta name="author" content="Bo Li, Hao Zhang, Kaichen Zhang, Dong Guo, Yuanhan Zhang, Feng Li, Renrui Zhang, Ziwei Liu, Chunyuan Li" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+    <meta property="og:description" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+    <link rel="canonical" href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" />
+    <meta property="og:url" content="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" />
+    <meta property="og:site_name" content="LLaVA-NeXT" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-05-25T12:33:38-06:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "author": {
+                "@type": "Person",
+                "name": "Bo Li, Hao Zhang, Kaichen Zhang, Dong Guo, Yuanhan Zhang, Feng Li, Renrui Zhang, Ziwei Liu, Chunyuan Li"
+            },
+            "dateModified": "2024-05-25T12:33:38-06:00",
+            "datePublished": "2024-05-25T12:33:38-06:00",
+            "description": "LLaVA team presents LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?",
+            "headline": "LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+            },
+            "url": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+        }
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/blog/2024-05-25-llava-next-ablations/style.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
+    <link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="wrapper">
+            <a class="site-title" rel="author" href="/blog/">LLaVA</a>
+            <nav class="site-nav">
+                <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+                <label for="nav-trigger">
+						<span class="menu-icon">
+							<svg viewBox="0 0 18 15" width="18px" height="15px">
+								<path
+									d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"
+								/>
+							</svg>
+						</span>
+					</label>
+
+                <div class="trigger"></div>
+            </nav>
+        </div>
+    </header>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+                <header class="post-header">
+                    <h1 class="post-title p-name" itemprop="name headline">
+                        LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?
+                    </h1>
+                    <p class="post-meta">
+                        <time class="dt-published" datetime="2024-05-25T12:00:00-06:00" itemprop="datePublished">May 25, 2024</time
+							>
+							•
+							<span itemprop="author" itemscope itemtype="http://schema.org/Person"
+								><span class="p-author h-card" itemprop="name"
+									>Bo Li*, Hao Zhang*, Kaichen Zhang, Dong Guo, Yuanhan Zhang, Feng Li, Renrui Zhang, Ziwei Liu,
+									Chunyuan Li</span
+								></span
+							>
+						</p>
+					</header>
+
+					<div class="post-content e-content" itemprop="articleBody">
+						<!-- for mathjax support -->
+
+						<script type="text/x-mathjax-config">
+							MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, TeX: { equationNumbers: { autoNumber: "AMS" } } });
+						</script>
+
+						<script
+							type="text/javascript"
+							async=""
+							src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+						></script>
+
+                        <div class="table-of-contents">
+                            <h2>Table of Contents</h2>
+                            <ul>
+                                <li><a href="#section-1-insights-on-architectures">Section 1 - Insights on Architectures</a></li>
+                                <!-- <li><a href="#section-1-1-language-models">Section 1.1 - Language Models</a></li>
+                                <li><a href="#vision-encoders">Section 1.2 - Vision Encoders</a></li> -->
+                                <li><a href="#section-3-insights-on-training-strategies">Section 3 - Insights on Training Strategies</a></li>
+                                <!-- <li><a href="#stage-1-language-image-alignment">Section 3.1 - Language-Image Alignment</a></li>
+                                <li><a href="#stage-1-5-high-quality-knowledge-learning">Section 3.2 - High-Quality Knowledge Learning</a></li> -->
+                                <li><a href="#benchmark-card">Section 4 - Benchmark Card</a></li>
+                                <!-- <li><a href="#section-4-1-image-detailed-caption-task">Section 4.1 - Image Detailed Caption Task</a></li>
+                                <li><a href="#section-4-2-video-detailed-caption-task">Section 4.2 - Video Detailed Caption Task</a></li> -->
+                                <li><a href="#team">Team</a></li>
+                                <li><a href="#acknowledgement">Acknowledgement</a></li>
+                                <li><a href="#citation">Citation</a></li>
+                            </ul>
+                        </div>
+
+						<p>
+							Visual instruction tuning plays a crucial role in the advancement of large multimodal models (LMM), which
+							aim to follow human intentions to complete diverse computer vision tasks in the wild. In this line of
+							research, studies have consistently demonstrated the effectiveness of a data-centric approach in achieving
+							success, highlighting the importance of high-quality instruction data, as demonstrated by the progression
+							of the LLaVA family, including LLaVA-1.0, LLaVA-1.5, and LLaVA-NeXT, the latest iteration released in Jan.
+							& May. In particular, the largest LLaVA-NeXT-110B model shows near GPT4-V performance on selected
+							benchmarks, achieved through a cost-effective training recipe. Nonetheless, fewer studies have been
+							reported to elucidating the impact of additional factors within the recipe. It raises the question: what
+							else influences visual instruction tuning beyond the instruct data itself?
+						</p>
+						<p>
+							In this blog post, we present a comprehensive ablation study aimed at addressing these overlooked aspects
+							and augmenting prior insights:
+						</p>
+						<ol>
+							<li>
+								<strong>Architectures:</strong> The LLaVA architecture consists of a pre-trained LLM and a pre-trained
+								vision encoder. The model size scaling of LLM is more effective than image encoder in yielding improved
+								performance. The success of the latter is more related to its visual input configuration (resolution,
+								#token) than its model size.
+							</li>
+							<li>
+								<strong>Visual Representations:</strong> The representation of visual signals relates to both the
+								resolution in the raw pixel space and the number of tokens in the feature space. The scaling of both
+								factors leads to improved performance, especially on tasks that require visual details. To strike a
+								balance of performance and cost, we observe that the scaling of resolution is more effective than the
+								scaling of token numbers, and recommend an AnyRes strategy with pooling.
+							</li>
+							<li>
+								<strong>Training Strategies:</strong> In complementary to prior LLaVA series that focus on visual
+								instruction tuning stage only, we explore the impact of training strategies in LLaVA's earlier model
+								life cycle, by varying training data amount, quality, and trainable modules. Our findings suggest the
+								significance of incorporating a stage focused on learning from high-quality knowledge, as opposed to
+								web-scale low-quality data. Specifically, this involves training the entire model using synthetic
+								high-quality data, re-captioned by LLaVA-NeXT-34B.
+							</li>
+						</ol>
+						<blockquote style="font-size: 16px;">
+							<p>
+								Notice: There is no existing benchmark for evaluating a model's image detailed captioning ability, and
+								we consider this capability crucial for our model's development. For example, it could determine if the
+								model can serve as a proficient detailed captioner for data re-captioning tasks. To address this need,
+								we have constructed two tasks:
+							</p>
+							<ol>
+								<li>
+									Image Detailed Caption Task: We collected 100 instances for English detailed captions and 200
+									instances for Chinese detailed captions, requiring the model to generate highly detailed descriptions.
+									GPT-4V is used to assist with scoring.
+								</li>
+								<li>
+									Video Detailed Caption Task: To assess the model's temporal detailed captioning ability, we referred
+									to the VideoChatGPT evaluation and selected 499 questions. The model generates detailed descriptions,
+									which are then scored using GPT-3.5-Turbo and ground-truth comparisons.
+								</li>
+							</ol>
+							<p>
+								The datasets and evaluation process is detailed in the
+								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-118K">Benchmark Card</a> section.
+							</p>
+						</blockquote>
+						<p></p>
+
+						<h2>Opensource Release</h2>
+						<p>Re-captioned Data are available on Hugging Face Datasets.</p>
+						<ul>
+							<li>
+								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-118K">COCO-108K</a>
+							</li>
+							<li>
+								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-558K">LCS-558K</a>
+							</li>
+							<li>
+								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-3M">CC3M</a>
+							</li>
+						</ul>
+						<h2 id="section-1-insights-on-architectures">Section 1 - Insights on Architectures</h2>
+						<p>
+							The LLaVA architecture is composed of two pre-trained modules: an LLM and a vision encoder. Both modules
+							encode rich knowledge, thanks to the large volume of training data they have been exposed to and the
+							computational resources utilized throughout their model life cycles, respectively. Consequently, the
+							scaling behavior (in terms of model size and data size) of LMM may differ from that of LLMs trained from
+							scratch, when only the LMM training stage is considered, without taking into account the LLM and vision
+							encoder cost. For LMM, we have shown stronger LLM leads to better multimodal performance in the wild in
+							our previous <a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">blog</a>,
+							demonstrating the significant improvements of LLaVA-NeXT-110B. In this blog, we systematically study model
+							size scaling behavior.
+						</p>
+
+						<details>
+							<br />
+							<summary>[Fold / Unfold to see the details]</summary>
+							<div style="display: flex; justify-content: left;">
+								<div class="tg-wrap">
+									<table>
+										<thead>
+											<tr>
+												<th colspan="3">Configurations</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td colspan="2">Architecture<br /></td>
+												<td>Image Encoder: OpenAI CLIP-Large (336x336)<br />Connector: 2-Layer Relu MLP</td>
+											</tr>
+											<tr>
+												<td rowspan="4">Model Size</td>
+												<td># Total parameters</td>
+												<td>7.06B</td>
+											</tr>
+											<tr>
+												<td>Vision Encoder</td>
+												<td>303.5M (CLIP-VIT-L-336)</td>
+											</tr>
+											<tr>
+												<td>Connector</td>
+												<td>21M (2-Layer Relu MLP)</td>
+											</tr>
+											<tr>
+												<td>LLM</td>
+												<td>6.74B (Vicuna)</td>
+											</tr>
+											<tr>
+												<td colspan="2">Visual Representations</td>
+												<td>Dynamic: 336 x {2×2,1×{2,3,4},{2,3,4}×1}</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Stage-1</td>
+												<td>Training Data</td>
+												<td>558K</td>
+											</tr>
+											<tr>
+												<td>Trainable Module</td>
+												<td>Connector</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Stage-2</td>
+												<td>Training Data</td>
+												<td>790K</td>
+											</tr>
+											<tr>
+												<td>Trainable Module</td>
+												<td>Full model</td>
+											</tr>
+											<tr>
+												<td colspan="2">Training Data (# samples)</td>
+												<td>1348K = 558K+790K</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Training Schedule</td>
+												<td>Learning rate</td>
+												<td>LLM: 2e-5 / Vision: 2e-6</td>
+											</tr>
+											<tr>
+												<td>Batch Size</td>
+												<td>128</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</details>
+						<br />
+
+						<h3>Section 1.1 - Language Models</h3>
+						<p>We report several interesting observations and useful tips for LMM practitioners:</p>
+						<ol>
+							<li>
+								<strong>Larger LMs.</strong> Multimodal performance has a strong correlation with language model
+								performance, as scaling LLMs directly demonstrate free gains in multimodal performance across all
+								benchmarks. This suggests that development of stronger language model capabilities accumulates richer
+								language knowledge, easily improves the model's multimodal capabilities probably due to cross-modality
+								generalization. It can potentially reduce the need for extensive additional training specific to
+								multimodal tasks, whose high-quality data might be more difficult data to obtain.
+							</li>
+							<li>
+								<strong>Lower training loss.</strong> Larger LMs converge faster and reach to lower loss values more
+								easily. This is likely because larger models have a greater capacity to learn more complex patterns and
+								store richer language knowledge, leading to faster convergence and better generalization, respectively.
+								Typically, we observe that training curves can be used to monitor the learning process: lower loss
+								values indicate improved performance across a range of tasks.
+							</li>
+							<li>
+								<strong>Learning rate adjustments.</strong> Larger LMs require a smaller learning rate to avoid issues
+								of unstable training dynamics. We observed that the spikes in training curves often indicate worse
+								performance even when the loss values converge to the same. Lowering the learning rate can alleviate the
+								issue. We experimented with a range of learning rate combinations for LLMs and the vision encoder in the
+								format of (LLM, Vision) , including (2e-5, 2e-6), (2e-5, 1e-6), (1e-5, 2e-6), (1e-5, 1e-6), (5e-6,
+								1e-6), and (5e-6, 5e-7). We found that the vision encoder's learning rate should always be 10x or 5x
+								smaller than the LM decoder's learning rate to stabilize training. Although we didn't observe
+								significant differences in loss values when tweaking the LLM's learning rate from 2e-5 to 5e-7, the
+								final performance on evaluation benchmarks varied significantly.
+							</li>
+						</ol>
+						<figure>
+							<img src="/blog/assets/images/llava-next-ablations/model_performance.gif" alt="Description of GIF" />
+							<!-- <figcaption style="text-align: center;">Caption describing the GIF</figcaption> -->
+						</figure>
+						<div style="display: flex; justify-content: center;">
+							<div class="tg-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th rowspan="2">LLM Decoder</th>
+											<th rowspan="2">Batch Size</th>
+											<th colspan="2">Learning Rate</th>
+											<th>Avg.</th>
+											<th>AI2D</th>
+											<th>ChartQA</th>
+											<th>DocVQA</th>
+											<th>MathVista<br /></th>
+											<th>*MME Acc.</th>
+											<th>MMMU<br /></th>
+											<th>LLaVA-W</th>
+											<th>ScienceQA</th>
+											<th>Image-DC</th>
+										</tr>
+										<tr>
+											<th>LLM</th>
+											<th>Vision</th>
+											<th>-</th>
+											<th>test</th>
+											<th>test</th>
+											<th>val</th>
+											<th>testmini</th>
+											<th>-</th>
+											<th>dev</th>
+											<th>-</th>
+											<th>IMG</th>
+											<th>EN-100</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Qwen-1.5 0.5B</td>
+											<td rowspan="8">128</td>
+											<td rowspan="5">2e-5</td>
+											<td rowspan="8">2e-6</td>
+											<td>52.8</td>
+											<td>49.4</td>
+											<td>54.8</td>
+											<td>63.4</td>
+											<td>28.1</td>
+											<td>57.0</td>
+											<td>29.4</td>
+											<td>61.7</td>
+											<td>60.0</td>
+											<td>71.6</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 1.8B</td>
+											<td>57.6</td>
+											<td>59.5</td>
+											<td>58.2</td>
+											<td>67.6</td>
+											<td>29.3</td>
+											<td>55.8</td>
+											<td>32.8</td>
+											<td>69.7</td>
+											<td>66.0</td>
+											<td>79.7</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 4B</td>
+											<td>63.7</td>
+											<td>68.6</td>
+											<td>65.2</td>
+											<td>73.8</td>
+											<td>34.5</td>
+											<td>63.6</td>
+											<td>36.4</td>
+											<td>76.1</td>
+											<td>70.8</td>
+											<td>83.9</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 7B</td>
+											<td>65.2</td>
+											<td>73.5</td>
+											<td>68.5</td>
+											<td>75.7</td>
+											<td>32.1</td>
+											<td>65.1</td>
+											<td>37.4</td>
+											<td>76.4</td>
+											<td>72.5</td>
+											<td>85.2</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 14B</td>
+											<td>70.7</td>
+											<td>75.8</td>
+											<td>71.5</td>
+											<td>80.8</td>
+											<td>41.2</td>
+											<td>69.9</td>
+											<td>43.3</td>
+											<td>86.6</td>
+											<td>77.5</td>
+											<td>89.5</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 32B</td>
+											<td rowspan="3">1e-5</td>
+											<td>72.7</td>
+											<td>76.3</td>
+											<td>74.0</td>
+											<td>79.8</td>
+											<td>42.6</td>
+											<td>69.8</td>
+											<td>48.9</td>
+											<td>90.8</td>
+											<td>81.5</td>
+											<td>91.0</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 72B</td>
+											<td>74.0</td>
+											<td>77.4</td>
+											<td>77.0</td>
+											<td>84.4</td>
+											<td>46.6</td>
+											<td>77.1</td>
+											<td>46.4</td>
+											<td>89.2</td>
+											<td>83.9</td>
+											<td>94.3</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 110B</td>
+											<td>76.0</td>
+											<td>80.4</td>
+											<td>79.7</td>
+											<td>85.7</td>
+											<td>49.0</td>
+											<td>78.6</td>
+											<td>49.1</td>
+											<td>90.4</td>
+											<td>83.2</td>
+											<td>95.5</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<blockquote style="font-size: 16px;">
+							<p>
+								*Throughout our blog's presentation, we convert MME's score to accuracy by summing up the perception and
+								cognition scores and dividing 2800.
+							</p>
+						</blockquote>
+
+						<details>
+							<summary style="font-style: italic; font-size: 16px;"
+								>[Fold / Unfold to see the impact of batch size across different LLM size]</summary
+							>
+							<br />
+							<div class="tg-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th rowspan="2">LLM Decoder</th>
+											<th rowspan="2">Batch Size</th>
+											<th colspan="2">Learning Rate</th>
+											<th>Avg.</th>
+											<th>AI2D</th>
+											<th>ChartQA</th>
+											<th>DocVQA</th>
+											<th>MathVista<br /></th>
+											<th>*MME Acc.</th>
+											<th>MMMU<br /></th>
+											<th>LLaVA-W</th>
+											<th>ScienceQA</th>
+											<th>Image-DC</th>
+										</tr>
+										<tr>
+											<th>LLM</th>
+											<th>Vision</th>
+											<th>-</th>
+											<th>test</th>
+											<th>test</th>
+											<th>val</th>
+											<th>testmini</th>
+											<th>-</th>
+											<th>dev</th>
+											<th>-</th>
+											<th>-</th>
+											<th>EN-100</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td rowspan="2">Qwen-1.5 0.5B</td>
+											<td>64</td>
+											<td rowspan="10">2e-5</td>
+											<td rowspan="10">2e-6</td>
+											<td>54.1</td>
+											<td>49.3</td>
+											<td>55.0</td>
+											<td>63.2</td>
+											<td>28.6</td>
+											<td>65.4</td>
+											<td>29.6</td>
+											<td>63.9</td>
+											<td>59.8</td>
+											<td>72.0</td>
+										</tr>
+										<tr>
+											<td>128</td>
+											<td>54.0</td>
+											<td>49.4</td>
+											<td>54.8</td>
+											<td>63.4</td>
+											<td>28.1</td>
+											<td>67.3</td>
+											<td>29.4</td>
+											<td>61.7</td>
+											<td>60.0</td>
+											<td>71.6</td>
+										</tr>
+										<tr>
+											<td rowspan="2">Qwen-1.5 1.8B</td>
+											<td>64</td>
+											<td>58.7</td>
+											<td>60.0</td>
+											<td>59.3</td>
+											<td>68.0</td>
+											<td>29.7</td>
+											<td>65.4</td>
+											<td>32.8</td>
+											<td>70.2</td>
+											<td>65.1</td>
+											<td>78.0</td>
+										</tr>
+										<tr>
+											<td>128</td>
+											<td>58.7</td>
+											<td>59.5</td>
+											<td>58.2</td>
+											<td>67.6</td>
+											<td>29.3</td>
+											<td>65.8</td>
+											<td>32.8</td>
+											<td>69.7</td>
+											<td>66.0</td>
+											<td>79.7</td>
+										</tr>
+										<tr>
+											<td rowspan="2">Qwen-1.5 4B</td>
+											<td>64</td>
+											<td>63.7</td>
+											<td>68.7</td>
+											<td>65.7</td>
+											<td>74.3</td>
+											<td>33.0</td>
+											<td>73.2</td>
+											<td>35.0</td>
+											<td>71.5</td>
+											<td>69.8</td>
+											<td>82.2</td>
+										</tr>
+										<tr>
+											<td>128</td>
+											<td>64.9</td>
+											<td>68.6</td>
+											<td>65.2</td>
+											<td>73.8</td>
+											<td>34.5</td>
+											<td>75.0</td>
+											<td>36.4</td>
+											<td>76.1</td>
+											<td>70.8</td>
+											<td>83.9</td>
+										</tr>
+										<tr>
+											<td rowspan="2">Qwen-1.5 7B</td>
+											<td>64</td>
+											<td>66.1</td>
+											<td>72.5</td>
+											<td>68.6</td>
+											<td>77.2</td>
+											<td>33.5</td>
+											<td>75.8</td>
+											<td>37.3</td>
+											<td>74.5</td>
+											<td>69.0</td>
+											<td>86.6</td>
+										</tr>
+										<tr>
+											<td>128</td>
+											<td>66.5</td>
+											<td>73.5</td>
+											<td>68.5</td>
+											<td>75.7</td>
+											<td>32.1</td>
+											<td>76.8</td>
+											<td>37.4</td>
+											<td>76.4</td>
+											<td>72.5</td>
+											<td>85.2</td>
+										</tr>
+										<tr>
+											<td rowspan="2">Qwen-1.5 14B</td>
+											<td>64</td>
+											<td>71.7</td>
+											<td>74.5</td>
+											<td>73.2</td>
+											<td>80.8</td>
+											<td>39.3</td>
+											<td>82.7</td>
+											<td>42.6</td>
+											<td>86.8</td>
+											<td>76.4</td>
+											<td>89.1</td>
+										</tr>
+										<tr>
+											<td>128</td>
+											<td>72.1</td>
+											<td>75.8</td>
+											<td>71.5</td>
+											<td>80.8</td>
+											<td>41.2</td>
+											<td>82.4</td>
+											<td>43.3</td>
+											<td>86.6</td>
+											<td>77.5</td>
+											<td>89.5</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<br />
+						</details>
+						<br />
+						<details>
+							<summary style="font-style: italic; font-size: 16px;"
+								>[Fold / Unfold to see the impact of training loss curves across different LLM size]</summary
+							>
+							<br />
+							<div style="display: flex; justify-content: center;">
+								<img src="/blog/assets/images/llava-next-ablations/sft_losses.png" alt="Training Loss Curves" />
+							</div>
+							<br />
+						</details>
+						<br />
+
+						<h3 id="vision-encoders">Section 1.2 - Vision Encoders</h3>
+						<p>
+							We consider using different vision encoders in the following experiments for further research. In the
+							table below, we highlight the differences among various vision encoders. These differences include encoder
+							model size, resolution, # visual tokens, and pretraining data. The LLM training time required when
+							integrating them into the LMM also varies significantly.
+						</p>
+						<p>We make the following observations:</p>
+						<ol>
+							<li>
+								For vision encoders in LMM, the visual representation on (resolution, #token) and pre-training data play
+								a more significant role than model size. This is because visual representations allow encoding more
+								visual details, and pretraining data allows the model to encode more visual knowledge. The model size
+								with contrast loss shows less scaling gains.
+							</li>
+							<li>
+								As a cost and performance trade-off, SO400M shows the most significant advantages. Its large pretraining
+								data (WEBLI-10B), high pretraining resolution (384 x 384), and the number of visual tokens it can
+								express are likely the reasons for its superior performance when integrated into the LMM.
+							</li>
+						</ol>
+						<div style="display: flex; justify-content: center;">
+							<table>
+								<thead>
+									<tr>
+										<th rowspan="2" style="font-size: 14px;">Vision Encoder</th>
+										<th rowspan="2" style="font-size: 14px;">Model size</th>
+										<th rowspan="2" style="font-size: 14px;">Resolution</th>
+										<th rowspan="2" style="font-size: 14px;">Visual Tokens</th>
+										<th colspan="2" style="font-size: 14px;">Pretrained Data</th>
+										<th rowspan="2" style="font-size: 14px; width: 200px;">Time Cost</th>
+										<th style="font-size: 14px;">Avg.</th>
+										<th style="font-size: 14px;">AI2D</th>
+										<th style="font-size: 14px;">ChartQA</th>
+										<th style="font-size: 14px;">DocVQA</th>
+										<th style="font-size: 14px;">MathVista</th>
+										<th style="font-size: 14px;">MME Acc.</th>
+										<th style="font-size: 14px;">MMMU</th>
+										<th style="font-size: 14px;">LLaVA-W</th>
+										<th style="font-size: 14px;">ScienceQA</th>
+										<th style="font-size: 14px;">Image-DC</th>
+									</tr>
+									<tr>
+										<th style="font-size: 14px;">Source</th>
+										<th style="font-size: 14px;">Amount</th>
+										<th style="font-size: 14px;">-</th>
+										<th style="font-size: 14px;">test</th>
+										<th style="font-size: 14px;">test</th>
+										<th style="font-size: 14px;">val</th>
+										<th style="font-size: 14px;">testmini</th>
+										<th style="font-size: 14px;">-</th>
+										<th style="font-size: 14px;">dev</th>
+										<th style="font-size: 14px;">-</th>
+										<th style="font-size: 14px;">IMG</th>
+										<th style="font-size: 14px;">EN-100</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td style="font-size: 14px;">CLIP-L</td>
+										<td style="font-size: 14px;">0.3B</td>
+										<td style="font-size: 14px;">224</td>
+										<td style="font-size: 14px;">256 * 5</td>
+										<td style="font-size: 14px;">WIT</td>
+										<td style="font-size: 14px;">0.4B</td>
+										<td style="font-size: 14px; width: 200px;">～12 hours</td>
+										<td>63.4</td>
+										<td>67.0</td>
+										<td>60.3</td>
+										<td>62.2</td>
+										<td>33.5</td>
+										<td>78.8</td>
+										<td>38.2</td>
+										<td>71.7</td>
+										<td>71.9</td>
+										<td>86.7</td>
+									</tr>
+									<tr>
+										<td style="font-size: 14px;">CLIP-L</td>
+										<td style="font-size: 14px;">0.3B</td>
+										<td style="font-size: 14px;">336</td>
+										<td style="font-size: 14px;">576 * 5</td>
+										<td style="font-size: 14px;">WIT</td>
+										<td style="font-size: 14px;">0.4B</td>
+										<td style="font-size: 14px; width: 200px;">~30 hours</td>
+										<td>65.3</td>
+										<td>67.4</td>
+										<td>65.2</td>
+										<td>74.5</td>
+										<td>35.4</td>
+										<td>77.3</td>
+										<td>36.6</td>
+										<td>72.6</td>
+										<td>71.0</td>
+										<td>87.6</td>
+									</tr>
+									<tr>
+										<td style="font-size: 14px;">EVA-02-E</td>
+										<td style="font-size: 14px;">4.7B</td>
+										<td style="font-size: 14px;">224</td>
+										<td style="font-size: 14px;">256 * 5</td>
+										<td style="font-size: 14px;">LAION</td>
+										<td style="font-size: 14px;">2B</td>
+										<td style="font-size: 14px; width: 200px;">~30 hours</td>
+										<td>61.0</td>
+										<td>66.9</td>
+										<td>42.4</td>
+										<td>65.4</td>
+										<td>33.5</td>
+										<td>77.5</td>
+										<td>33.6</td>
+										<td>73.9</td>
+										<td>69.5</td>
+										<td>85.9</td>
+									</tr>
+									<tr>
+										<td style="font-size: 14px;">EVA-CLIP-8B</td>
+										<td style="font-size: 14px;">8B</td>
+										<td style="font-size: 14px;">224</td>
+										<td style="font-size: 14px;">256 * 5</td>
+										<td style="font-size: 14px;">LAION + COYO</td>
+										<td style="font-size: 14px;">2B</td>
+										<td style="font-size: 14px; width: 200px;">～24 hours</td>
+										<td>63.3</td>
+										<td>67.8</td>
+										<td>56.0</td>
+										<td>66.3</td>
+										<td>32.1</td>
+										<td>77.1</td>
+										<td>35.0</td>
+										<td>75.9</td>
+										<td>71.5</td>
+										<td>88.0</td>
+									</tr>
+									<tr>
+										<td style="font-size: 14px;">EVA-CLIP-8B</td>
+										<td style="font-size: 14px;">8B</td>
+										<td style="font-size: 14px;">448</td>
+										<td style="font-size: 14px;">1024 * 5</td>
+										<td style="font-size: 14px;">LAION + COYO</td>
+										<td style="font-size: 14px;">2B</td>
+										<td style="font-size: 14px; width: 200px;">～75 hours</td>
+										<td>64.4</td>
+										<td>68.4</td>
+										<td>59.7</td>
+										<td>69.8</td>
+										<td>33.4</td>
+										<td>77.3</td>
+										<td>34.6</td>
+										<td>74.4</td>
+										<td>71.9</td>
+										<td>90.2</td>
+									</tr>
+									<tr>
+										<td style="font-size: 14px;">SO400M</td>
+										<td style="font-size: 14px;">0.4B</td>
+										<td style="font-size: 14px;">384</td>
+										<td style="font-size: 14px;">729 * 5</td>
+										<td style="font-size: 14px;">WebLI-10B</td>
+										<td style="font-size: 14px;">10B</td>
+										<td style="font-size: 14px; width: 200px;">~36 hours</td>
+										<td>66.4</td>
+										<td>69.4</td>
+										<td>62.7</td>
+										<td>72.5</td>
+										<td>35.1</td>
+										<td>76.5</td>
+										<td>34.8</td>
+										<td>85.8</td>
+										<td>72.4</td>
+										<td>88.8</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<h2 id="section-3-insights-on-training-strategies">Section 3 - Insights on Training Strategies</h2>
+						<p>
+							To enable LLM for multimodal capabilities, we identify three critical functionalities, and systematically
+							divide them into three distinct learning stages for the purpose of ablation studies. As with most existing
+							research, prior LLaVA models mainly explore Stage-2 for new scenarios and improved performance. However,
+							the first two functionalities are less frequently investigated and therefore constitute the primary focus
+							of this section.
+						</p>
+						<ol>
+							<li><strong>Stage-1: Language-Image Alignment.</strong></li>
+							<li><strong>Stage-1.5: High-Quality Knowledge Learning.</strong></li>
+							<li><strong>Stage-2: Visual Instruction Tuning.</strong></li>
+						</ol>
+						<figure>
+							<img
+								src="/blog/assets/images/llava-next-ablations/whiteboard_exported_image.png"
+								alt="Training Strategies"
+							/>
+						</figure>
+						<details>
+							<br />
+							<summary
+								>[We put the setting of our baseline experiment here. Please fold/unfold to see the details.]</summary
+							>
+							<div style="display: flex; justify-content: left;">
+								<div class="tg-wrap">
+									<table>
+										<thead>
+											<tr>
+												<th colspan="3">Configurations</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td colspan="2">Architecture<br /></td>
+												<td>Image Encoder: OpenAI CLIP-Large (336x336)<br />Connector: 2-Layer Relu MLP</td>
+											</tr>
+											<tr>
+												<td rowspan="4">Model Size</td>
+												<td># Total parameters</td>
+												<td>7.06B</td>
+											</tr>
+											<tr>
+												<td>Vision Encoder</td>
+												<td>303.5M (CLIP-VIT-L-336)</td>
+											</tr>
+											<tr>
+												<td>Connector</td>
+												<td>21M (2-Layer Relu MLP)</td>
+											</tr>
+											<tr>
+												<td>LLM</td>
+												<td>6.74B (Vicuna)</td>
+											</tr>
+											<tr>
+												<td colspan="2">Visual Representations</td>
+												<td>Dynamic: 336 x {2×2,1×{2,3,4},{2,3,4}×1}</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Stage-1</td>
+												<td>Training Data</td>
+												<td>558K</td>
+											</tr>
+											<tr>
+												<td>Trainable Module</td>
+												<td>Connector</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Stage-1.5</td>
+												<td>Training Data</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>Trainable Module</td>
+												<td>Full model</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Stage-2</td>
+												<td>Training Data</td>
+												<td>790K</td>
+											</tr>
+											<tr>
+												<td>Trainable Module</td>
+												<td>Full model</td>
+											</tr>
+											<tr>
+												<td colspan="2">Training Data (# samples)</td>
+												<td>1348K = 558K+790K</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Training Schedule</td>
+												<td>Learning rate</td>
+												<td>LLM: 2e-5 / Vision: 2e-6</td>
+											</tr>
+											<tr>
+												<td>Batch Size</td>
+												<td>128</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</details>
+						<br />
+						<h3 id="stage-1-language-image-alignment">Section 3.1 - Language-Image Alignment</h3>
+						<p>We considered two groups of data to align the image features into the text embedding space:</p>
+						<ol>
+							<li><strong>Public Data:</strong> BLIP558K, CC3M, and CC12M.</li>
+							<li>
+								<strong>Web Data:</strong> to avoid the limitations imposed by the quantity of existing public data, we
+								consider multimodal image-text data from the internet at similar scales. We applied quality control
+								measures to filter this data to match public data at similar scales of 0.6M, 3M and 12M. The
+								well-trained projector is used directly to run full model tuning with visual instructions, and the
+								results are reported below. With tuning the projector only, the data scaling is less effective with
+								public data, while more effective with top-quality data mixture, followed by the randomly selected data
+								mixture from the same web dataset.
+							</li>
+						</ol>
+						<div style="display: flex; justify-content: center;">
+							<div class="tg-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th rowspan="2">Stage-1 Data</th>
+											<th rowspan="2">Quality Measure</th>
+											<th>Avg.</th>
+											<th>AI2D</th>
+											<th>ChartQA</th>
+											<th>DocVQA</th>
+											<th>MathVista</th>
+											<th>MME Acc.</th>
+											<th>MMMU</th>
+											<th>LLaVA-W</th>
+											<th>ScienceQA</th>
+											<th>Image-DC</th>
+										</tr>
+										<tr>
+											<th>-</th>
+											<th>test</th>
+											<th>test</th>
+											<th>val</th>
+											<th>testmini</th>
+											<th>-</th>
+											<th>dev</th>
+											<th>-</th>
+											<th>IMG</th>
+											<th>EN</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>558K</td>
+											<td>N/A</td>
+											<td>64.0</td>
+											<td>67.4</td>
+											<td>65.2</td>
+											<td>74.5</td>
+											<td>35.4</td>
+											<td>65.54</td>
+											<td>36.6</td>
+											<td>72.6</td>
+											<td>71.0</td>
+											<td>87.6</td>
+										</tr>
+										<tr>
+											<td>CC3M</td>
+											<td>N/A</td>
+											<td>63.6</td>
+											<td>66.0</td>
+											<td>62.4</td>
+											<td>73.7</td>
+											<td>35.4</td>
+											<td>66.60</td>
+											<td>34.3</td>
+											<td>79.9</td>
+											<td>69.5</td>
+											<td>84.3</td>
+										</tr>
+										<tr>
+											<td>CC12M</td>
+											<td>N/A</td>
+											<td>62.9</td>
+											<td>66.8</td>
+											<td>58.9</td>
+											<td>72.5</td>
+											<td>34.7</td>
+											<td>64.14</td>
+											<td>35.0</td>
+											<td>79.6</td>
+											<td>69.7</td>
+											<td>85.1</td>
+										</tr>
+										<tr>
+											<td colspan="12" style="text-align: center; font-style: italic;">Web Pretraining Dataset*</td>
+										</tr>
+										<tr>
+											<td rowspan="2">Web 0.6M</td>
+											<td>Top Quality</td>
+											<td>64.5</td>
+											<td>67.8</td>
+											<td>64.8</td>
+											<td>74.2</td>
+											<td>35.2</td>
+											<td>66.61</td>
+											<td>34.7</td>
+											<td>80.1</td>
+											<td>71.4</td>
+											<td>85.4</td>
+										</tr>
+										<tr>
+											<td>Random</td>
+											<td>63.9</td>
+											<td>68.0</td>
+											<td>64.4</td>
+											<td>73.7</td>
+											<td>34.4</td>
+											<td>65.83</td>
+											<td>34.0</td>
+											<td>80.6</td>
+											<td>70.8</td>
+											<td>83.7</td>
+										</tr>
+										<tr>
+											<td rowspan="2">Web 3M</td>
+											<td>Top Quality</td>
+											<td>64.5</td>
+											<td>67.8</td>
+											<td>62.9</td>
+											<td>73.8</td>
+											<td>34.1</td>
+											<td>67.05</td>
+											<td>33.4</td>
+											<td>86.4</td>
+											<td>70.3</td>
+											<td>84.5</td>
+										</tr>
+										<tr>
+											<td>Random</td>
+											<td>63.9</td>
+											<td>68.2</td>
+											<td>62.8</td>
+											<td>73.2</td>
+											<td>33.4</td>
+											<td>66.00</td>
+											<td>33.8</td>
+											<td>83.0</td>
+											<td>70.1</td>
+											<td>84.3</td>
+										</tr>
+										<tr>
+											<td rowspan="2">Web 15M</td>
+											<td>Top Quality</td>
+											<td>65.4</td>
+											<td>68.6</td>
+											<td>64.5</td>
+											<td>74.9</td>
+											<td>35.8</td>
+											<td>69.34</td>
+											<td>34.4</td>
+											<td>85.2</td>
+											<td>71.0</td>
+											<td>85.1</td>
+										</tr>
+										<tr>
+											<td>Random</td>
+											<td>64.4</td>
+											<td>68.2</td>
+											<td>62.4</td>
+											<td>73.4</td>
+											<td>34.1</td>
+											<td>66.87</td>
+											<td>34.1</td>
+											<td>85.6</td>
+											<td>70.9</td>
+											<td>83.8</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<h2 id="stage-1-5-high-quality-knowledge-learning">Section 3.2 - High-Quality Knowledge Learning</h2>
+						<p>
+							In the realm of multimodal training from LLM, the axiom "quality over quantity" holds especially true.
+							This principle is paramount due to the extensive knowledge stored within pre-trained LLM and ViT. While it
+							is essential to accumulate balanced, diverse, and high-quality instruction data at the end of the LLM's
+							training lifecycle, an often-overlooked aspect is the continuous exposure of the model to new,
+							high-quality data for further knowledge acquisition, when it is available. This process, which we term
+							Stage-1.5, focuses on high-quality knowledge learning. The training configuration mirrors the settings
+							used in Stage-2, ensuring consistency and allowing the model to integrate new information seamlessly. This
+							approach acknowledges that the pre-trained LLMs and ViTs already possess a substantial knowledge base, and
+							the goal is to refine and enhance this knowledge with carefully curated data. By prioritizing the quality
+							of data, we can maximize compute efficiency.
+						</p>
+						<p>To illustrate high-quality knowledge, we consider data from three major categories:</p>
+						<ol>
+							<li>
+								<strong>Recaped Detailed Description Data:</strong> LLaVA-NeXT-34B is known for its strong detailed caption ability among
+								open-source LMMs. We used the model to generate new captions for the following images: COCO118K,
+								BLIP558K, and CC3M.
+							</li>
+							<li>
+								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the Ureader dataset, totaling 100K, which
+								is easily accessible through PDF rendering. We used this text reading data along with the SynthDOG EN/CN
+								1M datasets.
+							</li>
+							<li>
+								<strong>ShareGPT4V Chinese Caption:</strong> We include ShareGPT4V Chinese Caption data to improve the model's ability in
+								Chinese.
+							</li>
+						</ol>
+
+                        <figure style="width: 80%; text-align: center; margin: 0 auto;">
+                            <img src="/blog/assets/images/llava-next-ablations/mid_stage_plot.png" alt="ablations-table-1">
+                        </figure>
+                        <p>
+                            The table below shows the results of the ablation study:
+                        </p>
+						<div style="display: flex; justify-content: center;">
+							<div class="tg-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th colspan="3">Training Data</th>
+											<th>Avg.</th>
+											<th>AI2D</th>
+											<th>ChartQA</th>
+											<th>DocVQA</th>
+											<th>InfoVQA</th>
+											<th>MathVista</th>
+											<th>MME Acc.</th>
+											<th>LLaVA-W</th>
+											<th>ScienceQA</th>
+											<th>Image-DC*</th>
+										</tr>
+
+										<tr>
+											<td>Stage-1</td>
+											<td>Stage 1.5</td>
+											<td>Stage 2</td>
+											<td>-</td>
+											<td>test</td>
+											<td>test</td>
+											<td>val</td>
+											<td>val</td>
+											<td>testmini</td>
+											<td>-</td>
+											<td>-</td>
+											<td>IMG</td>
+											<td>EN-100</td>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td>558K</td>
+											<td>-</td>
+											<td>790K</td>
+											<td>63.7</td>
+											<td>67.4</td>
+											<td>65.2</td>
+											<td>74.5</td>
+											<td>34.5</td>
+											<td>35.4</td>
+											<td>65.5</td>
+											<td>72.6</td>
+											<td>70.8</td>
+											<td>87.5</td>
+										</tr>
+										<tr>
+											<td colspan="13" style="text-align: center; font-style: italic;">
+												High-Quality Knowledge: Detailed Re-Captioning
+											</td>
+										</tr>
+										<tr>
+											<td>118K (Recap)</td>
+											<td>-</td>
+											<td rowspan="9">790K</td>
+											<td>64.7</td>
+											<td>66.9</td>
+											<td>65.2</td>
+											<td>75.3</td>
+											<td>36.7</td>
+											<td>35.6</td>
+											<td>65.1</td>
+											<td>79.8</td>
+											<td>69.7</td>
+											<td>88.2</td>
+										</tr>
+										<tr>
+											<td>558K (Recap)</td>
+											<td>-</td>
+											<td>64.5</td>
+											<td>66.7</td>
+											<td>66.0</td>
+											<td>74.6</td>
+											<td>36.2</td>
+											<td>34.4</td>
+											<td>64.9</td>
+											<td>79.4</td>
+											<td>72.3</td>
+											<td>86.3</td>
+										</tr>
+										<tr>
+											<td>CC3M (Recap)</td>
+											<td>-</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>118K (Recap)</td>
+											<td>65.1</td>
+											<td>66.9</td>
+											<td>66.6</td>
+											<td>75.5</td>
+											<td>36.6</td>
+											<td>36.1</td>
+											<td>65.7</td>
+											<td>79.7</td>
+											<td>71.0</td>
+											<td>87.6</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>558K (Recap)</td>
+											<td>66.0</td>
+											<td>70.1</td>
+											<td>67.8</td>
+											<td>76.9</td>
+											<td>39.4</td>
+											<td>36.2</td>
+											<td>65.1</td>
+											<td>79.4</td>
+											<td>71.5</td>
+											<td>88.2</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>CC3M (Recap)</td>
+											<td>67.1</td>
+											<td>72.7</td>
+											<td>68.3</td>
+											<td>77.7</td>
+											<td>38.1</td>
+											<td>38.6</td>
+											<td>65.7</td>
+											<td>80.1</td>
+											<td>72.0</td>
+											<td>90.4</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>118K</td>
+											<td>63.8</td>
+											<td>66.1</td>
+											<td>65.7</td>
+											<td>73.7</td>
+											<td>35.1</td>
+											<td>35.5</td>
+											<td>65.8</td>
+											<td>75.9</td>
+											<td>70.1</td>
+											<td>86.2</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>558K</td>
+											<td>64.8</td>
+											<td>67.3</td>
+											<td>66.1</td>
+											<td>75.4</td>
+											<td>36.8</td>
+											<td>35.8</td>
+											<td>66.6</td>
+											<td>77.6</td>
+											<td>70.9</td>
+											<td>86.6</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>CC3M</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td colspan="13" style="text-align: center; font-style: italic;">
+												High-Quality Knowledge: New Domain Knowledge
+											</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>UReader 100K</td>
+											<td rowspan="3">790K</td>
+											<td>63.9</td>
+											<td>66.2</td>
+											<td>67.2</td>
+											<td>77.6</td>
+											<td>36.9</td>
+											<td>34.2</td>
+											<td>63.9</td>
+											<td>70.7</td>
+											<td>71.9</td>
+											<td>86.1</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>ShareGPT4V ZH-Caption 100K</td>
+											<td>65.1</td>
+											<td>68.7</td>
+											<td>67.1</td>
+											<td>75.1</td>
+											<td>36.9</td>
+											<td>36.3</td>
+											<td>64.4</td>
+											<td>78.1</td>
+											<td>72.2</td>
+											<td>87.4</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>SynthDOG EN+ZH 1M</td>
+											<td>63.0</td>
+											<td>66.4</td>
+											<td>62.0</td>
+											<td>72.9</td>
+											<td>36.7</td>
+											<td>31.6</td>
+											<td>65.8</td>
+											<td>76.9</td>
+											<td>72.5</td>
+											<td>82.3</td>
+										</tr>
+										<tr>
+											<td colspan="13" style="text-align: center; font-style: italic;">Mixed Data</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>Recap-118K + UReader-100K</td>
+											<td rowspan="2">790K</td>
+											<td>65.5</td>
+											<td>66.9</td>
+											<td>68.1</td>
+											<td>79.2</td>
+											<td>37.8</td>
+											<td>36.0</td>
+											<td>64.2</td>
+											<td>77.4</td>
+											<td>71.0</td>
+											<td>88.5</td>
+										</tr>
+										<tr>
+											<td>558K</td>
+											<td>Recap-118K + UReader-100K + Evol-Instruct-173K</td>
+											<td>65.9</td>
+											<td>66.2</td>
+											<td>67.7</td>
+											<td>78.5</td>
+											<td>38.1</td>
+											<td>36.2</td>
+											<td>66.1</td>
+											<td>81.4</td>
+											<td>71.3</td>
+											<td>88.1</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+                        <p>
+                            The table above presents the results of Chinese-related tasks, including detailed captions, CMMMU, and OCRBench (with some subsets related to Chinese evaluation).
+                        </p>
+
+						<div style="display: flex; justify-content: center;">
+							<div class="tg-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th colspan="3">Training Data</th>
+											<th>Image-DC*<br /></th>
+											<th>OCRBench</th>
+											<th>CMMU</th>
+										</tr>
+										<tr>
+											<td>Stage-1</td>
+											<td>Stage 1.5</td>
+											<td>Stage 2</td>
+											<td>CN-200</td>
+											<td>all</td>
+											<td>dev</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>BLIP558K</td>
+											<td>-</td>
+											<td>Mix 790K</td>
+											<td>65.6</td>
+											<td>54.8</td>
+											<td>24.0</td>
+										</tr>
+										<tr>
+											<td>BLIP558K</td>
+											<td>SynthDOG EN+ZH 1M</td>
+											<td>Mix 790K</td>
+											<td>55.3</td>
+											<td>42.6</td>
+											<td>21.3</td>
+										</tr>
+										<tr>
+											<td>BLIP558K</td>
+											<td>UReader 100K</td>
+											<td>Mix 790K</td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>BLIP558K</td>
+											<td>ShareGPT4V ZH-Caption 100K</td>
+											<td>Mix 790K</td>
+											<td>80.4</td>
+											<td>56.0</td>
+											<td>25.6</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<h3>Section 3.3 - Conclusion</h3>
+						<ol>
+							<li>
+								<strong>Enhanced Performance with Recaptioned Data:</strong> Models trained with recaptioned data
+								(Recap) datasets, show a trend of enhanced performance in tasks requiring detailed image descriptions
+								and document understanding.
+								<ul>
+									<li>
+										The regenerated captions, ranging from 118K to 3M, demonstrate better scaling behaviors than the
+										original captions, consistently improve model performance across various metrics.
+									</li>
+									<li>
+										With recap data, full-model training is more effective than projector tuning, because larger model
+										capacity is needed to digest high-quality knowledge. This approach results in notable improvements
+										in metrics like AI2D, DocVQA, ChartQA, InfoVQA, and ScienceQA.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<strong>Enhancement through New Domain Knowledge:</strong> The introduction of new domain knowledge is
+								essential.
+								<ul>
+									<li>
+										Document/OCR data, particularly UReader100K and SynthDOG EN/CN 1M, provide substantial benefits in
+										understanding structured text data.
+									</li>
+									<li>
+										ShareGPT4V Chinese Caption data, enhances the model's ability to understand and process multilingual
+										data. This improvement is evident in the increased scores across several metrics, especially in the
+										Chinese version of Image-DC and CMMU, demonstrating the model's enhanced multilingual capabilities.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<strong>Balanced Improvement with Mixed Data Approach:</strong> Combining high-quality recaptioned data,
+								document data, and text data (e.g., Recap-118K, UReader100K, and Evol-Instruct) leads to a well-rounded
+								model capable of performing well across diverse tasks. Despite the total amount being under 500K, this
+								efficient mixed data approach results in balanced improvements across most metrics. This suggests that a
+								comprehensive and diverse knowledge base is crucial for the effectiveness of multimodal models.
+							</li>
+						</ol>
+						<h2 id="benchmark-card">Section 4 - Benchmark Card</h2>
+						<p>
+							In this section, we will provide detailed information and the evaluation process for the two newly added
+							tasks.
+						</p>
+						<h3>Section 4.1 - Image Detailed Caption Task</h3>
+						<p>
+							In this task, the images are from self-collected, natural and daily-life sources. And we divide our
+							evaluations into two subsets (1) English with 100 instances. (2) Chinese with 200 instances.
+						</p>
+						<p>Here are a few examples of this task.</p>
+                        <figure style="text-align: center;">
+						    <img src="/blog/assets/images/llava-next-ablations/idc100_example.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
+						    <img src="/blog/assets/images/llava-next-ablations/idc100_example02.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
+                        </figure>
+						<details>
+							<summary>[Please Fold / Unfold to check more examples]</summary>
+                            <figure style="text-align: center;">
+                                <img src="/blog/assets/images/llava-next-ablations/idc_ch200_example01.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
+                                <img src="/blog/assets/images/llava-next-ablations/idc_ch200_example02.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
+                            </figure>
+						</details>
+                        <br>
+						<p>
+							While we are uncertain if this evaluation data will be publicly released, we demonstrate some examples and
+							ensure that it is out-of-domain from all our training data and will be used solely as an internal
+							development metric. Please do not refer to this as formal metric for comparison with other models.
+						</p>
+						<h3>Section 4.2 - Video Detailed Caption Task</h3>
+						<p>
+							This dataset comprises 499 videos sourced from ActivityNet[8], with the evaluation process inspired by
+							VideoChatGPT[9]. For each video, we prompt the model with: Please provide a detailed description of the
+							video, focusing on the main subjects, their actions, and the background scenes. Ground-truth answers are
+							extracted from the human-generated detailed descriptions of the videos. The model's responses are
+							evaluated using a custom-designed prompt, which rates the model responses using gpt-3.5-turbo-0613.
+						</p>
+						<p>Here are a few examples of this task.</p>
+                        <figure style="text-align: center;">
+							<img src="/blog/assets/images/llava-next-ablations/vdd_example01.png" alt="Video Example" style = "width: 70%; margin: 0 auto;"/>
+						</figure>
+						<p>
+							More examples could be visited at
+							<a href="https://huggingface.co/datasets/lmms-lab/VideoDetailCaption">VideoDetailedCaptions</a>. Their
+							evaluation process could be visited at lmms-eval. Please search for the vdc_en in our task folder.
+						</p>
+
+						<h2>Reference</h2>
+						<ol>
+							<li>
+								Hoffmann, Jordan, et al. "Training compute-optimal large language models." arXiv preprint
+								arXiv:2203.15556 (2022).
+							</li>
+							<li>
+								Rae, Jack W., et al. "Scaling language models: Methods, analysis & insights from training gopher." arXiv
+								preprint arXiv:2112.11446 (2021).
+							</li>
+							<li>Achiam, Josh, et al. "GPT-4 technical report." arXiv preprint arXiv:2303.08774 (2023).</li>
+							<li>
+								Gemini Team, et al. "Gemini: a family of highly capable multimodal models." arXiv preprint
+								arXiv:2312.11805 (2023).
+							</li>
+							<li>
+								Anthorpic, et al. "Introducing the next generation of Claude."
+								https://www.anthropic.com/news/claude-3-family
+							</li>
+							<li>
+								Lu, Haoyu, et al. "DeepSeek-VL: towards real-world vision-language understanding." arXiv preprint
+								arXiv:2403.05525 (2024).
+							</li>
+							<li>
+								Chen, Zhe, et al. "How far are we to gpt-4v? closing the gap to commercial multimodal models with
+								open-source suites." arXiv preprint arXiv:2404.16821 (2024).
+							</li>
+							<li>
+								Caba Heilbron, Fabian, et al. "Activitynet: A large-scale video benchmark for human activity
+								understanding." Proceedings of the ieee conference on computer vision and pattern recognition. 2015.
+							</li>
+							<li>
+								Maaz, Muhammad, et al. "Video-chatgpt: Towards detailed video understanding via large vision and
+								language models." arXiv preprint arXiv:2306.05424 (2023).
+							</li>
+						</ol>
+
+						<h2 id="team">Team</h2>
+
+						<ul>
+							<li>
+								<a href="https://brianboli.com/">Bo Li*</a>: Nanyang Technological University<img
+									width="16"
+									src="/blog/assets/images/logos/ntu.png"
+								/>
+								( <em>Work collaborated with ByteDance/TikTok</em>)
+							</li>
+							<li>
+								<a href="https://haozhang534.github.io/">Hao Zhang*</a>: Hong Kong University of Science and
+								Technology<img width="16" src="/blog/assets/images/logos/hkust.jpg" /> (<em
+									>Work collaborated with ByteDance/TikTok</em
+								>)
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/in/kaichen-zhang-014b17219/?originalSubdomain=sg">Kaichen Zhang</a>:
+								Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em
+									>Work collaborated with ByteDance/TikTok</em
+								>)
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/in/dongguoset">Dong Guo</a>: ByteDance/Tiktok<img
+									width="16"
+									src="/blog/assets/images/logos/tiktok.png"
+								/>
+							</li>
+							<li>
+								<a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a>: Nanyang Technological University<img
+									width="16"
+									src="/blog/assets/images/logos/ntu.png"
+								/>
+								( <em>Work collaborated with ByteDance/TikTok</em>)
+							</li>
+							<li>
+								<a href="https://zrrskywalker.github.io/">Renrui Zhang</a>: The Chinese University of Hong Kong<img
+									width="16"
+									src="/blog/assets/images/logos/cuhk.jpg"
+								/>
+								(<em>Work collaborated with ByteDance/TikTok</em>)
+							</li>
+							<li>
+								<a href="https://fengli-ust.github.io/">Feng Li</a>: Hong Kong University of Science and Technology<img
+									width="16"
+									src="/blog/assets/images/logos/hkust.jpg"
+								/>
+								( <em>Work collaborated with ByteDance/TikTok</em>)
+							</li>
+							<li>
+								<a href="https://liuziwei7.github.io/">Ziwei Liu</a>: Nanyang Technological University<img
+									width="16"
+									src="/blog/assets/images/logos/ntu.png"
+								/>
+							</li>
+							<li>
+								<a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance/Tiktok<img
+									width="16"
+									src="/blog/assets/images/logos/tiktok.png"
+								/>
+							</li>
+						</ul>
+
+						<h2 id="acknowledgement">Acknowledgement</h2>
+
+						<ul>
+							<li>
+								We thank Fanyi Pu, Shuai Liu, Kairui Hu for the continuous contribution of
+								<a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">lmms-eval</a> to accelerate our development of
+								LLaVA-NeXT.
+							</li>
+						</ul>
+
+						<h2 id="acknowledgement">Related Blogs</h2>
+
+						<ul>
+							<li>
+								<a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/"
+									>LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</a
+								>
+							</li>
+							<li>
+								<a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/"
+									>LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a
+								>
+							</li>
+							<li>
+								<a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/"
+									>Accelerating the Development of Large Multimodal Models with LMMs-Eval</a
+								>
+							</li>
+						</ul>
+
+						<h2 id="citation">Citation</h2>
+
+						<div class="language-bibtex highlighter-rouge">
+							<div class="highlight">
+								<pre class="highlight"><code>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">li2024llavanext-strong</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Li, Bo and Zhang, Kaichen and Zhang, Hao and Guo, Dong and Zhang, Renrui and Li, Feng and Zhang, Yuanhan and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{May}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+    
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2024llavanext</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Improved reasoning, OCR, and world knowledge}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-01-30-llava-next/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Li, Bo and Zhang, Yuanhan and Shen, Sheng and Lee, Yong Jae}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{January}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2023improvedllava</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">=</span><span class="s">{Improved Baselines with Visual Instruction Tuning}</span><span class="p">,</span> 
+      <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Lee, Yong Jae}</span><span class="p">,</span>
+      <span class="na">publisher</span><span class="p">=</span><span class="s">{arXiv:2310.03744}</span><span class="p">,</span>
+      <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2023llava</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">=</span><span class="s">{Visual Instruction Tuning}</span><span class="p">,</span> 
+      <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Wu, Qingyang and Lee, Yong Jae}</span><span class="p">,</span>
+      <span class="na">publisher</span><span class="p">=</span><span class="s">{NeurIPS}</span><span class="p">,</span>
+      <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+							</div>
+						</div>
+					</div>
+					<a class="u-url" href="/blog/2024-05-10-llava-next-stronger-llms/" hidden></a>
+				</article>
+			</div>
+		</main>
+		<footer class="site-footer h-card">
+			<data class="u-url" href="/blog/"></data>
+
+			<div class="wrapper">
+				<h2 class="footer-heading">LLaVA-NeXT</h2>
+
+				<div class="footer-col-wrapper">
+					<div class="footer-col footer-col-1">
+						<ul class="contact-list">
+							<li class="p-name">LLaVA-NeXT</li>
+						</ul>
+					</div>
+
+					<div class="footer-col footer-col-2">
+						<ul class="social-media-list"></ul>
+					</div>
+
+					<div class="footer-col footer-col-3">
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
