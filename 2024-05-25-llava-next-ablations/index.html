@@ -40,8 +40,7 @@
         }
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <!-- End Jekyll SEO tag -->
     <link rel="stylesheet" href="/blog/2024-05-25-llava-next-ablations/style.css" />
     <link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
@@ -91,7 +90,7 @@
 					<div class="post-content e-content" itemprop="articleBody">
 						<!-- for mathjax support -->
 
-                        <!-- <script type="text/x-mathjax-config">
+						<!-- <script type="text/x-mathjax-config">
                             MathJax.Hub.Config({
                                 tex2jax: {
                                     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -112,36 +111,42 @@
                             async=""
                             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
                         ></script> -->
-                        <style>
-                            .table-of-contents {
-                                border: 1px solid #ccc;
-                                border-radius: 15px;
-                                padding: 30px;
-                                margin-bottom: 20px;
-                                width: 30%; /* Adjust this value to your preference */
-                            }
-                            .table-of-contents ul {
-                                margin-left: 20px;
-                            }
-                        </style>
-                        <div class="table-of-contents">
-                            <h3>Table of Contents</h3>
-                            <ul>
-                                <li><a href="#section-1-insights-on-architectures">Section 1 - Insights on Architectures</a></li>
-                                <!-- <li><a href="#section-1-1-language-models">Section 1.1 - Language Models</a></li>
+						<style>
+							.table-of-contents {
+								border: 1px solid #ccc;
+								border-radius: 15px;
+								padding: 30px;
+								margin-bottom: 20px;
+								width: 30%; /* Adjust this value to your preference */
+							}
+							.table-of-contents ul {
+								margin-left: 20px;
+							}
+						</style>
+						<div class="table-of-contents">
+							<h3>Table of Contents</h3>
+							<ul>
+								<li><a href="#section-1-insights-on-architectures">Section 1 - Insights on Architectures</a></li>
+								<!-- <li><a href="#section-1-1-language-models">Section 1.1 - Language Models</a></li>
                                 <li><a href="#vision-encoders">Section 1.2 - Vision Encoders</a></li> -->
-                                <li><a href="#section-2-insights-on-visual-representations">Section 2 - Insights on Visual Representations</a></li>
-                                <li><a href="#section-3-insights-on-training-strategies">Section 3 - Insights on Training Strategies</a></li>
-                                <!-- <li><a href="#stage-1-language-image-alignment">Section 3.1 - Language-Image Alignment</a></li>
+								<li>
+									<a href="#section-2-insights-on-visual-representations"
+										>Section 2 - Insights on Visual Representations</a
+									>
+								</li>
+								<li>
+									<a href="#section-3-insights-on-training-strategies">Section 3 - Insights on Training Strategies</a>
+								</li>
+								<!-- <li><a href="#stage-1-language-image-alignment">Section 3.1 - Language-Image Alignment</a></li>
                                 <li><a href="#stage-1-5-high-quality-knowledge-learning">Section 3.2 - High-Quality Knowledge Learning</a></li> -->
-                                <li><a href="#benchmark-card">Section 4 - Benchmark Card</a></li>
-                                <!-- <li><a href="#section-4-1-image-detailed-caption-task">Section 4.1 - Image Detailed Caption Task</a></li>
+								<li><a href="#benchmark-card">Benchmark Card</a></li>
+								<!-- <li><a href="#section-4-1-image-detailed-caption-task">Section 4.1 - Image Detailed Caption Task</a></li>
                                 <li><a href="#section-4-2-video-detailed-caption-task">Section 4.2 - Video Detailed Caption Task</a></li> -->
-                                <li><a href="#team">Team</a></li>
-                                <li><a href="#acknowledgement">Acknowledgement</a></li>
-                                <li><a href="#citation">Citation</a></li>
-                            </ul>
-                        </div>
+								<li><a href="#team">Team</a></li>
+								<li><a href="#acknowledgement">Acknowledgement</a></li>
+								<li><a href="#citation">Citation</a></li>
+							</ul>
+						</div>
 
 						<p>
 							Visual instruction tuning plays a crucial role in the advancement of large multimodal models (LMM), which
@@ -181,11 +186,11 @@
 								high-quality data, re-captioned by LLaVA-NeXT-34B.
 							</li>
 						</ol>
-                        <details>
-                            <summary>[Notice of Image Detailed Caption and Video Detailed Caption Task.]</summary>
+						<details>
+							<summary>[Notice of Image Detailed Caption and Video Detailed Caption Task.]</summary>
 							<p>
-								Since there is no existing benchmark for evaluating a model's image detailed captioning ability, and
-								we consider this capability crucial for our model's development. For example, it could determine if the
+								Since there is no existing benchmark for evaluating a model's image detailed captioning ability, and we
+								consider this capability crucial for our model's development. For example, it could determine if the
 								model can serve as a proficient detailed captioner for data re-captioning tasks. To address this need,
 								we have constructed two tasks:
 							</p>
@@ -202,10 +207,11 @@
 								</li>
 							</ol>
 							<p>
-								The datasets and evaluation process is detailed in the <a href="#benchmark-card">Benchmark Card</a> section.
+								The datasets and evaluation process is detailed in the
+								<a href="#benchmark-card">Benchmark Card</a> section.
 							</p>
-                        </details>
-                        <br>
+						</details>
+						<br />
 
 						<h2>Opensource Release</h2>
 						<p>Re-captioned Data are available on Hugging Face Datasets.</p>
@@ -235,7 +241,10 @@
 
 						<details>
 							<br />
-							<summary>[Fold / Unfold to See the Details of Baseline Experiment Settings with CLIP-L-336 + Vicuna-1.5 7B]</summary>
+							<summary
+								>[Fold / Unfold to See the Details of Baseline Experiment Settings with CLIP-L-336 + Vicuna-1.5
+								7B]</summary
+							>
 							<div style="display: flex; justify-content: left;">
 								<div class="tg-wrap">
 									<table>
@@ -247,7 +256,10 @@
 										<tbody>
 											<tr>
 												<td colspan="2">Architecture<br /></td>
-												<td><strong>Image Encoder:</strong> OpenAI CLIP-Large (336x336)<br /><strong>Connector:</strong> 2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B</td>
+												<td>
+													<strong>Image Encoder:</strong> OpenAI CLIP-Large (336x336)<br /><strong>Connector:</strong>
+													2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B
+												</td>
 											</tr>
 											<tr>
 												<!-- <td rowspan="1">Model Size</td> -->
@@ -491,19 +503,21 @@
 						</div>
 
 						<blockquote style="font-size: 16px; margin-top: 0;">
-                            <style>
-                                .compact-paragraph {
-                                    margin-bottom: 1px; /* Adjust this value to your liking */
-                                }
-                            </style>
-                            
-                            <p class="compact-paragraph">
-                                *Throughout our blog's presentation, we convert MME's score to accuracy by summing up the perception and
-                                cognition scores and dividing 2800.
-                            </p>
-                            <p class="compact-paragraph">
-                                **Image Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed captioning ability towards given images. The task is described in the <a href="#benchmark-card">Benchmark Card</a> section.
-                            </p>
+							<style>
+								.compact-paragraph {
+									margin-bottom: 1px; /* Adjust this value to your liking */
+								}
+							</style>
+
+							<p class="compact-paragraph">
+								*Throughout our blog's presentation, we convert MME's score to accuracy by summing up the perception and
+								cognition scores and dividing 2800.
+							</p>
+							<p class="compact-paragraph">
+								**Image Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed
+								captioning ability towards given images. The task is described in the
+								<a href="#benchmark-card">Benchmark Card</a> section.
+							</p>
 						</blockquote>
 
 						<details>
@@ -875,42 +889,47 @@
 								</tbody>
 							</table>
 						</div>
-                        <h2 id="section-2-visual-representations"> Section 2 - Visual Representations</h2>
+						<h2 id="section-2-visual-representations">Section 2 - Visual Representations</h2>
 
-                        <p>The visual representations relate to both the resolution in the raw pixel space and the number of tokens in the feature space. Scaling either of them improves performance, but also introduces computation overhead. This section aims to investigate the best (resolution, #token) configuration for a balance of performance and cost.</p>
-                        <p>The previous AnyRes technique employs a grid configuration of \(\{2×2, 1×\{2,3,4\}, \{2,3,4\}×1\}\) to adapt to images of different resolutions while preserving data efficiency. However, this grid configuration supports a maximum of 4 grids per image, limiting its capability when more grids are required, such as with document data and long videos. As shown in Fig. 1, for images with resolutions higher than the maximum supported \(768 \times 768\), the original AnyRes method resizes them to \(768 \times 768\). This resizing results in a loss of detail for high-resolution images. To address this issue, we explore grid configurations for higher resolutions, as shown in Fig. 2, where the image is divided into more grids. Additionally, to maintain efficiency, we propose an adaptive pooling strategy to prevent an excessive number of visual tokens from being fed into the LLM.</p>
+						<p>
+							The visual representations relate to both the resolution in the raw pixel space and the number of tokens
+							in the feature space. Scaling either of them improves performance, but also introduces computation
+							overhead. This section aims to investigate the best (resolution, #token) configuration for a balance of
+							performance and cost.
+						</p>
                         <figure style="width: 80%; text-align: center; margin: 0 auto;">
-                            <img src="/blog/assets/images/llava-next-ablations/anyres.png" alt="anyres_grid">
-                            <br>
-                            <figcaption style="font-size: 16px;">Figure 1. The way how original Anyres deal with high-resolution images.</figcaption>
-                        </figure>
-                        <br>
-                        <figure style="width: 80%; text-align: center; margin: 0 auto;">
-                            <img src="/blog/assets/images/llava-next-ablations/ours.png" alt="ours_grid">
-                            <br>
-                            <figcaption style="font-size: 16px;">Figure 2. The overview of our Higher-Anyres mode and interpolation.</figcaption>
-                        </figure>
-                        <br>
-                        <p><strong>Thresholded Bilinear Interpolation.</strong> For AnyRes with a grid configuration of width \(a\), height \(b\), and #token \(T\) per grid, the total number of visual tokens in  is \(L=(a\times b + 1)\times T\).  We consider a threshold \(\tau\), and  reduce the #token per grid, using bilinear interpolation if needed:</p>
-                        <p>$$
-                            T_{\text{new}} = 
-                            \begin{cases} 
-                            \tau / ({a \times b + 1}) & \text{if } L > \tau \\
-                            T & \text{if } L \leq \tau 
-                            \end{cases}$$
-                        </p>
-
-                        <p><strong>Impact on Max. # Grids in Anyres and Max. # Tokens.</strong> We study the influence of resolution and #tokens on training time, and summarize the insights below.</p>
-                        <ul>
-                            <li>We increase the maximum number of AnyRes grids from 2×2 to 6×6 to better support higher resolution, and observe that increasing #grids can enhance performance on tasks that require reading image details, such as InfoVQA and SynthDOG (en). It also leads to improved performance on Video Detail Captions with 32 frames. This is because longer vision sequences are observed during training, the capability can improve video tasks with zero-shot modality transfer, based on the insights in our video blog.</li>
-                            <li>Increasing the maximum resolution causes a slighter increase in training time compared with the cost of increasing the max #tokens. Increasing max #tokens while keeping the maximum #grid 6x6 at can significantly improve OCR capability, such as ChartQA and DocVQA.  We suggest prioritizing resolution over #token as a better trade-off in enriching visual representations.</li>
-                        </ul>
-
-                        <p><strong>Effectinveness with LLM Scaling.</strong> We further verify that the performance gains from the new visual representation persist as the LLM size scales. This is confirmed by the observation of consistent improvements across InfoVQA, ChartQA, DocVQA, VDD (32 frames), and SynthDOG.</p>
-
-						<details>
+							<img src="/blog/assets/images/llava-next-ablations/anyres.png" alt="anyres_grid" />
 							<br />
-							<summary>[Fold / Unfold to See the Details of Baseline Experiment Settings with SO400M + Qwen-1.5 0.5B]</summary>
+							<figcaption style="font-size: 16px;">
+								Figure 1. The way how original Anyres deal with high-resolution images.
+							</figcaption>
+						</figure>
+						<br />
+						<figure style="width: 80%; text-align: center; margin: 0 auto;">
+							<img src="/blog/assets/images/llava-next-ablations/highres.png" alt="ours_grid" />
+							<br />
+							<figcaption style="font-size: 16px;">
+								Figure 2. The overview of our Higher-Anyres mode and interpolation.
+							</figcaption>
+						</figure>
+                        <br>
+
+						<p>
+							The previous AnyRes technique employs a grid configuration of \(\{2×2, 1×\{2,3,4\}, \{2,3,4\}×1\}\) to
+							adapt to images of different resolutions while preserving data efficiency. However, this grid
+							configuration supports a maximum of 4 grids per image, limiting its capability when more grids are
+							required, such as with document data and long videos. As shown in Fig. 1, for images with resolutions
+							higher than the maximum supported \(768 \times 768\), the original AnyRes method resizes them to \(768
+							\times 768\). This resizing results in a loss of detail for high-resolution images. To address this issue,
+							we explore grid configurations for higher resolutions, as shown in Fig. 2, where the image is divided into
+							more grids. Additionally, to maintain efficiency, we propose an adaptive pooling strategy to prevent an
+							excessive number of visual tokens from being fed into the LLM.
+						</p>
+                        <details>
+							<br />
+							<summary
+								>[Fold / Unfold to See the Details of Baseline Experiment Settings with SO400M + Qwen-1.5 0.5B]</summary
+							>
 							<div style="display: flex; justify-content: left; text-align: left;">
 								<div class="tg-wrap">
 									<table style="text-align: left;">
@@ -922,7 +941,10 @@
 										<tbody>
 											<tr>
 												<td colspan="2">Architecture<br /></td>
-												<td><strong>Image Encoder</strong>: Google SO4000M (384x384)<br /><strong>Connector</strong>: 2-Layer Relu MLP <br /><strong>LLM</strong>: Qwen-1.5 0.5B</td>
+												<td>
+													<strong>Image Encoder</strong>: Google SO4000M (384x384)<br /><strong>Connector</strong>:
+													2-Layer Relu MLP <br /><strong>LLM</strong>: Qwen-1.5 0.5B
+												</td>
 											</tr>
 											<tr>
 												<td colspan="2"># Total parameters</td>
@@ -970,64 +992,952 @@
 						</details>
 						<br />
 
+						<p>
+							<strong>Thresholded Bilinear Interpolation.</strong> For AnyRes with a grid configuration of width \(a\),
+							height \(b\), and #token \(T\) per grid, the total number of visual tokens in is \(L=(a\times b +
+							1)\times T\). We consider a threshold \(\tau\), and reduce the #token per grid, using bilinear
+							interpolation if needed:
+						</p>
+						<p>
+							$$ T_{\text{new}} = \begin{cases} \tau / ({a \times b + 1}) & \text{if } L > \tau \\ T & \text{if } L \leq
+							\tau \end{cases}$$
+						</p>
+
+						<p>
+							<strong>Impact on Max. # Grids in Anyres and Max. # Tokens.</strong> We study the influence of resolution
+							and #tokens on training time, and summarize the insights below.
+						</p>
                         <div style="display: flex; justify-content: center;">
-                            <div class="tg-wrap"><table><thead><tr><th rowspan="2">LLM Decoder</th><th rowspan="2">Max. # Grids</th><th rowspan="2">Max. # Tokens</th><th rowspan="2">Pooling</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>Image-DC</th><th><sup>*</sup>Video-DC</th><th><sup>**</sup>SynthDOG</th><th>OK-VQA</th><th><sup>***</sup>POPE</th><th>ScienceQA</th><th>VizWiz-VQA</th><th>MMMU</th></tr><tr><th>test</th><th>test</th><th>val</th><th>val</th><th>EN</th><th>32 frames</th><th>EN/TED Score</th><th>val</th><th>test/f1-score</th><th>IMG</th><th>val</th><th>val</th></tr></thead><tbody><tr><td>Qwen-1.5 0.5B</td><td>2x2</td><td>(4+1)*729</td><td>FALSE</td><td>51.1</td><td>49.2</td><td>58.8</td><td>25.7</td><td>71.1</td><td>62.4</td><td>418.5</td><td>36.5</td><td>85.1</td><td>59.5</td><td>28.8</td><td>28.2</td></tr>
-                                <tr><td>Qwen-1.5 0.5B</td><td>6x6</td><td>(9+1)*729</td><td>TRUE</td><td>52.7</td><td>55.8</td><td>62.7</td><td>26.7</td><td>71.7</td><td>62.4</td><td>443.5</td><td>42.0</td><td>86.1</td><td>58.7</td><td>34.7</td><td>29.3</td></tr><tr><td>Qwen-1.5 1.8B</td><td>2x2</td><td>(4+1)*729</td><td>FALSE</td><td>61.9</td><td>56.2</td><td>66.0</td><td>30.5</td><td>80.1</td><td>70.2</td><td>447.1</td><td>43.6</td><td>86.9</td><td>63.7</td><td>51.0</td><td>32.0</td></tr><tr><td>Qwen-1.5 1.8B</td><td>6x6</td><td>(9+1)*729</td><td>TRUE</td><td>60.9</td><td>56.7</td><td>67.5</td><td>31.3</td><td>82.0</td><td>71.0</td><td>459.1</td><td>46.5</td><td>86.9</td><td>64.4</td><td>48.8</td><td>32.6</td></tr><tr><td>Qwen-1.5 4B</td><td>2x2</td><td>(4+1)*729</td><td>FALSE</td><td>71.5</td><td>65.0</td><td>73.8</td><td>34.8</td><td>84.2</td><td>74.5</td><td>456.7</td><td>47.5</td><td>87.1</td><td>71.1</td><td>58.7</td><td>34.4</td></tr>
-                                <tr><td>Qwen-1.5 4B</td><td>6x6</td><td>(9+1)*729</td><td>TRUE</td><td>70.2</td><td>65.0</td><td>77.2</td><td>41.1</td><td>86.3</td><td>76.4</td><td>467.7</td><td>50.6</td><td>86.3</td><td>70.1</td><td>58.0</td><td>32.0</td></tr><tr><td>Qwen-1.5 7B</td><td>2x2</td><td>(4+1)*729</td><td>FALSE</td><td>72.9</td><td>66.3</td><td>75.5</td><td>36.9</td><td>87.9</td><td>69.8</td><td>458.2</td><td>50.2</td><td>86.9</td><td>71.2</td><td>61.4</td><td>37.2</td></tr><tr><td>Qwen-1.5 7B</td><td>6x6</td><td>(9+1)*729</td><td>TRUE</td><td>71.7</td><td>69.5</td><td>79.0</td><td>36.4</td><td>86.4</td><td>71.4</td><td>467.1</td><td>47.9</td><td>87.3</td><td>70.2</td><td>57.4</td><td>37.2</td></tr><tr><td>Qwen-1.5 14B</td><td>2x2</td><td>(4+1)*729</td><td>FALSE</td><td>77.6</td><td>72.2</td><td>80.0</td><td>44.4</td><td>89.6</td><td>74.2</td><td>460.8</td><td>57.7</td><td>87.3</td><td>78.9</td><td>64.2</td><td>44.2</td></tr>
-                                <tr><td>Qwen-1.5 14B</td><td>6x6</td><td>(9+1)*729</td><td>TRUE</td><td>76.1</td><td>74.0</td><td>83.6</td><td>46.9</td><td>87.8</td><td>78.1</td><td>470.4</td><td>53.2</td><td>87.9</td><td>76.7</td><td>61.5</td><td>40.3</td></tr></tbody></table></div>
+                            <div class="tg-wrap"><table><thead><tr><th rowspan="2">Max. # Grids</th><th rowspan="2">Max. # Tokens</th><th rowspan="2">Training Time</th><th rowspan="2">Adaptive Interpolation</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>Image-DC</th><th>Video-DC</th><th>SynthDOG*</th><th>OKVQA</th><th>POPE</th><th>ScienceQA-IMG</th><th>VizWiz</th><th>MMMU</th></tr><tr><th>test</th><th>test</th><th>val</th><th>val</th><th>EN</th><th>32 frames</th><th>EN/TED Score</th><th>val</th><th>test/f1-score</th><th>img</th><th>val</th><th>val</th></tr></thead><tbody><tr><td>2x2</td><td>(4+1)*729</td><td>6h30min</td><td>FALSE</td><td>51.1</td><td>49.2</td><td>58.8</td><td>25.7</td><td>71.1</td><td>64.1</td><td>425.7</td><td>36.5</td><td>85.4</td><td>59.6</td><td>29.2</td><td>28.2</td></tr>
+                                <tr><td>4x4</td><td>(4+1)*729</td><td>7h30min</td><td rowspan="5">TRUE</td><td>52.8</td><td>49.4</td><td>58.1</td><td>26.0</td><td>69.9</td><td>63.5</td><td>433.6</td><td>36.0</td><td>85.8</td><td>57.9</td><td>31.0</td><td>28.6</td></tr><tr><td>5x5</td><td>(4+1)*729</td><td>7h50min</td><td>52.4</td><td>49.6</td><td>57.6</td><td>26.9</td><td>72.9</td><td>63.8</td><td>435.6</td><td>36.5</td><td>86.1</td><td>58.5</td><td>28.7</td><td>28.4</td></tr><tr><td>6x6</td><td>(4+1)*729</td><td>8h05min</td><td>52.7</td><td>50.1</td><td>56.7</td><td>27.1</td><td>71.0</td><td>64.2</td><td>437.2</td><td>35.9</td><td>85.9</td><td>58.4</td><td>32.2</td><td>28.3</td></tr><tr><td>6x6</td><td>(9+1)*729</td><td>11h14min</td><td>52.7</td><td>55.8</td><td>62.7</td><td>26.7</td><td>71.7</td><td>64.6</td><td>438.9</td><td>42.0</td><td>86.1</td><td>58.7</td><td>34.7</td><td>29.3</td></tr>
+                                <tr><td>6x6</td><td>(16+1)*729</td><td>13h10min</td><td>52.7</td><td>56.1</td><td>62.2</td><td>27.1</td><td>70.2</td><td>65.2</td><td>443.5</td><td>42.5</td><td>87.4</td><td>58.2</td><td>32.8</td><td>27.4</td></tr></tbody></table></div>
                         </div>
-                        <blockquote>
-                            <style>
-                                .compact-paragraph {
-                                    margin-bottom: 1px; /* Adjust this value to your liking */
-                                }
-                            </style>
-                            <p class="compact-paragraph">*Video Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed captioning ability towards given images. The task is described in the Benchmark Card section.</p>
-                            <p class="compact-paragraph">**SynthDOG is a benchmark that evaluates model's OCR ability, we report the tree edit distance score on SynthDOG's OCR task.</p>
-                            <p class="compact-paragraph">***POPE is a benchmark that evaluates model's ability on judging the existence of a given object in an image, we report the F1 score on POPE.</p>
-                        </blockquote>
-                        
-                        <br>
-                        <details>
-                            <summary>[Further Exploration in Resolution and Pooling (Fold / Unfold to see the Details)]</summary>
-                            <br />
-                            <p>
-                                <strong>Enlarging the original images.</strong> Note that in our higher AnyRes method, we do not increase the image resolution itself. Instead, we use grid configurations that support higher resolutions. We explore how increasing image resolution affects performance and training time. As shown in the following table, increasing image resolution significantly increases training time, but does not improve performance.
-                            </p>
-                            <div style="display: flex; justify-content: center;">
-                                <div class="tg-wrap"><table><thead><tr><th rowspan="2">Max. # Anyres Grids</th><th rowspan="2">Force Resolution lifting</th><th rowspan="2">Min. Long Edge</th><th rowspan="2">Max. Tokens</th><th rowspan="2">Training Time</th><th rowspan="2">Pooling</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>OKVQA</th><th>POPE</th><th>ScienceQA</th><th>VizWiz-VQA</th></tr><tr><th>test</th><th>test</th><th>val</th><th>val</th><th>val</th><th>test/f1-score</th><th>IMG</th><th>val</th></tr></thead><tbody><tr><td>4x4</td><td>FALSE</td><td>-</td><td>(4+1)*729</td><td>7h30min</td><td>TRUE</td><td>52.8</td><td>49.4</td><td>58.1</td><td>26.0</td><td>36.0</td><td>85.8</td><td>57.9</td><td>31.0</td></tr><tr><td>4x4</td><td>TRUE</td><td>384*4</td><td>(4+1)*729</td><td>10h40min</td><td>TRUE</td><td>52.5</td><td>47.9</td><td>58.9</td><td>27.0</td><td>34.8</td><td>86.5</td><td>58.9</td><td>26.0</td></tr>
-                                    <tr><td>6x6</td><td>FALSE</td><td>-</td><td>(4+1)*729</td><td>8h05min</td><td>TRUE</td><td>52.7</td><td>50.1</td><td>56.7</td><td>27.1</td><td>35.9</td><td>85.9</td><td>58.4</td><td>32.2</td></tr><tr><td>6x6</td><td>TRUE</td><td>384*6</td><td>(4+1)*729</td><td>16h30min</td><td>TRUE</td><td>52.1</td><td>48.8</td><td>58.5</td><td>26.5</td><td>35.0</td><td>86.3</td><td>58.7</td><td>26.6</td></tr><tr><td>6x6</td><td>FALSE</td><td>-</td><td>(9+1)*729</td><td>11h14min</td><td>TRUE</td><td>52.7</td><td>55.8</td><td>62.7</td><td>26.7</td><td>42.0</td><td>86.1</td><td>58.7</td><td>34.7</td></tr><tr><td>6x6</td><td>TRUE</td><td>384*6</td><td>(9+1)*729</td><td>21h28min</td><td>TRUE</td><td>52.1</td><td>52.3</td><td>62.2</td><td>26.6</td><td>40.6</td><td>85.5</td><td>57.6</td><td>34.1</td></tr></tbody></table></div>
-                            </div>
-                            <p>
-                                <strong>Adptive Pooling before or after projector.</strong> We compared the performance of pooling before and after the projector. The results indicate that the adaptive pooling method performs better when applied after the projector.
-                            </p>
-                            <div style="display: flex; justify-content: center;">
-                                <div class="tg-wrap"><table><thead><tr><th rowspan="2">Max. # Anyres Grids</th><th rowspan="2">Max. Tokens</th><th rowspan="2">Pooling After Projector</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>OKVQA</th><th>POPE</th><th>ScienceQA</th><th>VizWiz-VQA</th></tr><tr><th>test</th><th>test</th><th>val</th><th>val</th><th>val</th><th>test/f1-score</th><th>IMG</th><th>val</th></tr></thead><tbody><tr><td>4x4</td><td>(4+1)*729</td><td>TRUE</td><td>52.8</td><td>49.4</td><td>58.1</td><td>26.0</td><td>36.0</td><td>85.8</td><td>57.9</td><td>31.0</td></tr><tr><td>4x4</td><td>(4+1)*729</td><td>FALSE</td><td>48.5</td><td>22.9</td><td>25.6</td><td>20.7</td><td>25.6</td><td>81.9</td><td>57.5</td><td>34.2</td></tr><tr><td>5x5</td><td>(4+1)*729</td><td>TRUE</td><td>52.4</td><td>49.6</td><td>57.6</td><td>26.9</td><td>36.5</td><td>86.1</td><td>58.5</td><td>28.7</td></tr>
-                                    <tr><td>5x5</td><td>(4+1)*729</td><td>FALSE</td><td>48.5</td><td>22.2</td><td>24.0</td><td>20.1</td><td>26.8</td><td>82.8</td><td>56.7</td><td>23.5</td></tr><tr><td>6x6</td><td>(9+1)*729</td><td>TRUE</td><td>52.7</td><td>55.8</td><td>62.7</td><td>26.7</td><td>42.0</td><td>86.1</td><td>58.7</td><td>34.7</td></tr><tr><td>6x6</td><td>(9+1)*729</td><td>FALSE</td><td>47.3</td><td>33.0</td><td>27.0</td><td>19.2</td><td>27.7</td><td>81.8</td><td>56.3</td><td>36.3</td></tr></tbody></table>
-                                </div>
-                            </div>
+						<ul>
+							<li>
+								We increase the maximum number of AnyRes grids from 2×2 to 6×6 to better support higher resolution, and
+								observe that increasing #grids can enhance performance on tasks that require reading image details, such
+								as InfoVQA and SynthDOG (en). It also leads to improved performance on Video Detail Captions with 32
+								frames. This is because longer vision sequences are observed during training, the capability can improve
+								video tasks with zero-shot modality transfer, based on the insights in our video blog.
+							</li>
+							<li>
+								Increasing the maximum resolution causes a slighter increase in training time compared with the cost of
+								increasing the max #tokens. Increasing max #tokens while keeping the maximum #grid 6x6 at can
+								significantly improve OCR capability, such as ChartQA and DocVQA. We suggest prioritizing resolution
+								over #token as a better trade-off in enriching visual representations.
+							</li>
+						</ul>
 
-                            <p>
-                                <strong>Efficient strategy.</strong> For applications that require high efficiency, we explore cost-effective strategies. In the following experiment, we pool the feature map for each grid to \(t^\prime=1/4 t\). This significantly reduces training costs, although it also significantly reduces performance on high-resolution datasets such as InfoVQA, ChartQA, and DocVQA. However, performance on other datasets is either maintained or only slightly reduced. Therefore, if high efficiency is needed for low-resolution data, this setting can be considered.
-                            </p>
-                            
-                            <div style="display: flex; justify-content: center;">
-                                <div class="tg-wrap"><table><thead><tr><th rowspan="2">Max. # Grids</th><th rowspan="2">Max. # Tokens</th><th rowspan="2">Training Time</th><th rowspan="2">Pooling</th><th rowspan="2">Pooling After Projector</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>OKVQA</th><th>POPE</th><th>ScienceQA</th><th>VizWiz-VQA</th></tr><tr><th>test</th><th>test</th><th>val</th><th>val</th><th>val</th><th>test/f1-score</th><th>IMG</th><th>val</th></tr></thead><tbody><tr><td rowspan="3">2x2</td><td>(4+1)*729</td><td>6h30min</td><td>FALSE</td><td>-</td><td>51.1</td><td>49.2</td><td>58.8</td><td>25.7</td><td>36.5</td><td>85.4</td><td>59.6</td><td>29.2</td></tr><tr><td>(4+1)*183</td><td>4h12min</td><td>TRUE</td><td>FALSE</td><td>52.2</td><td>38.0</td><td>46.9</td><td>23.4</td><td>35.1</td><td>85.0</td><td>58.5</td><td>28.8</td></tr><tr><td>(4+1)*183</td><td>4h15min</td><td>TRUE</td><td>TRUE</td><td>50.9</td><td>37.0</td><td>45.4</td><td>23.2</td><td>32.3</td><td>85.3</td><td>58.2</td><td>27.0</td></tr>
-                                    <tr><td rowspan="3">6x6</td><td>(4+1)*729</td><td>8h05min</td><td>TRUE</td><td>-</td><td>52.7</td><td>50.1</td><td>56.7</td><td>27.1</td><td>35.9</td><td>85.9</td><td>58.4</td><td>32.2</td></tr><tr><td>(4+1)*183</td><td>5h45min</td><td>TRUE</td><td>FALSE</td><td>50.2</td><td>37.2</td><td>41.8</td><td>23.7</td><td>31.9</td><td>85.5</td><td>57.1</td><td>33.6</td></tr><tr><td>(4+1)*183</td><td>5h52min</td><td>TRUE</td><td>TRUE</td><td>50.7</td><td>38.4</td><td>42.5</td><td>24.3</td><td>32.2</td><td>85.1</td><td>56.6</td><td>32.7</td></tr></tbody></table></div>
-                            </div>
+						<p>
+							<strong>Effectinveness with LLM Scaling.</strong> We further verify that the performance gains from the
+							new visual representation persist as the LLM size scales. This is confirmed by the observation of
+							consistent improvements across InfoVQA, ChartQA, DocVQA, VDD (32 frames), and SynthDOG.
+						</p>
 
-                            <p>
-                                <strong>Inference.</strong> We investigated the impact of adjusting the maximum number of grids in AnyRes and visual tokens during inference, based on both performance metrics and inference time. Our findings reveal that augmenting the number of AnyRes grids during inference substantially prolongs inference time without commensurate improvements in performance. Conversely, reducing the quantity of AnyRes grids during inference diminishes performance particularly on high-resolution datasets, albeit with negligible effects on other datasets. Notably, our investigation unveiled a compelling revelation: when the maximum number of AnyRes grids for inference is set at 1x1, employing the AnyRes strategy, which utilizes (1 + 1)*729 visual tokens fed to the LLM, yields superior performance compared to non-AnyRes usage, where only 729 visual tokens are employed. Interestingly, despite the similarity in inference time between the two strategies, the latter exhibits superior performance. This finding underscores the importance of employing the AnyRes strategy during inference to enhance performance.
-                            </p>
+						<div style="display: flex; justify-content: center;">
+							<div class="tg-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th rowspan="2">LLM Decoder</th>
+											<th rowspan="2">Max. # Grids</th>
+											<th rowspan="2">Max. # Tokens</th>
+											<th rowspan="2">Pooling</th>
+											<th>AI2D</th>
+											<th>ChartQA</th>
+											<th>DocVQA</th>
+											<th>InfoVQA</th>
+											<th>Image-DC</th>
+											<th><sup>*</sup>Video-DC</th>
+											<th><sup>**</sup>SynthDOG</th>
+											<th>OK-VQA</th>
+											<th><sup>***</sup>POPE</th>
+											<th>ScienceQA</th>
+											<th>VizWiz-VQA</th>
+											<th>MMMU</th>
+										</tr>
+										<tr>
+											<th>test</th>
+											<th>test</th>
+											<th>val</th>
+											<th>val</th>
+											<th>EN</th>
+											<th>32 frames</th>
+											<th>EN/TED Score</th>
+											<th>val</th>
+											<th>test/f1-score</th>
+											<th>IMG</th>
+											<th>val</th>
+											<th>val</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Qwen-1.5 0.5B</td>
+											<td>2x2</td>
+											<td>(4+1)*729</td>
+											<td>FALSE</td>
+											<td>51.1</td>
+											<td>49.2</td>
+											<td>58.8</td>
+											<td>25.7</td>
+											<td>71.1</td>
+											<td>62.4</td>
+											<td>418.5</td>
+											<td>36.5</td>
+											<td>85.1</td>
+											<td>59.5</td>
+											<td>28.8</td>
+											<td>28.2</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 0.5B</td>
+											<td>6x6</td>
+											<td>(9+1)*729</td>
+											<td>TRUE</td>
+											<td>52.7</td>
+											<td>55.8</td>
+											<td>62.7</td>
+											<td>26.7</td>
+											<td>71.7</td>
+											<td>62.4</td>
+											<td>443.5</td>
+											<td>42.0</td>
+											<td>86.1</td>
+											<td>58.7</td>
+											<td>34.7</td>
+											<td>29.3</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 1.8B</td>
+											<td>2x2</td>
+											<td>(4+1)*729</td>
+											<td>FALSE</td>
+											<td>61.9</td>
+											<td>56.2</td>
+											<td>66.0</td>
+											<td>30.5</td>
+											<td>80.1</td>
+											<td>70.2</td>
+											<td>447.1</td>
+											<td>43.6</td>
+											<td>86.9</td>
+											<td>63.7</td>
+											<td>51.0</td>
+											<td>32.0</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 1.8B</td>
+											<td>6x6</td>
+											<td>(9+1)*729</td>
+											<td>TRUE</td>
+											<td>60.9</td>
+											<td>56.7</td>
+											<td>67.5</td>
+											<td>31.3</td>
+											<td>82.0</td>
+											<td>71.0</td>
+											<td>459.1</td>
+											<td>46.5</td>
+											<td>86.9</td>
+											<td>64.4</td>
+											<td>48.8</td>
+											<td>32.6</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 4B</td>
+											<td>2x2</td>
+											<td>(4+1)*729</td>
+											<td>FALSE</td>
+											<td>71.5</td>
+											<td>65.0</td>
+											<td>73.8</td>
+											<td>34.8</td>
+											<td>84.2</td>
+											<td>74.5</td>
+											<td>456.7</td>
+											<td>47.5</td>
+											<td>87.1</td>
+											<td>71.1</td>
+											<td>58.7</td>
+											<td>34.4</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 4B</td>
+											<td>6x6</td>
+											<td>(9+1)*729</td>
+											<td>TRUE</td>
+											<td>70.2</td>
+											<td>65.0</td>
+											<td>77.2</td>
+											<td>41.1</td>
+											<td>86.3</td>
+											<td>76.4</td>
+											<td>467.7</td>
+											<td>50.6</td>
+											<td>86.3</td>
+											<td>70.1</td>
+											<td>58.0</td>
+											<td>32.0</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 7B</td>
+											<td>2x2</td>
+											<td>(4+1)*729</td>
+											<td>FALSE</td>
+											<td>72.9</td>
+											<td>66.3</td>
+											<td>75.5</td>
+											<td>36.9</td>
+											<td>87.9</td>
+											<td>69.8</td>
+											<td>458.2</td>
+											<td>50.2</td>
+											<td>86.9</td>
+											<td>71.2</td>
+											<td>61.4</td>
+											<td>37.2</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 7B</td>
+											<td>6x6</td>
+											<td>(9+1)*729</td>
+											<td>TRUE</td>
+											<td>71.7</td>
+											<td>69.5</td>
+											<td>79.0</td>
+											<td>36.4</td>
+											<td>86.4</td>
+											<td>71.4</td>
+											<td>467.1</td>
+											<td>47.9</td>
+											<td>87.3</td>
+											<td>70.2</td>
+											<td>57.4</td>
+											<td>37.2</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 14B</td>
+											<td>2x2</td>
+											<td>(4+1)*729</td>
+											<td>FALSE</td>
+											<td>77.6</td>
+											<td>72.2</td>
+											<td>80.0</td>
+											<td>44.4</td>
+											<td>89.6</td>
+											<td>74.2</td>
+											<td>460.8</td>
+											<td>57.7</td>
+											<td>87.3</td>
+											<td>78.9</td>
+											<td>64.2</td>
+											<td>44.2</td>
+										</tr>
+										<tr>
+											<td>Qwen-1.5 14B</td>
+											<td>6x6</td>
+											<td>(9+1)*729</td>
+											<td>TRUE</td>
+											<td>76.1</td>
+											<td>74.0</td>
+											<td>83.6</td>
+											<td>46.9</td>
+											<td>87.8</td>
+											<td>78.1</td>
+											<td>470.4</td>
+											<td>53.2</td>
+											<td>87.9</td>
+											<td>76.7</td>
+											<td>61.5</td>
+											<td>40.3</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<blockquote>
+							<style>
+								.compact-paragraph {
+									margin-bottom: 1px; /* Adjust this value to your liking */
+								}
+							</style>
+							<p class="compact-paragraph">
+								*Video Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed
+								captioning ability towards given images. The task is described in the Benchmark Card section.
+							</p>
+							<p class="compact-paragraph">
+								**SynthDOG is a benchmark that evaluates model's OCR ability, we report the tree edit distance score on
+								SynthDOG's OCR task.
+							</p>
+							<p class="compact-paragraph">
+								***POPE is a benchmark that evaluates model's ability on judging the existence of a given object in an
+								image, we report the F1 score on POPE.
+							</p>
+						</blockquote>
 
-                            <div style="display: flex; justify-content: center;">
-                                <div class="tg-wrap"><table><thead><tr><th colspan="2"> Training</th><th colspan="2">Inference</th><th rowspan="2">Total Inference Time</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>OKVQA</th><th>POPE</th><th>ScienceQA</th><th>VizWiz-VQA</th><th>MMMU</th></tr><tr><th>Max. #Grids</th><th>Max. #Tokens </th><th>Max. #Grids</th><th>Max. #Tokens </th><th>test</th><th>test</th><th>val</th><th>val</th><th>val</th><th>test/f1-score</th><th>IMG</th><th>val</th><th>dev</th></tr></thead><tbody><tr><td rowspan="5">2x2</td><td rowspan="5">(4+1)*729</td><td>1x1</td><td>729</td><td>~16min</td><td>51.2</td><td>29.0</td><td>37.3</td><td>19.9</td><td>36.6</td><td>80.8</td><td>60.3</td><td>31.1</td><td>27.2</td></tr><tr><td>1x1</td><td>(1 + 1)*729</td><td>~16min</td><td>51.2</td><td>33.3</td><td>44.9</td><td>20.9</td><td>37.5</td><td>82.1</td><td>59.3</td><td>31.9</td><td>29.7</td></tr>
-                                    <tr><td>2x2</td><td>(4+1)*729</td><td>~20min</td><td>51.1</td><td>49.2</td><td>58.8</td><td>25.7</td><td>36.5</td><td>85.4</td><td>59.6</td><td>29.2</td><td>28.2</td></tr><tr><td>4x4</td><td>(4+1)*729</td><td>~24min</td><td>51.7</td><td>45.2</td><td>53.4</td><td>26.5</td><td>36.5</td><td>85.7</td><td>59.0</td><td>29.3</td><td>28.4</td></tr><tr><td>4x4</td><td>(9+1)*729</td><td>~27min</td><td>51.4</td><td>41.1</td><td>51.4</td><td>25.4</td><td>36.5</td><td>85.7</td><td>59.0</td><td>31.4</td><td>28.8</td></tr><tr><td rowspan="5">4x4</td><td rowspan="5">(16 + 1)*729</td><td>1x1</td><td>(1 + 1)*729</td><td>~16min</td><td>52.3</td><td>31.6</td><td>43.9</td><td>21.4</td><td>25.5</td><td>82.9</td><td>58.8</td><td>33.2</td><td>27.9</td></tr><tr><td>2x2</td><td>(4+1)*729</td><td>~20min</td><td>52.7</td><td>48.1</td><td>57.6</td><td>24.9</td><td>35.8</td><td>85.9</td><td>57.4</td><td>31.5</td><td>28.1</td></tr>
-                                    <tr><td>4x4</td><td>(4+1)*729</td><td>~24min</td><td>52.8</td><td>49.4</td><td>58.1</td><td>26.0</td><td>36.0</td><td>85.8</td><td>57.9</td><td>31.0</td><td>28.6</td></tr><tr><td>4x4</td><td>(9+1)*729</td><td>~27min</td><td>52.5</td><td>47.4</td><td>55.8</td><td>25.0</td><td>36.0</td><td>86.0</td><td>57.9</td><td>32.0</td><td>28.3</td></tr><tr><td>6x6</td><td>(9+1)*729</td><td>~33min</td><td>52.7</td><td>46.5</td><td>55.5</td><td>24.9</td><td>35.8</td><td>85.9</td><td>57.4</td><td>32.1</td><td>27.9</td></tr><tr><td rowspan="5">6x6</td><td rowspan="5">(9+1)*729</td><td>1x1</td><td>(1 + 1)*729</td><td>~16min</td><td>53.0</td><td>29.8</td><td>44.3</td><td>20.1</td><td>40.4</td><td>84.5</td><td>58.2</td><td>36.3</td><td>30.3</td></tr><tr><td>2x2</td><td>(4+1)*729</td><td>~20min</td><td>52.8</td><td>48.3</td><td>59.0</td><td>24.6</td><td>42.0</td><td>86.2</td><td>58.7</td><td>35.1</td><td>30.0</td></tr>
-                                    <tr><td>4x4</td><td>(4+1)*729</td><td>~24min</td><td>53.2</td><td>48.7</td><td>58.1</td><td>25.5</td><td>42.0</td><td>86.1</td><td>58.5</td><td>35.9</td><td>29.7</td></tr><tr><td>6x6</td><td>(4+1)*729</td><td>~30min</td><td>52.6</td><td>50.1</td><td>55.8</td><td>25.1</td><td>42.0</td><td>86.2</td><td>58.7</td><td>35.8</td><td>29.9</td></tr><tr><td>6x6</td><td>(9+1)*729</td><td>~33min</td><td>52.7</td><td>55.8</td><td>62.7</td><td>26.7</td><td>42.0</td><td>86.1</td><td>58.7</td><td>34.7</td><td>29.3</td></tr></tbody></table></div>
-                            </div>
-                        </details>
-                        <br>
+						<br />
+						<details>
+							<summary>[Further Exploration in Resolution and Pooling (Fold / Unfold to see the Details)]</summary>
+							<br />
+							<p>
+								<strong>Enlarging the original images.</strong> Note that in our higher AnyRes method, we do not
+								increase the image resolution itself. Instead, we use grid configurations that support higher
+								resolutions. We explore how increasing image resolution affects performance and training time. As shown
+								in the following table, increasing image resolution significantly increases training time, but does not
+								improve performance.
+							</p>
+							<div style="display: flex; justify-content: center;">
+								<div class="tg-wrap">
+									<table>
+										<thead>
+											<tr>
+												<th rowspan="2">Max. # Anyres Grids</th>
+												<th rowspan="2">Force Resolution lifting</th>
+												<th rowspan="2">Min. Long Edge</th>
+												<th rowspan="2">Max. Tokens</th>
+												<th rowspan="2">Training Time</th>
+												<th rowspan="2">Pooling</th>
+												<th>AI2D</th>
+												<th>ChartQA</th>
+												<th>DocVQA</th>
+												<th>InfoVQA</th>
+												<th>OKVQA</th>
+												<th>POPE</th>
+												<th>ScienceQA</th>
+												<th>VizWiz-VQA</th>
+											</tr>
+											<tr>
+												<th>test</th>
+												<th>test</th>
+												<th>val</th>
+												<th>val</th>
+												<th>val</th>
+												<th>test/f1-score</th>
+												<th>IMG</th>
+												<th>val</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>4x4</td>
+												<td>FALSE</td>
+												<td>-</td>
+												<td>(4+1)*729</td>
+												<td>7h30min</td>
+												<td>TRUE</td>
+												<td>52.8</td>
+												<td>49.4</td>
+												<td>58.1</td>
+												<td>26.0</td>
+												<td>36.0</td>
+												<td>85.8</td>
+												<td>57.9</td>
+												<td>31.0</td>
+											</tr>
+											<tr>
+												<td>4x4</td>
+												<td>TRUE</td>
+												<td>384*4</td>
+												<td>(4+1)*729</td>
+												<td>10h40min</td>
+												<td>TRUE</td>
+												<td>52.5</td>
+												<td>47.9</td>
+												<td>58.9</td>
+												<td>27.0</td>
+												<td>34.8</td>
+												<td>86.5</td>
+												<td>58.9</td>
+												<td>26.0</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>FALSE</td>
+												<td>-</td>
+												<td>(4+1)*729</td>
+												<td>8h05min</td>
+												<td>TRUE</td>
+												<td>52.7</td>
+												<td>50.1</td>
+												<td>56.7</td>
+												<td>27.1</td>
+												<td>35.9</td>
+												<td>85.9</td>
+												<td>58.4</td>
+												<td>32.2</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>TRUE</td>
+												<td>384*6</td>
+												<td>(4+1)*729</td>
+												<td>16h30min</td>
+												<td>TRUE</td>
+												<td>52.1</td>
+												<td>48.8</td>
+												<td>58.5</td>
+												<td>26.5</td>
+												<td>35.0</td>
+												<td>86.3</td>
+												<td>58.7</td>
+												<td>26.6</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>FALSE</td>
+												<td>-</td>
+												<td>(9+1)*729</td>
+												<td>11h14min</td>
+												<td>TRUE</td>
+												<td>52.7</td>
+												<td>55.8</td>
+												<td>62.7</td>
+												<td>26.7</td>
+												<td>42.0</td>
+												<td>86.1</td>
+												<td>58.7</td>
+												<td>34.7</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>TRUE</td>
+												<td>384*6</td>
+												<td>(9+1)*729</td>
+												<td>21h28min</td>
+												<td>TRUE</td>
+												<td>52.1</td>
+												<td>52.3</td>
+												<td>62.2</td>
+												<td>26.6</td>
+												<td>40.6</td>
+												<td>85.5</td>
+												<td>57.6</td>
+												<td>34.1</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<p>
+								<strong>Adptive Pooling before or after projector.</strong> We compared the performance of pooling
+								before and after the projector. The results indicate that the adaptive pooling method performs better
+								when applied after the projector.
+							</p>
+							<div style="display: flex; justify-content: center;">
+								<div class="tg-wrap">
+									<table>
+										<thead>
+											<tr>
+												<th rowspan="2">Max. # Anyres Grids</th>
+												<th rowspan="2">Max. Tokens</th>
+												<th rowspan="2">Pooling After Projector</th>
+												<th>AI2D</th>
+												<th>ChartQA</th>
+												<th>DocVQA</th>
+												<th>InfoVQA</th>
+												<th>OKVQA</th>
+												<th>POPE</th>
+												<th>ScienceQA</th>
+												<th>VizWiz-VQA</th>
+											</tr>
+											<tr>
+												<th>test</th>
+												<th>test</th>
+												<th>val</th>
+												<th>val</th>
+												<th>val</th>
+												<th>test/f1-score</th>
+												<th>IMG</th>
+												<th>val</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>4x4</td>
+												<td>(4+1)*729</td>
+												<td>TRUE</td>
+												<td>52.8</td>
+												<td>49.4</td>
+												<td>58.1</td>
+												<td>26.0</td>
+												<td>36.0</td>
+												<td>85.8</td>
+												<td>57.9</td>
+												<td>31.0</td>
+											</tr>
+											<tr>
+												<td>4x4</td>
+												<td>(4+1)*729</td>
+												<td>FALSE</td>
+												<td>48.5</td>
+												<td>22.9</td>
+												<td>25.6</td>
+												<td>20.7</td>
+												<td>25.6</td>
+												<td>81.9</td>
+												<td>57.5</td>
+												<td>34.2</td>
+											</tr>
+											<tr>
+												<td>5x5</td>
+												<td>(4+1)*729</td>
+												<td>TRUE</td>
+												<td>52.4</td>
+												<td>49.6</td>
+												<td>57.6</td>
+												<td>26.9</td>
+												<td>36.5</td>
+												<td>86.1</td>
+												<td>58.5</td>
+												<td>28.7</td>
+											</tr>
+											<tr>
+												<td>5x5</td>
+												<td>(4+1)*729</td>
+												<td>FALSE</td>
+												<td>48.5</td>
+												<td>22.2</td>
+												<td>24.0</td>
+												<td>20.1</td>
+												<td>26.8</td>
+												<td>82.8</td>
+												<td>56.7</td>
+												<td>23.5</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>(9+1)*729</td>
+												<td>TRUE</td>
+												<td>52.7</td>
+												<td>55.8</td>
+												<td>62.7</td>
+												<td>26.7</td>
+												<td>42.0</td>
+												<td>86.1</td>
+												<td>58.7</td>
+												<td>34.7</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>(9+1)*729</td>
+												<td>FALSE</td>
+												<td>47.3</td>
+												<td>33.0</td>
+												<td>27.0</td>
+												<td>19.2</td>
+												<td>27.7</td>
+												<td>81.8</td>
+												<td>56.3</td>
+												<td>36.3</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<p>
+								<strong>Efficient strategy.</strong> For applications that require high efficiency, we explore
+								cost-effective strategies. In the following experiment, we pool the feature map for each grid to
+								\(t^\prime=1/4 t\). This significantly reduces training costs, although it also significantly reduces
+								performance on high-resolution datasets such as InfoVQA, ChartQA, and DocVQA. However, performance on
+								other datasets is either maintained or only slightly reduced. Therefore, if high efficiency is needed
+								for low-resolution data, this setting can be considered.
+							</p>
+
+							<div style="display: flex; justify-content: center;">
+								<div class="tg-wrap">
+									<table>
+										<thead>
+											<tr>
+												<th rowspan="2">Max. # Grids</th>
+												<th rowspan="2">Max. # Tokens</th>
+												<th rowspan="2">Training Time</th>
+												<th rowspan="2">Pooling</th>
+												<th rowspan="2">Pooling After Projector</th>
+												<th>AI2D</th>
+												<th>ChartQA</th>
+												<th>DocVQA</th>
+												<th>InfoVQA</th>
+												<th>OKVQA</th>
+												<th>POPE</th>
+												<th>ScienceQA</th>
+												<th>VizWiz-VQA</th>
+											</tr>
+											<tr>
+												<th>test</th>
+												<th>test</th>
+												<th>val</th>
+												<th>val</th>
+												<th>val</th>
+												<th>test/f1-score</th>
+												<th>IMG</th>
+												<th>val</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td rowspan="3">2x2</td>
+												<td>(4+1)*729</td>
+												<td>6h30min</td>
+												<td>FALSE</td>
+												<td>-</td>
+												<td>51.1</td>
+												<td>49.2</td>
+												<td>58.8</td>
+												<td>25.7</td>
+												<td>36.5</td>
+												<td>85.4</td>
+												<td>59.6</td>
+												<td>29.2</td>
+											</tr>
+											<tr>
+												<td>(4+1)*183</td>
+												<td>4h12min</td>
+												<td>TRUE</td>
+												<td>FALSE</td>
+												<td>52.2</td>
+												<td>38.0</td>
+												<td>46.9</td>
+												<td>23.4</td>
+												<td>35.1</td>
+												<td>85.0</td>
+												<td>58.5</td>
+												<td>28.8</td>
+											</tr>
+											<tr>
+												<td>(4+1)*183</td>
+												<td>4h15min</td>
+												<td>TRUE</td>
+												<td>TRUE</td>
+												<td>50.9</td>
+												<td>37.0</td>
+												<td>45.4</td>
+												<td>23.2</td>
+												<td>32.3</td>
+												<td>85.3</td>
+												<td>58.2</td>
+												<td>27.0</td>
+											</tr>
+											<tr>
+												<td rowspan="3">6x6</td>
+												<td>(4+1)*729</td>
+												<td>8h05min</td>
+												<td>TRUE</td>
+												<td>-</td>
+												<td>52.7</td>
+												<td>50.1</td>
+												<td>56.7</td>
+												<td>27.1</td>
+												<td>35.9</td>
+												<td>85.9</td>
+												<td>58.4</td>
+												<td>32.2</td>
+											</tr>
+											<tr>
+												<td>(4+1)*183</td>
+												<td>5h45min</td>
+												<td>TRUE</td>
+												<td>FALSE</td>
+												<td>50.2</td>
+												<td>37.2</td>
+												<td>41.8</td>
+												<td>23.7</td>
+												<td>31.9</td>
+												<td>85.5</td>
+												<td>57.1</td>
+												<td>33.6</td>
+											</tr>
+											<tr>
+												<td>(4+1)*183</td>
+												<td>5h52min</td>
+												<td>TRUE</td>
+												<td>TRUE</td>
+												<td>50.7</td>
+												<td>38.4</td>
+												<td>42.5</td>
+												<td>24.3</td>
+												<td>32.2</td>
+												<td>85.1</td>
+												<td>56.6</td>
+												<td>32.7</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<p>
+								<strong>Inference.</strong> We investigated the impact of adjusting the maximum number of grids in
+								AnyRes and visual tokens during inference, based on both performance metrics and inference time. Our
+								findings reveal that augmenting the number of AnyRes grids during inference substantially prolongs
+								inference time without commensurate improvements in performance. Conversely, reducing the quantity of
+								AnyRes grids during inference diminishes performance particularly on high-resolution datasets, albeit
+								with negligible effects on other datasets. Notably, our investigation unveiled a compelling revelation:
+								when the maximum number of AnyRes grids for inference is set at 1x1, employing the AnyRes strategy,
+								which utilizes (1 + 1)*729 visual tokens fed to the LLM, yields superior performance compared to
+								non-AnyRes usage, where only 729 visual tokens are employed. Interestingly, despite the similarity in
+								inference time between the two strategies, the latter exhibits superior performance. This finding
+								underscores the importance of employing the AnyRes strategy during inference to enhance performance.
+							</p>
+
+							<div style="display: flex; justify-content: center;">
+								<div class="tg-wrap">
+									<table>
+										<thead>
+											<tr>
+												<th colspan="2">Training</th>
+												<th colspan="2">Inference</th>
+												<th rowspan="2">Total Inference Time</th>
+												<th>AI2D</th>
+												<th>ChartQA</th>
+												<th>DocVQA</th>
+												<th>InfoVQA</th>
+												<th>OKVQA</th>
+												<th>POPE</th>
+												<th>ScienceQA</th>
+												<th>VizWiz-VQA</th>
+												<th>MMMU</th>
+											</tr>
+											<tr>
+												<th>Max. #Grids</th>
+												<th>Max. #Tokens</th>
+												<th>Max. #Grids</th>
+												<th>Max. #Tokens</th>
+												<th>test</th>
+												<th>test</th>
+												<th>val</th>
+												<th>val</th>
+												<th>val</th>
+												<th>test/f1-score</th>
+												<th>IMG</th>
+												<th>val</th>
+												<th>dev</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td rowspan="5">2x2</td>
+												<td rowspan="5">(4+1)*729</td>
+												<td>1x1</td>
+												<td>729</td>
+												<td>~16min</td>
+												<td>51.2</td>
+												<td>29.0</td>
+												<td>37.3</td>
+												<td>19.9</td>
+												<td>36.6</td>
+												<td>80.8</td>
+												<td>60.3</td>
+												<td>31.1</td>
+												<td>27.2</td>
+											</tr>
+											<tr>
+												<td>1x1</td>
+												<td>(1 + 1)*729</td>
+												<td>~16min</td>
+												<td>51.2</td>
+												<td>33.3</td>
+												<td>44.9</td>
+												<td>20.9</td>
+												<td>37.5</td>
+												<td>82.1</td>
+												<td>59.3</td>
+												<td>31.9</td>
+												<td>29.7</td>
+											</tr>
+											<tr>
+												<td>2x2</td>
+												<td>(4+1)*729</td>
+												<td>~20min</td>
+												<td>51.1</td>
+												<td>49.2</td>
+												<td>58.8</td>
+												<td>25.7</td>
+												<td>36.5</td>
+												<td>85.4</td>
+												<td>59.6</td>
+												<td>29.2</td>
+												<td>28.2</td>
+											</tr>
+											<tr>
+												<td>4x4</td>
+												<td>(4+1)*729</td>
+												<td>~24min</td>
+												<td>51.7</td>
+												<td>45.2</td>
+												<td>53.4</td>
+												<td>26.5</td>
+												<td>36.5</td>
+												<td>85.7</td>
+												<td>59.0</td>
+												<td>29.3</td>
+												<td>28.4</td>
+											</tr>
+											<tr>
+												<td>4x4</td>
+												<td>(9+1)*729</td>
+												<td>~27min</td>
+												<td>51.4</td>
+												<td>41.1</td>
+												<td>51.4</td>
+												<td>25.4</td>
+												<td>36.5</td>
+												<td>85.7</td>
+												<td>59.0</td>
+												<td>31.4</td>
+												<td>28.8</td>
+											</tr>
+											<tr>
+												<td rowspan="5">4x4</td>
+												<td rowspan="5">(16+1)*729</td>
+												<td>1x1</td>
+												<td>(1 + 1)*729</td>
+												<td>~16min</td>
+												<td>52.3</td>
+												<td>31.6</td>
+												<td>43.9</td>
+												<td>21.4</td>
+												<td>25.5</td>
+												<td>82.9</td>
+												<td>58.8</td>
+												<td>33.2</td>
+												<td>27.9</td>
+											</tr>
+											<tr>
+												<td>2x2</td>
+												<td>(4+1)*729</td>
+												<td>~20min</td>
+												<td>52.7</td>
+												<td>48.1</td>
+												<td>57.6</td>
+												<td>24.9</td>
+												<td>35.8</td>
+												<td>85.9</td>
+												<td>57.4</td>
+												<td>31.5</td>
+												<td>28.1</td>
+											</tr>
+											<tr>
+												<td>4x4</td>
+												<td>(4+1)*729</td>
+												<td>~24min</td>
+												<td>52.8</td>
+												<td>49.4</td>
+												<td>58.1</td>
+												<td>26.0</td>
+												<td>36.0</td>
+												<td>85.8</td>
+												<td>57.9</td>
+												<td>31.0</td>
+												<td>28.6</td>
+											</tr>
+											<tr>
+												<td>4x4</td>
+												<td>(9+1)*729</td>
+												<td>~27min</td>
+												<td>52.5</td>
+												<td>47.4</td>
+												<td>55.8</td>
+												<td>25.0</td>
+												<td>36.0</td>
+												<td>86.0</td>
+												<td>57.9</td>
+												<td>32.0</td>
+												<td>28.3</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>(9+1)*729</td>
+												<td>~33min</td>
+												<td>52.7</td>
+												<td>46.5</td>
+												<td>55.5</td>
+												<td>24.9</td>
+												<td>35.8</td>
+												<td>85.9</td>
+												<td>57.4</td>
+												<td>32.1</td>
+												<td>27.9</td>
+											</tr>
+											<tr>
+												<td rowspan="5">6x6</td>
+												<td rowspan="5">(9+1)*729</td>
+												<td>1x1</td>
+												<td>(1 + 1)*729</td>
+												<td>~16min</td>
+												<td>53.0</td>
+												<td>29.8</td>
+												<td>44.3</td>
+												<td>20.1</td>
+												<td>40.4</td>
+												<td>84.5</td>
+												<td>58.2</td>
+												<td>36.3</td>
+												<td>30.3</td>
+											</tr>
+											<tr>
+												<td>2x2</td>
+												<td>(4+1)*729</td>
+												<td>~20min</td>
+												<td>52.8</td>
+												<td>48.3</td>
+												<td>59.0</td>
+												<td>24.6</td>
+												<td>42.0</td>
+												<td>86.2</td>
+												<td>58.7</td>
+												<td>35.1</td>
+												<td>30.0</td>
+											</tr>
+											<tr>
+												<td>4x4</td>
+												<td>(4+1)*729</td>
+												<td>~24min</td>
+												<td>53.2</td>
+												<td>48.7</td>
+												<td>58.1</td>
+												<td>25.5</td>
+												<td>42.0</td>
+												<td>86.1</td>
+												<td>58.5</td>
+												<td>35.9</td>
+												<td>29.7</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>(4+1)*729</td>
+												<td>~30min</td>
+												<td>52.6</td>
+												<td>50.1</td>
+												<td>55.8</td>
+												<td>25.1</td>
+												<td>42.0</td>
+												<td>86.2</td>
+												<td>58.7</td>
+												<td>35.8</td>
+												<td>29.9</td>
+											</tr>
+											<tr>
+												<td>6x6</td>
+												<td>(9+1)*729</td>
+												<td>~33min</td>
+												<td>52.7</td>
+												<td>55.8</td>
+												<td>62.7</td>
+												<td>26.7</td>
+												<td>42.0</td>
+												<td>86.1</td>
+												<td>58.7</td>
+												<td>34.7</td>
+												<td>29.3</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</details>
+						<br />
 
 						<h2 id="section-3-insights-on-training-strategies">Section 3 - Insights on Training Strategies</h2>
 						<p>
@@ -1051,7 +1961,8 @@
 						<details>
 							<br />
 							<summary
-								>[Fold / Unfold to See the Details of Baseline Experiment Settings with CLIP-L-336 + Vicuna-1.5 7B]</summary
+								>[Fold / Unfold to See the Details of Baseline Experiment Settings with CLIP-L-336 + Vicuna-1.5
+								7B]</summary
 							>
 							<div style="display: flex; justify-content: left;">
 								<div class="tg-wrap">
@@ -1064,7 +1975,10 @@
 										<tbody>
 											<tr>
 												<td colspan="2">Architecture<br /></td>
-												<td><strong>Image Encoder:</strong> OpenAI CLIP-Large (336x3336)<br /><strong>Connector:</strong> 2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B</td>
+												<td>
+													<strong>Image Encoder:</strong> OpenAI CLIP-Large (336x3336)<br /><strong>Connector:</strong>
+													2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B
+												</td>
 											</tr>
 											<tr>
 												<td colspan="2"># Total parameters</td>
@@ -1312,27 +2226,72 @@
 						<p>To illustrate high-quality knowledge, we consider data from three major categories:</p>
 						<ol>
 							<li>
-								<strong>Recaped Detailed Description Data:</strong> LLaVA-NeXT-34B is known for its strong detailed caption ability among
-								open-source LMMs. We used the model to generate new captions for the following images: COCO118K,
-								BLIP558K, and CC3M.
+								<strong>Recaped Detailed Description Data:</strong> LLaVA-NeXT-34B is known for its strong detailed
+								caption ability among open-source LMMs. We used the model to generate new captions for the following
+								images: COCO118K, BLIP558K, and CC3M.
 							</li>
 							<li>
-								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the Ureader dataset, totaling 100K, which
-								is easily accessible through PDF rendering. We used this text reading data along with the SynthDOG EN/CN
-								1M datasets.
+								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the Ureader dataset,
+								totaling 100K, which is easily accessible through PDF rendering. We used this text reading data along
+								with the SynthDOG EN/CN 1M datasets.
 							</li>
 							<li>
-								<strong>ShareGPT4V Chinese Caption:</strong> We include ShareGPT4V Chinese Caption data to improve the model's ability in
-								Chinese.
+								<strong>ShareGPT4V Chinese Caption:</strong> We include ShareGPT4V Chinese Caption data to improve the
+								model's ability in Chinese.
 							</li>
 						</ol>
 
-                        <figure style="width: 80%; text-align: center; margin: 0 auto;">
-                            <img src="/blog/assets/images/llava-next-ablations/mid_stage_plot.png" alt="ablations-table-1">
-                        </figure>
-                        <p>
-                            The table below shows the results of the ablation study:
-                        </p>
+						<figure style="width: 80%; text-align: center; margin: 0 auto;">
+							<img src="/blog/assets/images/llava-next-ablations/mid_stage_plot.png" alt="ablations-table-1" />
+						</figure>
+
+						<p>
+							After the ablation study, we can make the following observations:
+						</p>
+						<ol>
+							<li>
+								<strong>Enhanced Performance with Recaptioned Data:</strong> Models trained with recaptioned data
+								(Recap) datasets, show a trend of enhanced performance in tasks requiring detailed image descriptions
+								and document understanding.
+								<ul>
+									<li>
+										The regenerated captions, ranging from 118K to 3M, demonstrate better scaling behaviors than the
+										original captions, consistently improve model performance across various metrics.
+									</li>
+									<li>
+										With recap data, full-model training is more effective than projector tuning, because larger model
+										capacity is needed to digest high-quality knowledge. This approach results in notable improvements
+										in metrics like AI2D, DocVQA, ChartQA, InfoVQA, and ScienceQA.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<strong>Enhancement through New Domain Knowledge:</strong> The introduction of new domain knowledge is
+								essential.
+								<ul>
+									<li>
+										Document/OCR data, particularly UReader100K and SynthDOG EN/CN 1M, provide substantial benefits in
+										understanding structured text data.
+									</li>
+									<li>
+										ShareGPT4V Chinese Caption data, enhances the model's ability to understand and process multilingual
+										data. This improvement is evident in the increased scores across several metrics, especially in the
+										Chinese version of Image-DC and CMMU, demonstrating the model's enhanced multilingual capabilities.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<strong>Balanced Improvement with Mixed Data Approach:</strong> Combining high-quality recaptioned data,
+								document data, and text data (e.g., Recap-118K, UReader100K, and Evol-Instruct) leads to a well-rounded
+								model capable of performing well across diverse tasks. Despite the total amount being under 500K, this
+								efficient mixed data approach results in balanced improvements across most metrics. This suggests that a
+								comprehensive and diverse knowledge base is crucial for the effectiveness of multimodal models.
+							</li>
+						</ol>
+
+						<p>
+							Here are the detailed results of the ablation study:
+						</p>
 						<div style="display: flex; justify-content: center;">
 							<div class="tg-wrap">
 								<table>
@@ -1601,9 +2560,10 @@
 							</div>
 						</div>
 
-                        <p>
-                            The table above presents the results of Chinese-related tasks, including detailed captions, CMMMU, and OCRBench (with some subsets related to Chinese evaluation).
-                        </p>
+						<p>
+							The table above presents the results of Chinese-related tasks, including detailed captions, CMMMU, and
+							OCRBench (with some subsets related to Chinese evaluation).
+						</p>
 
 						<div style="display: flex; justify-content: center;">
 							<div class="tg-wrap">
@@ -1661,96 +2621,76 @@
 								</table>
 							</div>
 						</div>
-						<h3>Section 3.3 - Conclusion</h3>
-                        <p>
-                            Observing the results in above tables, we can make the following observations:
-                        </p>
-						<ol>
-							<li>
-								<strong>Enhanced Performance with Recaptioned Data:</strong> Models trained with recaptioned data
-								(Recap) datasets, show a trend of enhanced performance in tasks requiring detailed image descriptions
-								and document understanding.
-								<ul>
-									<li>
-										The regenerated captions, ranging from 118K to 3M, demonstrate better scaling behaviors than the
-										original captions, consistently improve model performance across various metrics.
-									</li>
-									<li>
-										With recap data, full-model training is more effective than projector tuning, because larger model
-										capacity is needed to digest high-quality knowledge. This approach results in notable improvements
-										in metrics like AI2D, DocVQA, ChartQA, InfoVQA, and ScienceQA.
-									</li>
-								</ul>
-							</li>
-							<li>
-								<strong>Enhancement through New Domain Knowledge:</strong> The introduction of new domain knowledge is
-								essential.
-								<ul>
-									<li>
-										Document/OCR data, particularly UReader100K and SynthDOG EN/CN 1M, provide substantial benefits in
-										understanding structured text data.
-									</li>
-									<li>
-										ShareGPT4V Chinese Caption data, enhances the model's ability to understand and process multilingual
-										data. This improvement is evident in the increased scores across several metrics, especially in the
-										Chinese version of Image-DC and CMMU, demonstrating the model's enhanced multilingual capabilities.
-									</li>
-								</ul>
-							</li>
-							<li>
-								<strong>Balanced Improvement with Mixed Data Approach:</strong> Combining high-quality recaptioned data,
-								document data, and text data (e.g., Recap-118K, UReader100K, and Evol-Instruct) leads to a well-rounded
-								model capable of performing well across diverse tasks. Despite the total amount being under 500K, this
-								efficient mixed data approach results in balanced improvements across most metrics. This suggests that a
-								comprehensive and diverse knowledge base is crucial for the effectiveness of multimodal models.
-							</li>
-						</ol>
-						<h2 id="benchmark-card">Section 4 - Benchmark Card</h2>
-						<p>
-							In this section, we will provide detailed information and the evaluation process for the two newly added
-							tasks.
-						</p>
-						<h3>Section 4.1 - Image Detailed Caption Task</h3>
-						<p>
-							In this task, the images are from self-collected, natural and daily-life sources. And we divide our
-							evaluations into two subsets (1) English with 100 instances. (2) Chinese with 200 instances.
-						</p>
-						<p>Here are a few examples of this task.</p>
-                        <figure style="text-align: center;">
-						    <img src="/blog/assets/images/llava-next-ablations/idc100_example.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
-                            <img src="/blog/assets/images/llava-next-ablations/idc_ch200_example01.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
-                        </figure>
-						<details>
-							<summary>[Please Fold / Unfold to check more examples]</summary>
-                            <figure style="text-align: center;">
-						        <img src="/blog/assets/images/llava-next-ablations/idc100_example02.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
-                                <img src="/blog/assets/images/llava-next-ablations/idc_ch200_example02.png" alt="Example Image" style="width: 70%; margin: 0 auto;"/>
-                            </figure>
-						</details>
-                        <br>
-						<p>
-							While we are uncertain if this evaluation data will be publicly released, we demonstrate some examples and
-							ensure that it is out-of-domain from all our training data and will be used solely as an internal
-							development metric. Please do not refer to this as formal metric for comparison with other models.
-						</p>
-						<h3>Section 4.2 - Video Detailed Caption Task</h3>
-						<p>
-							This dataset comprises 499 videos sourced from ActivityNet[8], with the evaluation process inspired by
-							VideoChatGPT[9]. For each video, we prompt the model with: Please provide a detailed description of the
-							video, focusing on the main subjects, their actions, and the background scenes. Ground-truth answers are
-							extracted from the human-generated detailed descriptions of the videos. The model's responses are
-							evaluated using a custom-designed prompt, which rates the model responses using gpt-3.5-turbo-0613.
-						</p>
-						<p>Here are a few examples of this task.</p>
-                        <figure style="text-align: center;">
-							<img src="/blog/assets/images/llava-next-ablations/vdd_example01.png" alt="Video Example" style = "width: 70%; margin: 0 auto;"/>
-						</figure>
-						<p>
-							More examples could be visited at
-							<a href="https://huggingface.co/datasets/lmms-lab/VideoDetailCaption">VideoDetailedCaptions</a>. Their
-							evaluation process could be visited at lmms-eval. Please search for the vdc_en in our task folder.
-						</p>
 
+						<details id="benchmark-card">
+							<summary style="font-size: 1.6em;">Benchmark Card</summary>
+							<p>
+								In this section, we will provide detailed information and the evaluation process for the two newly added
+								tasks.
+							</p>
+							<h4>Image Detailed Caption Task</h4>
+							<p>
+								In this task, the images are from self-collected, natural and daily-life sources. And we divide our
+								evaluations into two subsets (1) English with 100 instances. (2) Chinese with 200 instances.
+							</p>
+							<p>Here are a few examples of this task.</p>
+							<figure style="text-align: center;">
+								<img
+									src="/blog/assets/images/llava-next-ablations/idc100_example.png"
+									alt="Example Image"
+									style="width: 70%; margin: 0 auto;"
+								/>
+								<img
+									src="/blog/assets/images/llava-next-ablations/idc_ch200_example01.png"
+									alt="Example Image"
+									style="width: 70%; margin: 0 auto;"
+								/>
+							</figure>
+							<details>
+								<summary>[Please Fold / Unfold to check more examples]</summary>
+								<figure style="text-align: center;">
+									<img
+										src="/blog/assets/images/llava-next-ablations/idc100_example02.png"
+										alt="Example Image"
+										style="width: 70%; margin: 0 auto;"
+									/>
+									<img
+										src="/blog/assets/images/llava-next-ablations/idc_ch200_example02.png"
+										alt="Example Image"
+										style="width: 70%; margin: 0 auto;"
+									/>
+								</figure>
+							</details>
+							<br />
+							<p>
+								While we are uncertain if this evaluation data will be publicly released, we demonstrate some examples
+								and ensure that it is out-of-domain from all our training data and will be used solely as an internal
+								development metric. Please do not refer to this as formal metric for comparison with other models.
+							</p>
+							<h4>Video Detailed Caption Task</h4>
+							<p>
+								This dataset comprises 499 videos sourced from ActivityNet[8], with the evaluation process inspired by
+								VideoChatGPT[9]. For each video, we prompt the model with: Please provide a detailed description of the
+								video, focusing on the main subjects, their actions, and the background scenes. Ground-truth answers are
+								extracted from the human-generated detailed descriptions of the videos. The model's responses are
+								evaluated using a custom-designed prompt, which rates the model responses using gpt-3.5-turbo-0613.
+							</p>
+							<p>Here are a few examples of this task.</p>
+							<figure style="text-align: center;">
+								<img
+									src="/blog/assets/images/llava-next-ablations/vdd_example01.png"
+									alt="Video Example"
+									style="width: 70%; margin: 0 auto;"
+								/>
+							</figure>
+							<p>
+								More examples could be visited at
+								<a href="https://huggingface.co/datasets/lmms-lab/VideoDetailCaption">VideoDetailedCaptions</a>. Their
+								evaluation process could be visited at lmms-eval. Please search for the vdc_en in our task folder.
+							</p>
+						</details>
+
+                        <br>
 						<h2>Reference</h2>
 						<ol>
 							<li>
@@ -1851,7 +2791,7 @@
 							</li>
 						</ul>
 
-						<h2 id="acknowledgement">Acknowledgement</h2>
+						<!-- <h2 id="acknowledgement">Acknowledgement</h2>
 
 						<ul>
 							<li>
@@ -1859,11 +2799,15 @@
 								<a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">lmms-eval</a> to accelerate our development of
 								LLaVA-NeXT.
 							</li>
-						</ul>
+						</ul> -->
 
 						<h2 id="acknowledgement">Related Blogs</h2>
 
 						<ul>
+                            <li>
+								<a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+									>LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a>
+							</li>
 							<li>
 								<a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/"
 									>LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</a
@@ -1886,12 +2830,27 @@
 						<div class="language-bibtex highlighter-rouge">
 							<div class="highlight">
 								<pre class="highlight"><code>
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">li2024llavanext-ablations</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Ablation Study on Multimodal Capabilities}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Li, Bo and Zhang, Hao and Zhang, Kaichen and Guo, Dong and Zhang, Yuanhan and Zhang, Renrui and Li, Feng and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{May}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
 
 <span class="nc">@misc</span><span class="p">{</span><span class="nl">li2024llavanext-strong</span><span class="p">,</span>
     <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild}</span><span class="p">,</span>
     <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/}</span><span class="p">,</span>
     <span class="na">author</span><span class="p">=</span><span class="s">{Li, Bo and Zhang, Kaichen and Zhang, Hao and Guo, Dong and Zhang, Renrui and Li, Feng and Zhang, Yuanhan and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
     <span class="na">month</span><span class="p">=</span><span class="s">{May}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">zhang2024llavanextvideo</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: A Strong Zero-shot Video Understanding Model}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-04-30-llava-next-video/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Zhang, Yuanhan and Li, Bo and Liu, haotian and Lee, Yong jae and Gui, Liangke and Fu, Di and Feng, Jiashi and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{April}</span><span class="p">,</span>
     <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
 <span class="p">}</span>
     

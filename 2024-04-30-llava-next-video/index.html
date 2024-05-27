@@ -1,50 +1,77 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>LLaVA-NeXT: Improved reasoning, OCR, and world knowledge | LLaVA</title>
-<meta name="generator" content="Jekyll v3.9.4" />
-<meta property="og:title" content="LLaVA-NeXT: A Strong Zero-shot Video Understanding Model" />
-<meta name="author" content="Yuanhan Zhang, Bo Li, Haotian Liu, Yong Jae Lee, Liangke Gui, Di Fu, Jiashi Feng, Ziwei Liu, Chunyuan Li" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="LLaVA team presents LLaVA-NeXT, with improved reasoning, OCR, and world knowledge. LLaVA-NeXT even exceeds Gemini Pro on several benchmarks." />
-<!-- <meta property="og:description" content="LLaVA team presents solutions to  " /> -->
-<link rel="canonical" href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/" />
-<meta property="og:url" content="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/" />
-<meta property="og:site_name" content="LLaVA" />
-<meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-04-30T12:33:38-06:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="LLaVA-NeXT: A Strong Zero-shot Video Understanding Model" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yuanhan Zhang, Bo Li, Haotian Liu, Yong Jae Lee, Liangke Gui, Di Fu, Jiashi Feng, Ziwei Liu, Chunyuan Li"},"dateModified":"2024-01-30T12:33:38-06:00","datePublished":"2024-01-30T12:33:38-06:00","description":"LLaVA team presents LLaVA-NeXT, with improved reasoning, OCR, and world knowledge. LLaVA-NeXT even exceeds Gemini Pro on several benchmarks.","headline":"LLaVA-NeXT: Improved reasoning, OCR, and world knowledge","mainEntityOfPage":{"@type":"WebPage","@id":"https://llava-vl.github.io/blog/2024-01-30-llava-next/"},"url":"https://llava-vl.github.io/blog/2024-01-30-llava-next/"}</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var videos = document.querySelectorAll('video');
+<html lang="en">
 
-    var observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.play();
-        } else {
-          entry.target.pause();
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>LLaVA-NeXT: Improved reasoning, OCR, and world knowledge | LLaVA</title>
+    <meta name="generator" content="Jekyll v3.9.4" />
+    <meta property="og:title" content="LLaVA-NeXT: A Strong Zero-shot Video Understanding Model" />
+    <meta name="author" content="Yuanhan Zhang, Bo Li, Haotian Liu, Yong Jae Lee, Liangke Gui, Di Fu, Jiashi Feng, Ziwei Liu, Chunyuan Li" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="LLaVA team presents LLaVA-NeXT, with improved reasoning, OCR, and world knowledge. LLaVA-NeXT even exceeds Gemini Pro on several benchmarks." />
+    <!-- <meta property="og:description" content="LLaVA team presents solutions to  " /> -->
+    <link rel="canonical" href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/" />
+    <meta property="og:url" content="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/" />
+    <meta property="og:site_name" content="LLaVA" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-04-30T12:33:38-06:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="LLaVA-NeXT: A Strong Zero-shot Video Understanding Model" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "author": {
+                "@type": "Person",
+                "name": "Yuanhan Zhang, Bo Li, Haotian Liu, Yong Jae Lee, Liangke Gui, Di Fu, Jiashi Feng, Ziwei Liu, Chunyuan Li"
+            },
+            "dateModified": "2024-01-30T12:33:38-06:00",
+            "datePublished": "2024-01-30T12:33:38-06:00",
+            "description": "LLaVA team presents LLaVA-NeXT, with improved reasoning, OCR, and world knowledge. LLaVA-NeXT even exceeds Gemini Pro on several benchmarks.",
+            "headline": "LLaVA-NeXT: Improved reasoning, OCR, and world knowledge",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://llava-vl.github.io/blog/2024-01-30-llava-next/"
+            },
+            "url": "https://llava-vl.github.io/blog/2024-01-30-llava-next/"
         }
-      });
-    }, {threshold: 0.5}); // Adjust threshold to when you want the videos to start playing
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var videos = document.querySelectorAll('video');
 
-    videos.forEach(video => {
-      observer.observe(video);
-    });
-  });
-</script>
-<!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" /></head>
-<body><header class="site-header" role="banner">
+            var observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.play();
+                    } else {
+                        entry.target.pause();
+                    }
+                });
+            }, {
+                threshold: 0.5
+            }); // Adjust threshold to when you want the videos to start playing
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">LLaVA</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
+            videos.forEach(video => {
+                observer.observe(video);
+            });
+        });
+    </script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/blog/assets/main.css">
+    <link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/blog/">LLaVA</a>
+            <nav class="site-nav">
+                <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+                <label for="nav-trigger">
           <span class="menu-icon">
             <svg viewBox="0 0 18 15" width="18px" height="15px">
               <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
@@ -52,693 +79,879 @@
           </span>
         </label>
 
-        <div class="trigger"></div>
-      </nav></div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+                <div class="trigger"></div>
+            </nav>
+        </div>
+    </header>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="2024-01-30T12:33:38-06:00" itemprop="datePublished">Apr 30, 2024
-      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Yuanhan Zhang, Bo Li, Haotian Liu, Yong Jae Lee, Liangke Gui, Di Fu, Jiashi Feng, Ziwei Liu, Chunyuan Li</span></span></p>
-  </header>
+                <header class="post-header">
+                    <h1 class="post-title p-name" itemprop="name headline">LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</h1>
+                    <p class="post-meta">
+                        <time class="dt-published" datetime="2024-01-30T12:33:38-06:00" itemprop="datePublished">Apr 30, 2024
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Yuanhan Zhang, Bo Li, Haotian Liu, Yong Jae Lee, Liangke Gui, Di Fu, Jiashi Feng, Ziwei Liu, Chunyuan Li</span></span>
+                    </p>
+                </header>
 
-  <div class="post-content e-content" itemprop="articleBody">
-    <!-- for mathjax support -->
+                <div class="post-content e-content" itemprop="articleBody">
+                    <!-- for mathjax support -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-        processEscapes: true
-      },
-      TeX: {
-        equationNumbers: { autoNumber: "AMS" }
-      }
-    });
-  </script>
+                    <script type="text/x-mathjax-config">
+                        MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true }, TeX: { equationNumbers: { autoNumber: "AMS" } } });
+                    </script>
 
-<script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+                    <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-<p>On January 30, 2024, we released <a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT</a>, an open-source Large Multimodal Model (LMM) that has been trained exclusively on text-image data. With the proposed AnyRes technique, it boosts capabilities in reasoning, OCR, and world knowledge, demonstrating remarkable performance across a spectrum of image-based multimodal understanding tasks, and even exceeding Gemini-Pro on several image benchmarks, e.g. MMMU and MathVista.</p>
+                    <p>On January 30, 2024, we released <a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT</a>, an open-source Large Multimodal Model (LMM) that has been trained exclusively on text-image data. With the proposed AnyRes
+                        technique, it boosts capabilities in reasoning, OCR, and world knowledge, demonstrating remarkable performance across a spectrum of image-based multimodal understanding tasks, and even exceeding Gemini-Pro on several image benchmarks,
+                        e.g. MMMU and MathVista.</p>
 
-<p>In today’s exploration, we delve into the performance of LLaVA-NeXT within the realm of video understanding tasks. We reveal that LLaVA-NeXT surprisingly has strong performance in understanding video content. The current version of LLaVA-NeXT for videos has several improvements:</p>
+                    <p>In today’s exploration, we delve into the performance of LLaVA-NeXT within the realm of video understanding tasks. We reveal that LLaVA-NeXT surprisingly has strong performance in understanding video content. The current version of
+                        LLaVA-NeXT for videos has several improvements:</p>
 
-<ol>
-  <li><strong>Zero-shot video representation capabilities with AnyRes:</strong> The AnyRes technique naturally represents a high-resolution image into multiple images that a pre-trained VIT is able to digest, and forms them into a concantenated sequence. This technique is naturally generalizable to represent videos (consisting of multiple frames), allowing the image-only-trained LLaVA-Next model to perform surprisingly well on video tasks. Notably, this is the first time that LMMs show <strong>strong zero-shot modality transfer ability.</strong></li>
-  <li><strong>Inference with length generalization improves on longer videos.</strong> The linear scaling technique enables length generalization, allowing LLaVA-NeXT to effectively handle long-video beyond the limitation of the "max_token_length" of the LLM.</li>
-  <li><strong>Strong video understanding ability. </strong> (1) <em>LLaVA-Next-Image</em>, which combines the above two techniques, yields superior zero-shot performance than open-source LMMs tuned on videos. (2) <em>LLaVA-Next-Video</em>,  further supervised fine-tuning (SFT) LLaVA-Next-Image on video data, achieves better video understanding capabilities compared to LLaVA-Next-Image. (3) <em>LLaVA-Next-Video-DPO</em>, which aligns the model response with AI feedback using direct preference optimization (DPO), showing significant performance boost.</li>
-  <li><strong>Efficient deployment and inference</strong> with <a href="https://github.com/sgl-project/sglang">SGLang</a>. It allows 5x faster inference on video tasks, allowing more scalable serving such as million-level video re-captioning. See instructions in our repo.</li>
-</ol>
-
-
-<h2 id="open-source-release">Open-Source Release</h2>
-
-<ul>
-  <li><a href="https://github.com/LLaVA-VL/LLaVA-NeXT-Video" target="_blank">Code</a> (Training code is coming soon)</li>
-  <li><a href="https://huggingface.co/collections/lmms-lab/llava-next-video-661e86f5e8dabc3ff793c944" target="_blank">Model</a></li>
-  <li>Demo is comming soon</li>
+                    <ol>
+                        <li><strong>Zero-shot video representation capabilities with AnyRes:</strong> The AnyRes technique naturally represents a high-resolution image into multiple images that a pre-trained VIT is able to digest, and forms them into a concantenated
+                            sequence. This technique is naturally generalizable to represent videos (consisting of multiple frames), allowing the image-only-trained LLaVA-Next model to perform surprisingly well on video tasks. Notably, this is the first
+                            time that LMMs show <strong>strong zero-shot modality transfer ability.</strong></li>
+                        <li><strong>Inference with length generalization improves on longer videos.</strong> The linear scaling technique enables length generalization, allowing LLaVA-NeXT to effectively handle long-video beyond the limitation of the "max_token_length"
+                            of the LLM.</li>
+                        <li><strong>Strong video understanding ability. </strong> (1) <em>LLaVA-Next-Image</em>, which combines the above two techniques, yields superior zero-shot performance than open-source LMMs tuned on videos. (2) <em>LLaVA-Next-Video</em>,
+                            further supervised fine-tuning (SFT) LLaVA-Next-Image on video data, achieves better video understanding capabilities compared to LLaVA-Next-Image. (3) <em>LLaVA-Next-Video-DPO</em>, which aligns the model response with AI
+                            feedback using direct preference optimization (DPO), showing significant performance boost.</li>
+                        <li><strong>Efficient deployment and inference</strong> with <a href="https://github.com/sgl-project/sglang">SGLang</a>. It allows 5x faster inference on video tasks, allowing more scalable serving such as million-level video re-captioning.
+                            See instructions in our repo.</li>
+                    </ol>
 
 
-</ul>
+                    <h2 id="open-source-release">Open-Source Release</h2>
 
-<h2 id="results">Results</h2>
-
-
-<style type="text/css">
-  .tg  {border-collapse:collapse;border-spacing:0;}
-  .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg .tg-2c5p{background-color:#F2F3F5;font-style:italic;text-align:center;vertical-align:top}
-  .tg .tg-7g3y{background-color:#F0FBEF;font-weight:bold;text-align:center;vertical-align:top}
-  .tg .tg-baqh{text-align:center;vertical-align:top}
-  .tg .tg-4erg{border-color:inherit;font-style:italic;font-weight:bold;text-align:left;vertical-align:top}
-  .tg .tg-i5bh{background-color:#F2F3F5;font-weight:bold;text-align:center;vertical-align:top}
-  .tg .tg-size{background-color:#F0FBEF;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
-  .tg .tg-lg4c{background-color:#F2F3F5;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-  .tg .tg-58td{background-color:#F0FBEF;text-align:center;vertical-align:top}
-  .tg .tg-6t3r{font-style:italic;font-weight:bold;text-align:left;vertical-align:top}
-  .tg .tg-x2mq{background-color:#F0F4FF;text-align:center;vertical-align:top}
-  .tg .tg-xs0l{background-color:#F0F4FF;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
-  .tg .tg-zvys{background-color:#F6F1FE;text-align:center;vertical-align:top}
-  .tg .tg-0lax{text-align:left;vertical-align:top}
-  .tg .tg-n71h{background-color:#F6F1FE;font-weight:bold;text-align:center;vertical-align:top}
-  </style>
-  <table class="tg">
-  <thead>
-    <tr>
-      <th class="tg-i5bh" rowspan="2">Data<br>(Pre-training)</th>
-      <th class="tg-i5bh" rowspan="2">Data<br>(Post-training)</th>
-      <th class="tg-i5bh" colspan="2">Max Sequence Length</th>
-      <th class="tg-i5bh" rowspan="2">Model</th>
-      <th class="tg-i5bh" rowspan="2">Throughput<br>(seconds/video)</th>
-      <th class="tg-i5bh" rowspan="2">NextQA<br>(WUPS@All)</th>
-      <th class="tg-i5bh" rowspan="2">ActivityNet-QA<br> (Acc/Score)</th>
-      <th class="tg-i5bh" rowspan="2">Video Detailed Description<br> (Score)</th>
-      <th class="tg-i5bh" colspan="5">VideoChat-GPT<br> (Score)</th>
-    </tr>
-    <tr>
-      <th class="tg-i5bh">Training</th>
-      <th class="tg-i5bh">Inference</th>
-      <th class="tg-2c5p">Correctness</th>
-      <th class="tg-2c5p">Detail</th>
-      <th class="tg-2c5p">Context</th>
-      <th class="tg-2c5p">Temporal</th>
-      <th class="tg-2c5p">Consistency</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="tg-6t3r" colspan="14">Proprietary</td>
-    </tr>
-    <tr>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">GPT-4V (1106)</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">4.00</td>
-      <td class="tg-58td">4.09</td>
-      <td class="tg-58td">3.88</td>
-      <td class="tg-58td">4.37</td>
-      <td class="tg-58td">3.94</td>
-      <td class="tg-58td"> 4.02</td>
-    </tr>
-    <tr>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">Flamingo</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">26.7</td>
-      <td class="tg-58td">45.3</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-    </tr>
-    <tr>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">Gemini Pro</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">28.0</td>
-      <td class="tg-58td">49.8</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-    </tr>
-    <tr>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">N/A</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-size"><a href="https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/">Gemini Ultra</a></td>
-      <td class="tg-58td">-</td>
-      <td class="tg-7g3y">29.9</td>
-      <td class="tg-58td">52.2</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-      <td class="tg-58td">-</td>
-    </tr>
-    <tr>
-      <td class="tg-6t3r" colspan="14">Open-Source SoTA</td>
-    </tr>
-    <tr>
-      <td class="tg-x2mq">558K</td>
-      <td class="tg-x2mq">765K</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-xs0l"><a href="https://arxiv.org/abs/2306.05424">VideoChatGPT</a> (7B)</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">35.2/2.7</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">2.40</td>
-      <td class="tg-x2mq">2.52</td>
-      <td class="tg-x2mq">2.62</td>
-      <td class="tg-x2mq">1.98</td>
-      <td class="tg-x2mq">2.37</td>
-    </tr>
-    <tr>
-      <td class="tg-x2mq">1260K</td>
-      <td class="tg-x2mq">765K</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-xs0l"><a href="https://arxiv.org/abs/2311.10122">Video-LLaVA</a> (7B)</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">45.3/3.3</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">2.87</td>
-      <td class="tg-x2mq">2.94</td>
-      <td class="tg-x2mq">3.44</td>
-      <td class="tg-x2mq">2.45</td>
-      <td class="tg-x2mq">2.51</td>
-    </tr>
-    <tr>
-      <td class="tg-x2mq">558K</td>
-      <td class="tg-x2mq">765K</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-xs0l"><a href="https://arxiv.org/abs/2312.08870">VISTA-LLAMA</a> (7B)</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">48.3/3.3</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">2.44</td>
-      <td class="tg-x2mq">2.31</td>
-      <td class="tg-x2mq">2.64</td>
-      <td class="tg-x2mq">3.18</td>
-      <td class="tg-x2mq">2.26</td>
-    </tr>
-    <tr>
-      <td class="tg-x2mq">35M</td>
-      <td class="tg-x2mq">1.9M</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-xs0l"><a href="https://arxiv.org/pdf/2311.17005v3.pdf">VideoChat2 </a>(7B)</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq"> 49.1/3.3</td>
-      <td class="tg-x2mq">-</td>
-      <td class="tg-x2mq">3.02&nbsp;&nbsp;</td>
-      <td class="tg-x2mq">2.88</td>
-      <td class="tg-x2mq">3.51</td>
-      <td class="tg-x2mq">2.66</td>
-      <td class="tg-x2mq"> 2.81</td>
-    </tr>
-    <tr>
-      <td class="tg-x2mq">790K</td>
-      <td class="tg-x2mq">765K</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-x2mq">4096</td>
-      <td class="tg-xs0l"><a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a> (7B)</td>
-      <td class="tg-x2mq">20</td>
-      <td class="tg-x2mq">21.03</td>
-      <td class="tg-x2mq">47.4/3.3</td>
-      <td class="tg-x2mq">2.84 </td>
-      <td class="tg-x2mq">3.01</td>
-      <td class="tg-x2mq">2.97</td>
-      <td class="tg-x2mq">3.54</td>
-      <td class="tg-x2mq">2.53</td>
-      <td class="tg-x2mq">2.60</td>
-    </tr>
-    <tr>
-      <td class="tg-6t3r" colspan="14">LLaVA-NeXT</td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K&nbsp;&nbsp;</td>
-      <td class="tg-zvys">760K</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">LLaVA-NeXT-Image (7B)*</td>
-      <td class="tg-zvys">4 </td>
-      <td class="tg-zvys">26.00</td>
-      <td class="tg-zvys">41.6/2.8</td>
-      <td class="tg-zvys">2.64</td>
-      <td class="tg-zvys">2.29</td>
-      <td class="tg-zvys">2.38</td>
-      <td class="tg-zvys">2.83</td>
-      <td class="tg-zvys">2.41</td>
-      <td class="tg-zvys">2.47</td>
-    </tr>
-    <tr>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-      <td class="tg-0lax"></td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K&nbsp;&nbsp;</td>
-      <td class="tg-zvys">760K</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">LLaVA-NeXT-Image (7B)</td>
-      <td class="tg-zvys">16</td>
-      <td class="tg-zvys">26.88</td>
-      <td class="tg-zvys">53.8/3.2</td>
-      <td class="tg-zvys">2.76</td>
-      <td class="tg-zvys">2.94</td>
-      <td class="tg-zvys">2.91</td>
-      <td class="tg-zvys">3.43</td>
-      <td class="tg-zvys">2.23</td>
-      <td class="tg-zvys">3.00</td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K </td>
-      <td class="tg-zvys">760K</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">LLaVA-NeXT-Image (7B)</td>
-      <td class="tg-zvys">33</td>
-      <td class="tg-zvys">27.33</td>
-      <td class="tg-zvys">53.5/3.2</td>
-      <td class="tg-zvys">3.12</td>
-      <td class="tg-zvys">3.05 </td>
-      <td class="tg-zvys">3.12</td>
-      <td class="tg-zvys">3.68</td>
-      <td class="tg-zvys">2.37</td>
-      <td class="tg-zvys">3.16</td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K </td>
-      <td class="tg-zvys">860K</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">LLaVA-NeXT-Video (7B)</td>
-      <td class="tg-zvys">37</td>
-      <td class="tg-zvys"> 26.90</td>
-      <td class="tg-zvys">53.5/3.2</td>
-      <td class="tg-zvys">3.32</td>
-      <td class="tg-zvys">3.39</td>
-      <td class="tg-zvys">3.29</td>
-      <td class="tg-zvys">3.92</td>
-      <td class="tg-zvys">2.60</td>
-      <td class="tg-zvys">3.12</td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K</td>
-      <td class="tg-zvys">860K+17K</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">LLaVA-NeXT-Video-DPO (7B)</td>
-      <td class="tg-zvys">37</td>
-      <td class="tg-zvys">26.92</td>
-      <td class="tg-zvys">60.2/3.5</td>
-      <td class="tg-zvys">3.72</td>
-      <td class="tg-zvys">3.64</td>
-      <td class="tg-zvys">3.45</td>
-      <td class="tg-zvys">4.17</td>
-      <td class="tg-zvys">2.95</td>
-      <td class="tg-zvys">4.08</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-      <td class="tg-baqh"></td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K</td>
-      <td class="tg-zvys">760K</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">LLaVA-NeXT-Image (34B)</td>
-      <td class="tg-zvys">28</td>
-      <td class="tg-zvys">28.20</td>
-      <td class="tg-zvys">55.4/3.3</td>
-      <td class="tg-zvys">3.00</td>
-      <td class="tg-zvys">3.21</td>
-      <td class="tg-zvys">3.06</td>
-      <td class="tg-zvys">3.49</td>
-      <td class="tg-zvys">2.53</td>
-      <td class="tg-zvys">3.31</td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K</td>
-      <td class="tg-zvys">760K</td>
-      <td class="tg-zvys">4096</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">LLaVA-NeXT-Image (34B)</td>
-      <td class="tg-zvys">45</td>
-      <td class="tg-zvys">28.33</td>
-      <td class="tg-zvys">55.6/3.3</td>
-      <td class="tg-zvys">3.20</td>
-      <td class="tg-zvys">3.29</td>
-      <td class="tg-zvys">3.23</td>
-      <td class="tg-zvys">3.83</td>
-      <td class="tg-zvys">2.51</td>
-      <td class="tg-zvys">3.47</td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K</td>
-      <td class="tg-zvys">860K</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">LLaVA-NeXT-Video (34B)</td>
-      <td class="tg-zvys">45</td>
-      <td class="tg-zvys">27.34</td>
-      <td class="tg-zvys">58.8/3.4</td>
-      <td class="tg-zvys">3.48</td>
-      <td class="tg-zvys">3.48</td>
-      <td class="tg-zvys">3.37</td>
-      <td class="tg-zvys">3.95</td>
-      <td class="tg-zvys">2.64</td>
-      <td class="tg-zvys">3.28</td>
-    </tr>
-    <tr>
-      <td class="tg-zvys">558K</td>
-      <td class="tg-zvys">860K+17K</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">8192</td>
-      <td class="tg-zvys">LLaVA-NeXT-Video-DPO (34B)</td>
-      <td class="tg-zvys">45</td>
-      <td class="tg-zvys">27.30</td>
-      <td class="tg-n71h">64.42/3.6</td>
-      <td class="tg-n71h">3.84</td>
-      <td class="tg-n71h">3.81</td>
-      <td class="tg-n71h">3.55</td>
-      <td class="tg-n71h">4.24</td>
-      <td class="tg-n71h">3.14</td>
-      <td class="tg-n71h">4.12</td>
-    </tr>
-  </tbody>
-  </table>
-*The video input is represented as only one frame.
-
-<div>&nbsp;</div>
+                    <ul>
+                        <li><a href="https://github.com/LLaVA-VL/LLaVA-NeXT-Video" target="_blank">Code</a> (Training code is coming soon)</li>
+                        <li><a href="https://huggingface.co/collections/lmms-lab/llava-next-video-661e86f5e8dabc3ff793c944" target="_blank">Model</a></li>
+                        <li>Demo is comming soon</li>
 
 
-<p>✨ Highlights:</p>
-<ul>
-  <li><strong>SoTA Performance!</strong> Without seeing any video data, LLaVA-Next demonstrates strong zero-shot modality transfer ability, outperforming all the existing open-source LMMs (e.g., <a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a>) that have been specifically trained for videos. Compared with proprietary ones, it achieves comparable performance with Gemini Pro on NextQA and ActivityNet-QA.</li>
-  <li><strong>Strong length generalization ability.</strong> Despite being trained under the sequence length constraint of a 4096-token limit, LLaVA-Next demonstrates remarkable ability to generalize to longer sequences. This capability ensures robust performance even when processing long-frame content that exceeds the original token length limitation.</li>
-  <li><strong>DPO pushes performance.</strong> DPO with AI feedback on videos yields significant performance gains.</li>
+                    </ul>
 
-</ul>
+                    <h2 id="results">Results</h2>
 
-<h3 id="qualitative-results">Qualitative Results</h3>
 
-<details open>
-<summary><b>Video Detailed Caption Tasks</b></summary>
+                    <style type="text/css">
+                        .tg {
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                        }
+                        
+                        .tg td {
+                            border-color: black;
+                            border-style: solid;
+                            border-width: 1px;
+                            font-family: Arial, sans-serif;
+                            font-size: 14px;
+                            overflow: hidden;
+                            padding: 10px 5px;
+                            word-break: normal;
+                        }
+                        
+                        .tg th {
+                            border-color: black;
+                            border-style: solid;
+                            border-width: 1px;
+                            font-family: Arial, sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            overflow: hidden;
+                            padding: 10px 5px;
+                            word-break: normal;
+                        }
+                        
+                        .tg .tg-2c5p {
+                            background-color: #F2F3F5;
+                            font-style: italic;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-7g3y {
+                            background-color: #F0FBEF;
+                            font-weight: bold;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-baqh {
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-4erg {
+                            border-color: inherit;
+                            font-style: italic;
+                            font-weight: bold;
+                            text-align: left;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-i5bh {
+                            background-color: #F2F3F5;
+                            font-weight: bold;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-size {
+                            background-color: #F0FBEF;
+                            color: #00E;
+                            text-align: center;
+                            text-decoration: underline;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-lg4c {
+                            background-color: #F2F3F5;
+                            border-color: inherit;
+                            font-weight: bold;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-58td {
+                            background-color: #F0FBEF;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-6t3r {
+                            font-style: italic;
+                            font-weight: bold;
+                            text-align: left;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-x2mq {
+                            background-color: #F0F4FF;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-xs0l {
+                            background-color: #F0F4FF;
+                            color: #00E;
+                            text-align: center;
+                            text-decoration: underline;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-zvys {
+                            background-color: #F6F1FE;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-0lax {
+                            text-align: left;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-n71h {
+                            background-color: #F6F1FE;
+                            font-weight: bold;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                    </style>
+                    <table class="tg">
+                        <thead>
+                            <tr>
+                                <th class="tg-i5bh" rowspan="2">Data<br>(Pre-training)</th>
+                                <th class="tg-i5bh" rowspan="2">Data<br>(Post-training)</th>
+                                <th class="tg-i5bh" colspan="2">Max Sequence Length</th>
+                                <th class="tg-i5bh" rowspan="2">Model</th>
+                                <th class="tg-i5bh" rowspan="2">Throughput<br>(seconds/video)</th>
+                                <th class="tg-i5bh" rowspan="2">NextQA<br>(WUPS@All)</th>
+                                <th class="tg-i5bh" rowspan="2">ActivityNet-QA<br> (Acc/Score)</th>
+                                <th class="tg-i5bh" rowspan="2">Video Detailed Description<br> (Score)</th>
+                                <th class="tg-i5bh" colspan="5">VideoChat-GPT<br> (Score)</th>
+                            </tr>
+                            <tr>
+                                <th class="tg-i5bh">Training</th>
+                                <th class="tg-i5bh">Inference</th>
+                                <th class="tg-2c5p">Correctness</th>
+                                <th class="tg-2c5p">Detail</th>
+                                <th class="tg-2c5p">Context</th>
+                                <th class="tg-2c5p">Temporal</th>
+                                <th class="tg-2c5p">Consistency</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tg-6t3r" colspan="14">Proprietary</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">GPT-4V (1106)</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">4.00</td>
+                                <td class="tg-58td">4.09</td>
+                                <td class="tg-58td">3.88</td>
+                                <td class="tg-58td">4.37</td>
+                                <td class="tg-58td">3.94</td>
+                                <td class="tg-58td"> 4.02</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">Flamingo</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">26.7</td>
+                                <td class="tg-58td">45.3</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">Gemini Pro</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">28.0</td>
+                                <td class="tg-58td">49.8</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">N/A</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-size"><a href="https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/">Gemini Ultra</a></td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-7g3y">29.9</td>
+                                <td class="tg-58td">52.2</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                                <td class="tg-58td">-</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-6t3r" colspan="14">Open-Source SoTA</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-x2mq">558K</td>
+                                <td class="tg-x2mq">765K</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-xs0l"><a href="https://arxiv.org/abs/2306.05424">VideoChatGPT</a> (7B)</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">35.2/2.7</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">2.40</td>
+                                <td class="tg-x2mq">2.52</td>
+                                <td class="tg-x2mq">2.62</td>
+                                <td class="tg-x2mq">1.98</td>
+                                <td class="tg-x2mq">2.37</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-x2mq">1260K</td>
+                                <td class="tg-x2mq">765K</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-xs0l"><a href="https://arxiv.org/abs/2311.10122">Video-LLaVA</a> (7B)</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">45.3/3.3</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">2.87</td>
+                                <td class="tg-x2mq">2.94</td>
+                                <td class="tg-x2mq">3.44</td>
+                                <td class="tg-x2mq">2.45</td>
+                                <td class="tg-x2mq">2.51</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-x2mq">558K</td>
+                                <td class="tg-x2mq">765K</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-xs0l"><a href="https://arxiv.org/abs/2312.08870">VISTA-LLAMA</a> (7B)</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">48.3/3.3</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">2.44</td>
+                                <td class="tg-x2mq">2.31</td>
+                                <td class="tg-x2mq">2.64</td>
+                                <td class="tg-x2mq">3.18</td>
+                                <td class="tg-x2mq">2.26</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-x2mq">35M</td>
+                                <td class="tg-x2mq">1.9M</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-xs0l"><a href="https://arxiv.org/pdf/2311.17005v3.pdf">VideoChat2 </a>(7B)</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq"> 49.1/3.3</td>
+                                <td class="tg-x2mq">-</td>
+                                <td class="tg-x2mq">3.02&nbsp;&nbsp;</td>
+                                <td class="tg-x2mq">2.88</td>
+                                <td class="tg-x2mq">3.51</td>
+                                <td class="tg-x2mq">2.66</td>
+                                <td class="tg-x2mq"> 2.81</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-x2mq">790K</td>
+                                <td class="tg-x2mq">765K</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-x2mq">4096</td>
+                                <td class="tg-xs0l"><a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a> (7B)</td>
+                                <td class="tg-x2mq">20</td>
+                                <td class="tg-x2mq">21.03</td>
+                                <td class="tg-x2mq">47.4/3.3</td>
+                                <td class="tg-x2mq">2.84 </td>
+                                <td class="tg-x2mq">3.01</td>
+                                <td class="tg-x2mq">2.97</td>
+                                <td class="tg-x2mq">3.54</td>
+                                <td class="tg-x2mq">2.53</td>
+                                <td class="tg-x2mq">2.60</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-6t3r" colspan="14">LLaVA-NeXT</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K&nbsp;&nbsp;</td>
+                                <td class="tg-zvys">760K</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Image (7B)*</td>
+                                <td class="tg-zvys">4 </td>
+                                <td class="tg-zvys">26.00</td>
+                                <td class="tg-zvys">41.6/2.8</td>
+                                <td class="tg-zvys">2.64</td>
+                                <td class="tg-zvys">2.29</td>
+                                <td class="tg-zvys">2.38</td>
+                                <td class="tg-zvys">2.83</td>
+                                <td class="tg-zvys">2.41</td>
+                                <td class="tg-zvys">2.47</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                                <td class="tg-0lax"></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K&nbsp;&nbsp;</td>
+                                <td class="tg-zvys">760K</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Image (7B)</td>
+                                <td class="tg-zvys">16</td>
+                                <td class="tg-zvys">26.88</td>
+                                <td class="tg-zvys">53.8/3.2</td>
+                                <td class="tg-zvys">2.76</td>
+                                <td class="tg-zvys">2.94</td>
+                                <td class="tg-zvys">2.91</td>
+                                <td class="tg-zvys">3.43</td>
+                                <td class="tg-zvys">2.23</td>
+                                <td class="tg-zvys">3.00</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K </td>
+                                <td class="tg-zvys">760K</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Image (7B)</td>
+                                <td class="tg-zvys">33</td>
+                                <td class="tg-zvys">27.33</td>
+                                <td class="tg-zvys">53.5/3.2</td>
+                                <td class="tg-zvys">3.12</td>
+                                <td class="tg-zvys">3.05 </td>
+                                <td class="tg-zvys">3.12</td>
+                                <td class="tg-zvys">3.68</td>
+                                <td class="tg-zvys">2.37</td>
+                                <td class="tg-zvys">3.16</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K </td>
+                                <td class="tg-zvys">860K</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Video (7B)</td>
+                                <td class="tg-zvys">37</td>
+                                <td class="tg-zvys"> 26.90</td>
+                                <td class="tg-zvys">53.5/3.2</td>
+                                <td class="tg-zvys">3.32</td>
+                                <td class="tg-zvys">3.39</td>
+                                <td class="tg-zvys">3.29</td>
+                                <td class="tg-zvys">3.92</td>
+                                <td class="tg-zvys">2.60</td>
+                                <td class="tg-zvys">3.12</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K</td>
+                                <td class="tg-zvys">860K+17K</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Video-DPO (7B)</td>
+                                <td class="tg-zvys">37</td>
+                                <td class="tg-zvys">26.92</td>
+                                <td class="tg-zvys">60.2/3.5</td>
+                                <td class="tg-zvys">3.72</td>
+                                <td class="tg-zvys">3.64</td>
+                                <td class="tg-zvys">3.45</td>
+                                <td class="tg-zvys">4.17</td>
+                                <td class="tg-zvys">2.95</td>
+                                <td class="tg-zvys">4.08</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                                <td class="tg-baqh"></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K</td>
+                                <td class="tg-zvys">760K</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Image (34B)</td>
+                                <td class="tg-zvys">28</td>
+                                <td class="tg-zvys">28.20</td>
+                                <td class="tg-zvys">55.4/3.3</td>
+                                <td class="tg-zvys">3.00</td>
+                                <td class="tg-zvys">3.21</td>
+                                <td class="tg-zvys">3.06</td>
+                                <td class="tg-zvys">3.49</td>
+                                <td class="tg-zvys">2.53</td>
+                                <td class="tg-zvys">3.31</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K</td>
+                                <td class="tg-zvys">760K</td>
+                                <td class="tg-zvys">4096</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Image (34B)</td>
+                                <td class="tg-zvys">45</td>
+                                <td class="tg-zvys">28.33</td>
+                                <td class="tg-zvys">55.6/3.3</td>
+                                <td class="tg-zvys">3.20</td>
+                                <td class="tg-zvys">3.29</td>
+                                <td class="tg-zvys">3.23</td>
+                                <td class="tg-zvys">3.83</td>
+                                <td class="tg-zvys">2.51</td>
+                                <td class="tg-zvys">3.47</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K</td>
+                                <td class="tg-zvys">860K</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Video (34B)</td>
+                                <td class="tg-zvys">45</td>
+                                <td class="tg-zvys">27.34</td>
+                                <td class="tg-zvys">58.8/3.4</td>
+                                <td class="tg-zvys">3.48</td>
+                                <td class="tg-zvys">3.48</td>
+                                <td class="tg-zvys">3.37</td>
+                                <td class="tg-zvys">3.95</td>
+                                <td class="tg-zvys">2.64</td>
+                                <td class="tg-zvys">3.28</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-zvys">558K</td>
+                                <td class="tg-zvys">860K+17K</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">8192</td>
+                                <td class="tg-zvys">LLaVA-NeXT-Video-DPO (34B)</td>
+                                <td class="tg-zvys">45</td>
+                                <td class="tg-zvys">27.30</td>
+                                <td class="tg-n71h">64.42/3.6</td>
+                                <td class="tg-n71h">3.84</td>
+                                <td class="tg-n71h">3.81</td>
+                                <td class="tg-n71h">3.55</td>
+                                <td class="tg-n71h">4.24</td>
+                                <td class="tg-n71h">3.14</td>
+                                <td class="tg-n71h">4.12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    *The video input is represented as only one frame.
 
-<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1); text-align: center;">
+                    <div>&nbsp;</div>
 
-  <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
 
-  <p style="font-style: italic; color: grey;">Prompt for T2V: A realistic image of clouds forming the word "SORA"</p>
-  <video width="50%" controls loop autoplay>
+                    <p>✨ Highlights:</p>
+                    <ul>
+                        <li><strong>SoTA Performance!</strong> Without seeing any video data, LLaVA-Next demonstrates strong zero-shot modality transfer ability, outperforming all the existing open-source LMMs (e.g., <a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a>)
+                            that have been specifically trained for videos. Compared with proprietary ones, it achieves comparable performance with Gemini Pro on NextQA and ActivityNet-QA.</li>
+                        <li><strong>Strong length generalization ability.</strong> Despite being trained under the sequence length constraint of a 4096-token limit, LLaVA-Next demonstrates remarkable ability to generalize to longer sequences. This capability
+                            ensures robust performance even when processing long-frame content that exceeds the original token length limitation.</li>
+                        <li><strong>DPO pushes performance.</strong> DPO with AI feedback on videos yields significant performance gains.</li>
+
+                    </ul>
+
+                    <h3 id="qualitative-results">Qualitative Results</h3>
+
+                    <details open>
+                        <summary><b>Video Detailed Caption Tasks</b></summary>
+
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1); text-align: center;">
+
+                            <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+
+                            <p style="font-style: italic; color: grey;">Prompt for T2V: A realistic image of clouds forming the word "SORA"</p>
+                            <video width="50%" controls loop autoplay>
     <source src="/blog/assets/videos/sora/xU25MMA2N4aVtYay.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-</div>
+                        </div>
 
-<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1); text-align: center;">
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1); text-align: center;">
 
-  <h4>LLaVA-NeXT-Video</h4>
+                            <h4>LLaVA-NeXT-Video</h4>
 
-  <p style="text-align: left;">The video you've provided appears to be a digital artwork that features a large, fluffy white cloud in the sky with the word \"SORA\" written across it. The cloud is the main subject of the video, and it is positioned against a clear sky with a few wispy clouds in the background. The cloud itself is dense and appears to be a cumulus cloud, which is characterized by its fluffy, rounded shape and white color, suggesting that it could be a cloud that is forming or about to rain. The background is a gradient of blue, indicating that the sky is clear and possibly sunny, with a few wispy clouds scattered around, which adds depth to the scene. The overall atmosphere of the video is serene and somewhat dreamlike, with the cloud's formation and the clear sky creating a peaceful and somewhat surreal visual effect.</p>
+                            <p style="text-align: left;">The video you've provided appears to be a digital artwork that features a large, fluffy white cloud in the sky with the word \"SORA\" written across it. The cloud is the main subject of the video, and it is positioned against
+                                a clear sky with a few wispy clouds in the background. The cloud itself is dense and appears to be a cumulus cloud, which is characterized by its fluffy, rounded shape and white color, suggesting that it could be a cloud
+                                that is forming or about to rain. The background is a gradient of blue, indicating that the sky is clear and possibly sunny, with a few wispy clouds scattered around, which adds depth to the scene. The overall atmosphere
+                                of the video is serene and somewhat dreamlike, with the cloud's formation and the clear sky creating a peaceful and somewhat surreal visual effect.</p>
 
-</div>
+                        </div>
 
-</details>
+                    </details>
 
-<p><br/></p>
+                    <p><br/></p>
 
 
-<details open>
+                    <details open>
 
-<summary><b>Video QA Tasks</b></summary>
+                        <summary><b>Video QA Tasks</b></summary>
 
-<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1); text-align: center;">
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1); text-align: center;">
 
-  <h4>User: Which part of the video goes against common sense?</h4>
+                            <h4>User: Which part of the video goes against common sense?</h4>
 
-  <p style="font-style: italic; color: grey;">Prompt for T2V: Step-printing scene of a person running, cinematic film shot in 35mm.</p>
+                            <p style="font-style: italic; color: grey;">Prompt for T2V: Step-printing scene of a person running, cinematic film shot in 35mm.</p>
 
-  <video width="50%" controls loop autoplay>
+                            <video width="50%" controls loop autoplay>
     <source src="/blog/assets/videos/sora/backward-jogger.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-</div>
+                        </div>
 
-<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1); text-align: center;">
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1); text-align: center;">
 
-  <h4>LLaVA-NeXT-Video</h4>
+                            <h4>LLaVA-NeXT-Video</h4>
 
-  <p style="text-align: left;">The video you've provided appears to show a person running on a treadmill, but the unusual aspect is that the person's legs are not aligned with the treadmill's belt. This defies common sense because when running on a treadmill, one would expect the person's legs to be in sync with the belt's motion, either moving forward or backward in a coordinated manner. In this video, the person's legs are positioned as if they are running in a different direction or at a different pace than the belt, which is not possible in reality and thus goes against common sense. This suggests that the video may have been manipulated or is a composite of two different scenes to create an illusion.</p>
+                            <p style="text-align: left;">The video you've provided appears to show a person running on a treadmill, but the unusual aspect is that the person's legs are not aligned with the treadmill's belt. This defies common sense because when running on a treadmill,
+                                one would expect the person's legs to be in sync with the belt's motion, either moving forward or backward in a coordinated manner. In this video, the person's legs are positioned as if they are running in a different direction
+                                or at a different pace than the belt, which is not possible in reality and thus goes against common sense. This suggests that the video may have been manipulated or is a composite of two different scenes to create an illusion.</p>
 
-</div>
-</details>
+                        </div>
+                    </details>
 
-<p><br/></p>
+                    <p><br/></p>
 
-<h2 id="technical-insights">Technical Insights</h2>
+                    <h2 id="technical-insights">Technical Insights</h2>
 
-<h3 id="1-anyframe">(1) AnyRes: From multi-patch to multi-frame</h3>
+                    <h3 id="1-anyframe">(1) AnyRes: From multi-patch to multi-frame</h3>
 
-<p>The <strong>AnyRes</strong> algorithm, introduced in LLaVA-NeXT, achieves an optimal balance between performance efficiency and operational costs to deal with images of any high-resolution. It segments the image into a grid of sub-images with various configurations, such as {2x2, 1x{2,3,4}, {2,3,4}x1}. </p>
+                    <p>The <strong>AnyRes</strong> algorithm, introduced in LLaVA-NeXT, achieves an optimal balance between performance efficiency and operational costs to deal with images of any high-resolution. It segments the image into a grid of sub-images
+                        with various configurations, such as {2x2, 1x{2,3,4}, {2,3,4}x1}. </p>
 
-<p align="center">
-  <img width="90%" src="/blog/assets/images/llava-next-video/multi_frame.png" />
-  <br />
-  <em>Illustration that AnyRes digests a set of image as a sequence of concatenated visual tokens, allowing unified image and video input, which natually suppots the evolution from multi-image to multi-frame</em>
-</p>
+                    <p align="center">
+                        <img width="90%" src="/blog/assets/images/llava-next-video/multi_frame.png" />
+                        <br />
+                        <em>Illustration that AnyRes digests a set of image as a sequence of concatenated visual tokens, allowing unified image and video input, which natually suppots the evolution from multi-image to multi-frame</em>
+                    </p>
 
-<p>With minor code adjustments, LLaVA-NeXT can process  <strong>N</strong> video frames arranged in a {1xN} grid. Assuming each frame comprises 24x24 tokens, the total token count for a video would be 24x24xN.  <strong>However, considering the "max_token_length" limit of 4096 for the LLM, it is crucial to ensure that 24x24xN + the number of text tokens < 4096 to avoid nonsensical outputs</strong>. This necessitates a careful balance between the tokens per frame and the total number of frames. For example, applying spatial pooling with a stride of 2 reduces the tokens per frame from 24x24 to 12x12, accommodating up to 16 frames. Our findings indicate that a configuration of 12x12 tokens across 16 frames yields optimal performance. However, 16 frames may not sufficiently capture the essence of most videos. Next, we focus on enabling LLaVA-NeXT to handle more frames.</p>
+                    <p>With minor code adjustments, LLaVA-NeXT can process <strong>N</strong> video frames arranged in a {1xN} grid. Assuming each frame comprises 24x24 tokens, the total token count for a video would be 24x24xN. <strong>However, considering the "max_token_length" limit of 4096 for the LLM, it is crucial to ensure that 24x24xN + the number of text tokens < 4096 to avoid nonsensical outputs</strong>.
+                        This necessitates a careful balance between the tokens per frame and the total number of frames. For example, applying spatial pooling with a stride of 2 reduces the tokens per frame from 24x24 to 12x12, accommodating up to 16
+                        frames. Our findings indicate that a configuration of 12x12 tokens across 16 frames yields optimal performance. However, 16 frames may not sufficiently capture the essence of most videos. Next, we focus on enabling LLaVA-NeXT to
+                        handle more frames.</p>
 
-<h3 id="2-length_generalization">(2) Length generalization: From multi-frame to long-video.</h3>
+                    <h3 id="2-length_generalization">(2) Length generalization: From multi-frame to long-video.</h3>
 
-<p>Inspired by recent advance in dealing with long sequences in LLMs, such as the implementation of <strong>linear scaling</strong> in rotary position embeddings (RoPE), we apply a similar scaling approach in LLaVA-NeXT. By introducing a scaling factor of 2, for instance, we effectively double the "max_token_length" capacity of the model, enabling it to process sequences up to 8192 tokens. With this technique, LLaVA-NeXT can process up to 56 frames with a per frame token count of 12x12, significantly expanding the model's applicability in analyzing longer video sequences.</p>
+                    <p>Inspired by recent advance in dealing with long sequences in LLMs, such as the implementation of <strong>linear scaling</strong> in rotary position embeddings (RoPE), we apply a similar scaling approach in LLaVA-NeXT. By introducing
+                        a scaling factor of 2, for instance, we effectively double the "max_token_length" capacity of the model, enabling it to process sequences up to 8192 tokens. With this technique, LLaVA-NeXT can process up to 56 frames with a per
+                        frame token count of 12x12, significantly expanding the model's applicability in analyzing longer video sequences.</p>
 
-<p align="center">
-  <img width="90%" src="/blog/assets/images/llava-next-video/rope_scale.png" />
-  <br />
-  <em>Illustration of length generalization to deal with a long sequence with much more frames, where the sequence length in inference can be longer than the sequence length in training.</em>
-</p>
+                    <p align="center">
+                        <img width="90%" src="/blog/assets/images/llava-next-video/rope_scale.png" />
+                        <br />
+                        <em>Illustration of length generalization to deal with a long sequence with much more frames, where the sequence length in inference can be longer than the sequence length in training.</em>
+                    </p>
 
-<p>This adaptation of linear scaling not only facilitates the processing of a greater number of frames but also opens new avenues for LLaVA-NeXT's application in comprehensive video analysis, setting a precedent for future research in the field.</p>
-
-
-<h3 id="3-dpo">(3) Direct Preference Optimization from AI Feedback</h3>
-
-<p>Recent advancements in reinforcement learning from human feedback (RLHF) have been effective in guiding LLMs towards generating more honest, helpful, and harmless content. Their effectiveness in multimodal contexts remains limited. The critical obstacle lies in (1) developing a robust reward system capable of distinguishing preferred responses from less preferred ones, and (2) acquiring high-quality preference data from humans is both costly and labor-intensive, especially for video inputs with multiple frames.  As a cost-efficient alternative, AI feedback using LLM reward is considered in <a href="https://arxiv.org/abs/2404.01258">our recent study LLaVA-Hound</a>. DPO is used to train LMM, based on the preference data generated by LLM, where videos are represented with their detailed captions as supporting evidence. Following the same recipe, we explore DPO based on the stronger SFT LMM LLaVA-NeXT-Video, leading to the final model LLaVA-NeXT-Video-DPO.</p>
-
-<p>The results are presented in the main table at the beginning of the blog, showcasing DPO's significant improved performance gain, sometimes even surpassing the gains from supervised fine-tuning with video data. This highlights the promising future of exploring training methods that utilize AI or human feedback.</p>
-
+                    <p>This adaptation of linear scaling not only facilitates the processing of a greater number of frames but also opens new avenues for LLaVA-NeXT's application in comprehensive video analysis, setting a precedent for future research in
+                        the field.</p>
 
 
-<details>
-  <summary><b>[Fold / Unfold] to see the examples with DPO</b></summary>
+                    <h3 id="3-dpo">(3) Direct Preference Optimization from AI Feedback</h3>
 
-  <p>We illustrate two examples to demonstrate the superiority of DPO. Texts of interest are highlighted in <span style="color: rgb(10, 53, 242);">blue</span>, while parts that might contain hallucinations are marked in <span style="color: rgb(235, 53, 208);">red</span>. LLaVA-NeXT-Video-DPO reduces hallucinations, and follows the instructions very well, as it responds clearly to different parts of the instructions in separate sections. This resonates with the objective of alignment research: to better follow human intent. Note that we utilize Genimi-Pro, which supports video input, to assess the quality of the model's responses with and without DPO in the last column. </p>
-  
-  <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-  
-    <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, the background scenes, and the temporal transitions.</h4>
+                    <p>Recent advancements in reinforcement learning from human feedback (RLHF) have been effective in guiding LLMs towards generating more honest, helpful, and harmless content. Their effectiveness in multimodal contexts remains limited.
+                        The critical obstacle lies in (1) developing a robust reward system capable of distinguishing preferred responses from less preferred ones, and (2) acquiring high-quality preference data from humans is both costly and labor-intensive,
+                        especially for video inputs with multiple frames. As a cost-efficient alternative, AI feedback using LLM reward is considered in <a href="https://arxiv.org/abs/2404.01258">our recent study LLaVA-Hound</a>. DPO is used to train
+                        LMM, based on the preference data generated by LLM, where videos are represented with their detailed captions as supporting evidence. Following the same recipe, we explore DPO based on the stronger SFT LMM LLaVA-NeXT-Video, leading
+                        to the final model LLaVA-NeXT-Video-DPO.</p>
 
-    <video id="video" width="50%" controls loop autoplay autoplay >
+                    <p>The results are presented in the main table at the beginning of the blog, showcasing DPO's significant improved performance gain, sometimes even surpassing the gains from supervised fine-tuning with video data. This highlights the
+                        promising future of exploring training methods that utilize AI or human feedback.</p>
+
+
+
+                    <details>
+                        <summary><b>[Fold / Unfold] to see the examples with DPO</b></summary>
+
+                        <p>We illustrate two examples to demonstrate the superiority of DPO. Texts of interest are highlighted in <span style="color: rgb(10, 53, 242);">blue</span>, while parts that might contain hallucinations are marked in <span style="color: rgb(235, 53, 208);">red</span>.
+                            LLaVA-NeXT-Video-DPO reduces hallucinations, and follows the instructions very well, as it responds clearly to different parts of the instructions in separate sections. This resonates with the objective of alignment research:
+                            to better follow human intent. Note that we utilize Genimi-Pro, which supports video input, to assess the quality of the model's responses with and without DPO in the last column. </p>
+
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+                            <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, the background scenes, and the temporal transitions.</h4>
+
+                            <video id="video" width="50%" controls loop autoplay autoplay>
       <source src="/blog/assets/videos/sora/cpRSZOcJrs029ixB.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-  
-  </div>
-  
 
-  <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-  
-    <h4>LLaVA-NeXT-Video-DPO</h4>
-  
-    <p>The video depicts a dynamic and surreal scene where the action of surfing is juxtaposed with an indoor setting. In the foreground, there are two surfers riding waves, one slightly ahead of the other, maintaining their balance on surfboards. The surfer in the foreground is skillfully navigating the crest of a wave, while the one behind is positioned on the face of the wave, both displaying athletic postures typical of surfing. The waves are large and crashing, with the wave in the background creating a dramatic arc that suggests motion and power.</p>
-    <p>The background is an opulent interior space with high vaulted ceilings, ornate detailing, and classical architecture, including arches and what appears to be marble or stone work. The lighting is warm, with a golden hue that contrasts with the cool tones of the water. The architecture suggests a grand hall or a space designed for public gatherings or performances, possibly inspired by classical or neoclassical styles.</p>
-    <p><span style="color: rgb(10, 53, 242);">The temporal transition in the video is interesting as it captures a moment of action (the surfers riding the wave) within a stationary, non-moving environment (the interior space). This creates a surreal effect, blending the dynamic motion of the ocean with the static elegance of a building interior. The image is a blend of two disparate subjects—the exhilarating sport of surfing and the serene grandeur of architectural design—into a single, captivating composition.</span></p>
-  
-  </div>
-
-  <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-  
-    <h4>LLaVA-NeXT-Video</h4>
-  
-    <p>The video depicts a large wave crashing inside a building, with a surfer riding the wave. The surfer is positioned in the center of the frame, skillfully navigating the wave's crest. The wave is massive, filling the majority of the space from the top to the bottom of the frame, with its white foam and water spray creating a dynamic and powerful visual effect. The background of the scene is a grand hall with high ceilings and ornate architecture, featuring arches and columns that add a sense of grandeur to the setting. The lighting is dim, with the focus on the surfer and the wave, casting shadows and highlighting the contours of the wave's movement. The camera captures the surfer from a low angle, emphasizing the height of the wave and the surfer's skill in maintaining balance. As the wave begins to break, the surfer is seen riding it towards the right side of the frame, creating a sense of motion and direction. The video transitions from a close-up of the surfer to a wider shot, showing the full scale of the wave and the grand hall. <span style="color: rgb(235, 53, 208);">The sound of the crashing wave is prominent, adding to the immersive experience. The video concludes with a shot of the surfer disappearing from view as the wave subsides, leaving the grand hall empty and still.</span></p>
-  
-  </div>
+                        </div>
 
 
-  <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-  
-    <h4>Evaluation and Comments</h4>
-  
-    
-    <p>Description A: <strong>LLaVA-NeXT-Video-DPO</strong></p>
-    <p>Description B: <strong>LLaVA-NeXT-Video</strong></p>
-    <p><strong>Comparison:</strong></p>
-    <p>Description A provides a more comprehensive and evocative description of the video, capturing the surreal juxtaposition of surfing with the opulent indoor setting. It highlights the dynamic motion of the surfers and the contrasting serenity of the architecture, creating a unique and captivating image.</p>
-    <p>Description B, on the other hand, focuses more on the surfer riding the wave within the grand hall. While it describes the visual elements and motion of the surfer, it lacks the depth and nuance of Description A in capturing the surreal and immersive nature of the scene.</p>
-    <p><strong>Conclusion:</strong></p>
-    <p>Description A is the better description for this video as it provides a more complete and engaging portrayal of the surreal scene, capturing the blend of dynamic action and serene grandeur, while also highlighting the unique juxtaposition of surfing with the opulent indoor setting.</p>
-  
-  </div>
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 
-</details>
+                            <h4>LLaVA-NeXT-Video-DPO</h4>
 
-<div>&nbsp;</div>
+                            <p>The video depicts a dynamic and surreal scene where the action of surfing is juxtaposed with an indoor setting. In the foreground, there are two surfers riding waves, one slightly ahead of the other, maintaining their balance
+                                on surfboards. The surfer in the foreground is skillfully navigating the crest of a wave, while the one behind is positioned on the face of the wave, both displaying athletic postures typical of surfing. The waves are large
+                                and crashing, with the wave in the background creating a dramatic arc that suggests motion and power.</p>
+                            <p>The background is an opulent interior space with high vaulted ceilings, ornate detailing, and classical architecture, including arches and what appears to be marble or stone work. The lighting is warm, with a golden hue that
+                                contrasts with the cool tones of the water. The architecture suggests a grand hall or a space designed for public gatherings or performances, possibly inspired by classical or neoclassical styles.</p>
+                            <p><span style="color: rgb(10, 53, 242);">The temporal transition in the video is interesting as it captures a moment of action (the surfers riding the wave) within a stationary, non-moving environment (the interior space). This creates a surreal effect, blending the dynamic motion of the ocean with the static elegance of a building interior. The image is a blend of two disparate subjects—the exhilarating sport of surfing and the serene grandeur of architectural design—into a single, captivating composition.</span></p>
 
-<h2 id="experical-exploration">More Empirical Explorations</h2>
+                        </div>
 
-<h3 id="1-configurations">(1) How to represent videos? Configurations: (# Tokens/Frame,  # Frames)</h3>
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 
-<p>As discussed in the "From Multi-Patch to Multi-Frame" section, navigating the "max_token_length" constraint of 4096 for the Large Language Model (LLM) necessitates a strategic balance between the number of tokens allocated per frame and the total frame count included in the analysis. Our exploration led to an optimal setup: configuring each frame to contain 12x12 tokens and sampling 16 frames for each video.</p>
+                            <h4>LLaVA-NeXT-Video</h4>
 
-<p>Further amplifying the model's capabilities, "linear scaling" emerges as a pivotal tool in exploring configurations that accommodate more image tokens, thus enabling longer inference tokens. The table below encapsulates our findings, illustrating that configurations enabled by "linear scaling" significantly enhance performance by allowing for longer sequences of inference tokens.</p>
-  
+                            <p>The video depicts a large wave crashing inside a building, with a surfer riding the wave. The surfer is positioned in the center of the frame, skillfully navigating the wave's crest. The wave is massive, filling the majority
+                                of the space from the top to the bottom of the frame, with its white foam and water spray creating a dynamic and powerful visual effect. The background of the scene is a grand hall with high ceilings and ornate architecture,
+                                featuring arches and columns that add a sense of grandeur to the setting. The lighting is dim, with the focus on the surfer and the wave, casting shadows and highlighting the contours of the wave's movement. The camera
+                                captures the surfer from a low angle, emphasizing the height of the wave and the surfer's skill in maintaining balance. As the wave begins to break, the surfer is seen riding it towards the right side of the frame, creating
+                                a sense of motion and direction. The video transitions from a close-up of the surfer to a wider shot, showing the full scale of the wave and the grand hall. <span style="color: rgb(235, 53, 208);">The sound of the crashing wave is prominent, adding to the immersive experience. The video concludes with a shot of the surfer disappearing from view as the wave subsides, leaving the grand hall empty and still.</span></p>
 
-<style type="text/css">
-  .tg  {border-collapse:collapse;border-spacing:0;}
-  .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg .tg-baqh{text-align:center;vertical-align:top}
-  .tg .tg-i5bh{background-color:#F2F3F5;font-weight:bold;text-align:center;vertical-align:top}
-  .tg .tg-5frq{font-style:italic;text-align:center;vertical-align:top}
-  .tg .tg-6t3r{font-style:italic;font-weight:bold;text-align:left;vertical-align:top}
-  .tg .tg-0lax{text-align:left;vertical-align:top}
-  </style>
-  <table class="tg">
-  <thead>
-    <tr>
-      <th class="tg-i5bh">Model</th>
-      <th class="tg-i5bh">Pooling Stride</th>
-      <th class="tg-i5bh"># Tokens/Frame</th>
-      <th class="tg-i5bh"># Frames</th>
-      <th class="tg-i5bh">Video Detailed Description<br>(Score)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="tg-5frq" rowspan="11" style="vertical-align: middle;">LLaVA-NeXT-Image-7B<br></td>      <td class="tg-6t3r" colspan="4">Max inference tokens=4096</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">4</td>
-      <td class="tg-baqh">6X6</td>
-      <td class="tg-baqh">32</td>
-      <td class="tg-baqh">2.73</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">4</td>
-      <td class="tg-baqh">6X6</td>
-      <td class="tg-baqh">64</td>
-      <td class="tg-baqh">2.24</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">2</td>
-      <td class="tg-baqh">12X12 </td>
-      <td class="tg-baqh">16</td>
-      <td class="tg-baqh">2.76</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">1</td>
-      <td class="tg-baqh">24X24</td>
-      <td class="tg-baqh">4</td>
-      <td class="tg-baqh">2.71</td>
-    </tr>
-    <tr>
-      <td class="tg-6t3r" colspan="4">Max inference tokens=8192 (with linear scale factor=2)</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">2</td>
-      <td class="tg-baqh">12X12 </td>
-      <td class="tg-baqh">32 </td>
-      <td class="tg-baqh">3.12 </td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">1</td>
-      <td class="tg-baqh">24X24</td>
-      <td class="tg-baqh">8</td>
-      <td class="tg-baqh">3.08</td>
-    </tr>
-    <tr>
-      <td class="tg-6t3r" colspan="4">Max inference tokens=16384 (with linear scale factor=4)</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">2</td>
-      <td class="tg-baqh">12X12 </td>
-      <td class="tg-baqh">64 </td>
-      <td class="tg-baqh">3.12</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">1</td>
-      <td class="tg-baqh">24X24</td>
-      <td class="tg-baqh">16 </td>
-      <td class="tg-baqh">3.16</td>
-    </tr>
-  </tbody>
-  </table>
+                        </div>
 
-<!-- <h2 id="model-card">Model Card</h2>
+
+                        <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+
+                            <h4>Evaluation and Comments</h4>
+
+
+                            <p>Description A: <strong>LLaVA-NeXT-Video-DPO</strong></p>
+                            <p>Description B: <strong>LLaVA-NeXT-Video</strong></p>
+                            <p><strong>Comparison:</strong></p>
+                            <p>Description A provides a more comprehensive and evocative description of the video, capturing the surreal juxtaposition of surfing with the opulent indoor setting. It highlights the dynamic motion of the surfers and the contrasting
+                                serenity of the architecture, creating a unique and captivating image.</p>
+                            <p>Description B, on the other hand, focuses more on the surfer riding the wave within the grand hall. While it describes the visual elements and motion of the surfer, it lacks the depth and nuance of Description A in capturing
+                                the surreal and immersive nature of the scene.</p>
+                            <p><strong>Conclusion:</strong></p>
+                            <p>Description A is the better description for this video as it provides a more complete and engaging portrayal of the surreal scene, capturing the blend of dynamic action and serene grandeur, while also highlighting the unique
+                                juxtaposition of surfing with the opulent indoor setting.</p>
+
+                        </div>
+
+                    </details>
+
+                    <div>&nbsp;</div>
+
+                    <h2 id="experical-exploration">More Empirical Explorations</h2>
+
+                    <h3 id="1-configurations">(1) How to represent videos? Configurations: (# Tokens/Frame, # Frames)</h3>
+
+                    <p>As discussed in the "From Multi-Patch to Multi-Frame" section, navigating the "max_token_length" constraint of 4096 for the Large Language Model (LLM) necessitates a strategic balance between the number of tokens allocated per frame
+                        and the total frame count included in the analysis. Our exploration led to an optimal setup: configuring each frame to contain 12x12 tokens and sampling 16 frames for each video.</p>
+
+                    <p>Further amplifying the model's capabilities, "linear scaling" emerges as a pivotal tool in exploring configurations that accommodate more image tokens, thus enabling longer inference tokens. The table below encapsulates our findings,
+                        illustrating that configurations enabled by "linear scaling" significantly enhance performance by allowing for longer sequences of inference tokens.</p>
+
+
+                    <style type="text/css">
+                        .tg {
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                        }
+                        
+                        .tg td {
+                            border-color: black;
+                            border-style: solid;
+                            border-width: 1px;
+                            font-family: Arial, sans-serif;
+                            font-size: 14px;
+                            overflow: hidden;
+                            padding: 10px 5px;
+                            word-break: normal;
+                        }
+                        
+                        .tg th {
+                            border-color: black;
+                            border-style: solid;
+                            border-width: 1px;
+                            font-family: Arial, sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            overflow: hidden;
+                            padding: 10px 5px;
+                            word-break: normal;
+                        }
+                        
+                        .tg .tg-baqh {
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-i5bh {
+                            background-color: #F2F3F5;
+                            font-weight: bold;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-5frq {
+                            font-style: italic;
+                            text-align: center;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-6t3r {
+                            font-style: italic;
+                            font-weight: bold;
+                            text-align: left;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-0lax {
+                            text-align: left;
+                            vertical-align: top
+                        }
+                    </style>
+                    <table class="tg">
+                        <thead>
+                            <tr>
+                                <th class="tg-i5bh">Model</th>
+                                <th class="tg-i5bh">Pooling Stride</th>
+                                <th class="tg-i5bh"># Tokens/Frame</th>
+                                <th class="tg-i5bh"># Frames</th>
+                                <th class="tg-i5bh">Video Detailed Description<br>(Score)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tg-5frq" rowspan="11" style="vertical-align: middle;">LLaVA-NeXT-Image-7B<br></td>
+                                <td class="tg-6t3r" colspan="4">Max inference tokens=4096</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">4</td>
+                                <td class="tg-baqh">6X6</td>
+                                <td class="tg-baqh">32</td>
+                                <td class="tg-baqh">2.73</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">4</td>
+                                <td class="tg-baqh">6X6</td>
+                                <td class="tg-baqh">64</td>
+                                <td class="tg-baqh">2.24</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">2</td>
+                                <td class="tg-baqh">12X12 </td>
+                                <td class="tg-baqh">16</td>
+                                <td class="tg-baqh">2.76</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">1</td>
+                                <td class="tg-baqh">24X24</td>
+                                <td class="tg-baqh">4</td>
+                                <td class="tg-baqh">2.71</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-6t3r" colspan="4">Max inference tokens=8192 (with linear scale factor=2)</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">2</td>
+                                <td class="tg-baqh">12X12 </td>
+                                <td class="tg-baqh">32 </td>
+                                <td class="tg-baqh">3.12 </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">1</td>
+                                <td class="tg-baqh">24X24</td>
+                                <td class="tg-baqh">8</td>
+                                <td class="tg-baqh">3.08</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-6t3r" colspan="4">Max inference tokens=16384 (with linear scale factor=4)</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">2</td>
+                                <td class="tg-baqh">12X12 </td>
+                                <td class="tg-baqh">64 </td>
+                                <td class="tg-baqh">3.12</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">1</td>
+                                <td class="tg-baqh">24X24</td>
+                                <td class="tg-baqh">16 </td>
+                                <td class="tg-baqh">3.16</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- <h2 id="model-card">Model Card</h2>
 
 <table>
   <tr><th colspan="2">Name</th><th>LLaVA-NeXT-7B</th><th>LLaVA-NeXT-13B</th><th>LLaVA-NeXT-34B</th></tr>
@@ -755,278 +968,324 @@
   <tr><th colspan="2">Training Data (#Samples)</th><td colspan="3">1318K</td></tr>
 </table> -->
 
-<h3 id="2-finetune">(2) How to fine-tune on videos?</h3>
+                    <h3 id="2-finetune">(2) How to fine-tune on videos?</h3>
 
-<p> It is natural to further tune the model on video data for performance boost. Our analysis reveals that a mixed training regimen of video and image data is essential for optimizing the performance of "LLaVA-NeXT-Video". Specifically, we consider different strategies: (1) Continual fine-tuning LLaVA-NeXT stage-2 checkpoint on video data only; (2) Starting from a LLaVA-NeXT stage-1 checkpoint, the model is tuned on the joint data of image and video in Stage-2,  where data types in each batch can be split (each batch only contains one type) or mixed (each batch contains both types). It becomes evident that training with batches that mix image and video data performs the best, while other strategies even perform worse than LLaVA-NeXT-Image models. This outcome emphasizes the importance of mixing video and image data in the training process to enhance the model's proficiency in video-related tasks.</p>
+                    <p> It is natural to further tune the model on video data for performance boost. Our analysis reveals that a mixed training regimen of video and image data is essential for optimizing the performance of "LLaVA-NeXT-Video". Specifically,
+                        we consider different strategies: (1) Continual fine-tuning LLaVA-NeXT stage-2 checkpoint on video data only; (2) Starting from a LLaVA-NeXT stage-1 checkpoint, the model is tuned on the joint data of image and video in Stage-2,
+                        where data types in each batch can be split (each batch only contains one type) or mixed (each batch contains both types). It becomes evident that training with batches that mix image and video data performs the best, while other
+                        strategies even perform worse than LLaVA-NeXT-Image models. This outcome emphasizes the importance of mixing video and image data in the training process to enhance the model's proficiency in video-related tasks.</p>
 
-<style type="text/css">
-  .tg  {border-collapse:collapse;border-spacing:0;}
-  .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-  .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
-  .tg .tg-0lax{text-align:left;vertical-align:top}
-  </style>
-  <table class="tg">
-  <thead>
-    <tr>
-      <th class="tg-i5bh" rowspan="2">Model</th>
-      <th class="tg-i5bh" rowspan="2">Training recipes</th>
-      <th class="tg-i5bh" rowspan="2">Pooling Stride</th>
-      <th class="tg-i5bh" rowspan="2">#Tokens/Frame</th>
-      <th class="tg-i5bh" rowspan="2"># Frames</th>
-      <th class="tg-i5bh" rowspan="2">Video Detailed Description<br>(Score)</th>
-    </tr>
-    <tr>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="tg-baqh">LLaVA-NeXT-Image-7B</td>
-      <td class="tg-baqh">-</td>
-      <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">2</td>
-      <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">12X12 </td>
-      <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">32 </td>
-      <td class="tg-baqh">3.14</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh" rowspan="3" style="vertical-align: middle;">LLaVA-NeXT-Video-7B</td>
-      <td class="tg-baqh">Continual fine-tuning on videos</td>
-      <td class="tg-baqh">3.02</td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">Joint video-image: Batch data <span style="font-weight:bold">split</span></td>
-      <td class="tg-baqh">3.00 </td>
-    </tr>
-    <tr>
-      <td class="tg-baqh">Joint video-image: Batch data <span style="font-weight:bold">mixed</span></td>
-      <td class="tg-baqh">3.32 </td>
-    </tr>
-  </tbody>
-  </table>
+                    <style type="text/css">
+                        .tg {
+                            border-collapse: collapse;
+                            border-spacing: 0;
+                        }
+                        
+                        .tg td {
+                            border-color: black;
+                            border-style: solid;
+                            border-width: 1px;
+                            font-family: Arial, sans-serif;
+                            font-size: 14px;
+                            overflow: hidden;
+                            padding: 10px 5px;
+                            word-break: normal;
+                        }
+                        
+                        .tg th {
+                            border-color: black;
+                            border-style: solid;
+                            border-width: 1px;
+                            font-family: Arial, sans-serif;
+                            font-size: 14px;
+                            font-weight: normal;
+                            overflow: hidden;
+                            padding: 10px 5px;
+                            word-break: normal;
+                        }
+                        
+                        .tg .tg-1wig {
+                            font-weight: bold;
+                            text-align: left;
+                            vertical-align: top
+                        }
+                        
+                        .tg .tg-0lax {
+                            text-align: left;
+                            vertical-align: top
+                        }
+                    </style>
+                    <table class="tg">
+                        <thead>
+                            <tr>
+                                <th class="tg-i5bh" rowspan="2">Model</th>
+                                <th class="tg-i5bh" rowspan="2">Training recipes</th>
+                                <th class="tg-i5bh" rowspan="2">Pooling Stride</th>
+                                <th class="tg-i5bh" rowspan="2">#Tokens/Frame</th>
+                                <th class="tg-i5bh" rowspan="2"># Frames</th>
+                                <th class="tg-i5bh" rowspan="2">Video Detailed Description<br>(Score)</th>
+                            </tr>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tg-baqh">LLaVA-NeXT-Image-7B</td>
+                                <td class="tg-baqh">-</td>
+                                <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">2</td>
+                                <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">12X12 </td>
+                                <td class="tg-baqh" rowspan="4" style="vertical-align: middle;">32 </td>
+                                <td class="tg-baqh">3.14</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh" rowspan="3" style="vertical-align: middle;">LLaVA-NeXT-Video-7B</td>
+                                <td class="tg-baqh">Continual fine-tuning on videos</td>
+                                <td class="tg-baqh">3.02</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">Joint video-image: Batch data <span style="font-weight:bold">split</span></td>
+                                <td class="tg-baqh">3.00 </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-baqh">Joint video-image: Batch data <span style="font-weight:bold">mixed</span></td>
+                                <td class="tg-baqh">3.32 </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
 
-<div>&nbsp;</div>
+                    <div>&nbsp;</div>
 
 
-<h2 id="more examples">More Examples</h2>
+                    <h2 id="more examples">More Examples</h2>
 
-<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-  <style>
-    .slider-container {
-      width: 100%;
-      overflow: hidden;
-    }
-    
-    .slider-wrapper {
-      display: flex;
-      transition: transform 0.3s ease-out;
-    }
-    
-    .slider-item {
-      min-width: 100%;
-    }
-  </style>
+                    <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+                        <style>
+                            .slider-container {
+                                width: 100%;
+                                overflow: hidden;
+                            }
+                            
+                            .slider-wrapper {
+                                display: flex;
+                                transition: transform 0.3s ease-out;
+                            }
+                            
+                            .slider-item {
+                                min-width: 100%;
+                            }
+                        </style>
 
 
-<div class="slider-container">
-  <div class="slider-wrapper" id="sliderWrapper">
+                        <div class="slider-container">
+                            <div class="slider-wrapper" id="sliderWrapper">
 
-    <div class="slider-item">
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                                <div class="slider-item">
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
-        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
-      
-        <p style="font-style: italic; color: grey;"> Prompt for T2V: The story of a robot’s life in a cyberpunk setting.</p>
-      
-        <video width="50%" controls loop autoplay>
+                                        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+
+                                        <p style="font-style: italic; color: grey;"> Prompt for T2V: The story of a robot’s life in a cyberpunk setting.</p>
+
+                                        <video width="50%" controls loop autoplay>
           <source src="/blog/assets/videos/sora/robot-video-game.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-      
-      </div>
-      
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-      
-        <h4>LLaVA-NeXT-Video</h4>
-      
-        <p style="text-align: left;">The video you've provided appears to be a still from a science fiction or cyberpunk-themed movie or video game. It features a humanoid robot standing in a bustling urban environment. The robot has a sleek, futuristic design with a dark color scheme and a prominent head that seems to have a visor or helmet-like feature. It is standing upright and facing the camera, with its arms at its sides, suggesting a calm or neutral stance.
-          In the background, there are various elements that contribute to the dystopian atmosphere:<br>
-          1. A large, imposing structure that resembles a futuristic building or part of a cityscape, with a metallic sheen and angular architecture.<br>
-          2. A flying vehicle, which could be a drone or a futuristic aircraft, adding to the advanced technology theme.<br>
-          3. Other robots or machines that are less humanoid, possibly indicating a variety of robotic forms in this setting.<br>
-          4. A street scene with blurred figures that suggest a busy, possibly crowded environment, possibly indicating a market or a public area.<br>
-          5. A neon sign that adds to the cyberpunk aesthetic, with its bright, artificial glow against the darker tones of the surroundings.<br>
-          The overall scene conveys a sense of a technologically advanced world where robots and humans coexist, possibly in a future where robots have become commonplace and integrated into daily life. The setting is dense with detail, suggesting a complex and possibly overpopulated urban environment. The lighting and color palette are moody, with a mix of dark and bright elements that create a contrast that is typical of the cyberpunk genre.</p>
-      
-      </div>
-    </div>
 
-    <div class="slider-item">
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                                    </div>
 
-        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
-      
-        <p style="font-style: italic; color: grey;"> Prompt for T2V: A young man at his 20s is sitting on a piece of cloud in the sky, reading a book.</p>
-      
-        <video width="50%" controls loop autoplay>
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+
+                                        <h4>LLaVA-NeXT-Video</h4>
+
+                                        <p style="text-align: left;">The video you've provided appears to be a still from a science fiction or cyberpunk-themed movie or video game. It features a humanoid robot standing in a bustling urban environment. The robot has a sleek, futuristic
+                                            design with a dark color scheme and a prominent head that seems to have a visor or helmet-like feature. It is standing upright and facing the camera, with its arms at its sides, suggesting a calm or neutral
+                                            stance. In the background, there are various elements that contribute to the dystopian atmosphere:<br> 1. A large, imposing structure that resembles a futuristic building or part of a cityscape, with a metallic
+                                            sheen and angular architecture.<br> 2. A flying vehicle, which could be a drone or a futuristic aircraft, adding to the advanced technology theme.<br> 3. Other robots or machines that are less humanoid, possibly
+                                            indicating a variety of robotic forms in this setting.<br> 4. A street scene with blurred figures that suggest a busy, possibly crowded environment, possibly indicating a market or a public area.<br> 5. A neon
+                                            sign that adds to the cyberpunk aesthetic, with its bright, artificial glow against the darker tones of the surroundings.<br> The overall scene conveys a sense of a technologically advanced world where robots
+                                            and humans coexist, possibly in a future where robots have become commonplace and integrated into daily life. The setting is dense with detail, suggesting a complex and possibly overpopulated urban environment.
+                                            The lighting and color palette are moody, with a mix of dark and bright elements that create a contrast that is typical of the cyberpunk genre.</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="slider-item">
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+                                        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+
+                                        <p style="font-style: italic; color: grey;"> Prompt for T2V: A young man at his 20s is sitting on a piece of cloud in the sky, reading a book.</p>
+
+                                        <video width="50%" controls loop autoplay>
           <source src="/blog/assets/videos/sora/man-on-the-cloud.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-      
-      </div>
-      
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-      
-        <h4>LLaVA-NeXT-Video</h4>
-      
-        <p style="text-align: left;">In the video, we see a young man with curly hair sitting on a bed of fluffy white clouds. He is wearing a white t-shirt and appears to be engrossed in reading a book. The book is open in his hands, and he seems to be focused on the pages, suggesting that he is deeply engaged in the content. The background is a clear blue sky with a few scattered clouds, which contrasts with the white of the clouds he is sitting on, creating a serene and peaceful atmosphere. The man's position on the clouds gives the impression that he is floating or levitating, adding a whimsical element to the scene. The overall mood of the video is calm and contemplative, with the man's concentration on his book indicating a moment of quiet reflection or intellectual pursuit.</p>
-      
-      </div>
-    </div>
-    <div class="slider-item">
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
-        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
-      
-        <p style="font-style: italic; color: grey;"> Prompt for T2V: A petri dish with a bamboo forest growing within it that has tiny red pandas running around.</p>
-      
-        <video width="50%" controls loop autoplay>
+                                    </div>
+
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+
+                                        <h4>LLaVA-NeXT-Video</h4>
+
+                                        <p style="text-align: left;">In the video, we see a young man with curly hair sitting on a bed of fluffy white clouds. He is wearing a white t-shirt and appears to be engrossed in reading a book. The book is open in his hands, and he seems
+                                            to be focused on the pages, suggesting that he is deeply engaged in the content. The background is a clear blue sky with a few scattered clouds, which contrasts with the white of the clouds he is sitting on,
+                                            creating a serene and peaceful atmosphere. The man's position on the clouds gives the impression that he is floating or levitating, adding a whimsical element to the scene. The overall mood of the video is calm
+                                            and contemplative, with the man's concentration on his book indicating a moment of quiet reflection or intellectual pursuit.</p>
+
+                                    </div>
+                                </div>
+                                <div class="slider-item">
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+                                        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+
+                                        <p style="font-style: italic; color: grey;"> Prompt for T2V: A petri dish with a bamboo forest growing within it that has tiny red pandas running around.</p>
+
+                                        <video width="50%" controls loop autoplay>
           <source src="/blog/assets/videos/sora/petri-dish-pandas.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-      
-      </div>
-      
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-      
-        <h4>LLaVA-NeXT-Video</h4>
-      
-        <p style="text-align: left;">The video depicts a laboratory setting with a focus on scientific equipment and plant growth. In the foreground, there is a clear plastic container with a small plant growing inside, which appears to be a test tube or a petri dish. The plant is green and has multiple leaves, suggesting it is a small shrub or a type of succulent. The container is placed on a white surface, which could be a lab bench or a table.
-          In the background, there are various pieces of scientific equipment commonly found in a laboratory, including:<br>
-          - A microscope with a long, slender body and a round, darkened head, which is likely the eyepiece and objective lens assembly.<br>
-          - A beaker, a glass container with a wide mouth and a narrow base, used for holding and measuring chemical substances.<br>
-          - A flask, a glass container with a narrow neck and a wider mouth, often used for holding or measuring small amounts of liquid.<br>
-          - A test tube, a narrow glass tube used for holding and measuring small volumes of liquid.<br>
-          - A pipette, a device used to transfer small volumes of liquid into or out of containers.<br>
-          - A graduated cylinder, a glass tube with markings to measure the volume of liquid.<br>
-          - A flask with a long neck and a rounded bottom, which is often used for holding and measuring gases or liquids.<br>
-          The scene suggests a controlled environment for scientific research or experimentation, possibly related to botany, plant growth, or biological studies. The focus is on the plant in the container, indicating that it may be the subject of observation or experimentation. The background equipment implies that this is a space where scientific work is conducted, and the overall setting is clean and organized.</p>
-      
-      </div>
-    </div>
-    <div class="slider-item">
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
-        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
-      
-        <p style="font-style: italic; color: grey;"> Prompt for T2V:Beautiful, snowy Tokyo city is bustling. The camera moves through the bustling city street, following several people enjoying the beautiful snowy weather and shopping at nearby stalls. Gorgeous sakura petals are flying through the wind along with snowflakes.</p>
-      
-        <video width="50%" controls loop autoplay>
+                                    </div>
+
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+
+                                        <h4>LLaVA-NeXT-Video</h4>
+
+                                        <p style="text-align: left;">The video depicts a laboratory setting with a focus on scientific equipment and plant growth. In the foreground, there is a clear plastic container with a small plant growing inside, which appears to be a test tube
+                                            or a petri dish. The plant is green and has multiple leaves, suggesting it is a small shrub or a type of succulent. The container is placed on a white surface, which could be a lab bench or a table. In the background,
+                                            there are various pieces of scientific equipment commonly found in a laboratory, including:<br> - A microscope with a long, slender body and a round, darkened head, which is likely the eyepiece and objective
+                                            lens assembly.<br> - A beaker, a glass container with a wide mouth and a narrow base, used for holding and measuring chemical substances.<br> - A flask, a glass container with a narrow neck and a wider mouth,
+                                            often used for holding or measuring small amounts of liquid.<br> - A test tube, a narrow glass tube used for holding and measuring small volumes of liquid.<br> - A pipette, a device used to transfer small volumes
+                                            of liquid into or out of containers.<br> - A graduated cylinder, a glass tube with markings to measure the volume of liquid.<br> - A flask with a long neck and a rounded bottom, which is often used for holding
+                                            and measuring gases or liquids.<br> The scene suggests a controlled environment for scientific research or experimentation, possibly related to botany, plant growth, or biological studies. The focus is on the
+                                            plant in the container, indicating that it may be the subject of observation or experimentation. The background equipment implies that this is a space where scientific work is conducted, and the overall setting
+                                            is clean and organized.</p>
+
+                                    </div>
+                                </div>
+                                <div class="slider-item">
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+                                        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+
+                                        <p style="font-style: italic; color: grey;"> Prompt for T2V:Beautiful, snowy Tokyo city is bustling. The camera moves through the bustling city street, following several people enjoying the beautiful snowy weather and shopping at nearby stalls. Gorgeous sakura
+                                            petals are flying through the wind along with snowflakes.</p>
+
+                                        <video width="50%" controls loop autoplay>
           <source src="/blog/assets/videos/sora/tokyo-in-the-snow.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-      
-      </div>
-      
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-      
-        <h4>LLaVA-NeXT-Video</h4>
-      
-        <p style="text-align: left;">The video depicts a vibrant scene of a snowy street in what appears to be a Japanese city, possibly during the winter season. The street is lined with cherry blossom trees that are dusted with snow, creating a picturesque contrast between the white snow and the delicate pink blossoms. The ground is covered in a layer of snow, suggesting recent snowfall or cold weather.
-          the foreground, there are two individuals walking hand in hand, likely a couple, dressed in winter clothing, with one wearing a light blue jacket and the other in a dark jacket. They are walking along the snow-covered street, enjoying the wintry atmosphere. Their actions suggest they are engaged in a leisurely stroll, possibly enjoying each other's company and the beauty of the snow-covered surroundings.
-         In the background, there are various shops and buildings with traditional Japanese architecture, including what looks like a temple or shrine with a distinctive roof design. The buildings are adorned with lanterns and signs, indicating a commercial or cultural area. The presence of cherry blossoms suggests this might be a popular spot for tourists or locals to enjoy the beauty of the season.
-         The overall atmosphere is serene and peaceful, with the snow adding a sense of tranquility to the scene. The video captures a moment of shared experience and enjoyment of nature's beauty amidst the urban setting.</p>
-      
-      </div>
-    </div>
-    <div class="slider-item">
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 
-        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
-      
-        <p style="font-style: italic; color: grey;"> Prompt for T2V: A stylish woman walks down a Tokyo street filled with warm glowing neon and animated city signage. She wears a black leather jacket, a long red dress, and black boots, and carries a black purse. She wears sunglasses and red lipstick. She walks confidently and casually. The street is damp and reflective, creating a mirror effect of the colorful lights. Many pedestrians walk about.</p>
-      
-        <video width="50%" controls loop autoplay>
+                                    </div>
+
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+
+                                        <h4>LLaVA-NeXT-Video</h4>
+
+                                        <p style="text-align: left;">The video depicts a vibrant scene of a snowy street in what appears to be a Japanese city, possibly during the winter season. The street is lined with cherry blossom trees that are dusted with snow, creating a picturesque
+                                            contrast between the white snow and the delicate pink blossoms. The ground is covered in a layer of snow, suggesting recent snowfall or cold weather. the foreground, there are two individuals walking hand in
+                                            hand, likely a couple, dressed in winter clothing, with one wearing a light blue jacket and the other in a dark jacket. They are walking along the snow-covered street, enjoying the wintry atmosphere. Their actions
+                                            suggest they are engaged in a leisurely stroll, possibly enjoying each other's company and the beauty of the snow-covered surroundings. In the background, there are various shops and buildings with traditional
+                                            Japanese architecture, including what looks like a temple or shrine with a distinctive roof design. The buildings are adorned with lanterns and signs, indicating a commercial or cultural area. The presence of
+                                            cherry blossoms suggests this might be a popular spot for tourists or locals to enjoy the beauty of the season. The overall atmosphere is serene and peaceful, with the snow adding a sense of tranquility to the
+                                            scene. The video captures a moment of shared experience and enjoyment of nature's beauty amidst the urban setting.</p>
+
+                                    </div>
+                                </div>
+                                <div class="slider-item">
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+                                        <h4>User: Please provide a detailed description of the video, focusing on the main subjects, their actions, and the background scenes.</h4>
+
+                                        <p style="font-style: italic; color: grey;"> Prompt for T2V: A stylish woman walks down a Tokyo street filled with warm glowing neon and animated city signage. She wears a black leather jacket, a long red dress, and black boots, and carries a black purse.
+                                            She wears sunglasses and red lipstick. She walks confidently and casually. The street is damp and reflective, creating a mirror effect of the colorful lights. Many pedestrians walk about.</p>
+
+                                        <video width="50%" controls loop autoplay>
           <source src="/blog/assets/videos/sora/tokyo-walk.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-      
-      </div>
-      
-      <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-      
-        <h4>LLaVA-NeXT-Video</h4>
-      
-        <p style="text-align: left;">In the video, we see a woman walking down a street at night. She is dressed in a black leather jacket, a red dress, and sunglasses, and is carrying a black handbag. Her hair is styled in loose waves and she is wearing high heels. The woman is the main subject of the video, and she is walking with confidence, her gaze directed straight ahead. The background of the video is a bustling city street with neon lights from various signs and advertisements illuminating the scene. There are blurred figures of other pedestrians and vehicles in the background, suggesting a busy urban environment. The lighting and the reflections on the wet pavement suggest that it has recently rained. The woman's attire and the overall atmosphere suggest a stylish, possibly fashionable setting, and her stride and posture convey a sense of purposefulness.</p>
-      
-      </div>
-    </div>
-  
-  </div>
-</div>
 
-<div style="position: relative;">
-  <button id="prevBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
-  <button id="nextBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
-</div>
+                                    </div>
 
-<script>
-  const wrapper = document.getElementById('sliderWrapper');
-  let index = 0;
+                                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    index = Math.max(index - 1, 0);
-    wrapper.style.transform = `translateX(-${index * 100}%)`;
-  });
+                                        <h4>LLaVA-NeXT-Video</h4>
 
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    index = Math.min(index + 1, wrapper.children.length - 1);
-    wrapper.style.transform = `translateX(-${index * 100}%)`;
-  });
-</script>
-</div>
+                                        <p style="text-align: left;">In the video, we see a woman walking down a street at night. She is dressed in a black leather jacket, a red dress, and sunglasses, and is carrying a black handbag. Her hair is styled in loose waves and she is wearing
+                                            high heels. The woman is the main subject of the video, and she is walking with confidence, her gaze directed straight ahead. The background of the video is a bustling city street with neon lights from various
+                                            signs and advertisements illuminating the scene. There are blurred figures of other pedestrians and vehicles in the background, suggesting a busy urban environment. The lighting and the reflections on the wet
+                                            pavement suggest that it has recently rained. The woman's attire and the overall atmosphere suggest a stylish, possibly fashionable setting, and her stride and posture convey a sense of purposefulness.</p>
 
-<p><br/></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div style="position: relative;">
+                            <button id="prevBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
+                            <button id="nextBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
+                        </div>
+
+                        <script>
+                            const wrapper = document.getElementById('sliderWrapper');
+                            let index = 0;
+
+                            document.getElementById('prevBtn').addEventListener('click', () => {
+                                index = Math.max(index - 1, 0);
+                                wrapper.style.transform = `translateX(-${index * 100}%)`;
+                            });
+
+                            document.getElementById('nextBtn').addEventListener('click', () => {
+                                index = Math.min(index + 1, wrapper.children.length - 1);
+                                wrapper.style.transform = `translateX(-${index * 100}%)`;
+                            });
+                        </script>
+                    </div>
+
+                    <p><br/></p>
 
 
-<h2 id="team">Team</h2>
+                    <h2 id="team">Team</h2>
 
-<ul>
-  <li><a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
-  <li><a href="https://brianboli.com/">Bo Li</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
-  <li><a href="https://hliu.cc/">Haotian Liu</a>: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
-  <li><a href="https://pages.cs.wisc.edu/~yongjaelee/">Yong Jae Lee</a>: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
-  <li><a href="https://scholar.google.com/citations?user=oM6Pj3MAAAAJ&hl=en">Liangke Gui</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
-  <li>Di Fu: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
-  <li><a href="https://sites.google.com/site/jshfeng/home">Jiashi Feng</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /> </li>
-  <li><a href="https://liuziwei7.github.io/">Ziwei Liu</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /></li>
-  <li><a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
-</ul>
+                    <ul>
+                        <li><a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+                        <li><a href="https://brianboli.com/">Bo Li</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em>Work collaborated with ByteDance/TikTok</em>)</li>
+                        <li><a href="https://hliu.cc/">Haotian Liu</a>: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
+                        <li><a href="https://pages.cs.wisc.edu/~yongjaelee/">Yong Jae Lee</a>: University of Wisconsin-Madison<img width="16" src="/blog/assets/images/logos/wisc.png" /></li>
+                        <li><a href="https://scholar.google.com/citations?user=oM6Pj3MAAAAJ&hl=en">Liangke Gui</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
+                        <li>Di Fu: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
+                        <li><a href="https://sites.google.com/site/jshfeng/home">Jiashi Feng</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /> </li>
+                        <li><a href="https://liuziwei7.github.io/">Ziwei Liu</a>: Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /></li>
+                        <li><a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance/Tiktok<img width="16" src="/blog/assets/images/logos/tiktok.png" /></li>
+                    </ul>
 
-<div>&nbsp;</div>
+                    <div>&nbsp;</div>
 
-<h2 id="acknowledgement">Acknowledgement</h2>
+                    <h2 id="acknowledgement">Acknowledgement</h2>
 
-<ul>
-  <li>We thank Kaichen Zhang, Kairui Hu, Fanyi Pu, for the building of video benchmark.</li>
-  <li>We thank Lianmin Zheng, for the integration of LLaVA-Next-Video to SGLang.</li>
-</ul>
+                    <ul>
+                        <li>We thank Kaichen Zhang, Kairui Hu, Fanyi Pu, for the building of video benchmark.</li>
+                        <li>We thank Lianmin Zheng, for the integration of LLaVA-Next-Video to SGLang.</li>
+                    </ul>
 
-<div>&nbsp;</div>
+                    <div>&nbsp;</div>
 
-<h2 id="acknowledgement">Related Blogs</h2>
+                    <h2 id="acknowledgement">Related Blogs</h2>
 
-<ul>
-    <li><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a></li>
-    <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a></li>
-    <li><a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/">Accelerating the Development of Large Multimodal Models with LMMs-Eval</a></li>
-</ul>
+                    <ul>
+                        <li><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a></li>
+                        <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a></li>
+                        <li><a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/">Accelerating the Development of Large Multimodal Models with LMMs-Eval</a></li>
+                    </ul>
 
-<h2 id="citation">Citation</h2>
+                    <h2 id="citation">Citation</h2>
 
-<div class="language-bibtex highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">zhang2024llavanextvideo</span><span class="p">,</span>
+                    <div class="language-bibtex highlighter-rouge">
+                        <div class="highlight"><pre class="highlight"><code>
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">zhang2024llavanextvideo</span><span class="p">,</span>
   <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: A Strong Zero-shot Video Understanding Model}</span><span class="p">,</span>
   <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-04-30-llava-next-video/}</span><span class="p">,</span>
   <span class="na">author</span><span class="p">=</span><span class="s">{Zhang, Yuanhan and Li, Bo and Liu, haotian and Lee, Yong jae and Gui, Liangke and Fu, Di and Feng, Jiashi and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
@@ -1055,36 +1314,41 @@
       <span class="na">publisher</span><span class="p">=</span><span class="s">{NeurIPS}</span><span class="p">,</span>
       <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</code></pre></div>
+                    </div>
 
-  </div><a class="u-url" href="/blog/2024-01-30-llava-next/" hidden></a>
-</article>
+                </div>
+                <a class="u-url" href="/blog/2024-01-30-llava-next/" hidden></a>
+            </article>
 
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/blog/"></data>
+        </div>
+    </main>
+    <footer class="site-footer h-card">
+        <data class="u-url" href="/blog/"></data>
 
-  <div class="wrapper">
+        <div class="wrapper">
 
-    <h2 class="footer-heading">LLaVA</h2>
+            <h2 class="footer-heading">LLaVA</h2>
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">LLaVA</li></ul>
-      </div>
+            <div class="footer-col-wrapper">
+                <div class="footer-col footer-col-1">
+                    <ul class="contact-list">
+                        <li class="p-name">LLaVA</li>
+                    </ul>
+                </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
-</div>
+                <div class="footer-col footer-col-2">
+                    <ul class="social-media-list"></ul>
+                </div>
 
-      <div class="footer-col footer-col-3">
-        <p></p>
-      </div>
-    </div>
+                <div class="footer-col footer-col-3">
+                    <p></p>
+                </div>
+            </div>
 
-  </div>
+        </div>
 
-</footer>
+    </footer>
 </body>
 
 </html>
