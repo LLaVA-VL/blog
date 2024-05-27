@@ -1015,21 +1015,21 @@
 											<th rowspan="2">Max. # Grids</th>
 											<th rowspan="2">Max. # Tokens</th>
 											<th rowspan="2">Training Time</th>
-											<th rowspan="2">Adaptive Interpolation</th>
+											<th rowspan="2">Interpolation</th>
 											<th>AI2D</th>
 											<th>ChartQA</th>
 											<th>DocVQA</th>
 											<th>InfoVQA</th>
 											<th>Image-DC</th>
 											<th><sup>*</sup>Video-DC</th>
-											<th><sup>**</sup>SynthDOG</th>
+											<th><sup>**</sup>SynDOG</th>
 											<th>OK-VQA</th>
 											<th><sup>***</sup>POPE</th>
 											<th>ScienceQA</th>
 											<th>VizWiz-VQA</th>
 											<th>MMMU</th>
 										</tr>
-										<tr>
+										<tr style="font-size: 12px;">
 											<th>test</th>
 											<th>test</th>
 											<th>val</th>
@@ -1038,7 +1038,7 @@
 											<th>32 frames</th>
 											<th>EN/TED Score</th>
 											<th>val</th>
-											<th>test/f1-score</th>
+											<th>Test/F1-score</th>
 											<th>img</th>
 											<th>val</th>
 											<th>val</th>
@@ -1164,8 +1164,8 @@
 								captioning ability towards given images. The task is described in the Benchmark Card section.
 							</p>
 							<p class="compact-paragraph">
-								**SynthDOG is a benchmark that evaluates model's OCR ability, we report the tree edit distance score on
-								SynthDOG's OCR task.
+								**SynDOG is a benchmark that evaluates model's OCR ability, we report the tree edit distance score on
+								SynDOG's OCR task.
 							</p>
 							<p class="compact-paragraph">
 								***POPE is a benchmark that evaluates model's ability on judging the existence of a given object in an
@@ -1176,7 +1176,7 @@
 							<li>
 								We increase the maximum number of AnyRes grids from 2×2 to 6×6 to better support higher resolution, and
 								observe that increasing #grids can enhance performance on tasks that require reading image details, such
-								as InfoVQA and SynthDOG (en). It also leads to improved performance on Video Detail Captions with 32
+								as InfoVQA and SynDOG (en). It also leads to improved performance on Video Detail Captions with 32
 								frames. This is because longer vision sequences are observed during training, the capability can improve
 								video tasks with zero-shot modality transfer, based on the insights in our video blog.
 							</li>
@@ -1191,7 +1191,7 @@
 						<p>
 							<strong>Effectinveness with LLM Scaling.</strong> We further verify that the performance gains from the
 							new visual representation persist as the LLM size scales. This is confirmed by the observation of
-							consistent improvements across InfoVQA, ChartQA, DocVQA, VDD (32 frames), and SynthDOG.
+							consistent improvements across InfoVQA, ChartQA, DocVQA, VDD (32 frames), and SynDOG.
 						</p>
 
 						<div style="display: flex; justify-content: center;">
@@ -1202,21 +1202,21 @@
 											<th rowspan="2">LLM Decoder</th>
 											<th rowspan="2">Max. # Grids</th>
 											<th rowspan="2">Max. # Tokens</th>
-											<th rowspan="2">Pooling</th>
+											<th rowspan="2">Interpolation</th>
 											<th>AI2D</th>
 											<th>ChartQA</th>
 											<th>DocVQA</th>
 											<th>InfoVQA</th>
 											<th>Image-DC</th>
 											<th>Video-DC</th>
-											<th>SynthDOG</th>
+											<th>SynDOG</th>
 											<th>OKVQA</th>
 											<th>POPE</th>
 											<th>ScienceQA</th>
 											<th>VizWiz-VQA</th>
 											<th>MMMU</th>
 										</tr>
-										<tr>
+										<tr style="font-size: 12px;">
 											<th>test</th>
 											<th>test</th>
 											<th>val</th>
@@ -1225,7 +1225,7 @@
 											<th>32 frames</th>
 											<th>EN/TED Score</th>
 											<th>val</th>
-											<th>test/f1-score</th>
+											<th>Test/F1-score</th>
 											<th>IMG</th>
 											<th>val</th>
 											<th>val</th>
@@ -1448,13 +1448,13 @@
 												<th>ScienceQA</th>
 												<th>VizWiz-VQA</th>
 											</tr>
-											<tr>
+											<tr style="font-size: 12px;">
 												<th>test</th>
 												<th>test</th>
 												<th>val</th>
 												<th>val</th>
 												<th>val</th>
-												<th>test/f1-score</th>
+												<th>Test/F1-score</th>
 												<th>IMG</th>
 												<th>val</th>
 											</tr>
@@ -1582,13 +1582,13 @@
 												<th>ScienceQA</th>
 												<th>VizWiz-VQA</th>
 											</tr>
-											<tr>
+											<tr style="font-size: 12px;">
 												<th>test</th>
 												<th>test</th>
 												<th>val</th>
 												<th>val</th>
 												<th>val</th>
-												<th>test/f1-score</th>
+												<th>Test/F1-score</th>
 												<th>IMG</th>
 												<th>val</th>
 											</tr>
@@ -1705,13 +1705,13 @@
 												<th>ScienceQA</th>
 												<th>VizWiz-VQA</th>
 											</tr>
-											<tr>
+											<tr style="font-size: 12px;">
 												<th>test</th>
 												<th>test</th>
 												<th>val</th>
 												<th>val</th>
 												<th>val</th>
-												<th>test/f1-score</th>
+												<th>Test/F1-score</th>
 												<th>IMG</th>
 												<th>val</th>
 											</tr>
@@ -1840,7 +1840,7 @@
 												<th>VizWiz-VQA</th>
 												<th>MMMU</th>
 											</tr>
-											<tr>
+											<tr style="font-size: 12px;">
 												<th>Max. #Grids</th>
 												<th>Max. #Tokens</th>
 												<th>Max. #Grids</th>
@@ -1850,7 +1850,7 @@
 												<th>val</th>
 												<th>val</th>
 												<th>val</th>
-												<th>test/f1-score</th>
+												<th>Test/F1-score</th>
 												<th>IMG</th>
 												<th>val</th>
 												<th>dev</th>
@@ -2207,7 +2207,7 @@
 											<th>ScienceQA</th>
 											<th>Image-DC</th>
 										</tr>
-										<tr>
+										<tr style="font-size: 12px;">
 											<th>-</th>
 											<th>test</th>
 											<th>test</th>
@@ -2280,7 +2280,7 @@
 											<td>71.4</td>
 											<td>85.4</td>
 										</tr>
-										<tr>
+										<tr style="font-size: 12px;">
 											<td>Random</td>
 											<td>63.9</td>
 											<td>68.0</td>
@@ -2374,7 +2374,7 @@
 							<li>
 								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the Ureader dataset,
 								totaling 100K, which is easily accessible through PDF rendering. We used this text reading data along
-								with the SynthDOG EN/CN 1M datasets.
+								with the SynDOG EN/CN 1M datasets.
 							</li>
 							<li>
 								<strong>ShareGPT4V Chinese Caption:</strong> We include ShareGPT4V Chinese Caption data to improve the
@@ -2411,7 +2411,7 @@
 								essential.
 								<ul>
 									<li>
-										Document/OCR data, particularly UReader100K and SynthDOG EN/CN 1M, provide substantial benefits in
+										Document/OCR data, particularly UReader100K and SynDOG EN/CN 1M, provide substantial benefits in
 										understanding structured text data.
 									</li>
 									<li>
@@ -2451,7 +2451,7 @@
 											<th>Image-DC</th>
 										</tr>
 
-										<tr style="font-weight: bold; background-color: #f5f5f5;">
+										<tr style="font-weight: bold; background-color: #f5f5f5; font-size: 12px;">
 											<td>Stage-1</td>
 											<td>Stage-1.5</td>
 											<td>Stage-2</td>
@@ -2652,7 +2652,7 @@
 										</tr>
 										<tr>
 											<td>558K</td>
-											<td>SynthDOG EN+ZH 1M</td>
+											<td>SynDOG EN+ZH 1M</td>
 											<td>63.0</td>
 											<td>66.4</td>
 											<td>62.0</td>
@@ -2716,13 +2716,13 @@
 											<th>OCRBench</th>
 											<th>CMMU</th>
 										</tr>
-										<tr style="font-weight: bold; background-color: #f5f5f5;">
+										<tr style="font-weight: bold; background-color: #f5f5f5; font-size: 12px;">
 											<td>Stage-1</td>
 											<td>Stage-1.5</td>
 											<td>Stage-2</td>
 											<td>CN-200</td>
-											<td>all</td>
-											<td>dev</td>
+											<td>test-all</td>
+											<td>val</td>
 										</tr>
 									</thead>
 									<tbody>
@@ -2736,7 +2736,7 @@
 										</tr>
 										<tr>
 											<td>BLIP558K</td>
-											<td>SynthDOG EN+ZH 1M</td>
+											<td>SynDOG EN+ZH 1M</td>
 											<td>Mix 790K</td>
 											<td>55.3</td>
 											<td>42.6</td>
@@ -2877,18 +2877,18 @@
 									width="16"
 									src="/blog/assets/images/logos/ntu.png"
 								/>
-								( <em>Work collaborated with ByteDance/TikTok</em>)
+								( <em>Work collaborated with ByteDance</em>)
 							</li>
 							<li>
 								<a href="https://haozhang534.github.io/">Hao Zhang*</a>: Hong Kong University of Science and
 								Technology<img width="16" src="/blog/assets/images/logos/hkust.jpg" /> (<em
-									>Work collaborated with ByteDance/TikTok</em
+									>Work collaborated with ByteDance</em
 								>)
 							</li>
 							<li>
 								<a href="https://www.linkedin.com/in/kaichen-zhang-014b17219/?originalSubdomain=sg">Kaichen Zhang</a>:
 								Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em
-									>Work collaborated with ByteDance/TikTok</em
+									>Work collaborated with ByteDance</em
 								>)
 							</li>
 							<li>
@@ -2902,21 +2902,21 @@
 									width="16"
 									src="/blog/assets/images/logos/ntu.png"
 								/>
-								( <em>Work collaborated with ByteDance/TikTok</em>)
+								( <em>Work collaborated with ByteDance</em>)
 							</li>
 							<li>
 								<a href="https://zrrskywalker.github.io/">Renrui Zhang</a>: The Chinese University of Hong Kong<img
 									width="16"
 									src="/blog/assets/images/logos/cuhk.jpg"
 								/>
-								(<em>Work collaborated with ByteDance/TikTok</em>)
+								(<em>Work collaborated with ByteDance</em>)
 							</li>
 							<li>
 								<a href="https://fengli-ust.github.io/">Feng Li</a>: Hong Kong University of Science and Technology<img
 									width="16"
 									src="/blog/assets/images/logos/hkust.jpg"
 								/>
-								( <em>Work collaborated with ByteDance/TikTok</em>)
+								( <em>Work collaborated with ByteDance</em>)
 							</li>
 							<li>
 								<a href="https://liuziwei7.github.io/">Ziwei Liu</a>: Nanyang Technological University<img
