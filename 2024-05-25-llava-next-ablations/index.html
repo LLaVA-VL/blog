@@ -119,6 +119,7 @@
                                 <li><a href="#section-1-insights-on-architectures">Section 1 - Insights on Architectures</a></li>
                                 <!-- <li><a href="#section-1-1-language-models">Section 1.1 - Language Models</a></li>
                                 <li><a href="#vision-encoders">Section 1.2 - Vision Encoders</a></li> -->
+                                <li><a href="#section-2-insights-on-visual-representations">Section 2 - Insights on Visual Representations</a></li>
                                 <li><a href="#section-3-insights-on-training-strategies">Section 3 - Insights on Training Strategies</a></li>
                                 <!-- <li><a href="#stage-1-language-image-alignment">Section 3.1 - Language-Image Alignment</a></li>
                                 <li><a href="#stage-1-5-high-quality-knowledge-learning">Section 3.2 - High-Quality Knowledge Learning</a></li> -->
@@ -169,9 +170,10 @@
 								high-quality data, re-captioned by LLaVA-NeXT-34B.
 							</li>
 						</ol>
-						<blockquote style="font-size: 16px;">
+                        <details>
+                            <summary>[Notice of Image Detailed Caption and Video Detailed Caption Task.]</summary>
 							<p>
-								Notice: Since there is no existing benchmark for evaluating a model's image detailed captioning ability, and
+								Since there is no existing benchmark for evaluating a model's image detailed captioning ability, and
 								we consider this capability crucial for our model's development. For example, it could determine if the
 								model can serve as a proficient detailed captioner for data re-captioning tasks. To address this need,
 								we have constructed two tasks:
@@ -191,20 +193,20 @@
 							<p>
 								The datasets and evaluation process is detailed in the <a href="#benchmark-card">Benchmark Card</a> section.
 							</p>
-						</blockquote>
-						<p></p>
+                        </details>
+                        <br>
 
 						<h2>Opensource Release</h2>
 						<p>Re-captioned Data are available on Hugging Face Datasets.</p>
 						<ul>
 							<li>
-								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-118K">COCO-108K</a>
+								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-118K">LLaVA-ReCap (COCO-118K)</a>
 							</li>
 							<li>
-								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-558K">LCS-558K</a>
+								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-558K">LLaVA-ReCap (LCS-558K)</a>
 							</li>
 							<li>
-								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-3M">CC3M</a>
+								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-3M">LLaVA-ReCap (CC3M)</a>
 							</li>
 						</ul>
 						<h2 id="section-1-insights-on-architectures">Section 1 - Insights on Architectures</h2>
@@ -222,7 +224,7 @@
 
 						<details>
 							<br />
-							<summary>[Fold / Unfold to see the details]</summary>
+							<summary>[Fold / Unfold to See the Baseline Settings of CLIP-L-336 + Vicuna-1.5 7B]</summary>
 							<div style="display: flex; justify-content: left;">
 								<div class="tg-wrap">
 									<table>
@@ -234,14 +236,14 @@
 										<tbody>
 											<tr>
 												<td colspan="2">Architecture<br /></td>
-												<td>Image Encoder: OpenAI CLIP-Large (336x336)<br />Connector: 2-Layer Relu MLP</td>
+												<td style="text-align: left;"><strong>Image Encoder:</strong> OpenAI CLIP-Large (336x336)<br /><strong>Connector:</strong> 2-Layer Relu MLP<br /><strong>LLM:</strong> Vicuna-1.5 7B</td>
 											</tr>
 											<tr>
-												<td rowspan="4">Model Size</td>
-												<td># Total parameters</td>
+												<!-- <td rowspan="1">Model Size</td> -->
+												<td colspan="2"># Total parameters</td>
 												<td>7.06B</td>
 											</tr>
-											<tr>
+											<!-- <tr>
 												<td>Vision Encoder</td>
 												<td>303.5M (CLIP-VIT-L-336)</td>
 											</tr>
@@ -252,7 +254,7 @@
 											<tr>
 												<td>LLM</td>
 												<td>6.74B (Vicuna)</td>
-											</tr>
+											</tr> -->
 											<tr>
 												<td colspan="2">Visual Representations</td>
 												<td>Dynamic: 336 x {2×2,1×{2,3,4},{2,3,4}×1}</td>
@@ -857,6 +859,7 @@
 							</table>
 						</div>
                         <h2 id="section-2-visual-representations"> Section 2 - Visual Representations</h2>
+
                         <p>The visual representations relate to both the resolution in the raw pixel space and the number of tokens in the feature space. Scaling either of them improves performance, but also introduces computation overhead. This section aims to investigate the best (resolution, #token) configuration for a balance of performance and cost.</p>
                         <p>The previous AnyRes technique employs a grid configuration of \(\{2×2, 1×\{2,3,4\}, \{2,3,4\}×1\}\) to adapt to images of different resolutions while preserving data efficiency. However, this grid configuration supports a maximum of 4 grids per image, limiting its capability when more grids are required, such as with document data and long videos. As shown in Fig. 1, for images with resolutions higher than the maximum supported \(768 \times 768\), the original AnyRes method resizes them to \(768 \times 768\). This resizing results in a loss of detail for high-resolution images. To address this issue, we explore grid configurations for higher resolutions, as shown in Fig. 2, where the image is divided into more grids. Additionally, to maintain efficiency, we propose an adaptive pooling strategy to prevent an excessive number of visual tokens from being fed into the LLM.</p>
 
@@ -869,6 +872,68 @@
                         </ul>
 
                         <p>Effectinveness with LLM Scaling. We further verify that the performance gains from the new visual representation persist as the LLM size scales. This is confirmed by the observation of consistent improvements across InfoVQA, ChartQA, DocVQA, VDD (32 frames), and SynthDOG.</p>
+
+						<details>
+							<br />
+							<summary>[Fold / Unfold to See the Details of Baseline Settings of SO400M + Qwen-1.5 0.5B]</summary>
+							<div style="display: flex; justify-content: left; text-align: left;">
+								<div class="tg-wrap">
+									<table style="text-align: left;">
+										<thead>
+											<tr>
+												<th colspan="3">Configurations</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td colspan="2">Architecture<br /></td>
+												<td style="text-align: left;">Image Encoder: Google SO400M (384x384)<br />Connector: 2-Layer Relu MLP <br />LLM: Qwen-1.5 0.5B</td>
+											</tr>
+											<tr>
+												<td colspan="2"># Total parameters</td>
+												<td>0.9B</td>
+											</tr>
+											<tr>
+												<td colspan="2">Visual Representations</td>
+												<td>Dynamic: 336 x {2×2,1×{2,3,4},{2,3,4}×1}</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Stage-1</td>
+												<td>Training Data</td>
+												<td>558K</td>
+											</tr>
+											<tr>
+												<td>Trainable Module</td>
+												<td>Connector</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Stage-2</td>
+												<td>Training Data</td>
+												<td>790K</td>
+											</tr>
+											<tr>
+												<td>Trainable Module</td>
+												<td>Full model</td>
+											</tr>
+											<tr>
+												<td colspan="2">Training Data (# samples)</td>
+												<td>1348K = 558K+790K</td>
+											</tr>
+											<tr>
+												<td rowspan="2">Training Schedule</td>
+												<td>Learning rate</td>
+												<td>LLM: 2e-5 / Vision: 2e-6</td>
+											</tr>
+											<tr>
+												<td>Batch Size</td>
+												<td>64</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</details>
+						<br />
 
                         <div style="display: flex; justify-content: center;">
                             <div class="tg-wrap"><table><thead><tr><th rowspan="2">LLM Decoder</th><th rowspan="2">Max. # Grids</th><th rowspan="2">Max. # Tokens</th><th rowspan="2">Pooling</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>Image-DC</th><th>Video-DC</th><th>SynthDOG*</th><th>OK-VQA</th><th>POPE*</th><th>ScienceQA</th><th>VizWiz-VQA</th><th>MMMU</th></tr><tr><th>test</th><th>test</th><th>val</th><th>val</th><th>EN</th><th>32 frames</th><th>EN/TED Score</th><th>val</th><th>test/f1-score</th><th>img</th><th>val</th><th>val</th></tr></thead><tbody><tr><td>Qwen-1.5 0.5B</td><td>2x2</td><td>(4 + 1)*729</td><td>FALSE</td><td>51.1</td><td>49.2</td><td>58.8</td><td>25.7</td><td>71.1</td><td>62.4</td><td>418.5</td><td>36.5</td><td>85.1</td><td>59.5</td><td>28.8</td><td>28.2</td></tr>
@@ -1545,9 +1610,9 @@
 											<td>BLIP558K</td>
 											<td>UReader 100K</td>
 											<td>Mix 790K</td>
-											<td></td>
-											<td></td>
-											<td></td>
+											<td>49.4</td>
+											<td>58.0</td>
+											<td>22.8</td>
 										</tr>
 										<tr>
 											<td>BLIP558K</td>
