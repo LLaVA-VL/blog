@@ -897,18 +897,10 @@
 							performance and cost.
 						</p>
 						<figure style="width: 80%; text-align: center; margin: 0 auto;">
-							<img src="/blog/assets/images/llava-next-ablations/anyres.png" alt="anyres_grid" />
+							<img src="/blog/assets/images/llava-next-ablations/compare.png" alt="anyres_grid" />
 							<br />
 							<figcaption style="font-size: 16px;">
-								Figure 1. The way how original Anyres deal with high-resolution images.
-							</figcaption>
-						</figure>
-						<br />
-						<figure style="width: 80%; text-align: center; margin: 0 auto;">
-							<img src="/blog/assets/images/llava-next-ablations/highres.png" alt="ours_grid" />
-							<br />
-							<figcaption style="font-size: 16px;">
-								Figure 2. The overview of our Higher-Anyres mode and interpolation.
+								Figure 1. The comparison between original Anyres and our Higher-Anyres mode and interpolation.
 							</figcaption>
 						</figure>
 						<br />
@@ -917,10 +909,10 @@
 							The previous AnyRes technique employs a grid configuration of \(\{2×2, 1×\{2,3,4\}, \{2,3,4\}×1\}\) to
 							adapt to images of different resolutions while preserving data efficiency. However, this grid
 							configuration supports a maximum of 4 grids per image, limiting its capability when more grids are
-							required, such as with document data and long videos. As shown in Fig. 1, for images with resolutions
+							required, such as with document data and long videos. As shown in Fig. 1 (a), for images with resolutions
 							higher than the maximum supported \(768 \times 768\), the original AnyRes method resizes them to \(768
 							\times 768\). This resizing results in a loss of detail for high-resolution images. To address this issue,
-							we explore grid configurations for higher resolutions, as shown in Fig. 2, where the image is divided into
+							we explore grid configurations for higher resolutions, as shown in the bottom row of Fig. 1 (b), where the image is divided into
 							more grids. Additionally, to maintain efficiency, we propose an thresholded bilinear interpolation strategy to prevent an
 							excessive number of visual tokens from being fed into the LLM.
 						</p>
