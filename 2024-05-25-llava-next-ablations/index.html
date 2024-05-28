@@ -900,7 +900,7 @@
 							<img src="/blog/assets/images/llava-next-ablations/compare.png" alt="anyres_grid" />
 							<br />
 							<figcaption style="font-size: 16px;">
-								Figure 1. The comparison between original Anyres and our Higher-Anyres mode and interpolation.
+								Figure 1. The comparison of vision representations between (a) the proposed Higher-AnyRes and (b) the original AnyRes. Each colored square indicates the feature map encoded individually by the image encoder for a given grid.
 							</figcaption>
 						</figure>
 						<br />
@@ -2181,166 +2181,150 @@
 							</li>
 						</ol>
 						<div style="display: flex; justify-content: center;">
-							<div class="tg-wrap">
-								<table>
-									<thead>
-										<tr>
-											<th rowspan="2">Stage-1 Data</th>
-											<th rowspan="2">Quality Measure</th>
-											<th>Avg.</th>
-											<th>AI2D</th>
-											<th>ChartQA</th>
-											<th>DocVQA</th>
-											<th>MathVista</th>
-											<th>MME</th>
-											<th>MMMU</th>
-											<th>LLaVA-W</th>
-											<th>ScienceQA</th>
-											<th>Image-DC</th>
-										</tr>
-										<tr style="font-size: 12px;">
-											<th>-</th>
-											<th>test</th>
-											<th>test</th>
-											<th>val</th>
-											<th>testmini</th>
-											<th>-</th>
-											<th>dev</th>
-											<th>-</th>
-											<th>IMG</th>
-											<th>EN</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>558K</td>
-											<td>N/A</td>
-											<td>64.0</td>
-											<td>67.4</td>
-											<td>65.2</td>
-											<td>74.5</td>
-											<td>35.4</td>
-											<td>65.54</td>
-											<td>36.6</td>
-											<td>72.6</td>
-											<td>71.0</td>
-											<td>87.6</td>
-										</tr>
-										<tr>
-											<td>CC3M</td>
-											<td>N/A</td>
-											<td>63.6</td>
-											<td>66.0</td>
-											<td>62.4</td>
-											<td>73.7</td>
-											<td>35.4</td>
-											<td>66.60</td>
-											<td>34.3</td>
-											<td>79.9</td>
-											<td>69.5</td>
-											<td>84.3</td>
-										</tr>
-										<tr>
-											<td>CC12M</td>
-											<td>N/A</td>
-											<td>62.9</td>
-											<td>66.8</td>
-											<td>58.9</td>
-											<td>72.5</td>
-											<td>34.7</td>
-											<td>64.14</td>
-											<td>35.0</td>
-											<td>79.6</td>
-											<td>69.7</td>
-											<td>85.1</td>
-										</tr>
-										<tr>
-											<td colspan="12" style="text-align: center; font-style: italic;">Web Pretraining Dataset*</td>
-										</tr>
-										<tr>
-											<td rowspan="2">Web 0.6M</td>
-											<td>Top Quality</td>
-											<td>64.5</td>
-											<td>67.8</td>
-											<td>64.8</td>
-											<td>74.2</td>
-											<td>35.2</td>
-											<td>66.61</td>
-											<td>34.7</td>
-											<td>80.1</td>
-											<td>71.4</td>
-											<td>85.4</td>
-										</tr>
-										<tr style="font-size: 12px;">
-											<td>Random</td>
-											<td>63.9</td>
-											<td>68.0</td>
-											<td>64.4</td>
-											<td>73.7</td>
-											<td>34.4</td>
-											<td>65.83</td>
-											<td>34.0</td>
-											<td>80.6</td>
-											<td>70.8</td>
-											<td>83.7</td>
-										</tr>
-										<tr>
-											<td rowspan="2">Web 3M</td>
-											<td>Top Quality</td>
-											<td>64.5</td>
-											<td>67.8</td>
-											<td>62.9</td>
-											<td>73.8</td>
-											<td>34.1</td>
-											<td>67.05</td>
-											<td>33.4</td>
-											<td>86.4</td>
-											<td>70.3</td>
-											<td>84.5</td>
-										</tr>
-										<tr>
-											<td>Random</td>
-											<td>63.9</td>
-											<td>68.2</td>
-											<td>62.8</td>
-											<td>73.2</td>
-											<td>33.4</td>
-											<td>66.00</td>
-											<td>33.8</td>
-											<td>83.0</td>
-											<td>70.1</td>
-											<td>84.3</td>
-										</tr>
-										<tr>
-											<td rowspan="2">Web 15M</td>
-											<td>Top Quality</td>
-											<td>65.4</td>
-											<td>68.6</td>
-											<td>64.5</td>
-											<td>74.9</td>
-											<td>35.8</td>
-											<td>69.34</td>
-											<td>34.4</td>
-											<td>85.2</td>
-											<td>71.0</td>
-											<td>85.1</td>
-										</tr>
-										<tr>
-											<td>Random</td>
-											<td>64.4</td>
-											<td>68.2</td>
-											<td>62.4</td>
-											<td>73.4</td>
-											<td>34.1</td>
-											<td>66.87</td>
-											<td>34.1</td>
-											<td>85.6</td>
-											<td>70.9</td>
-											<td>83.8</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+                            <div class="tg-wrap"><table><thead>
+                                <tr>
+                                  <th rowspan="2">Stage-1 Data</th>
+                                  <th rowspan="2">Quality Measure</th>
+                                  <th>Avg.</th>
+                                  <th>AI2D*</th>
+                                  <th>ChartQA*</th>
+                                  <th>DocVQA</th>
+                                  <th>MathVista</th>
+                                  <th>MME</th>
+                                  <th>LLaVA-W</th>
+                                  <th>ScienceQA</th>
+                                  <th>Image-DC</th>
+                                </tr>
+                                <tr>
+                                  <th>-</th>
+                                  <th>test</th>
+                                  <th>test</th>
+                                  <th>val</th>
+                                  <th>testmini</th>
+                                  <th>-</th>
+                                  <th>-</th>
+                                  <th>IMG</th>
+                                  <th>EN</th>
+                                </tr></thead>
+                              <tbody>
+                                <tr>
+                                  <td>558K</td>
+                                  <td>N/A</td>
+                                  <td>67.4</td>
+                                  <td>67.4</td>
+                                  <td>65.2</td>
+                                  <td>74.5</td>
+                                  <td>35.4</td>
+                                  <td>65.54</td>
+                                  <td>72.6</td>
+                                  <td>71.0</td>
+                                  <td>87.6</td>
+                                </tr>
+                                <tr>
+                                  <td>CC3M</td>
+                                  <td>N/A</td>
+                                  <td>67.2</td>
+                                  <td>66.0</td>
+                                  <td>62.4</td>
+                                  <td>73.7</td>
+                                  <td>35.4</td>
+                                  <td>66.60</td>
+                                  <td>79.9</td>
+                                  <td>69.5</td>
+                                  <td>84.3</td>
+                                </tr>
+                                <tr>
+                                  <td>CC12M</td>
+                                  <td>N/A</td>
+                                  <td>66.4</td>
+                                  <td>66.8</td>
+                                  <td>58.9</td>
+                                  <td>72.5</td>
+                                  <td>34.7</td>
+                                  <td>64.14</td>
+                                  <td>79.6</td>
+                                  <td>69.7</td>
+                                  <td>85.1</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="11" style="font-weight: bold; font-style: italic;">Web Pretraining Dataset*</td>
+                                </tr>
+                                <tr>
+                                  <td rowspan="2">Web 0.6M</td>
+                                  <td>Top Quality</td>
+                                  <td>68.2</td>
+                                  <td>67.8</td>
+                                  <td>64.8</td>
+                                  <td>74.2</td>
+                                  <td>35.2</td>
+                                  <td>66.61</td>
+                                  <td>80.1</td>
+                                  <td>71.4</td>
+                                  <td>85.4</td>
+                                </tr>
+                                <tr>
+                                  <td>Random</td>
+                                  <td>67.7</td>
+                                  <td>68.0</td>
+                                  <td>64.4</td>
+                                  <td>73.7</td>
+                                  <td>34.4</td>
+                                  <td>65.83</td>
+                                  <td>80.6</td>
+                                  <td>70.8</td>
+                                  <td>83.7</td>
+                                </tr>
+                                <tr>
+                                  <td rowspan="2">Web 3M</td>
+                                  <td>Top Quality</td>
+                                  <td>68.4</td>
+                                  <td>67.8</td>
+                                  <td>62.9</td>
+                                  <td>73.8</td>
+                                  <td>34.1</td>
+                                  <td>67.05</td>
+                                  <td>86.4</td>
+                                  <td>70.3</td>
+                                  <td>84.5</td>
+                                </tr>
+                                <tr>
+                                  <td>Random</td>
+                                  <td>67.6</td>
+                                  <td>68.2</td>
+                                  <td>62.8</td>
+                                  <td>73.2</td>
+                                  <td>33.4</td>
+                                  <td>66.00</td>
+                                  <td>83.0</td>
+                                  <td>70.1</td>
+                                  <td>84.3</td>
+                                </tr>
+                                <tr>
+                                  <td rowspan="2">Web 15M</td>
+                                  <td>Top Quality</td>
+                                  <td>69.3</td>
+                                  <td>68.6</td>
+                                  <td>64.5</td>
+                                  <td>74.9</td>
+                                  <td>35.8</td>
+                                  <td>69.34</td>
+                                  <td>85.2</td>
+                                  <td>71.0</td>
+                                  <td>85.1</td>
+                                </tr>
+                                <tr>
+                                  <td>Random</td>
+                                  <td>68.2</td>
+                                  <td>68.2</td>
+                                  <td>62.4</td>
+                                  <td>73.4</td>
+                                  <td>34.1</td>
+                                  <td>66.87</td>
+                                  <td>85.6</td>
+                                  <td>70.9</td>
+                                  <td>83.8</td>
+                                </tr>
+                              </tbody></table></div>
 						</div>
 						<h3 id="stage-1-5-high-quality-knowledge-learning">Section 3.2 - High-Quality Knowledge Learning</h3>
 						<p>
@@ -2425,263 +2409,10 @@
 							Here are the detailed results of the ablation study:
 						</p>
 						<div style="display: flex; justify-content: center;">
-							<div class="tg-wrap">
-								<table>
-									<thead>
-										<tr>
-											<th colspan="3">Training Data</th>
-											<th>Avg.</th>
-											<th>AI2D</th>
-											<th>ChartQA</th>
-											<th>DocVQA</th>
-											<th>InfoVQA</th>
-											<th>MathVista</th>
-											<th>MME</th>
-											<th>LLaVA-W</th>
-											<th>ScienceQA</th>
-											<th>Image-DC</th>
-										</tr>
-
-										<tr style="font-weight: bold; background-color: #f5f5f5; font-size: 12px;">
-											<td>Stage-1</td>
-											<td>Stage-1.5</td>
-											<td>Stage-2</td>
-											<td>-</td>
-											<td>test</td>
-											<td>test</td>
-											<td>val</td>
-											<td>val</td>
-											<td>testmini</td>
-											<td>-</td>
-											<td>-</td>
-											<td>IMG</td>
-											<td>EN-100</td>
-										</tr>
-									</thead>
-
-									<tbody>
-										<tr>
-											<td>558K</td>
-											<td>-</td>
-											<td>790K</td>
-											<td>63.7</td>
-											<td>67.4</td>
-											<td>65.2</td>
-											<td>74.5</td>
-											<td>34.5</td>
-											<td>35.4</td>
-											<td>65.5</td>
-											<td>72.6</td>
-											<td>70.8</td>
-											<td>87.5</td>
-										</tr>
-										<tr>
-											<td colspan="13" style="text-align: center; font-style: italic;">
-												High-Quality Knowledge: Detailed Re-Captioning
-											</td>
-										</tr>
-										<tr>
-											<td>118K (Recap)</td>
-											<td>-</td>
-											<td rowspan="9">790K</td>
-											<td>64.7</td>
-											<td>66.9</td>
-											<td>65.2</td>
-											<td>75.3</td>
-											<td>36.7</td>
-											<td>35.6</td>
-											<td>65.1</td>
-											<td>79.8</td>
-											<td>69.7</td>
-											<td>88.2</td>
-										</tr>
-										<tr>
-											<td>558K (Recap)</td>
-											<td>-</td>
-											<td>64.5</td>
-											<td>66.7</td>
-											<td>66.0</td>
-											<td>74.6</td>
-											<td>36.2</td>
-											<td>34.4</td>
-											<td>64.9</td>
-											<td>79.4</td>
-											<td>72.3</td>
-											<td>86.3</td>
-										</tr>
-										<tr>
-											<td>CC3M (Recap)</td>
-                                            <td>-</td>
-                                            <td>64.1</td>
-                                            <td>66.1</td>
-                                            <td>66.2</td>
-                                            <td>74.3</td>
-                                            <td>35.5</td>
-                                            <td>35.1</td>
-                                            <td>64.4</td>
-                                            <td>79.9</td>
-                                            <td>71.2</td>
-                                            <td>84.3</td>
-										</tr>
-										<tr>
-											<td rowspan="6">558K</td>
-											<td>118K (Recap)</td>
-											<td>65.1</td>
-											<td>66.9</td>
-											<td>66.6</td>
-											<td>75.5</td>
-											<td>36.6</td>
-											<td>36.1</td>
-											<td>65.7</td>
-											<td>79.7</td>
-											<td>71.0</td>
-											<td>87.6</td>
-										</tr>
-										<tr>
-											<td>558K (Recap)</td>
-											<td>66.0</td>
-											<td>70.1</td>
-											<td>67.8</td>
-											<td>76.9</td>
-											<td>39.4</td>
-											<td>36.2</td>
-											<td>65.1</td>
-											<td>79.4</td>
-											<td>71.5</td>
-											<td>88.2</td>
-										</tr>
-										<tr>
-											<td>CC3M (Recap)</td>
-											<td>67.1</td>
-											<td>72.7</td>
-											<td>68.3</td>
-											<td>77.7</td>
-											<td>38.1</td>
-											<td>38.6</td>
-											<td>65.7</td>
-											<td>80.1</td>
-											<td>72.0</td>
-											<td>90.4</td>
-										</tr>
-										<tr>
-											<td>118K</td>
-											<td>63.8</td>
-											<td>66.1</td>
-											<td>65.7</td>
-											<td>73.7</td>
-											<td>35.1</td>
-											<td>35.5</td>
-											<td>65.8</td>
-											<td>75.9</td>
-											<td>70.1</td>
-											<td>86.2</td>
-										</tr>
-										<tr>
-											<td>558K</td>
-											<td>64.8</td>
-											<td>67.3</td>
-											<td>66.1</td>
-											<td>75.4</td>
-											<td>36.8</td>
-											<td>35.8</td>
-											<td>66.6</td>
-											<td>77.6</td>
-											<td>70.9</td>
-											<td>86.6</td>
-										</tr>
-										<tr>
-                                            <td>CC3M</td>
-                                            <td>65.3</td>
-                                            <td>67.5</td>
-                                            <td>66.3</td>
-                                            <td>77.0</td>
-                                            <td>38.1</td>
-                                            <td>34.9</td>
-                                            <td>66.8</td>
-                                            <td>79.6</td>
-                                            <td>71.0</td>
-                                            <td>86.5</td>
-										</tr>
-										<tr>
-											<td colspan="13" style="text-align: center; font-style: italic;">
-												High-Quality Knowledge: New Domain Knowledge
-											</td>
-										</tr>
-										<tr>
-											<td rowspan="3">558K</td>
-											<td>UReader 100K</td>
-											<td rowspan="3">790K</td>
-											<td>63.9</td>
-											<td>66.2</td>
-											<td>67.2</td>
-											<td>77.6</td>
-											<td>36.9</td>
-											<td>34.2</td>
-											<td>63.9</td>
-											<td>70.7</td>
-											<td>71.9</td>
-											<td>86.1</td>
-										</tr>
-										<tr>
-											<td>ShareGPT4V ZH-Caption 100K</td>
-											<td>65.1</td>
-											<td>68.7</td>
-											<td>67.1</td>
-											<td>75.1</td>
-											<td>36.9</td>
-											<td>36.3</td>
-											<td>64.4</td>
-											<td>78.1</td>
-											<td>72.2</td>
-											<td>87.4</td>
-										</tr>
-										<tr>
-											<td>SynDOG EN+ZH 1M</td>
-											<td>63.0</td>
-											<td>66.4</td>
-											<td>62.0</td>
-											<td>72.9</td>
-											<td>36.7</td>
-											<td>31.6</td>
-											<td>65.8</td>
-											<td>76.9</td>
-											<td>72.5</td>
-											<td>82.3</td>
-										</tr>
-										<tr>
-											<td colspan="13" style="text-align: center; font-style: italic;">Mixed Data</td>
-										</tr>
-										<tr>
-											<td rowspan="2">558K</td>
-											<td>Recap-118K + UReader-100K</td>
-											<td rowspan="2">790K</td>
-											<td>65.5</td>
-											<td>66.9</td>
-											<td>68.1</td>
-											<td>79.2</td>
-											<td>37.8</td>
-											<td>36.0</td>
-											<td>64.2</td>
-											<td>77.4</td>
-											<td>71.0</td>
-											<td>88.5</td>
-										</tr>
-										<tr>
-											<td>Recap-118K + UReader-100K + Evol-Instruct-173K</td>
-											<td>65.9</td>
-											<td>66.2</td>
-											<td>67.7</td>
-											<td>78.5</td>
-											<td>38.1</td>
-											<td>36.2</td>
-											<td>66.1</td>
-											<td>81.4</td>
-											<td>71.3</td>
-											<td>88.1</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+                            <div class="tg-wrap"><table><thead><tr><th colspan="3">Training Data</th><th>Avg.</th><th>AI2D</th><th>ChartQA</th><th>DocVQA</th><th>InfoVQA</th><th>MathVista</th><th>MME</th><th>LLaVA-W</th><th>ScienceQA</th><th>Image-DC</th></tr></thead><tbody><tr><td>Stage-1</td><td>Stage 1.5</td><td>Stage 2</td><td>-</td><td>test</td><td>test</td><td>val</td><td>val</td><td>testmini</td><td>-</td><td>-</td><td>IMG</td><td>EN</td></tr><tr><td>558K</td><td>-</td><td>790K</td><td>67.4</td><td>67.4</td><td>65.2</td><td>74.5</td><td>34.5</td><td>35.4</td><td>65.5</td><td>72.6</td><td>70.8</td><td>87.5</td></tr><tr><td colspan="13" style="font-weight: bold; font-style:italic">High-Quality Knowledge: Detailed Re-Captioning</td></tr><tr><td>118K (ReCap)</td><td>-</td><td rowspan="9">790K</td><td>68.2</td><td>66.9</td><td>65.2</td><td>75.3</td><td>36.7</td><td>35.6</td><td>65.1</td><td>79.8</td><td>69.7</td><td>88.2</td></tr>
+                                <tr><td>558K (ReCap)</td><td>-</td><td>68.1</td><td>66.7</td><td>66.0</td><td>74.6</td><td>36.2</td><td>34.4</td><td>64.9</td><td>79.4</td><td>72.3</td><td>86.3</td></tr><tr><td>3M (ReCap)</td><td>-</td><td>67.7</td><td>66.1</td><td>66.2</td><td>74.3</td><td>35.5</td><td>35.1</td><td>64.4</td><td>79.9</td><td>71.2</td><td>84.3</td></tr><tr><td rowspan="6">558K</td><td>118K (ReCap)</td><td>68.6</td><td>66.9</td><td>66.6</td><td>75.5</td><td>36.6</td><td>36.1</td><td>65.7</td><td>79.7</td><td>71.0</td><td>87.6</td></tr><tr><td>558K (ReCap)</td><td>69.4</td><td>70.1</td><td>67.8</td><td>76.9</td><td>39.4</td><td>36.2</td><td>65.1</td><td>79.4</td><td>71.5</td><td>88.2</td></tr><tr><td>3M (Recap)</td><td>70.7</td><td>72.7</td><td>68.3</td><td>77.7</td><td>38.1</td><td>38.6</td><td>65.7</td><td>80.1</td><td>72.0</td><td>90.4</td></tr><tr><td>COCO118K</td><td>67.4</td><td>66.1</td><td>65.7</td><td>73.7</td><td>35.1</td><td>35.5</td><td>65.8</td><td>75.9</td><td>70.1</td><td>86.2</td></tr>
+                                <tr><td>BLIP558K</td><td>68.3</td><td>67.3</td><td>66.1</td><td>75.4</td><td>36.8</td><td>35.8</td><td>66.6</td><td>77.6</td><td>70.9</td><td>86.6</td></tr><tr><td>CC3M</td><td>68.7</td><td>67.5</td><td>66.3</td><td>77.0</td><td>38.1</td><td>34.9</td><td>66.8</td><td>79.6</td><td>71.0</td><td>86.5</td></tr><tr><td colspan="13" style="font-weight: bold; font-style:italic">High-Quality Knowledge: New Domain Knowledge</td></tr><tr><td rowspan="3">558K</td><td>UReader 100K</td><td rowspan="3">790K</td><td>67.2</td><td>66.2</td><td>67.2</td><td>77.6</td><td>36.9</td><td>34.2</td><td>63.9</td><td>70.7</td><td>71.9</td><td>86.1</td></tr><tr><td>ShareGPT4V Chinese Caption 100K</td><td>68.7</td><td>68.7</td><td>67.1</td><td>75.1</td><td>36.9</td><td>36.3</td><td>64.4</td><td>78.1</td><td>72.2</td><td>87.4</td></tr><tr><td>SynthDOG EN+ZH 1M</td><td>66.3</td><td>66.4</td><td>62.0</td><td>72.9</td><td>36.7</td><td>31.6</td><td>65.8</td><td>76.9</td><td>72.5</td><td>82.3</td></tr><tr><td colspan="13" style="font-weight: bold; font-style:italic">Mixed Data</td></tr>
+                                <tr><td rowspan="2">558K</td><td>118K (ReCap)<br>+ UReader-100K</td><td rowspan="2">790K</td><td>68.9</td><td>66.9</td><td>68.1</td><td>79.2</td><td>37.8</td><td>36.0</td><td>64.2</td><td>77.4</td><td>71.0</td><td>88.5</td></tr><tr><td>118K (ReCap)<br>+ UReader-100K<br>+ Evol-Instruct-143K</td><td>69.4</td><td>66.2</td><td>67.7</td><td>78.5</td><td>38.1</td><td>36.2</td><td>66.1</td><td>81.4</td><td>71.3</td><td>88.1</td></tr></tbody></table></div>
 						</div>
 
 						<p>
