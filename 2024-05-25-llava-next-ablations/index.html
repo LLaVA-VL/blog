@@ -228,13 +228,13 @@
 						<p>Re-captioned Data with LLaVA-NeXT-34B is available on Hugging Face Datasets.</p>
 						<ul>
 							<li>
-								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-118K">LLaVA-ReCap (COCO-118K)</a>
+								<a href="https://huggingface.co/datasets/lmms-lab/LLaVA-ReCap-118K">LLaVA-ReCap (COCO-118K)</a>
 							</li>
 							<li>
-								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-558K">LLaVA-ReCap (LCS-558K)</a>
+								<a href="https://huggingface.co/datasets/lmms-lab/LLaVA-ReCap-558K">LLaVA-ReCap (LCS-558K)</a>
 							</li>
 							<li>
-								<a href="https://huggingface.co/datasets/lmms-lab/Recap-DetailCaptions-3M">LLaVA-ReCap (CC3M)</a>
+								<a href="https://huggingface.co/datasets/lmms-lab/LLaVA-ReCap-3M">LLaVA-ReCap (CC3M)</a>
 							</li>
 						</ul>
 						<h2 id="section-1-insights-on-architectures">Section 1 - Insights on Architectures</h2>
@@ -243,7 +243,7 @@
 							encode rich knowledge, thanks to the large volume of training data they have been exposed to and the
 							computational resources utilized throughout their model life cycles, respectively. Consequently, the
 							scaling behavior (in terms of model size and data size) of LMM may differ from that of LLMs trained from
-							scratch, when only the LMM training stage is considered, without taking into account the LLM and vision
+							scratch[1,2,3], when only the LMM training stage is considered, without taking into account the LLM and vision
 							encoder cost. For LMM, we have shown stronger LLM leads to better multimodal performance in the wild in
 							our previous <a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">blog</a>,
 							demonstrating the significant improvements of LLaVA-NeXT-110B. In this blog, we systematically study model
@@ -2352,11 +2352,11 @@
 						</div>
 						<h3 id="stage-1-5-high-quality-knowledge-learning">Section 3.2 - High-Quality Knowledge Learning</h3>
 						<p>
-							In the realm of multimodal training from LLM, the axiom "quality over quantity" holds especially true.
+							In the realm of multimodal training from LLM, the axiom <strong>"quality over quantity"</strong> holds especially true.
 							This principle is paramount due to the extensive knowledge stored within pre-trained LLM and ViT. While it
 							is essential to accumulate balanced, diverse, and high-quality instruction data at the end of the LMM's
 							training lifecycle, an often-overlooked aspect is the continuous exposure of the model to new,
-							high-quality data for further knowledge acquisition, when it is available. This process, which we term
+							high-quality data for further knowledge acquisition, when it is available. This process has also been adopted in recent papers[3,4], which we term
 							Stage-1.5, focuses on high-quality knowledge learning. The training configuration mirrors the settings
 							used in Stage-2, ensuring consistency and allowing the model to integrate new information seamlessly. This
 							approach acknowledges that the pre-trained LLMs and ViTs already possess a substantial knowledge base, and
@@ -2370,18 +2370,17 @@
 								caption ability among open-source LMMs. We used the model to generate new captions for the images from the following datasets: COCO118K, BLIP558K, and CC3M.
 							</li>
 							<li>
-								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the Ureader dataset,
+								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the UReader dataset,
 								totaling 100K, which is easily accessible through PDF rendering. We used this text reading data along
 								with the SynDOG EN/CN 1M datasets.
 							</li>
 							<li>
-								<strong>ShareGPT4V Chinese Caption:</strong> We include ShareGPT4V Chinese Caption data to improve the
-								model's ability in Chinese.
+								<strong>ShareGPT4V Chinese Detailed Caption:</strong> We used the original ShareGPT4V[5] images and utilized GPT-4V provided by the Azure API to generate detailed Chinese caption data, aiming to improve the model's capability in Chinese.
 							</li>
 						</ol>
 
                         <p>
-                            In the following table, we present the impact of using LLaVA-ReCap Data for training full model in Stage 1.5, combined with the anyres strategy. We observe that using LLaVA-ReCap Data brings the greatest benefits (as indicated by the red circles at the top). Meanwhile, using raw captions data such as COCO18K, BLIP558K, and CC3M at Stage 1.5 also demonstrates good performance (as indicated by the blue circles). Additionally, we compared the results with the Raw Captions Data introduced in Section 3.1, including BLIP558K and various scales of Web Data (represented by squares). These comparisons were made in Stage 1, where only the projector was trained, without including the anyres strategy.
+                            In the following table, we present the impact of using LLaVA-ReCap Data for training full model in Stage 1.5, combined with the anyres strategy. We observe that using LLaVA-ReCap Data brings the greatest benefits (as indicated by the red circles at the top). Meanwhile, using raw captions data such as COCO18K, BLIP558K, and CC3M at Stage 1.5 also demonstrates good performance (as indicated by the blue circles). Additionally, we compared the results with the Raw Captions Data introduced in Section 3.1, including BLIP558K and various scales of Web Data at Stage 1, where only the projector was trained, without including the anyres strategy.
                         </p>
 
 						<figure style="width: 100%; text-align: center; margin: 0 auto;">
@@ -2390,12 +2389,12 @@
                         
                         <br>
 						<p>
-                            Here are more detailed conclusions:
+                            Here are more detailed ablations, and the following tables may present the following conclusions:
 						</p>
 						<ol>
 							<li>
 								<strong>Enhanced Performance with Recaptioned Data:</strong> Models trained with recaptioned data
-								(Recap) datasets, show a trend of enhanced performance in tasks requiring detailed image descriptions
+								(ReCap) datasets, show a trend of enhanced performance in tasks requiring detailed image descriptions
 								and document understanding.
 								<ul>
 									<li>
@@ -2433,9 +2432,6 @@
 							</li>
 						</ol>
 
-						<p>
-							Here are the detailed results of the ablation study:
-						</p>
 						<div style="display: flex; justify-content: center;">
 							<div class="tg-wrap">
 								<table>
@@ -2728,7 +2724,7 @@
 											<td>24.0</td>
 										</tr>
 										<tr>
-											<td>SynDOG EN+ZH 1M</td>
+											<td>SynDOG 1M</td>
 											<td>55.3</td>
 											<td>42.6</td>
 											<td>21.3</td>
@@ -2740,7 +2736,7 @@
 											<td>22.8</td>
 										</tr>
 										<tr>
-											<td>ShareGPT4V ZH-Caption 100K</td>
+											<td>ShareGPT4V CN-Caption 100K</td>
 											<td>80.4</td>
 											<td>56.0</td>
 											<td>25.6</td>
@@ -2805,8 +2801,8 @@
 							</p>
 							<h4>Video Detailed Caption Task</h4>
 							<p>
-								This dataset comprises 499 videos sourced from ActivityNet[8], with the evaluation process inspired by
-								VideoChatGPT[9]. For each video, we prompt the model with: Please provide a detailed description of the
+								This dataset comprises 499 videos sourced from ActivityNet[6], with the evaluation process inspired by
+								VideoChatGPT[7]. For each video, we prompt the model with: Please provide a detailed description of the
 								video, focusing on the main subjects, their actions, and the background scenes. Ground-truth answers are
 								extracted from the human-generated detailed descriptions of the videos. The model's responses are
 								evaluated using a custom-designed prompt, which rates the model responses using gpt-3.5-turbo-0613.
@@ -2837,15 +2833,6 @@
 								Rae, Jack W., et al. "Scaling language models: Methods, analysis & insights from training gopher." arXiv
 								preprint arXiv:2112.11446 (2021).
 							</li>
-							<li>Achiam, Josh, et al. "GPT-4 technical report." arXiv preprint arXiv:2303.08774 (2023).</li>
-							<li>
-								Gemini Team, et al. "Gemini: a family of highly capable multimodal models." arXiv preprint
-								arXiv:2312.11805 (2023).
-							</li>
-							<li>
-								Anthorpic, et al. "Introducing the next generation of Claude."
-								https://www.anthropic.com/news/claude-3-family
-							</li>
 							<li>
 								Lu, Haoyu, et al. "DeepSeek-VL: towards real-world vision-language understanding." arXiv preprint
 								arXiv:2403.05525 (2024).
@@ -2853,6 +2840,9 @@
 							<li>
 								Chen, Zhe, et al. "How far are we to gpt-4v? closing the gap to commercial multimodal models with
 								open-source suites." arXiv preprint arXiv:2404.16821 (2024).
+							</li>
+							<li>
+								Chen, Lin, et al. "Sharegpt4v: Improving large multi-modal models with better captions." arXiv preprint arXiv:2311.12793 (2023).
 							</li>
 							<li>
 								Caba Heilbron, Fabian, et al. "Activitynet: A large-scale video benchmark for human activity
