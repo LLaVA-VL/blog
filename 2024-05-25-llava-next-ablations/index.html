@@ -148,7 +148,7 @@
 									</ul>
 								</li>
 
-								<li><a href="#benchmark-card">Benchmark Card</a></li>
+								<li><a href="#benchmark-card">Datasets Card</a></li>
 								<!-- <li><a href="#section-4-1-image-detailed-caption-task">Section 4.1 - Image Detailed Caption Task</a></li>
                                 <li><a href="#section-4-2-video-detailed-caption-task">Section 4.2 - Video Detailed Caption Task</a></li> -->
 								<li><a href="#team">Team</a></li>
@@ -219,7 +219,7 @@
 							</ol>
 							<p>
 								The datasets and evaluation process is detailed in the
-								<a href="#benchmark-card">Benchmark Card</a> section.
+								<a href="#benchmark-card">Datasets Card</a> section.
 							</p>
 						</details>
 						<br />
@@ -527,7 +527,7 @@
 							<p class="compact-paragraph">
 								**Image Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed
 								captioning ability towards given images. The task is described in the
-								<a href="#benchmark-card">Benchmark Card</a> section.
+								<a href="#benchmark-card">Datasets Card</a> section.
 							</p>
 						</blockquote>
 
@@ -1166,7 +1166,7 @@
 							</style>
 							<p class="compact-paragraph">
 								*Video Detailed Caption Task is a new benchmark we constructed to evaluate the model's detailed
-								captioning ability towards given images. The task is described in the Benchmark Card section.
+								captioning ability towards given images. The task is described in the Datasets Card section.
 							</p>
 							<p class="compact-paragraph">
 								**SynDOG is a benchmark that evaluates model's OCR ability, we report the tree edit distance score on
@@ -2269,7 +2269,7 @@
 											<td>85.1</td>
 										</tr>
 										<tr>
-											<td colspan="11" style="font-weight: bold; font-style: italic;">Web-scale Dataset*</td>
+											<td colspan="11" style="font-weight: bold; font-style: italic;">Web Dataset*</td>
 										</tr>
 										<tr>
 											<td rowspan="2">Web 0.6M</td>
@@ -2322,7 +2322,7 @@
 											<td>84.3</td>
 										</tr>
 										<tr>
-											<td rowspan="2">Web 15M</td>
+											<td rowspan="2">Web 12M</td>
 											<td>Top Quality</td>
 											<td>69.3</td>
 											<td>68.6</td>
@@ -2356,7 +2356,7 @@
 							This principle is paramount due to the extensive knowledge stored within pre-trained LLM and ViT. While it
 							is essential to accumulate balanced, diverse, and high-quality instruction data at the end of the LMM's
 							training lifecycle, an often-overlooked aspect is the continuous exposure of the model to new,
-							high-quality data for further knowledge acquisition, when it is available. This process has also been adopted in recent papers[3,4], which we term
+							high-quality data for further knowledge acquisition, when it is available. We term
 							Stage-1.5, focuses on high-quality knowledge learning. The training configuration mirrors the settings
 							used in Stage-2, ensuring consistency and allowing the model to integrate new information seamlessly. This
 							approach acknowledges that the pre-trained LLMs and ViTs already possess a substantial knowledge base, and
@@ -2375,16 +2375,15 @@
 								with the SynDOG EN/CN 1M datasets.
 							</li>
 							<li>
-								<strong>ShareGPT4V Chinese Detailed Caption:</strong> We used the original ShareGPT4V[5] images and utilized GPT-4V provided by the Azure API to generate detailed Chinese caption data, aiming to improve the model's capability in Chinese.
+								<strong>ShareGPT4V Chinese Detailed Caption:</strong> We used the original ShareGPT4V[3] images and utilized GPT-4V provided by the Azure API to generate detailed Chinese caption data, aiming to improve the model's capability in Chinese.
 							</li>
 						</ol>
 
-                        <p>
-                            In the following table, we present the impact of using LLaVA-ReCap Data for training full model in Stage 1.5, combined with the anyres strategy. We observe that using LLaVA-ReCap Data brings the greatest benefits (as indicated by the red circles at the top). Meanwhile, using raw captions data such as COCO18K, BLIP558K, and CC3M at Stage 1.5 also demonstrates good performance (as indicated by the blue circles). Additionally, we compared the results with the Raw Captions Data introduced in Section 3.1, including BLIP558K and various scales of Web Data at Stage 1, where only the projector was trained, without including the anyres strategy.
-                        </p>
-
-						<figure style="width: 100%; text-align: center; margin: 0 auto;">
+						<figure style="width: 80%; text-align: center; margin: 0 auto;">
 							<img src="/blog/assets/images/llava-next-ablations/mid_stage_plot.png" alt="ablations-table-1" />
+                            <figcaption style="font-size: 16px;">
+                                Figure 2. This figure shows that using LLaVA-ReCap Data in Stage 1.5 training yields the most significant improvements (red circles). Performance with raw captions data like COCO18K, BLIP558K, and CC3M is also strong (blue circles). We also include the results from Section 3.1 (squared shape), where only the projector was trained using raw captions data at various scales (e.g. BLIP558K, CC3M, CC12M, Web 0.6M, Web 3M and Web 12M).
+                            </figcaption>
 						</figure>
                         
                         <br>
@@ -2801,8 +2800,8 @@
 							</p>
 							<h4>Video Detailed Caption Task</h4>
 							<p>
-								This dataset comprises 499 videos sourced from ActivityNet[6], with the evaluation process inspired by
-								VideoChatGPT[7]. For each video, we prompt the model with: Please provide a detailed description of the
+								This dataset comprises 499 videos sourced from ActivityNet[4], with the evaluation process inspired by
+								VideoChatGPT[5]. For each video, we prompt the model with: Please provide a detailed description of the
 								video, focusing on the main subjects, their actions, and the background scenes. Ground-truth answers are
 								extracted from the human-generated detailed descriptions of the videos. The model's responses are
 								evaluated using a custom-designed prompt, which rates the model responses using gpt-3.5-turbo-0613.
@@ -2832,14 +2831,6 @@
 							<li>
 								Rae, Jack W., et al. "Scaling language models: Methods, analysis & insights from training gopher." arXiv
 								preprint arXiv:2112.11446 (2021).
-							</li>
-							<li>
-								Lu, Haoyu, et al. "DeepSeek-VL: towards real-world vision-language understanding." arXiv preprint
-								arXiv:2403.05525 (2024).
-							</li>
-							<li>
-								Chen, Zhe, et al. "How far are we to gpt-4v? closing the gap to commercial multimodal models with
-								open-source suites." arXiv preprint arXiv:2404.16821 (2024).
 							</li>
 							<li>
 								Chen, Lin, et al. "Sharegpt4v: Improving large multi-modal models with better captions." arXiv preprint arXiv:2311.12793 (2023).
