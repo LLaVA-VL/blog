@@ -768,18 +768,18 @@
 										<th style="font-size: 14px;">Image-DC</th>
 									</tr>
 									<tr>
-										<th style="font-size: 14px;">Source</th>
-										<th style="font-size: 14px;">Amount</th>
-										<th style="font-size: 14px;">-</th>
-										<th style="font-size: 14px;">test</th>
-										<th style="font-size: 14px;">test</th>
-										<th style="font-size: 14px;">val</th>
-										<th style="font-size: 14px;">testmini</th>
-										<th style="font-size: 14px;">-</th>
-										<th style="font-size: 14px;">dev</th>
-										<th style="font-size: 14px;">-</th>
-										<th style="font-size: 14px;">IMG</th>
-										<th style="font-size: 14px;">EN-100</th>
+										<th style="font-size: 12px;">Source</th>
+										<th style="font-size: 12px;">Amount</th>
+										<th style="font-size: 12px;">-</th>
+										<th style="font-size: 12px;">test</th>
+										<th style="font-size: 12px;">test</th>
+										<th style="font-size: 12px;">val</th>
+										<th style="font-size: 12px;">testmini</th>
+										<th style="font-size: 12px;">-</th>
+										<th style="font-size: 12px;">dev</th>
+										<th style="font-size: 12px;">-</th>
+										<th style="font-size: 12px;">IMG</th>
+										<th style="font-size: 12px;">EN-100</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -841,7 +841,7 @@
 										<td>85.9</td>
 									</tr>
 									<tr>
-										<td style="font-size: 14px;">EVA-CLIP-8B</td>
+										<td style="font-size: 14px;">EVA-8B</td>
 										<td style="font-size: 14px;">8B</td>
 										<td style="font-size: 14px;">224</td>
 										<td style="font-size: 14px;">256 * 5</td>
@@ -860,7 +860,7 @@
 										<td>88.0</td>
 									</tr>
 									<tr>
-										<td style="font-size: 14px;">EVA-CLIP-8B</td>
+										<td style="font-size: 14px;">EVA-8B</td>
 										<td style="font-size: 14px;">8B</td>
 										<td style="font-size: 14px;">448</td>
 										<td style="font-size: 14px;">1024 * 5</td>
@@ -2366,9 +2366,8 @@
 						<p>To illustrate high-quality knowledge, we consider data from three major categories:</p>
 						<ol>
 							<li>
-								<strong>Recaped Detailed Description Data:</strong> LLaVA-NeXT-34B is known for its strong detailed
-								caption ability among open-source LMMs. We used the model to generate new captions for the following
-								images: COCO118K, BLIP558K, and CC3M.
+								<strong>Re-Captioned Detailed Description Data:</strong> LLaVA-NeXT-34B is known for its strong detailed
+								caption ability among open-source LMMs. We used the model to generate new captions for the images from the following datasets: COCO118K, BLIP558K, and CC3M.
 							</li>
 							<li>
 								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the Ureader dataset,
@@ -2381,12 +2380,17 @@
 							</li>
 						</ol>
 
-						<figure style="width: 70%; text-align: center; margin: 0 auto;">
+                        <p>
+                            In the following table, we present the impact of using LLaVA-ReCap Data for training full model in Stage 1.5, combined with the anyres strategy. We observe that using LLaVA-ReCap Data brings the greatest benefits (as indicated by the red circles at the top). Meanwhile, using raw captions data such as COCO18K, BLIP558K, and CC3M at Stage 1.5 also demonstrates good performance (as indicated by the blue circles). Additionally, we compared the results with the Raw Captions Data introduced in Section 3.1, including BLIP558K and various scales of Web Data (represented by squares). These comparisons were made in Stage 1, where only the projector was trained, without including the anyres strategy.
+                        </p>
+
+						<figure style="width: 100%; text-align: center; margin: 0 auto;">
 							<img src="/blog/assets/images/llava-next-ablations/mid_stage_plot.png" alt="ablations-table-1" />
 						</figure>
-
+                        
+                        <br>
 						<p>
-							After the ablation study, we can make the following observations:
+                            Here are more detailed conclusions:
 						</p>
 						<ol>
 							<li>
@@ -2410,7 +2414,7 @@
 								essential.
 								<ul>
 									<li>
-										Document/OCR data, particularly UReader100K and SynDOG EN/CN 1M, provide substantial benefits in
+										Document/OCR data, particularly UReader 100K and SynDOG EN/CN 1M, provide substantial benefits in
 										understanding structured text data.
 									</li>
 									<li>
@@ -2422,7 +2426,7 @@
 							</li>
 							<li>
 								<strong>Balanced Improvement with Mixed Data Approach:</strong> Combining high-quality recaptioned data,
-								document data, and text data (e.g., Recap-118K, UReader100K, and Evol-Instruct) leads to a well-rounded
+								document data, and text data (e.g., Recap-118K, UReader 100K, and Evol-Instruct) leads to a well-rounded
 								model capable of performing well across diverse tasks. Despite the total amount being under 500K, this
 								efficient mixed data approach results in balanced improvements across most metrics. This suggests that a
 								comprehensive and diverse knowledge base is crucial for the effectiveness of multimodal models.
@@ -2449,7 +2453,7 @@
 											<th>ScienceQA</th>
 											<th>Image-DC</th>
 										</tr>
-										<tr style="font-size: 12px;">
+										<tr style="font-size: 12px; font-weight: bold;">
 											<td>Stage-1</td>
 											<td>Stage 1.5</td>
 											<td>Stage 2</td>
@@ -2642,7 +2646,7 @@
 											<td>87.4</td>
 										</tr>
 										<tr>
-											<td>SynthDOG EN+ZH 1M</td>
+											<td>SynDOG 1M</td>
 											<td>66.3</td>
 											<td>66.4</td>
 											<td>62.0</td>
@@ -2659,7 +2663,7 @@
 										</tr>
 										<tr>
 											<td rowspan="2">558K</td>
-											<td>118K (ReCap)<br />+ UReader-100K</td>
+											<td>118K (ReCap)<br />+ UReader</td>
 											<td rowspan="2">790K</td>
 											<td>68.9</td>
 											<td>66.9</td>
@@ -2673,7 +2677,7 @@
 											<td>88.5</td>
 										</tr>
 										<tr>
-											<td>118K (ReCap)<br />+ UReader-100K<br />+ Evol-Instruct-143K</td>
+											<td>118K (ReCap)<br />+ UReader<br />+ Evol-143K</td>
 											<td>69.4</td>
 											<td>66.2</td>
 											<td>67.7</td>
