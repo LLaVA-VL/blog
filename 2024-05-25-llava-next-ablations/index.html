@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Begin Jekyll SEO tag v2.8.0 -->
+		<title>LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?</title>
+		<meta name="generator" content="Jekyll v3.9.4" />
+		<meta property="og:title" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+		<meta
+			name="author"
+			content="Bo Li, Hao Zhang, Kaichen Zhang, Dong Guo, Yuanhan Zhang, Feng Li, Renrui Zhang, Ziwei Liu, Chunyuan Li"
+		/>
+		<meta property="og:locale" content="en_US" />
+		<meta name="description" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+		<meta property="og:description" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+		<link rel="canonical" href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" />
+		<meta property="og:url" content="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" />
+		<meta property="og:site_name" content="LLaVA-NeXT" />
+		<meta property="og:type" content="article" />
+		<meta property="article:published_time" content="2024-05-25T12:33:38-06:00" />
+		<meta name="twitter:card" content="summary" />
+		<meta property="twitter:title" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "BlogPosting",
+				"author": {
+					"@type": "Person",
+					"name": "Bo Li, Hao Zhang, Kaichen Zhang, Dong Guo, Yuanhan Zhang, Feng Li, Renrui Zhang, Ziwei Liu, Chunyuan Li"
+				},
+				"dateModified": "2024-05-25T12:33:38-06:00",
+				"datePublished": "2024-05-25T12:33:38-06:00",
+				"description": "LLaVA team presents LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?",
+				"headline": "LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?",
+				"mainEntityOfPage": {
+					"@type": "WebPage",
+					"@id": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+				},
+				"url": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+			}
+		</script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- End Jekyll SEO tag -->
+		<link rel="stylesheet" href="/blog/2024-05-25-llava-next-ablations/style.css" />
+		<link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
+		<link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
+	</head>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Begin Jekyll SEO tag v2.8.0 -->
-    <title>LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?</title>
-    <meta name="generator" content="Jekyll v3.9.4" />
-    <meta property="og:title" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
-    <meta name="author" content="Bo Li, Hao Zhang, Kaichen Zhang, Dong Guo, Yuanhan Zhang, Feng Li, Renrui Zhang, Ziwei Liu, Chunyuan Li" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="description" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
-    <meta property="og:description" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
-    <link rel="canonical" href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" />
-    <meta property="og:url" content="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" />
-    <meta property="og:site_name" content="LLaVA-NeXT" />
-    <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="2024-05-25T12:33:38-06:00" />
-    <meta name="twitter:card" content="summary" />
-    <meta property="twitter:title" content="LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?" />
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "author": {
-                "@type": "Person",
-                "name": "Bo Li, Hao Zhang, Kaichen Zhang, Dong Guo, Yuanhan Zhang, Feng Li, Renrui Zhang, Ziwei Liu, Chunyuan Li"
-            },
-            "dateModified": "2024-05-25T12:33:38-06:00",
-            "datePublished": "2024-05-25T12:33:38-06:00",
-            "description": "LLaVA team presents LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?",
-            "headline": "LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?",
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
-            },
-            "url": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
-        }
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <!-- End Jekyll SEO tag -->
-    <link rel="stylesheet" href="/blog/2024-05-25-llava-next-ablations/style.css" />
-    <link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
-    <link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
-</head>
-
-<body>
-    <header class="site-header" role="banner">
-        <div class="wrapper">
-            <a class="site-title" rel="author" href="/blog/">LLaVA</a>
-            <nav class="site-nav">
-                <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-                <label for="nav-trigger">
+	<body>
+		<header class="site-header" role="banner">
+			<div class="wrapper">
+				<a class="site-title" rel="author" href="/blog/">LLaVA</a>
+				<nav class="site-nav">
+					<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+					<label for="nav-trigger">
 						<span class="menu-icon">
 							<svg viewBox="0 0 18 15" width="18px" height="15px">
 								<path
@@ -63,19 +65,20 @@
 						</span>
 					</label>
 
-                <div class="trigger"></div>
-            </nav>
-        </div>
-    </header>
-    <main class="page-content" aria-label="Content">
-        <div class="wrapper">
-            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-                <header class="post-header">
-                    <h1 class="post-title p-name" itemprop="name headline">
-                        LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?
-                    </h1>
-                    <p class="post-meta">
-                        <time class="dt-published" datetime="2024-05-25T12:00:00-06:00" itemprop="datePublished">May 25, 2024</time
+					<div class="trigger"></div>
+				</nav>
+			</div>
+		</header>
+		<main class="page-content" aria-label="Content">
+			<div class="wrapper">
+				<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+					<header class="post-header">
+						<h1 class="post-title p-name" itemprop="name headline">
+							LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?
+						</h1>
+						<p class="post-meta">
+							<time class="dt-published" datetime="2024-05-25T12:00:00-06:00" itemprop="datePublished"
+								>May 25, 2024</time
 							>
 							•
 							<span itemprop="author" itemscope itemtype="http://schema.org/Person"
@@ -243,11 +246,12 @@
 							encode rich knowledge, thanks to the large volume of training data they have been exposed to and the
 							computational resources utilized throughout their model life cycles, respectively. Consequently, the
 							scaling behavior (in terms of model size and data size) of LMM may differ from that of LLMs trained from
-							scratch[1,2,3], when only the LMM training stage is considered, without taking into account the LLM and vision
-							encoder cost. For LMM, we have shown stronger LLM leads to better multimodal performance in the wild in
-							our previous <a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">blog</a>,
-							demonstrating the significant improvements of LLaVA-NeXT-110B. In this blog, we systematically study model
-							size scaling behavior.
+							scratch[1,2,3], when only the LMM training stage is considered, without taking into account the LLM and
+							vision encoder cost. For LMM, we have shown stronger LLM leads to better multimodal performance in the
+							wild in our previous
+							<a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">blog</a>, demonstrating the
+							significant improvements of LLaVA-NeXT-110B. In this blog, we systematically study model size scaling
+							behavior.
 						</p>
 
 						<details>
@@ -811,7 +815,7 @@
 										<td style="font-size: 14px;">576 * 5</td>
 										<td style="font-size: 14px;">WIT</td>
 										<td style="font-size: 14px;">0.4B</td>
-                                        <td style="font-size: 14px;">13B</td>
+										<td style="font-size: 14px;">13B</td>
 										<td style="font-size: 14px; width: 200px;">~30H</td>
 										<td>65.3</td>
 										<td>67.4</td>
@@ -831,7 +835,7 @@
 										<td style="font-size: 14px;">256 * 5</td>
 										<td style="font-size: 14px;">LAION</td>
 										<td style="font-size: 14px;">2B</td>
-                                        <td style="font-size: 14px;">9B</td>
+										<td style="font-size: 14px;">9B</td>
 										<td style="font-size: 14px; width: 200px;">~30H</td>
 										<td>61.0</td>
 										<td>66.9</td>
@@ -851,7 +855,7 @@
 										<td style="font-size: 14px;">256 * 5</td>
 										<td style="font-size: 14px;">LAION + COYO</td>
 										<td style="font-size: 14px;">2B</td>
-                                        <td style="font-size: 14px;">9B</td>
+										<td style="font-size: 14px;">9B</td>
 										<td style="font-size: 14px; width: 200px;">～24H</td>
 										<td>63.3</td>
 										<td>67.8</td>
@@ -871,7 +875,7 @@
 										<td style="font-size: 14px;">1024 * 5</td>
 										<td style="font-size: 14px;">LAION + COYO</td>
 										<td style="font-size: 14px;">2B</td>
-                                        <td style="font-size: 14px;">9B</td>
+										<td style="font-size: 14px;">9B</td>
 										<td style="font-size: 14px; width: 200px;">～75H</td>
 										<td>64.4</td>
 										<td>68.4</td>
@@ -891,7 +895,7 @@
 										<td style="font-size: 14px;">729 * 5</td>
 										<td style="font-size: 14px;">WebLI</td>
 										<td style="font-size: 14px;">10B</td>
-                                        <td style="font-size: 14px;">40B</td>
+										<td style="font-size: 14px;">40B</td>
 										<td style="font-size: 14px; width: 200px;">~36H</td>
 										<td>66.4</td>
 										<td>69.4</td>
@@ -1575,9 +1579,9 @@
 								</div>
 							</div>
 							<p>
-								<strong>Adptive Pooling before or after projector.</strong> We compared the performance of pooling
-								before and after the projector. The results indicate that the thresholded bilinear interpolation method
-								performs better when applied after the projector.
+								<strong>Adptive Pooling Before or After projector.</strong> We compared the performance of pooling
+								Before and After the projector. The results indicate that the thresholded bilinear interpolation method
+								performs better when applied After the projector.
 							</p>
 							<div style="display: flex; justify-content: center;">
 								<div class="tg-wrap">
@@ -1830,7 +1834,7 @@
 								AnyRes grids during inference diminishes performance particularly on high-resolution datasets, albeit
 								with negligible effects on other datasets. Notably, our investigation unveiled a compelling revelation:
 								when the maximum number of AnyRes grids for inference is set at 1x1, employing the AnyRes strategy,
-								which utilizes (1 + 1)*729 visual tokens fed to the LLM, yields superior performance compared to
+								which utilizes (1+1)*729 visual tokens fed to the LLM, yields superior performance compared to
 								non-AnyRes usage, where only 729 visual tokens are employed. Interestingly, despite the similarity in
 								inference time between the two strategies, the latter exhibits superior performance. This finding
 								underscores the importance of employing the AnyRes strategy during inference to enhance performance.
@@ -1889,7 +1893,7 @@
 											</tr>
 											<tr>
 												<td>1x1</td>
-												<td>(1 + 1)*729</td>
+												<td>(1+1)*729</td>
 												<td>~16min</td>
 												<td>51.2</td>
 												<td>33.3</td>
@@ -1947,7 +1951,7 @@
 												<td rowspan="5">4x4</td>
 												<td rowspan="5">(16+1)*729</td>
 												<td>1x1</td>
-												<td>(1 + 1)*729</td>
+												<td>(1+1)*729</td>
 												<td>~16min</td>
 												<td>52.3</td>
 												<td>31.6</td>
@@ -2019,7 +2023,7 @@
 												<td rowspan="5">6x6</td>
 												<td rowspan="5">(9+1)*729</td>
 												<td>1x1</td>
-												<td>(1 + 1)*729</td>
+												<td>(1+1)*729</td>
 												<td>~16min</td>
 												<td>53.0</td>
 												<td>29.8</td>
@@ -2091,6 +2095,378 @@
 									</table>
 								</div>
 							</div>
+
+							<p>
+								<strong>Pooling methods:</strong> We compare adaptive average pooling and bilinear interpolation as
+								pooling methods based on our thresholded pooling strategy. The results show that bilinear interpolation
+								leads to better performance than adaptive average pooling does with our thresholded pooling strategy. We
+								also compare polling Before and After projector and find that pooling After projector leads to better
+								performance.
+							</p>
+							<br />
+							<table>
+								<thead>
+									<tr>
+										<th rowspan="2">Max. # Grids</th>
+										<th rowspan="2">Max. # Tokens</th>
+										<th rowspan="2">Training Time</th>
+										<th rowspan="2">Pooling Methods</th>
+										<th rowspan="2">Pooling wrt. Projector</th>
+										<th>AI2D</th>
+										<th>ChartQA</th>
+										<th>DocVQA</th>
+										<th>InfoVQA</th>
+										<th>OKVQA</th>
+										<th>POPE</th>
+										<th>ScienceQA-IMG</th>
+										<th>VizWiz</th>
+									</tr>
+									<tr>
+										<th>test</th>
+										<th>test</th>
+										<th>val</th>
+										<th>val</th>
+										<th>val</th>
+										<th>test/f1-score</th>
+										<th>img</th>
+										<th>val</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2x2</td>
+										<td>(4+1)*729</td>
+										<td>6h30min</td>
+										<td>-</td>
+										<td>-</td>
+										<td>51.1</td>
+										<td>49.2</td>
+										<td>58.8</td>
+										<td>25.7</td>
+										<td>36.5</td>
+										<td>85.4</td>
+										<td>59.6</td>
+										<td>29.2</td>
+									</tr>
+									<tr>
+										<td rowspan="6">4x4</td>
+										<td rowspan="4">(4+1)*729</td>
+										<td rowspan="4">7h30min</td>
+										<td rowspan="2">Bilinear Interpolation</td>
+										<td>After</td>
+										<td>52.8</td>
+										<td>49.4</td>
+										<td>58.1</td>
+										<td>26.0</td>
+										<td>36.0</td>
+										<td>85.8</td>
+										<td>57.9</td>
+										<td>31.0</td>
+									</tr>
+									<tr>
+										<td>Before</td>
+										<td>48.5</td>
+										<td>45.4</td>
+										<td>50.0</td>
+										<td>25.4</td>
+										<td>30.6</td>
+										<td>84.5</td>
+										<td>56.1</td>
+										<td>21.6</td>
+									</tr>
+									<tr>
+										<td rowspan="3">AdaptiveAVGPool</td>
+										<td>After</td>
+										<td>49.3</td>
+										<td>47.3</td>
+										<td>55.5</td>
+										<td>25.6</td>
+										<td>31.4</td>
+										<td>86.2</td>
+										<td>58.7</td>
+										<td>34.6</td>
+									</tr>
+									<tr>
+										<td>Before</td>
+										<td>49.2</td>
+										<td>43.4</td>
+										<td>52.7</td>
+										<td>25.8</td>
+										<td>29.8</td>
+										<td>84.3</td>
+										<td>56.2</td>
+										<td>22.7</td>
+									</tr>
+									<tr>
+										<td>(9+1)*729</td>
+										<td></td>
+										<td></td>
+										<td>48.0</td>
+										<td>53.2</td>
+										<td>57.7</td>
+										<td>25.5</td>
+										<td>37.7</td>
+										<td>85.8</td>
+										<td>56.9</td>
+										<td>35.2</td>
+									</tr>
+									<tr>
+										<td>(16 + 1)*729</td>
+										<td></td>
+										<td>-</td>
+										<td></td>
+										<td>48.7</td>
+										<td>54.2</td>
+										<td>61.2</td>
+										<td>24.9</td>
+										<td>36.9</td>
+										<td>86.3</td>
+										<td>58.9</td>
+										<td>36.7</td>
+									</tr>
+									<tr>
+										<td rowspan="4">6x6</td>
+										<td rowspan="4">(9+1)*729</td>
+										<td rowspan="4">11h14min</td>
+										<td rowspan="2">Bilinear Interpolation</td>
+										<td>After</td>
+										<td>52.7</td>
+										<td>55.8</td>
+										<td>62.7</td>
+										<td>26.7</td>
+										<td>42.0</td>
+										<td>86.1</td>
+										<td>58.7</td>
+										<td>34.7</td>
+									</tr>
+									<tr>
+										<td>Before</td>
+										<td>48.7</td>
+										<td>53.2</td>
+										<td>56.3</td>
+										<td>26.2</td>
+										<td>34.5</td>
+										<td>85.3</td>
+										<td>56.3</td>
+										<td>28.7</td>
+									</tr>
+									<tr>
+										<td rowspan="2">AdaptiveAVGPool</td>
+										<td>After</td>
+										<td>48.6</td>
+										<td>53.0</td>
+										<td>59.0</td>
+										<td>27.4</td>
+										<td>37.6</td>
+										<td>86.0</td>
+										<td>58.8</td>
+										<td>31.2</td>
+									</tr>
+									<tr>
+										<td>Before</td>
+										<td>49.0</td>
+										<td>53.1</td>
+										<td>56.0</td>
+										<td>26.9</td>
+										<td>36.8</td>
+										<td>85.5</td>
+										<td>56.1</td>
+										<td>27.2</td>
+									</tr>
+									<tr>
+										<td rowspan="4">6x6</td>
+										<td rowspan="4">(16 + 1)*729</td>
+										<td rowspan="4">13h10min</td>
+										<td rowspan="2">Bilinear Interpolation</td>
+										<td>After</td>
+										<td>52.7</td>
+										<td>56.1</td>
+										<td>62.2</td>
+										<td>27.1</td>
+										<td>42.5</td>
+										<td>87.4</td>
+										<td>58.2</td>
+										<td>32.8</td>
+									</tr>
+									<tr>
+										<td>Before</td>
+										<td>49.1</td>
+										<td>54.2</td>
+										<td>55.9</td>
+										<td>26.3</td>
+										<td>35.1</td>
+										<td>86.2</td>
+										<td>56.5</td>
+										<td>30.3</td>
+									</tr>
+									<tr>
+										<td rowspan="2">AdaptiveAVGPool</td>
+										<td>After</td>
+										<td>48.6</td>
+										<td>53.0</td>
+										<td>59.0</td>
+										<td>27.4</td>
+										<td>37.6</td>
+										<td>86.0</td>
+										<td>58.8</td>
+										<td>31.2</td>
+									</tr>
+									<tr>
+										<td>Before</td>
+										<td>48.4</td>
+										<td>52.6</td>
+										<td>57.1</td>
+										<td>26.6</td>
+										<td>32.5</td>
+										<td>85.7</td>
+										<td>55.2</td>
+										<td>32.0</td>
+									</tr>
+								</tbody>
+							</table>
+							<p>
+								We then compare the two pooling methods with fixed pooling ratio \(\frac{1}{2}\). In the first row, the max. number of grids
+								is \(4\times 4=16\) and there is no resolution lifting or pooling. In the second row, there is no resolution
+								lifting and we directly pool the feature map to 1/2 of the original size and the performance drops
+								significantly. Then, in the third row, we lift the resolution, letting the longer side be at least
+								\(2\times 384=768\). The results increased compared to the second row. We then increase the max. Number of grids
+								to \(6\times 6=36\) and lift the long side to be at least \(4\times 384=1536\). In the fourth to seventh row, we repeat
+								the process for a larger number of grids and larger resolution. The results show that the performance
+								increases significantly with the number of grids and the resolution.
+                            </p>
+                            <table><thead>
+                                <tr>
+                                  <th rowspan="2" style="font-size: 12px">Max. # Grids</th>
+                                  <th rowspan="2" style="font-size: 12px">Increased Resolution <br></th>
+                                  <th rowspan="2" style="font-size: 12px">Longer Side</th>
+                                  <th rowspan="2" style="font-size: 12px">Max. # Tokens</th>
+                                  <th rowspan="2" style="font-size: 12px">Pooling ratio</th>
+                                  <th rowspan="2" style="font-size: 12px">Pooling</th>
+                                  <th rowspan="2" style="font-size: 12px">Pooling wrt. Projector</th>
+                                  <th rowspan="2" style="font-size: 12px">Pooling Methods</th>
+                                  <th>AI2D</th>
+                                  <th>ChartQA</th>
+                                  <th>DocVQA</th>
+                                  <th>InfoVQA</th>
+                                  <th>OKVQA</th>
+                                  <th>POPE</th>
+                                  <th>ScienceQA</th>
+                                  <th>VizWiz-VQA</th>
+                                </tr>
+                                <tr>
+                                  <th>test</th>
+                                  <th>test</th>
+                                  <th>val</th>
+                                  <th>val</th>
+                                  <th>val</th>
+                                  <th>test/f1-score</th>
+                                  <th>img</th>
+                                  <th>val</th>
+                                </tr></thead>
+                              <tbody>
+                                <tr>
+                                  <td>4x4</td>
+                                  <td>FALSE</td>
+                                  <td>-</td>
+                                  <td>(16+1)*729</td>
+                                  <td>-</td>
+                                  <td>FALSE</td>
+                                  <td>-</td>
+                                  <td>-</td>
+                                  <td>48.7</td>
+                                  <td>54.2</td>
+                                  <td>61.2</td>
+                                  <td>24.9</td>
+                                  <td>36.9</td>
+                                  <td>86.3</td>
+                                  <td>58.9</td>
+                                  <td>36.7</td>
+                                </tr>
+                                <tr>
+                                  <td>4x4</td>
+                                  <td>FALSE</td>
+                                  <td>-</td>
+                                  <td rowspan="2">(4+1)*729</td>
+                                  <td rowspan="2">1/2</td>
+                                  <td rowspan="2">TRUE</td>
+                                  <td rowspan="2">Before</td>
+                                  <td rowspan="2">AdaptiveAVGPool</td>
+                                  <td>49.0</td>
+                                  <td>40.1</td>
+                                  <td>52.9</td>
+                                  <td>23.3</td>
+                                  <td>31.9</td>
+                                  <td>85.0</td>
+                                  <td>58.7</td>
+                                  <td>33.6</td>
+                                </tr>
+                                <tr>
+                                  <td>4x4</td>
+                                  <td>TRUE</td>
+                                  <td>2*384</td>
+                                  <td>50.0</td>
+                                  <td>40.4</td>
+                                  <td>53.4</td>
+                                  <td>24.0</td>
+                                  <td>30.4</td>
+                                  <td>85.3</td>
+                                  <td>57.8</td>
+                                  <td>38.5</td>
+                                </tr>
+                                <tr>
+                                  <td rowspan="4">6x6</td>
+                                  <td rowspan="4">TRUE</td>
+                                  <td rowspan="4">4*384</td>
+                                  <td rowspan="4">(9+1)*729</td>
+                                  <td rowspan="4">1/2</td>
+                                  <td rowspan="4">TRUE</td>
+                                  <td>Before</td>
+                                  <td rowspan="2">AdaptiveAVGPool</td>
+                                  <td>49.9</td>
+                                  <td>43.7</td>
+                                  <td>56.2</td>
+                                  <td>25.3</td>
+                                  <td>29.4</td>
+                                  <td>85.6</td>
+                                  <td>59.4</td>
+                                  <td>30.3</td>
+                                </tr>
+                                <tr>
+                                  <td>After</td>
+                                  <td>50.4</td>
+                                  <td>51.6</td>
+                                  <td>58.5</td>
+                                  <td>25.6</td>
+                                  <td>38.0</td>
+                                  <td>85.7</td>
+                                  <td>58.8</td>
+                                  <td>35.5</td>
+                                </tr>
+                                <tr>
+                                  <td>Before</td>
+                                  <td rowspan="2">Bilinear Interpolation</td>
+                                  <td>49.4</td>
+                                  <td>46.2</td>
+                                  <td>56.4</td>
+                                  <td>26.6</td>
+                                  <td>34.1</td>
+                                  <td>86.1</td>
+                                  <td>59.8</td>
+                                  <td>29.1</td>
+                                </tr>
+                                <tr>
+                                  <td>After</td>
+                                  <td>50.6</td>
+                                  <td>42.7</td>
+                                  <td>55.7</td>
+                                  <td>27.7</td>
+                                  <td>30.4</td>
+                                  <td>85.9</td>
+                                  <td>59.4</td>
+                                  <td>27.9</td>
+                                </tr>
+                              </tbody></table>
+							<br />
 						</details>
 						<br />
 
@@ -2197,7 +2573,11 @@
 							<li>
 								<strong>Web Data:</strong> to avoid the limitations imposed by the quantity of existing public data, we
 								consider multimodal image-text data from the internet at similar scales. We applied quality control
-								measures to filter this data to match public data at similar scales of 0.6M, 3M and 12M. The well-trained projector is used directly to run full model tuning with visual instructions, and the results are reported below. With tuning the projector only, the data scaling is less effective with public raw data, while more effective with top-quality data mixture, followed by the randomly selected data mixture from the same web dataset.
+								measures to filter this data to match public data at similar scales of 0.6M, 3M and 12M. The
+								well-trained projector is used directly to run full model tuning with visual instructions, and the
+								results are reported below. With tuning the projector only, the data scaling is less effective with
+								public raw data, while more effective with top-quality data mixture, followed by the randomly selected
+								data mixture from the same web dataset.
 							</li>
 						</ol>
 						<div style="display: flex; justify-content: center;">
@@ -2353,22 +2733,23 @@
 						</div>
 						<h3 id="stage-1-5-high-quality-knowledge-learning">Section 3.2 - High-Quality Knowledge Learning</h3>
 						<p>
-							In the realm of multimodal training from LLM, the axiom <strong>"quality over quantity"</strong> holds especially true.
-							This principle is paramount due to the extensive knowledge stored within pre-trained LLM and ViT. While it
-							is essential to accumulate balanced, diverse, and high-quality instruction data at the end of the LMM's
-							training lifecycle, an often-overlooked aspect is the continuous exposure of the model to new,
-							high-quality data for further knowledge acquisition, when it is available. We term
-							Stage-1.5, focuses on high-quality knowledge learning. The training configuration mirrors the settings
-							used in Stage-2, ensuring consistency and allowing the model to integrate new information seamlessly. This
-							approach acknowledges that the pre-trained LLMs and ViTs already possess a substantial knowledge base, and
-							the goal is to refine and enhance this knowledge with carefully curated data. By prioritizing the quality
-							of data, we can maximize compute efficiency.
+							In the realm of multimodal training from LLM, the axiom <strong>"quality over quantity"</strong> holds
+							especially true. This principle is paramount due to the extensive knowledge stored within pre-trained LLM
+							and ViT. While it is essential to accumulate balanced, diverse, and high-quality instruction data at the
+							end of the LMM's training lifecycle, an often-overlooked aspect is the continuous exposure of the model to
+							new, high-quality data for further knowledge acquisition, when it is available. We term Stage-1.5, focuses
+							on high-quality knowledge learning. The training configuration mirrors the settings used in Stage-2,
+							ensuring consistency and allowing the model to integrate new information seamlessly. This approach
+							acknowledges that the pre-trained LLMs and ViTs already possess a substantial knowledge base, and the goal
+							is to refine and enhance this knowledge with carefully curated data. By prioritizing the quality of data,
+							we can maximize compute efficiency.
 						</p>
 						<p>To illustrate high-quality knowledge, we consider data from three major categories:</p>
 						<ol>
 							<li>
 								<strong>Re-Captioned Detailed Description Data:</strong> LLaVA-NeXT-34B is known for its strong detailed
-								caption ability among open-source LMMs. We used the model to generate new captions for the images from the following datasets: COCO118K, BLIP558K, and CC3M.
+								caption ability among open-source LMMs. We used the model to generate new captions for the images from
+								the following datasets: COCO118K, BLIP558K, and CC3M.
 							</li>
 							<li>
 								<strong>Document / OCR Data:</strong> We utilized the Text Reading subset from the UReader dataset,
@@ -2376,20 +2757,26 @@
 								with the SynDOG EN/CN 1M datasets.
 							</li>
 							<li>
-								<strong>ShareGPT4V Chinese Detailed Caption:</strong> We used the original ShareGPT4V[3] images and utilized GPT-4V provided by the Azure API to generate detailed Chinese caption data, aiming to improve the model's capability in Chinese.
+								<strong>ShareGPT4V Chinese Detailed Caption:</strong> We used the original ShareGPT4V[3] images and
+								utilized GPT-4V provided by the Azure API to generate detailed Chinese caption data, aiming to improve
+								the model's capability in Chinese.
 							</li>
 						</ol>
 
 						<figure style="width: 80%; text-align: center; margin: 0 auto;">
 							<img src="/blog/assets/images/llava-next-ablations/mid_stage_plot.png" alt="ablations-table-1" />
-                            <figcaption style="font-size: 16px;">
-                                Figure 2. This figure shows that using LLaVA-ReCap Data in Stage 1.5 training yields the most significant improvements (red circles). Performance with raw captions data like COCO18K, BLIP558K, and CC3M is also strong (blue circles). We also include the results from Section 3.1 (squared shape), where only the projector was trained using raw captions data at various scales (e.g. from BLIP558K to Web 12M).
-                            </figcaption>
+							<figcaption style="font-size: 16px;">
+								Figure 2. This figure shows that using LLaVA-ReCap Data in Stage 1.5 training yields the most
+								significant improvements (red circles). Performance with raw captions data like COCO18K, BLIP558K, and
+								CC3M is also strong (blue circles). We also include the results from Section 3.1 (squared shape), where
+								only the projector was trained using raw captions data at various scales (e.g. from BLIP558K to Web
+								12M).
+							</figcaption>
 						</figure>
-                        
-                        <br>
+
+						<br />
 						<p>
-                            Here are more detailed ablations, and the following tables may present the following conclusions:
+							Here are more detailed ablations, and the following tables may present the following conclusions:
 						</p>
 						<ol>
 							<li>
@@ -2754,12 +3141,16 @@
 							</p>
 							<h4>LLaVA Recaptioned Data</h4>
 							<p>
-								We re-captioned the original data with the prompts of "Please generate detailed descriptions of the given image.". Here's the detailed information of our
-								re-captioned data.
+								We re-captioned the original data with the prompts of "Please generate detailed descriptions of the
+								given image.". Here's the detailed information of our re-captioned data.
 							</p>
-                            <figure style="text-align: center;">
-                                <img src="/blog/assets/images/llava-next-ablations/recap_datav2.png" alt="Re-captioned Example" style="width: 70%; margin: 0 auto;">
-                            </figure>
+							<figure style="text-align: center;">
+								<img
+									src="/blog/assets/images/llava-next-ablations/recap_datav2.png"
+									alt="Re-captioned Example"
+									style="width: 70%; margin: 0 auto;"
+								/>
+							</figure>
 
 							<h4>Image Detailed Caption Task</h4>
 							<p>
@@ -2821,7 +3212,8 @@
 							<p>
 								More examples could be visited at
 								<a href="https://huggingface.co/datasets/lmms-lab/VideoDetailCaption">VideoDetailedCaptions</a>. Their
-								evaluation process could be visited at lmms-eval (we will release and support evaluations with video datasets soon).
+								evaluation process could be visited at lmms-eval (we will release and support evaluations with video
+								datasets soon).
 							</p>
 						</details>
 
@@ -2837,7 +3229,8 @@
 								preprint arXiv:2112.11446 (2021).
 							</li>
 							<li>
-								Chen, Lin, et al. "Sharegpt4v: Improving large multi-modal models with better captions." arXiv preprint arXiv:2311.12793 (2023).
+								Chen, Lin, et al. "Sharegpt4v: Improving large multi-modal models with better captions." arXiv preprint
+								arXiv:2311.12793 (2023).
 							</li>
 							<li>
 								Caba Heilbron, Fabian, et al. "Activitynet: A large-scale video benchmark for human activity
