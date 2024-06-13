@@ -155,6 +155,7 @@
 										>
 									</li>
 									</ul>
+									
 								</li>
 								<li>
 									<a href="#section-3-emerging-capbilities">Section 3 - Emerging Capabilities</a>
@@ -183,7 +184,7 @@
 We observe that the multi-image format can naturally serve as a general data template to unify different scenarios, e.g., interleaved or single-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present LLaVA-NeXT-M3, an all-around LMM that extends the model capabilities to new real-world settings: Multi-image,  Multi-frame (videos), and Multi-view (3D) scenarios. 
 						</p>
 						<figure>
-							<img src="/blog/assets/images/llava-m3/teasor_compare_with_sota.png" alt="Description of GIF" />
+							<img style="margin: 0 auto;" width="80%" src="/blog/assets/images/llava-m3/teasor_compare_with_sota.png" alt="Description of GIF" />
 							<!-- <figcaption style="text-align: center;">Caption describing the GIF</figcaption> -->
 						</figure>
 						<p>
@@ -260,7 +261,7 @@ We observe that the multi-image format can naturally serve as a general data tem
     <p>Most datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>, as highlighted in yellow.</p>
     
     <figure>
-        <img src="/blog/assets/images/llava-m3/data-statistics.png" alt="Data Statistics Figure">
+        <img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m3/data-statistics.png" alt="Data Statistics Figure">
         <figcaption>Detailed data statistics for M3-Instruct dataset.</figcaption>
     </figure>
 
@@ -1599,7 +1600,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 							<div class="slider-container">
 								<div class="slider-wrapper" id="sliderWrapper">
 	
-									<!-- <div class="slider-item">
+									<div class="slider-item">
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>PPT Sumarization and QA</h4>
@@ -1643,8 +1644,8 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 											 
 	
 										</div>
-									</div> -->
-									<!-- <div class="slider-item">
+									</div> 
+									<div class="slider-item">
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>Multi-image Coding</h4>
@@ -1686,13 +1687,13 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 										</div>
 
-									</div> -->
+									</div>
 									<div class="slider-item">
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>Patining styles</h4>
 	
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
+											<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 												<div style=>
 													<img src="/blog/assets/images/llava-m3/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
 												</div>
@@ -1940,7 +1941,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">91.6</span></td>
 										  </tr>
 										</tbody></table>
-								<h4 id="pool">- Training strategy comparison on video (Pooling vs not pooling)</h2>
+								<h4 id="pool"> Training strategy comparison on video (Pooling vs not pooling)</h2>
 									<p>Observation: not pooling delivers better performance than pooling. </p>
 									<style type="text/css">
 										.tg  {border-collapse:collapse;border-spacing:0;}
