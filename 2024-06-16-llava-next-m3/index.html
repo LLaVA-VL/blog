@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Begin Jekyll SEO tag v2.8.0 -->
+		<title>LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models</title>
+		<meta name="generator" content="Jekyll v3.9.4" />
+		<meta property="og:title" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+		<meta
+			name="author"
+			content="Feng Li, Renrui Zhang,..., Chunyuan Li"
+		/>
+		<meta property="og:locale" content="en_US" />
+		<meta name="description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+		<meta property="og:description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+		<link rel="canonical" href="https://llava-vl.github.io/blog/2024-06-16-llava-next-m3" />
+		<meta property="og:url" content="https://llava-vl.github.io/blog/2024-06-16-llava-next-m3" />
+		<meta property="og:site_name" content="LLaVA-NeXT" />
+		<meta property="og:type" content="article" />
+		<meta property="article:published_time" content="2024-06-16T12:33:38-06:00" />
+		<meta name="twitter:card" content="summary" />
+		<meta property="twitter:title" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "BlogPosting",
+				"author": {
+					"@type": "Person",
+					"name": "Feng Li, Renrui Zhang,..., Chunyuan Li"
+				},
+				"dateModified": "2024-05-25T12:33:38-06:00",
+				"datePublished": "2024-05-25T12:33:38-06:00",
+				"description": "LLaVA team presents LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models",
+				"headline": "LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models",
+				"mainEntityOfPage": {
+					"@type": "WebPage",
+					"@id": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+				},
+				"url": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+			}
+		</script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<!-- End Jekyll SEO tag -->
+		<link rel="stylesheet" href="/blog/2024-06-16-llava-next-m3/style.css" />
+		<link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
+		<link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
+		
+	</head>
+
+	<body>
+		<header class="site-header" role="banner">
+			<div class="wrapper">
+				<a class="site-title" rel="author" href="/blog/">LLaVA</a>
+				<nav class="site-nav">
+					<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+					<label for="nav-trigger">
+						<span class="menu-icon">
+							<svg viewBox="0 0 18 15" width="18px" height="15px">
+								<path
+									d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"
+								/>
+							</svg>
+						</span>
+					</label>
+
+					<div class="trigger"></div>
+				</nav>
+			</div>
+		</header>
+		<main class="page-content" aria-label="Content">
+			<div class="wrapper">
+				<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+					<header class="post-header">
+						<h1 class="post-title p-name" itemprop="name headline">
+							LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models
+						</h1>
+						<p class="post-meta">
+							<time class="dt-published" datetime="2024-06-16T12:00:00-06:00" itemprop="datePublished"
+								>May 25, 2024</time
+							>
+							•
+							<span itemprop="author" itemscope itemtype="http://schema.org/Person"
+								><span class="p-author h-card" itemprop="name"
+									>Feng Li, Renrui Zhang,..., Chunyuan Li</span
+								></span
+							>
+						</p>
+					</header>
+
+					<div class="post-content e-content" itemprop="articleBody">
+						<!-- for mathjax support -->
+
+						<!-- <script type="text/x-mathjax-config">
+                            MathJax.Hub.Config({
+                                tex2jax: {
+                                    inlineMath: [['$', '$'], ['\\(', '\\)']],
+                                    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                                    processEscapes: true
+                                },
+                                TeX: {
+                                    equationNumbers: { autoNumber: "AMS" },
+                                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                                },
+                                displayAlign: 'left', // Aligns displayed equations to the left
+                                displayIndent: '2em'  // Indents equations from the left margin
+                            });
+                        </script>
+                        
+                        <script
+                            type="text/javascript"
+                            async=""
+                            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+                        ></script> -->
+						<style>
+							.table-of-contents {
+								border: 1px solid #ccc;
+								border-radius: 15px;
+								padding: 30px;
+								margin-bottom: 20px;
+								width: 30%; /* Adjust this value to your preference */
+							}
+							.table-of-contents ul {
+								margin-left: 20px;
+							}
+						</style>
+						<div class="table-of-contents">
+							<h3>Table of Contents</h3>
+							<ul>
+								<li>
+									<a href="#section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</a>
+									<!-- <ul>
+										<li><a href="#section-1-1-m3-instruct">Section 1.1 - M3-Instruct</a></li>
+										<!-- <li><a href="#vision-encoders">Section 1.2 - Vision Encoders</a></li> -->
+									<!-- </ul>  -->
+								</li>
+								<li>
+									<a href="#section-2-evaluation-benchmarks">Section 2 - Evaluation Benchmarks</a>
+									<ul>
+									<li>
+										<a href="#mi-eval"
+											>Section 2.1 - Multi-image Evaluation</a
+										>
+									</li>
+									<li>
+										<a href="#mf-eval"
+											>Section 2.2 - Multi-frame Evaluation</a
+										>
+									</li>
+									<li>
+										<a href="#mv-eval"
+											>Section 2.3 - Multi-view Evaluation</a
+										>
+									</li>
+									</ul>
+								</li>
+								<li>
+									<a href="#section-3-emerging-capbilities">Section 3 - Emerging Capabilities</a>
+									<!-- <ul>
+										<li><a href="#image-editing">Section 3.1 - Image Editing</a></li>
+										<li>
+											<a href="#multi-video"
+												>Section 3.2 - Multi Video</a
+											>
+										</li>
+									</ul> -->
+									<a href="#section-4-train-techniques">Section 4 - Training Techniques</a>
+									
+								</li>
+
+								<!-- <li><a href="#section-4-1-image-detailed-caption-task">Section 4.1 - Image Detailed Caption Task</a></li>
+                                <li><a href="#section-4-2-video-detailed-caption-task">Section 4.2 - Video Detailed Caption Task</a></li> -->
+								<li><a href="#team">Team</a></li>
+								<!-- <li><a href="#acknowledgement">Acknowledgement</a></li>
+								<li><a href="#citation">Citation</a></li> -->
+							</ul>
+						</div>
+
+						<p>
+							Recent advancements in Large Multimodal Models (LMMs) have showcased impressive capabilities in multimodal understanding and reasoning. However, most existing open-source LMMs such as LLaVA-NeXT have primarily focused on pushing the performance limit of single-image scenarios, leaving the potential of multi-image contexts largely unexplored. Considering the diverse range of computer vision scenarios and data formats—including single and multi-image inputs, interleaved image-text pairs, videos, and 3D data—there is a pressing need to develop methodologies for open LMMs that can operate effectively across these varied contexts.
+We observe that the multi-image format can naturally serve as a general data template to unify different scenarios, e.g., interleaved or single-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present LLaVA-NeXT-M3, an all-around LMM that extends the model capabilities to new real-world settings: Multi-image,  Multi-frame (videos), and Multi-view (3D) scenarios. 
+						</p>
+						<figure>
+							<img src="/blog/assets/images/llava-m3/teasor_compare_with_sota.png" alt="Description of GIF" />
+							<!-- <figcaption style="text-align: center;">Caption describing the GIF</figcaption> -->
+						</figure>
+						<p>
+							Highlights:
+						</p>
+						<ol>
+							<li>
+								<strong>Training Data: M3-Instruct.</strong> We compile a high-quality dataset with 915K samples, spanning 3 primary domains (multi-image, video, and 3D) with 14 tasks and 43 datasets. It organizes diverse data in a unified multi-image format, including interleaved text-image data input, temporal videos across multiple frames, and 3D environments from different viewpoints. 
+							</li>
+							<li>
+								<strong>SoTA Performance.</strong> We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. With a single model, LLaVA-NeXT-M3 can achieve leading results in different benchmarks compared to previous SoTA, indicating the superior generalization capacity of our approach.
+							</li>
+							
+						</ol>
+						
+						<details>
+							<summary style="font-weight: bold; font-size: 16px;"
+								>[Notes on Image Detailed Caption and Video Detailed Caption Tasks.]</summary
+							>
+							<p>
+								Since there is no existing benchmark for evaluating a model's image detailed captioning ability, and we
+								consider this capability crucial for our model's development. For example, it could determine if the
+								model can serve as a proficient detailed captioner for data re-captioning tasks. To address this need,
+								we have constructed two tasks:
+							</p>
+							<ol>
+								<li>
+									Image Detailed Caption Task: We collected 100 instances for English detailed captions and 200
+									instances for Chinese detailed captions, requiring the model to generate highly detailed descriptions.
+									GPT-4V is used to assist with scoring.
+								</li>
+								<li>
+									Video Detailed Caption Task: To assess the model's temporal detailed captioning ability, we referred
+									to the VideoChatGPT evaluation and selected 499 questions. The model generates detailed descriptions,
+									which are then scored using GPT-3.5-Turbo and ground-truth comparisons.
+								</li>
+							</ol>
+							<p>
+								The datasets and evaluation process is detailed in the
+								<a href="#benchmark-card">Dataset Card</a> section.
+							</p>
+						</details>
+						<br />
+
+						<h2>Opensource Release</h2>
+						<p>Re-captioned Data with LLaVA-NeXT-34B is available on Hugging Face Datasets.</p>
+						<ul>
+							<li>
+								<a href="https://huggingface.co/datasets/lmms-lab/...">Inference Code</a>
+							</li>
+							<li>
+								<a href="https://huggingface.co/datasets/lmms-lab/...">LLaVA-M3 Instruct Data</a>
+							</li>
+							<li>
+								<a href="https://huggingface.co/datasets/lmms-lab/...">One Demo for All: Multi-image, Video, 3D</a>
+							</li>
+						</ul>
+						<h2 id="section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</h2>
+						<h1>Task Overview</h1>
+    <p>We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
+    <ul>
+        <li>
+            <strong>Multi-image scenarios</strong> include instructions with single or multiple images, and interleaved text-image input. This setting covers 12 challenging real-world tasks included in our training data, such as spotting the difference, visual storytelling, image editing instruction generation, interleaved multi-image dialogue, multi-image puzzle, low-level multi-image assessment, etc.
+        </li>
+        <li>
+            <strong>Multi-frame scenarios</strong> refer to taking as input the video data by sampling it into multiple frames, preserving temporal cues across the multi-image sequence. The video-based tasks mainly focus on 2 tasks: video detailed captioning and video VQA.
+        </li>
+        <li>
+            <strong>Multi-view scenarios</strong> represent 3D environments by multi-view images from different perspectives, where the visual correspondence and disparity can indicate spatial information in the 3D world. For 3D perception, we include 2 tasks: embodied VQA (dialogue and planning), and 3D scene VQA (captioning and grounding).
+        </li>
+    </ul>
+	<h1>M3-Instruct</h1>
+    <p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M3-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
+    <p>Most datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>, as highlighted in yellow.</p>
+    
+    <figure>
+        <img src="/blog/assets/images/llava-m3/data-statistics.png" alt="Data Statistics Figure">
+        <figcaption>Detailed data statistics for M3-Instruct dataset.</figcaption>
+    </figure>
+
+						<details>
+							<br />
+							<summary style="font-weight: bold;"
+								>[Fold / Unfold to See the Details of Data Statistics
+								7B]</summary
+							>
+							<style type="text/css">
+								.tg  {border-collapse:collapse;border-spacing:0;}
+								.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg .tg-klud{border-color:inherit;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-z0de{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-r3m5{background-color:#FAF1D1;border-color:inherit;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-yal5{background-color:#F2F3F5;border-color:inherit;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-pvhc{background-color:#F8F9FA;border-color:inherit;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-ofrq{background-color:#FAF1D1;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+								</style>
+								<table class="tg"><thead>
+								  <tr>
+									<th class="tg-yal5" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Task</span></th>
+									<th class="tg-yal5" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Dataset</span></th>
+									<th class="tg-yal5" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Scenario</span></th>
+									<th class="tg-yal5" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5"># Samples</span></th>
+								  </tr>
+								  <tr>
+								  </tr></thead>
+								<tbody>
+								  <tr>
+									<td class="tg-klud" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-image Scenarios</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-pvhc" rowspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Spot the Difference</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(63.9K)</span></td>
+									<td class="tg-r3m5"><span style="color:#3F3F3F;background-color:#FAF1D1">Real-world Difference</span></td>
+									<td class="tg-r3m5"><span style="color:#3F3F3F;background-color:#FAF1D1">Realistic</span></td>
+									<td class="tg-r3m5"><span style="color:#3F3F3F;background-color:#FAF1D1">7.5K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">Synthetic Difference</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">Sythetic</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">7.5K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">COCO Difference</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">Realistic</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">20K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Spot-the-Diff</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Surveilance</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">11K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Birds-to-Words</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Birds</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">14K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">CLEVR-Change</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Solids</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">3.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Image Edit Instruction</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(67.7K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">HQ-Edit</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Sythentic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">50K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">MagicBrush</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">14.2K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">IEdit</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">3.5K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Visual Story Telling</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(66.9K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">AESOP</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Cartoon</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">6.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">FlintstonesSV</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Cartoon</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">22K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">PororoSV</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Cartoon</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">12K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">VIST</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">26K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Visual Cloze</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(14.6K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">COMICS_Dialogue</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Cartoon</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">5.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">RecipeQA_VisualCloze</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">8.7K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Text-rich VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(21.4K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">WebQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Webpage</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">9.3K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">TQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Textbook</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">8.3K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">OCR-VQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">OCR</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">1.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">DocVQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Document</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">1.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="7"><span style="color:#3F3F3F;background-color:#F8F9FA">Multi-image VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(174.5K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">NLVR2</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">83K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">MIT-States_StateCoherence</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">1.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">MIT-States_PropertyCoherence</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">1.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">RecipeQA_ImageCoherence</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Recipe</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">8.7K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">VISION</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Industrial</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">10K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Multi-VQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">5K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">IconQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">64K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Low-level Comparison</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(66K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Coinstruct</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Low-level</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">50K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Dreamsim</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Low-level</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">16K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Image-caption Comprehension (73K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">ImageCoDe</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">17K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Contrast-Caption</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">36K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Multi-image Caption</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">10K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-ofrq" rowspan="2"><span style="color:#3F3F3F;background-color:#FAF1D1">Daily Scenarios (11K)</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">MMChat_Twitter_Post</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">General</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">10K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">Interleaved Multi-image Dialogue</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">General</span></td>
+									<td class="tg-ofrq"><span style="color:#3F3F3F;background-color:#FAF1D1">1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Multi-image Puzzle (35K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Raven</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Abstract</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">35K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-frame (Video) Scenarios</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Video VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(247K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">NExT-QA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">4K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">STAR</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">3K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">ShareGPTVideo-VQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">240K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Video Detailed Captioning (15K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">ShareGPTVideo-Caption</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">15K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-view (3D) Scenarios</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Scene VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(51K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Nuscenes</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Outdoor</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">10K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">ScanQA</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Indoor Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">25k</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">3D-LLM-Scene</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Indoor Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">16K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Embodied VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(48.5K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">ALFRED</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Indoor Synthetic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">23K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">3D-LLM-Dialogue</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Indoor Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">8.5K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">3D-LLM-Planning</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Indoor Realistic</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">17K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Single-image Scenarios</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Single-image Tasks</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(307K)</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Randomly sampling 40% SFT data of LLaVA-NeXT</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">307K</span></td>
+								  </tr>
+								</tbody></table>
+						</details>
+						<br />
+
+						<h3>Section 1.3 Task Examples</h3>
+						<p>We provide examples to illustrate the multi-image/fame/view tasks of M3-Instruct dataset.</p>
+						<figure>
+							<img src="/blog/assets/images/llava-m3/task_examples.png" alt="Data Statistics Figure">
+							<figcaption>Examples of M3-Insutrct Dataset.</figcaption>
+						</figure>
+
+						<br />
+						<details>
+							<summary style="font-weight: bold; font-size: 16px;"
+								>[Fold / Unfold to See the Impact of Training Loss Curves Across Different LLM Size]</summary
+							>
+							<br />
+							<div style="display: flex; justify-content: center;">
+								<img src="/blog/assets/images/llava-next-ablations/sft_losses.png" alt="Training Loss Curves" />
+							</div>
+							<br />
+						</details>
+						<br />
+
+						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Benchmarks</h2>
+
+						<p>
+							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-M3, which covers a variety of existing and newly curated in/out-domain benchmarks. In the table below, we exhibit a summary of average results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
+For our final solution, LLaVA-NeXT-M3 (7B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
+						</p>
+						<style type="text/css">
+							.tg  {border-collapse:collapse;border-spacing:0;}
+							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-vwde{background-color:#F6F1FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-7hqs{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:left;vertical-align:middle}
+							.tg .tg-2pir{background-color:#F8F9FA;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
+							.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+							</style>
+							
+							<table class="tg"><thead>
+							  <tr>
+								<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Model</span></th>
+								<th class="tg-2bvs" colspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Multi-image</span></th>
+								<th class="tg-2bvs" colspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Multi-frame (video)</span></th>
+								<th class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Multi-view (3D)</span></th>
+							  </tr>
+							  <tr>
+								<th class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">In-domain</span></th>
+								<th class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">Out-domian</span></th>
+								<th class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">In-domain</span></th>
+								<th class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">Out-domian</span></th>
+								<th class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">In-domain</span></th>
+							  </tr></thead>
+							<tbody>
+							  <tr>
+								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Closed-source LMMs</span></td>
+								<td class="tg-7hqs"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">60.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">37.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-k8yq"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-image</span></td>
+								<td class="tg-7hqs"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://tiger-ai-lab.github.io/Mantis/">Mantis-7B</a></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://github.com/DCDmllm/Cheetah">VPG-C (7B)</a></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">41.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-frame</span></td>
+								<td class="tg-7hqs"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/">LLaVA-NeXT-Video (7B)</a></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">30.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID (7B)</a></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">24.7</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">36.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-view</span></td>
+								<td class="tg-7hqs"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://github.com/ZiyuGuo99/Point-Bind_Point-LLM">Point-Bind &amp; Point-LLM</a><span style="color:#3F3F3F;background-color:#F8F9FA"> (13B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.2</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://arxiv.org/pdf/2307.12981">3D-LLM</a><span style="color:#3F3F3F;background-color:#F8F9FA"> (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.5</span></td>
+							  </tr>
+							</tbody></table>
+						<br />
+						<h3 id="mi-eval">Section 2.1 Multi-image Evaluation</h3>
+						<p>
+						We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
+As reported in the table, the average multi-image performance of LLaVA-NeXT-M3 surpasses previous open-source models in both in- and out-domain benchmarks. For in-domain evaluation, our model demonstrates significant advantages across various tasks as expected, due to the multi-image instruction tuning with M3-Instruct. For out-domain evaluation, LLaVA-NeXT-M3 also showcases superior generalization capacity within novel scenarios, e.g., comparable to GPT-4V on MathVerse-mv, SciVerse-mv, and BLINK.
+						</p>
+						
+						<details>
+							<br />
+							<summary style="font-weight: bold; font-size: 16px;"
+								>[Fold / Unfold to See detailed multi-image benchmark statistics]</summary
+							>
+							<style type="text/css">
+								.tg  {border-collapse:collapse;border-spacing:0;}
+								.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg .tg-z0de{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-bu28{background-color:#F2F3F5;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+								.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+								.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+								</style>
+								<table class="tg"><thead>
+								  <tr>
+									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Task</span></th>
+									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Dataset</span></th>
+									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Scenario</span></th>
+									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5"># Samples</span></th>
+								  </tr>
+								  <tr>
+								  </tr></thead>
+								<tbody>
+								  <tr>
+									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">In-domain Evaluation - Newly Curated Benchmarks</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x" rowspan="3"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.3K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Spot-the-Diff</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Surveilance</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Birds-to-Words</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Birds</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">CLEVR-Change</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Solids</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x" rowspan="3"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(2K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">HQ-Edit</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Sythentic</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MagicBrush</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.9K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">IEdit</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">AESOP</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">FlintstonesSV</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">PororoSV</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">VIST</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.1K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">COMICS_Dialogue</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">WebQA</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Webpage</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">TQA</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Textbook</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">OCR-VQA</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">OCR</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">DocVQA</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Document</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MIT-States_StateCoherence</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">General</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MIT-States_PropertyCoherence</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">General</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">RecipeQA_ImageCoherence</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Recipe</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">VISION</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Industrial</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Puzzle (1.4K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Raven</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Abstract</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1.4K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">In-domain Evaluation - Existing Benchmarks</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2 (7K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">7K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench (1K)</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Low-level</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Out-domain Evaluation - Newly Curated Benchmarks</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MathVerse-mv (0.8K)</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">MathVerse</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Math Diagram</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.8K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">SciVerse-mv (0.5K)</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">SciVerse</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Scientific Diagram</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.5K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Out-domain Evaluation - Existing Benchmarks</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Mantis-Eval (0.2K)</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Mantis-Eval</span><br></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">General</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.2K</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">BLINK (1.9K)</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">BLINK</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">General</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">1.9k</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MMMU-mv (test) (0.8K)</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">MMMU</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Scientific Diagram</span></td>
+									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.8K</span></td>
+								  </tr>
+								</tbody></table>
+						</details>
+						<br />
+						<style type="text/css">
+							.tg  {border-collapse:collapse;border-spacing:0;}
+							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-ahkj{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-7hqs{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:left;vertical-align:middle}
+							.tg .tg-2pir{background-color:#F8F9FA;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
+							.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+							.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+							.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+							</style>
+							<table class="tg"><thead>
+							  <tr>
+								<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Model</span></th>
+								<th class="tg-mmbt" colspan="10"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
+								<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Out-domain Evaluation</span></th>
+							  </tr>
+							  <tr>
+								<th class="tg-jag0" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
+								<th class="tg-mmbt" colspan="7"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
+								<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
+								<th class="tg-ahkj" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Average</span></th>
+								<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
+								<th class="tg-mmbt" colspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
+							  </tr>
+							  <tr>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image Puzzle</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MathVerse-mv</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">SciVerse-mv</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Mantis-Eval</span><br></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">BLINK</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MMMU-mv (test)</span></th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Flamingo</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen-VL-Max</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Gemini Pro</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/">Gemini Ultra</a></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">GPT-4V</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">12.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">11</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">10.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">29.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">54.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">17.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">88.8</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">80.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">87.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">62.7</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">51.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">47.9</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="17"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Open-source LMMs</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT-Image (7B)</a></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">12.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">13.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">10.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">28</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">39.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">68</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">38.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">33.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">38.4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">41.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">33.5</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Mantis (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">39.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">17.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">11.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">12.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">45.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">25.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">87.4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">45.7</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">48.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">59.5</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.1</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">VPG-C (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">25.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">25.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">39.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">50.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">12.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">63.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">41.7</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">39.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">42.5</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">51.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">44.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">30.3</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Idefics2 (8B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">72.0</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">57</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">86.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">47.05</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">48.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">45.2</span></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="17"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">33.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">84</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">88.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">60.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">70.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">82.7</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">59.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">53.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">35.2</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.5</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">33.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">78.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">88</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">91.1</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							</tbody></table>
+						<h3 id="mf-eval">Section 2.2 Multi-frame Evaluation</h3>
+						<p>
+							For video understanding, we also evaluate our model by two schemes: (1) In-domain Evaluation includes 2 existing video-based benchmarks, i.e., NextQA and Video Detailed Description, which have similar training datasets within M3-Instruct. (2) Out-domain Evaluation involves 2 existing video-based benchmarks, i.e., ActivityNet-QA, and VideoChat-GPT.
+Compared with previous video-based LMMs, LLaVA-NeXT-M3 achieves competitive results under two evaluation schemes, even not specifically designed for videos. This indicates the effective temporal understanding and reasoning capabilities of our model across sequential frames.
+						</p>
+						<style type="text/css">
+							.tg  {border-collapse:collapse;border-spacing:0;}
+							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg .tg-1vri{background-color:#F8F8E8;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-vwde{background-color:#F6F1FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-7hqs{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:left;vertical-align:middle}
+							.tg .tg-2pir{background-color:#F8F9FA;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
+							.tg .tg-39pb{background-color:#F2F3F5;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+							.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+							.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+							</style>
+							<table class="tg"><thead>
+							  <tr>
+								<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Model</span></th>
+								<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NextQA</span><br></th>
+								<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">MVBench</span></th>
+								<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ActivityNet-QA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(Acc/Score)</span></th>
+								<th class="tg-1jwe" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Video Detailed Description</span></th>
+								<th class="tg-1jwe" colspan="6"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">VideoChat-GPT</span></th>
+							  </tr>
+							  <tr>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Correctness</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Detail</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Context</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Temporal</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Consistency</span></th>
+								<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Avg</span></th>
+							  </tr></thead>
+							<tbody>
+							  <tr>
+								<td class="tg-7hqs" colspan="10"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Closed-source LMMs</span></td>
+								<td class="tg-7hqs"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Flamingo</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">45.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Gemini Pro</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">49.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/">Gemini Ultra</a></td>
+								<td class="tg-4p8v"></td>
+								<td class="tg-4p8v"></td>
+								<td class="tg-4p8v"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">52.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">GPT-4V</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.09</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.88</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.37</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.94</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.02</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.06</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="11"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Open-source LMMs</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://arxiv.org/abs/2306.05424">VideoChatGPT</a><span style="text-decoration:underline;color:#00E;background-color:#F8F9FA"> (7B)</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.2/2.7</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.52</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.62</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">1.98</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.37</span></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://arxiv.org/abs/2311.10122">Video-LLaVA</a><span style="text-decoration:underline;color:#00E;background-color:#F8F9FA"> (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">45.3/3.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.87</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.94</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.44</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.45</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.51</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.84</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://arxiv.org/abs/2312.08870">VISTA-LLAMA</a><span style="text-decoration:underline;color:#00E;background-color:#F8F9FA"> (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.3/3.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.44</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.31</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.64</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.18</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.26</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.57</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://arxiv.org/pdf/2311.17005v3.pdf">VideoChat2 </a><span style="text-decoration:underline;color:#00E;background-color:#F8F9FA">(7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">68.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">49.1/3.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.02</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.88</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.51</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.66</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.81</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.98</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a><span style="text-decoration:underline;color:#00E;background-color:#F8F9FA"> (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">50.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">47.4/3.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.84</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.01</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.97</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.54</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.53</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.93</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Image (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">68</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">49.3/3.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.29</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.16</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.13</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.72</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.27</span></td>
+								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Image (7B)</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.5/3.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.12</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.05</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.12</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.68</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.37</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.16</span></td>
+								<td class="tg-t1u7"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Video (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.5/3.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.32</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.39</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.29</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.92</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.12</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.26</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Video-DPO (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">60.2/3.5</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.72</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.64</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.45</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.17</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.95</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.08</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.66</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Video-DPO (34B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">64.4/3.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.84</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.81</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.55</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.24</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.14</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.12</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.77</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Video-DPO (7B)</span></td>
+								<td class="tg-1vri"></td>
+								<td class="tg-1vri"></td>
+								<td class="tg-1vri"><span style="color:#3F3F3F;background-color:#F8F8E8">60.2/3.5</span></td>
+								<td class="tg-1vri"></td>
+								<td class="tg-1vri"><span style="color:#3F3F3F;background-color:#F8F8E8">3.64</span></td>
+								<td class="tg-1vri"><span style="color:#3F3F3F;background-color:#F8F8E8">3.45</span></td>
+								<td class="tg-1vri"><span style="color:#3F3F3F;background-color:#F8F8E8">4.17</span></td>
+								<td class="tg-1vri"><span style="color:#3F3F3F;background-color:#F8F8E8">2.95</span></td>
+								<td class="tg-1vri"><span style="color:#3F3F3F;background-color:#F8F8E8">4.08</span></td>
+								<td class="tg-1vri"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="11"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">78.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.3/3.13</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.57</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.51</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.28</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.89</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.77</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.68</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.43</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">79.1</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">54.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.2/3.19</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.59</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.65</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.37</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.98</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.74</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.67</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.48</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3-DPO (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">77.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.0/3.13</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.9</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.99</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.61</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">4.23</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.19</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">4.12</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.83</span></td>
+							  </tr>
+							</tbody></table>
+						
+						Note that we calculate the average scores by multiplying a weight of 10 times to the score of Video Detailed Description and VideoChat-GPT.
+						<h3 id="mv-eval">Section 2.1 Multi-view Evaluation</h3>
+						
+						<p>
+							For 3D perception, we adopt 3 in-domain benchmarks to evaluate the 3D spatial understanding performance of our model, which are 3D-assisted Dialog (5.8K), Task Decomposition (11.7K), ScanQA-val (4.7K), ALFRED (0.1K), and nuScenes VQA (0.1K). The first two tasks are constructed by 3D-LLM.
+Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-NeXT-M3 only accepts multi-view images to interpret the 3D world, attaining significantly higher scores for in-door and out-door scenarios.
+						</p>
+						<style type="text/css">
+							.tg  {border-collapse:collapse;border-spacing:0;}
+							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-7hqs{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:left;vertical-align:middle}
+							.tg .tg-2pir{background-color:#F8F9FA;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
+							.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+							.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+							</style>
+							<table class="tg"><thead>
+							  <tr>
+								<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Model</span></th>
+								<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
+							  </tr>
+							  <tr>
+								<th class="tg-jag0"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">3D-assisted Dialogue</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Task Decomposition</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ScanQA (val)</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ALFRED</span></th>
+								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">nuScenes VQA</span></th>
+							  </tr></thead>
+							<tbody>
+							  <tr>
+								<td class="tg-7hqs" colspan="7"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Closed-source LMMs</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Flamingo</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">27.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">33.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">31.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">5.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">4.9</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Gemini Pro</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Gemini Ultra</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">GPT-4V</span></td>
+								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">31.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">10.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">63.7</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="7"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Open-source LMMs</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2pir"><a href="https://arxiv.org/pdf/2309.03905">ImageBind-LLM</a></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">20.8</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">31.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">28.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">4.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">6.8</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Point-Bind &amp; Point-LLM</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">22.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.8</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">3.3</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">3D-LLM</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">22.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">39.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.8</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.4</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Mantis (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">18.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">2.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">14.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">16.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">14</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">46.2</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-7hqs" colspan="7"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.1</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">79.5</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">70.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.7</span></td>
+							  </tr>
+							</tbody></table>
+
+						<br />
+
+						<h2 id="section-3-emerging-capbilities">Section 3 - Emerging Capbilities</h2>
+						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+							<style>
+								.slider-container {
+									width: 100%;
+									overflow: hidden;
+								}
+								
+								.slider-wrapper {
+									display: flex;
+									transition: transform 0.3s ease-out;
+								}
+								
+								.slider-item {
+									min-width: 100%;
+								}
+							</style>
+	
+	
+							<div class="slider-container">
+								<div class="slider-wrapper" id="sliderWrapper">
+	
+									<!-- <div class="slider-item">
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>PPT Sumarization and QA</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m3/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m3/examples/dynamic-island-1024x576.jpg" alt="Image 2" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m3/examples/iphone-15-colors-1024x576.jpg" alt="Image 3" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m3/examples/Iphone-15-Usb-c-charger-1024x576.jpg" alt="Image 4" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m3/examples/A-17-processors-1024x576.jpg" alt="Image 5" style="width: 100%; height: auto;">
+												</div>
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
+												<p style="text-align: left;"><b>User</b>  What is the price of iPhone 15 plus?</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
+												<p style="text-align: left;"><b>User</b> Why the dynamic island useful?</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
+											
+											 
+	
+										</div>
+									</div> -->
+									<!-- <div class="slider-item">
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Multi-image Coding</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m3/examples/pyf1.png" alt="Image 1" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m3/examples/pyf2.png" alt="Image 2" style="width: 100%; height: auto;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> Please pay attention to the movement of the object from the first image to the second image, then write a HTML code to show this movement.</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
+											<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
+												currentPos += 1;if (currentPos > end) {
+												  currentPos = start;}
+												animatedObject.style.transform = `translateX(${currentPos}px)`;}, 50);setTimeout(() => {clearInterval(intervalId);}, 2000);</script></body></html>
+											This code will create an animation where the red object moves horizontally from left to right. The animation is set to last 2 seconds with an ease-in-out timing function. The object's width and height are set to 100 pixels, and the background color is red.
+											The animation is applied using the @keyframes rule, which defines the keyframes for the animation. The animation property on the object sets the animation to use the move keyframe defined earlier.
+											In the JavaScript part, we maintain a variable currentPos that keeps track of the current position of the object. We use setInterval to animate the object's movement, updating its position by 1 pixel every 5 milliseconds. After 2 seconds, we clear the interval id to stop the animation.
+											Remember to adjust the keyframes to match the exact movement you want to achieve.
+
+											</p>
+												
+	
+										</div>
+
+									</div> -->
+									<div class="slider-item">
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Patining styles</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
+												<div style=>
+													<img src="/blog/assets/images/llava-m3/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
+												</div>
+												<div>
+													<img src="/blog/assets/images/llava-m3/examples/fangao2.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
+												</div>
+												<div >
+													<img src="/blog/assets/images/llava-m3/examples/fangao3.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
+												</div>
+												<div >
+													<img src="/blog/assets/images/llava-m3/examples/bijiasuo2.jpeg" alt="Image 2" style="width: 100%; height: auto;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b>Do you kown who draw these paintings?</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-M3</b>
+										
+												Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
+
+											</p>
+												
+	
+										</div>
+										
+									</div>
+								</div>
+							</div>
+	
+							<div style="position: relative;">
+								<button id="prevBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
+								<button id="nextBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
+							</div>
+	
+							<script>
+								const wrapper = document.getElementById('sliderWrapper');
+								let index = 0;
+	
+								document.getElementById('prevBtn').addEventListener('click', () => {
+									index = Math.max(index - 1, 0);
+									wrapper.style.transform = `translateX(-${index * 100}%)`;
+								});
+	
+								document.getElementById('nextBtn').addEventListener('click', () => {
+									index = Math.min(index + 1, wrapper.children.length - 1);
+									wrapper.style.transform = `translateX(-${index * 100}%)`;
+								});
+							</script>
+						</div>
+						<br />
+						<h2 id="section-4-train-techniques">Section 4 - Training Techinques</h2>
+						<p>We illustrate two key techniques for training LLaVA-NeXT-M3 using the M3-Instruct dataset, and provide abalation studies for analysis.</p>
+						<h4 id="con">Continue training from single-image model</h2>
+						<p>  To better leverage the pre-trained vision-language alignment, we adopt an off-the-shelf LLaVA-NeXT-Image as the base model, which has gone through the stage-1 558K image-caption pre-training and stage-2 760K single-image fine-tuning. On top of this checkpoint, we perform the multi-image instruction tuning with M3-Instruct.
+							As shown by the ablation below, compared to the 'joint training' based on the stage-1 pre-training, the 'continue training' scheme performs better. In this way, we can inherit the instruction-following capabilities in single-image tasks, and better extend the scope to multi-image, video, and 3D scenarios. </p>
+							<style type="text/css">
+								.tg  {border-collapse:collapse;border-spacing:0;}
+								.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+								.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+								</style>
+								<table class="tg"><thead>
+								  <tr>
+									<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training Strategy</span></th>
+									<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
+									<th class="tg-mmbt" colspan="9"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
+								  </tr>
+								  <tr>
+									<th class="tg-jag0" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
+									<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
+									<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
+								  </tr>
+								  <tr>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Joint training for single/multi-image</span></td>
+									<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 0.5B</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">45.44</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">26.2</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">18</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">60.9</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">67.5</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.9</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.8</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">56.2</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Continue training from single-image model</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">48.66</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">27.8</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">33.1</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">41</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">62.4</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">65</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">65.7</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">44.9</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">49.4</span></td>
+								  </tr>
+								</tbody></table>
+								
+								<h4 id="mix">Mix training for in-the-front and interleaved formats</h2>
+								<p>  For interleaved multi-image input, we have two format choices for the positions of "<image>" placeholders during training. The first is to place all the "<image>" tokens in front of the text, aligning with the format in single-image model but losing interleaved information. The second preserves the interleaved instruction and extends models to this new data format.
+									The below ablation indicates that mixing two strategies during training leads to higher performance in both two inference schemes, which provides more flexibility for multi-image input format by users.</p>
+							
+									<style type="text/css">
+										.tg  {border-collapse:collapse;border-spacing:0;}
+										.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+										  overflow:hidden;padding:10px 5px;word-break:normal;}
+										.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+										  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+										.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+										.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+										.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+										.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+										.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+										.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+										</style>
+										<table class="tg"><thead>
+										  <tr>
+											<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
+											<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Inference</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
+											<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
+											<th class="tg-mmbt" colspan="9"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
+										  </tr>
+										  <tr>
+											<th class="tg-jag0" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
+											<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
+											<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
+										  </tr>
+										  <tr>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span></th>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span></th>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span></th>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span></th>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span></th>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span></th>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></th>
+											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></th>
+										  </tr>
+										</thead>
+										<tbody>
+										  <tr>
+											<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+											<td class="tg-mmbt" rowspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.69</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">30.5</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.8</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71.2</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">90.5</span></td>
+										  </tr>
+										  <tr>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">65.14</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">32.8</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.6</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">72.8</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">84.5</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">75.3</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">90.6</span></td>
+										  </tr>
+										  <tr>
+											<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">66.16</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.9</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.8</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">54</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">73.4</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">79</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">84.7</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">91.5</span></td>
+										  </tr>
+										  <tr>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.68</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">29</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.1</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71.2</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.5</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">68.7</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71.8</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">90.1</span></td>
+										  </tr>
+										  <tr>
+											<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Mix format</span></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">67.38</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.5</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">38.3</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">59</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.2</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">82</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">84.6</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">76.9</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">91.5</span></td>
+										  </tr>
+										  <tr>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">67.00</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.5</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.9</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">75.8</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">81</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">82.9</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.3</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">91.6</span></td>
+										  </tr>
+										</tbody></table>
+								<h4 id="pool">- Training strategy comparison on video (Pooling vs not pooling)</h2>
+									<p>Observation: not pooling delivers better performance than pooling. </p>
+									<style type="text/css">
+										.tg  {border-collapse:collapse;border-spacing:0;}
+										.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+										  overflow:hidden;padding:10px 5px;word-break:normal;}
+										.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+										  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+										.tg .tg-vwde{background-color:#F6F1FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+										.tg .tg-39pb{background-color:#F2F3F5;color:#3F3F3F;text-align:center;vertical-align:middle}
+										.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+										.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+										.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+										.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+										.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+										.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+										</style>
+										<table class="tg"><thead>
+										  <tr>
+											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Train Setting</span></th>
+											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference Setting</span></th>
+											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference #frames</span></th>
+											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Data</span></th>
+											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">LLM</span></th>
+											<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Video Detailed Description</span></th>
+											<th class="tg-1jwe" colspan="5"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">VideoChat-GPT</span></th>
+										  </tr>
+										  <tr>
+											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Correctness</span></th>
+											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Detail</span></th>
+											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Context</span></th>
+											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Temporal</span></th>
+											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Consistency</span></th>
+										  </tr></thead>
+										<tbody>
+										  <tr>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">32</span></td>
+											<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">ShareGPTVideo-Caption+QA(255K)</span></td>
+											<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
+											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">3.21</span></td>
+											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.32</span></td>
+											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.19</span></td>
+											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.74</span></td>
+											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.6</span></td>
+											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.4</span></td>
+										  </tr>
+										  <tr>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">10</span></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">3.46</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.47</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.27</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.87</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">2.74</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.61</span></td>
+										  </tr>
+										  <tr>
+											<td class="tg-mmbt"></td>
+											<td class="tg-mmbt"></td>
+											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">16</span></td>
+											<td class="tg-mmbt"></td>
+											<td class="tg-mmbt"></td>
+											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">3.46</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.43</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.26</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.85</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">2.64</span></td>
+											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.61</span></td>
+										  </tr>
+										</tbody></table>
+
+								
+						<h2>Reference</h2>
+						<ol>
+							<li>
+								Hoffmann, Jordan, et al. "Training compute-optimal large language models." arXiv preprint
+								arXiv:2203.15556 (2022).
+							</li>
+							<li>
+								Rae, Jack W., et al. "Scaling language models: Methods, analysis & insights from training gopher." arXiv
+								preprint arXiv:2112.11446 (2021).
+							</li>
+							<li>
+								Chen, Lin, et al. "Sharegpt4v: Improving large multi-modal models with better captions." arXiv preprint
+								arXiv:2311.12793 (2023).
+							</li>
+							<li>
+								Caba Heilbron, Fabian, et al. "Activitynet: A large-scale video benchmark for human activity
+								understanding." Proceedings of the ieee conference on computer vision and pattern recognition. 2015.
+							</li>
+							<li>
+								Maaz, Muhammad, et al. "Video-chatgpt: Towards detailed video understanding via large vision and
+								language models." arXiv preprint arXiv:2306.05424 (2023).
+							</li>
+						</ol>
+
+						<h2 id="team">Team</h2>
+
+						<!-- <ul>
+							<li>
+								<a href="https://brianboli.com/">Bo Li*</a>: Nanyang Technological University<img
+									width="16"
+									src="/blog/assets/images/logos/ntu.png"
+								/>
+								( <em>Work collaborated with ByteDance</em>)
+							</li>
+							<li>
+								<a href="https://haozhang534.github.io/">Hao Zhang*</a>: Hong Kong University of Science and
+								Technology<img width="16" src="/blog/assets/images/logos/hkust.jpg" /> (<em
+									>Work collaborated with ByteDance</em
+								>)
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/in/kaichen-zhang-014b17219/?originalSubdomain=sg">Kaichen Zhang</a>:
+								Nanyang Technological University<img width="16" src="/blog/assets/images/logos/ntu.png" /> (<em
+									>Work collaborated with ByteDance</em
+								>)
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/in/dongguoset">Dong Guo</a>: ByteDance<img
+									width="16"
+									src="/blog/assets/images/logos/tiktok.png"
+								/>
+							</li>
+							<li>
+								<a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a>: Nanyang Technological University<img
+									width="16"
+									src="/blog/assets/images/logos/ntu.png"
+								/>
+								( <em>Work collaborated with ByteDance</em>)
+							</li>
+							<li>
+								<a href="https://zrrskywalker.github.io/">Renrui Zhang</a>: The Chinese University of Hong Kong<img
+									width="16"
+									src="/blog/assets/images/logos/cuhk.jpg"
+								/>
+								(<em>Work collaborated with ByteDance</em>)
+							</li>
+							<li>
+								<a href="https://fengli-ust.github.io/">Feng Li</a>: Hong Kong University of Science and Technology<img
+									width="16"
+									src="/blog/assets/images/logos/hkust.jpg"
+								/>
+								( <em>Work collaborated with ByteDance</em>)
+							</li>
+							<li>
+								<a href="https://liuziwei7.github.io/">Ziwei Liu</a>: Nanyang Technological University<img
+									width="16"
+									src="/blog/assets/images/logos/ntu.png"
+								/>
+							</li>
+							<li>
+								<a href="https://chunyuan.li/">Chunyuan Li</a>: Bytedance<img
+									width="16"
+									src="/blog/assets/images/logos/tiktok.png"
+								/>
+							</li>
+						</ul> -->
+
+						<!-- <h2 id="acknowledgement">Acknowledgement</h2>
+
+						<ul>
+							<li>
+								We thank Fanyi Pu, Shuai Liu, Kairui Hu for the continuous contribution of
+								<a href="https://github.com/EvolvingLMMs-Lab/lmms-eval">lmms-eval</a> to accelerate our development of
+								LLaVA-NeXT.
+							</li>
+						</ul> -->
+
+						<h2 id="acknowledgement">Related Blogs</h2>
+
+						<ul>
+							<li>
+								<a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+									>LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a
+								>
+							</li>
+							<li>
+								<a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/"
+									>LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</a
+								>
+							</li>
+							<li>
+								<a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/"
+									>LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a
+								>
+							</li>
+							<li>
+								<a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/"
+									>Accelerating the Development of Large Multimodal Models with LMMs-Eval</a
+								>
+							</li>
+						</ul>
+
+						<h2 id="citation">Citation</h2>
+
+						<div class="language-bibtex highlighter-rouge">
+							<div class="highlight">
+								<pre class="highlight"><code>
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">li2024llavanext-ablations</span><span class="p">,</span>
+	<span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?}</span><span class="p">,</span>
+	<span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/}</span><span class="p">,</span>
+	<span class="na">author</span><span class="p">=</span><span class="s">{Li, Bo and Zhang, Hao and Zhang, Kaichen and Guo, Dong and Zhang, Yuanhan and Zhang, Renrui and Li, Feng and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
+	<span class="na">month</span><span class="p">=</span><span class="s">{May}</span><span class="p">,</span>
+	<span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">li2024llavanext-strong</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Li, Bo and Zhang, Kaichen and Zhang, Hao and Guo, Dong and Zhang, Renrui and Li, Feng and Zhang, Yuanhan and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{May}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">zhang2024llavanextvideo</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: A Strong Zero-shot Video Understanding Model}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-04-30-llava-next-video/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Zhang, Yuanhan and Li, Bo and Liu, haotian and Lee, Yong jae and Gui, Liangke and Fu, Di and Feng, Jiashi and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{April}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+    
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2024llavanext</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-NeXT: Improved reasoning, OCR, and world knowledge}</span><span class="p">,</span>
+    <span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-01-30-llava-next/}</span><span class="p">,</span>
+    <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Li, Bo and Zhang, Yuanhan and Shen, Sheng and Lee, Yong Jae}</span><span class="p">,</span>
+    <span class="na">month</span><span class="p">=</span><span class="s">{January}</span><span class="p">,</span>
+    <span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2023improvedllava</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">=</span><span class="s">{Improved Baselines with Visual Instruction Tuning}</span><span class="p">,</span> 
+      <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Li, Yuheng and Lee, Yong Jae}</span><span class="p">,</span>
+      <span class="na">publisher</span><span class="p">=</span><span class="s">{arXiv:2310.03744}</span><span class="p">,</span>
+      <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nc">@misc</span><span class="p">{</span><span class="nl">liu2023llava</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">=</span><span class="s">{Visual Instruction Tuning}</span><span class="p">,</span> 
+      <span class="na">author</span><span class="p">=</span><span class="s">{Liu, Haotian and Li, Chunyuan and Wu, Qingyang and Lee, Yong Jae}</span><span class="p">,</span>
+      <span class="na">publisher</span><span class="p">=</span><span class="s">{NeurIPS}</span><span class="p">,</span>
+      <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+							</div>
+						</div>
+					</div>
+					<a class="u-url" href="/blog/2024-05-10-llava-next-stronger-llms/" hidden></a>
+				</article>
+			</div>
+		</main>
+		<footer class="site-footer h-card">
+			<data class="u-url" href="/blog/"></data>
+
+			<div class="wrapper">
+				<h2 class="footer-heading">LLaVA-NeXT</h2>
+
+				<div class="footer-col-wrapper">
+					<div class="footer-col footer-col-1">
+						<ul class="contact-list">
+							<li class="p-name">LLaVA-NeXT</li>
+						</ul>
+					</div>
+
+					<div class="footer-col footer-col-2">
+						<ul class="social-media-list"></ul>
+					</div>
+
+					<div class="footer-col footer-col-3">
+						<p></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
