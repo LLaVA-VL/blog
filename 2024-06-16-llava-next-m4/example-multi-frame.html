@@ -1,0 +1,76 @@
+<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+	<style>
+		.slider-container {
+			width: 100%;
+			overflow: hidden;
+		}
+		
+		.slider-wrapper {
+			display: flex;
+			transition: transform 0.3s ease-out;
+		}
+		
+		.slider-item {
+			min-width: 100%;
+		}
+	</style>
+
+	<div class="slider-container">
+		<div class="slider-wrapper" id="sliderWrapper2">
+
+			<div class="slider-item">
+				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+
+					<h4>Multi-Frame Scenarios</h4>
+
+					<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+						<video width="100%" controls loop autoplay>
+							<source src="/blog/assets/images/llava-m3/data/man_snow.mp4" type="video/mp4">
+							Your browser does not support the video tag.
+						  </video>
+						
+						
+						
+					</div>
+					
+
+					<br>
+					
+				
+
+				</div>
+				
+				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+					<font size="0.2"> 
+					<h4>Video Detailed Description</h4>
+					<p style="text-align: left;">For a pair of real-world or synthetic images, the model generates accurate image editing instruction. Such capabilities can potentially benefit research related to text-to-image synthesis and diffusion models.</p>
+					<p style="text-align: left;"><b>User</b> Please provide a detailed description of the video.</p>
+						<p style="text-align: left;"><b>Assistant</b> The video opens with a close-up of a person wearing a white space suit with red detailing, including a helmet with the number "33" on it. The individual is standing in a vast, snow-covered landscape under a clear blue sky. The scene transitions to show the person walking away from the camera towards a large, metallic UFO parked on the snow. The person then enters the UFO through a hatch, and the interior is briefly visible, showing control panels and screens. The final scenes depict the person adjusting controls within the UFO, with a focus on the gloved hands manipulating the controls.</p>
+					</font> 
+					 
+
+				</div>
+			</div> 
+			
+		</div>
+	</div>
+	<div style="position: relative;">
+		<button id="prevBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
+		<button id="nextBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
+	</div>
+
+	<script>
+		const wrapper = document.getElementById('sliderWrapper2');
+		let index = 0;
+
+		document.getElementById('prevBtn2').addEventListener('click', () => {
+			index = Math.max(index - 1, 0);
+			wrapper.style.transform = `translateX(-${index * 100}%)`;
+		});
+
+		document.getElementById('nextBtn2').addEventListener('click', () => {
+			index = Math.min(index + 1, wrapper.children.length - 1);
+			wrapper.style.transform = `translateX(-${index * 100}%)`;
+		});
+	</script>
+</div>
