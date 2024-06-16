@@ -15,8 +15,8 @@
 		<meta property="og:locale" content="en_US" />
 		<meta name="description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
 		<meta property="og:description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
-		<link rel="canonical" href="https://llava-vl.github.io/blog/2024-06-16-llava-next-m3" />
-		<meta property="og:url" content="https://llava-vl.github.io/blog/2024-06-16-llava-next-m3" />
+		<link rel="canonical" href="https://llava-vl.github.io/blog/2024-06-16-llava-next-m4" />
+		<meta property="og:url" content="https://llava-vl.github.io/blog/2024-06-16-llava-next-m4" />
 		<meta property="og:site_name" content="LLaVA-NeXT" />
 		<meta property="og:type" content="article" />
 		<meta property="article:published_time" content="2024-06-16T12:33:38-06:00" />
@@ -44,7 +44,7 @@
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 		<!-- End Jekyll SEO tag -->
-		<link rel="stylesheet" href="/blog/2024-06-16-llava-next-m3/style.css" />
+		<link rel="stylesheet" href="/blog/2024-06-16-llava-next-m4/style.css" />
 		<link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
 		<link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
 		
@@ -132,7 +132,7 @@
 								<li>
 									<a href="#section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</a>
 									<!-- <ul>
-										<li><a href="#section-1-1-m3-instruct">Section 1.1 - M3-Instruct</a></li>
+										<li><a href="#section-1-1-m4-instruct">Section 1.1 - M4-Instruct</a></li>
 										<!-- <li><a href="#vision-encoders">Section 1.2 - Vision Encoders</a></li> -->
 									<!-- </ul>  -->
 								</li>
@@ -182,10 +182,10 @@
 
 						<p>
 							Recent advancements in Large Multimodal Models (LMMs) have showcased impressive capabilities in multimodal understanding and reasoning. However, most existing open-source LMMs such as LLaVA-NeXT have primarily focused on pushing the performance limit of single-image scenarios, leaving the potential of multi-image contexts largely unexplored. Considering the diverse range of computer vision scenarios and data formats—including single and multi-image inputs, interleaved image-text pairs, videos, and 3D data—there is a pressing need to develop methodologies for open LMMs that can operate effectively across these varied contexts.
-We observe that the multi-image format can naturally serve as a general data template to unify different scenarios, e.g., interleaved or single-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present LLaVA-NeXT-M3, an all-around LMM that extends the model capabilities to new real-world settings: Multi-image,  Multi-frame (videos), and Multi-view (3D) scenarios. 
+We observe that the multi-image format can naturally serve as a general data template to unify different scenarios, e.g., interleaved or single-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present LLaVA-NeXT-M4, an all-around LMM that extends the model capabilities to new real-world settings: Multi-image,  Multi-frame (videos), and Multi-view (3D) scenarios. 
 						</p>
 						<figure>
-							<img style="margin: 0 auto;" width="80%" src="/blog/assets/images/llava-m3/teasor_compare_with_sota.png" alt="Description of GIF" />
+							<img style="margin: 0 auto;" width="80%" src="/blog/assets/images/llava-m4/teasor_compare_with_sota.png" alt="Description of GIF" />
 							<!-- <figcaption style="text-align: center;">Caption describing the GIF</figcaption> -->
 						</figure>
 						<p>
@@ -193,10 +193,10 @@ We observe that the multi-image format can naturally serve as a general data tem
 						</p>
 						<ol>
 							<li>
-								<strong>Training Data: M3-Instruct.</strong> We compile a high-quality dataset with 915K samples, spanning 3 primary domains (multi-image, video, and 3D) with 14 tasks and 43 datasets. It organizes diverse data in a unified multi-image format, including interleaved text-image data input, temporal videos across multiple frames, and 3D environments from different viewpoints. 
+								<strong>Training Data: M4-Instruct.</strong> We compile a high-quality dataset with 915K samples, spanning 3 primary domains (multi-image, video, and 3D) with 14 tasks and 43 datasets. It organizes diverse data in a unified multi-image format, including interleaved text-image data input, temporal videos across multiple frames, and 3D environments from different viewpoints. 
 							</li>
 							<li>
-								<strong>SoTA Performance.</strong> We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. With a single model, LLaVA-NeXT-M3 can achieve leading results in different benchmarks compared to previous SoTA, indicating the superior generalization capacity of our approach.
+								<strong>SoTA Performance.</strong> We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. With a single model, LLaVA-NeXT-M4 can achieve leading results in different benchmarks compared to previous SoTA, indicating the superior generalization capacity of our approach.
 							</li>
 							
 						</ol>
@@ -237,7 +237,7 @@ We observe that the multi-image format can naturally serve as a general data tem
 								<a href="https://huggingface.co/datasets/lmms-lab/...">Inference Code</a>
 							</li>
 							<li>
-								<a href="https://huggingface.co/datasets/lmms-lab/...">LLaVA-M3 Instruct Data</a>
+								<a href="https://huggingface.co/datasets/lmms-lab/...">LLaVA-M4 Instruct Data</a>
 							</li>
 							<li>
 								<a href="https://huggingface.co/datasets/lmms-lab/...">One Demo for All: Multi-image, Video, 3D</a>
@@ -257,13 +257,13 @@ We observe that the multi-image format can naturally serve as a general data tem
             <strong>Multi-view scenarios</strong> represent 3D environments by multi-view images from different perspectives, where the visual correspondence and disparity can indicate spatial information in the 3D world. For 3D perception, we include 2 tasks: embodied VQA (dialogue and planning), and 3D scene VQA (captioning and grounding).
         </li>
     </ul>
-	<h1>M3-Instruct</h1>
-    <p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M3-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
+	<h1>M4-Instruct</h1>
+    <p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
     <p>Most datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>, as highlighted in yellow.</p>
     
     <figure>
-        <img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m3/data-statistics.png" alt="Data Statistics Figure">
-        <figcaption>Detailed data statistics for M3-Instruct dataset.</figcaption>
+        <img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/data-statistics.png" alt="Data Statistics Figure">
+        <figcaption>Detailed data statistics for M4-Instruct dataset.</figcaption>
     </figure>
 
 						<details>
@@ -553,10 +553,10 @@ We observe that the multi-image format can naturally serve as a general data tem
 						<br />
 
 						<h3>Section 1.3 Task Examples</h3>
-						<p>We provide examples to illustrate the multi-image/fame/view tasks of M3-Instruct dataset.</p>
+						<p>We provide examples to illustrate the multi-image/fame/view tasks of M4-Instruct dataset.</p>
 						<figure>
-							<img src="/blog/assets/images/llava-m3/task_examples.png" alt="Data Statistics Figure">
-							<figcaption>Examples of M3-Insutrct Dataset.</figcaption>
+							<img src="/blog/assets/images/llava-m4/task_examples.png" alt="Data Statistics Figure">
+							<figcaption>Examples of M4-Insutrct Dataset.</figcaption>
 						</figure>
 						<h4>Detail Dta Examples </h3>
 							<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
@@ -587,10 +587,10 @@ We observe that the multi-image format can naturally serve as a general data tem
 							
 												<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/dog1.png" alt="Image 1" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/dog1.png" alt="Image 1" style="width: 100%; height: auto;">
 													</div>
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/dog2.png" alt="Image 2" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/dog2.png" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
 													
 													
@@ -621,16 +621,16 @@ We observe that the multi-image format can naturally serve as a general data tem
 							
 												<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/post1.png" alt="Image 1" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/post1.png" alt="Image 1" style="width: 100%; height: auto;">
 													</div>
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/post2.png" alt="Image 2" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/post2.png" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/post3.png" alt="Image 2" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/post3.png" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/post4.png" alt="Image 2" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/post4.png" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
 													
 													
@@ -704,7 +704,7 @@ We observe that the multi-image format can naturally serve as a general data tem
 							
 												<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 													<video width="100%" controls loop autoplay>
-														<source src="/blog/assets/images/llava-m3/data/man_snow.mp4" type="video/mp4">
+														<source src="/blog/assets/images/llava-m4/data/man_snow.mp4" type="video/mp4">
 														Your browser does not support the video tag.
 													  </video>
 													
@@ -779,13 +779,13 @@ We observe that the multi-image format can naturally serve as a general data tem
 							
 												<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/room1.jpg" alt="Image 1" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/room1.jpg" alt="Image 1" style="width: 100%; height: auto;">
 													</div>
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/room2.jpg" alt="Image 2" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/room2.jpg" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
 													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m3/data/room3.jpg" alt="Image 2" style="width: 100%; height: auto;">
+														<img src="/blog/assets/images/llava-m4/data/room3.jpg" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
 													
 													
@@ -853,8 +853,8 @@ We observe that the multi-image format can naturally serve as a general data tem
 						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Benchmarks</h2>
 
 						<p>
-							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-M3, which covers a variety of existing and newly curated in/out-domain benchmarks. In the table below, we exhibit a summary of average results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
-For our final solution, LLaVA-NeXT-M3 (7B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
+							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-M4, which covers a variety of existing and newly curated in/out-domain benchmarks. In the table below, we exhibit a summary of average results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
+For our final solution, LLaVA-NeXT-M4 (7B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
 						</p>
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
@@ -891,7 +891,7 @@ For our final solution, LLaVA-NeXT-M3 (7B) adopts Qwen 1.5-7B and -14B as base L
 								<td class="tg-7hqs"></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.2</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">60.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.8</span></td>
@@ -899,7 +899,7 @@ For our final solution, LLaVA-NeXT-M3 (7B) adopts Qwen 1.5-7B and -14B as base L
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
 								<td class="tg-k8yq"></td>
 								<td class="tg-t1u7"></td>
 								<td class="tg-k8yq"></td>
@@ -971,7 +971,7 @@ For our final solution, LLaVA-NeXT-M3 (7B) adopts Qwen 1.5-7B and -14B as base L
 						<h3 id="mi-eval">Section 2.1 Multi-image Evaluation</h3>
 						<p>
 						We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
-As reported in the table, the average multi-image performance of LLaVA-NeXT-M3 surpasses previous open-source models in both in- and out-domain benchmarks. For in-domain evaluation, our model demonstrates significant advantages across various tasks as expected, due to the multi-image instruction tuning with M3-Instruct. For out-domain evaluation, LLaVA-NeXT-M3 also showcases superior generalization capacity within novel scenarios, e.g., comparable to GPT-4V on MathVerse-mv, SciVerse-mv, and BLINK.
+As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 surpasses previous open-source models in both in- and out-domain benchmarks. For in-domain evaluation, our model demonstrates significant advantages across various tasks as expected, due to the multi-image instruction tuning with M4-Instruct. For out-domain evaluation, LLaVA-NeXT-M4 also showcases superior generalization capacity within novel scenarios, e.g., comparable to GPT-4V on MathVerse-mv, SciVerse-mv, and BLINK.
 						</p>
 						
 						<details>
@@ -1393,7 +1393,7 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M3 s
 								<td class="tg-7hqs" colspan="17"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.7</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.1</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.2</span></td>
@@ -1412,7 +1412,7 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M3 s
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">35.2</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
 								<td class="tg-k8yq"></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.5</span></td>
 								<td class="tg-k8yq"></td>
@@ -1433,8 +1433,8 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M3 s
 							</tbody></table>
 						<h3 id="mf-eval">Section 2.2 Multi-frame Evaluation</h3>
 						<p>
-							For video understanding, we also evaluate our model by two schemes: (1) In-domain Evaluation includes 2 existing video-based benchmarks, i.e., NextQA and Video Detailed Description, which have similar training datasets within M3-Instruct. (2) Out-domain Evaluation involves 2 existing video-based benchmarks, i.e., ActivityNet-QA, and VideoChat-GPT.
-Compared with previous video-based LMMs, LLaVA-NeXT-M3 achieves competitive results under two evaluation schemes, even not specifically designed for videos. This indicates the effective temporal understanding and reasoning capabilities of our model across sequential frames.
+							For video understanding, we also evaluate our model by two schemes: (1) In-domain Evaluation includes 2 existing video-based benchmarks, i.e., NextQA and Video Detailed Description, which have similar training datasets within M4-Instruct. (2) Out-domain Evaluation involves 2 existing video-based benchmarks, i.e., ActivityNet-QA, and VideoChat-GPT.
+Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive results under two evaluation schemes, even not specifically designed for videos. This indicates the effective temporal understanding and reasoning capabilities of our model across sequential frames.
 						</p>
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
@@ -1679,7 +1679,7 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M3 achieves competitive resu
 								<td class="tg-7hqs" colspan="11"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">78.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.1</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.3/3.13</span></td>
@@ -1692,7 +1692,7 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M3 achieves competitive resu
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.43</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">79.1</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">54.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.2/3.19</span></td>
@@ -1705,7 +1705,7 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M3 achieves competitive resu
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.48</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3-DPO (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4-DPO (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">77.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.3</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.0/3.13</span></td>
@@ -1724,7 +1724,7 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M3 achieves competitive resu
 						
 						<p>
 							For 3D perception, we adopt 3 in-domain benchmarks to evaluate the 3D spatial understanding performance of our model, which are 3D-assisted Dialog (5.8K), Task Decomposition (11.7K), ScanQA-val (4.7K), ALFRED (0.1K), and nuScenes VQA (0.1K). The first two tasks are constructed by 3D-LLM.
-Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-NeXT-M3 only accepts multi-view images to interpret the 3D world, attaining significantly higher scores for in-door and out-door scenarios.
+Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-NeXT-M4 only accepts multi-view images to interpret the 3D world, attaining significantly higher scores for in-door and out-door scenarios.
 						</p>
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
@@ -1836,7 +1836,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 								<td class="tg-7hqs" colspan="7"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69.6</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51.4</span></td>
@@ -1845,7 +1845,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">79.5</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M3 (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">70.6</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.2</span></td>
@@ -1889,10 +1889,10 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/pyf1.png" alt="Image 1" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/pyf1.png" alt="Image 1" style="width: 100%; height: auto;">
 												</div>
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/pyf2.png" alt="Image 2" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/pyf2.png" alt="Image 2" style="width: 100%; height: auto;">
 												</div>
 												
 												
@@ -1909,7 +1909,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Please pay attention to the movement of the object from the first image to the second image, then write a HTML code to show this movement.</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
+										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
 											<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
 												currentPos += 1;if (currentPos > end) {
 												  currentPos = start;}
@@ -1932,13 +1932,13 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 									
 											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/shub.jpg" alt="Image 1" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/shub.jpg" alt="Image 1" style="width: 100%; height: auto;">
 												</div>
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/shuc.jpg" alt="Image 2" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/shuc.jpg" alt="Image 2" style="width: 100%; height: auto;">
 												</div>
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/shud.jpg" alt="Image 3" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/shud.jpg" alt="Image 3" style="width: 100%; height: auto;">
 												</div>
 												
 											</div>
@@ -1950,7 +1950,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 									
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> what is fun about the images?</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The humor in these images comes from the anthropomorphized birds engaging in human-like activities and conversations. In the first image, one bird is asking about going to get some fries on the pier, which is a human activity. The second image shows a bird asking about the "culminating result of consciousness," which is a philosophical question rather than a literal one. The third image has a bird expressing its desire to do something with the fries on the pier, again referencing a human activity. The anthropomorphism of the birds adds a layer of humor by attributing human thoughts and desires to animals.</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The humor in these images comes from the anthropomorphized birds engaging in human-like activities and conversations. In the first image, one bird is asking about going to get some fries on the pier, which is a human activity. The second image shows a bird asking about the "culminating result of consciousness," which is a philosophical question rather than a literal one. The third image has a bird expressing its desire to do something with the fries on the pier, again referencing a human activity. The anthropomorphism of the birds adds a layer of humor by attributing human thoughts and desires to animals.</p>
 										</div>
 									</div> 
 								</div>
@@ -2031,7 +2031,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 									
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Help me write a twitter post to describe this video.</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> "Feeling the chill in the air, but the cherry blossoms are a sight to behold! 🌸❄️ Walking down the street, each person bundled up against the winter chill. The snow-covered trees and market stalls add to the serene beauty of this winter wonderland. #CherryBlossoms #WinterWalk #CityScenes".</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> "Feeling the chill in the air, but the cherry blossoms are a sight to behold! 🌸❄️ Walking down the street, each person bundled up against the winter chill. The snow-covered trees and market stalls add to the serene beauty of this winter wonderland. #CherryBlossoms #WinterWalk #CityScenes".</p>
 										 
 									
 										</div>
@@ -2088,19 +2088,19 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
 												</div>
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/dynamic-island-1024x576.jpg" alt="Image 2" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/dynamic-island-1024x576.jpg" alt="Image 2" style="width: 100%; height: auto;">
 												</div>
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/iphone-15-colors-1024x576.jpg" alt="Image 3" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/iphone-15-colors-1024x576.jpg" alt="Image 3" style="width: 100%; height: auto;">
 												</div>
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/Iphone-15-Usb-c-charger-1024x576.jpg" alt="Image 4" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/Iphone-15-Usb-c-charger-1024x576.jpg" alt="Image 4" style="width: 100%; height: auto;">
 												</div>
 												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m3/examples/A-17-processors-1024x576.jpg" alt="Image 5" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/A-17-processors-1024x576.jpg" alt="Image 5" style="width: 100%; height: auto;">
 												</div>
 												
 											</div>
@@ -2116,11 +2116,11 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
 												<p style="text-align: left;"><b>User</b>  What is the price of iPhone 15 plus?</p>
-												<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
 												<p style="text-align: left;"><b>User</b> Why the dynamic island useful?</p>
-												<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
 											
 											 
 	
@@ -2134,16 +2134,16 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 												<div style=>
-													<img src="/blog/assets/images/llava-m3/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
 												</div>
 												<div>
-													<img src="/blog/assets/images/llava-m3/examples/fangao2.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
+													<img src="/blog/assets/images/llava-m4/examples/fangao2.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
 												</div>
 												<div >
-													<img src="/blog/assets/images/llava-m3/examples/fangao3.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
+													<img src="/blog/assets/images/llava-m4/examples/fangao3.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
 												</div>
 												<div >
-													<img src="/blog/assets/images/llava-m3/examples/bijiasuo2.jpeg" alt="Image 2" style="width: 100%; height: auto;">
+													<img src="/blog/assets/images/llava-m4/examples/bijiasuo2.jpeg" alt="Image 2" style="width: 100%; height: auto;">
 												</div>
 												
 												
@@ -2160,7 +2160,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b>Do you kown who draw these paintings?</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-M3</b>
+											<p style="text-align: left;"><b>LLaVA-NeXT-M4</b>
 										
 												Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
 
@@ -2197,9 +2197,9 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 
 						<br />
 						<h2 id="section-4-train-techniques">Section 4 - Training Techinques</h2>
-						<p>We illustrate two key techniques for training LLaVA-NeXT-M3 using the M3-Instruct dataset, and provide abalation studies for analysis.</p>
+						<p>We illustrate two key techniques for training LLaVA-NeXT-M4 using the M4-Instruct dataset, and provide abalation studies for analysis.</p>
 						<h4 id="con">Continue training from single-image model</h2>
-						<p>  To better leverage the pre-trained vision-language alignment, we adopt an off-the-shelf LLaVA-NeXT-Image as the base model, which has gone through the stage-1 558K image-caption pre-training and stage-2 760K single-image fine-tuning. On top of this checkpoint, we perform the multi-image instruction tuning with M3-Instruct.
+						<p>  To better leverage the pre-trained vision-language alignment, we adopt an off-the-shelf LLaVA-NeXT-Image as the base model, which has gone through the stage-1 558K image-caption pre-training and stage-2 760K single-image fine-tuning. On top of this checkpoint, we perform the multi-image instruction tuning with M4-Instruct.
 							As shown by the ablation below, compared to the 'joint training' based on the stage-1 pre-training, the 'continue training' scheme performs better. In this way, we can inherit the instruction-following capabilities in single-image tasks, and better extend the scope to multi-image, video, and 3D scenarios. </p>
 							<style type="text/css">
 								.tg  {border-collapse:collapse;border-spacing:0;}
