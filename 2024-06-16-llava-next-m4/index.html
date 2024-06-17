@@ -154,6 +154,11 @@
 											>Section 2.3 - Multi-view Evaluation</a
 										>
 									</li>
+									<li>
+										<a href="#mp-eval"
+											>Section 2.4 - Single-image Evaluation</a
+										>
+									</li>
 									</ul>
 									
 								</li>
@@ -181,9 +186,8 @@
 						</div>
 
 						<p>
-							Recent advancements in Large Multimodal Models (LMMs) have showcased impressive capabilities in multimodal understanding and reasoning. However, most existing open-source LMMs such as LLaVA-NeXT have primarily focused on pushing the performance limit of single-image scenarios, leaving the potential of multi-image contexts largely unexplored. Considering the diverse range of computer vision scenarios and data formats—including single and multi-image inputs, interleaved image-text pairs, videos, and 3D data—there is a pressing need to develop methodologies for open LMMs that can operate effectively across these varied contexts.
-We observe that the multi-image format can naturally serve as a general data template to unify different scenarios, e.g., interleaved or single-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present LLaVA-NeXT-M4, an all-around LMM that extends the model capabilities to new real-world settings: Multi-image,  Multi-frame (videos), and Multi-view (3D) scenarios. 
-						</p>
+							Recent advancements in Large Multimodal Models (LMMs) have showcased impressive capabilities in multimodal understanding and reasoning. However, most existing open-source LMMs such as LLaVA-NeXT have primarily focused on pushing the performance limit of single-image, leaving the potential of multi-image scenarios largely unexplored. Considering the diverse range of computer vision scenarios and data formats—including single and multi-image inputs, interleaved image-text pairs, videos, and 3D data—there is a pressing need to develop methodologies for open LMMs that can operate effectively across these varied contexts.
+We observe that the image-text interleaved format can naturally serve as a general data template to unify different scenarios, e.g., single-image or multi-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present LLaVA-NeXT-Interleave, an all-around LMM that extends the model capabilities to new real-world settings: Multi-image,  Multi-frame (videos), Multi-view (3D) and maintains the performance of the Multi-patch (single-image) scenarios. We denote the four settings as M4.</p>
 						<figure>
 							<img style="margin: 0 auto;" width="80%" src="/blog/assets/images/llava-m4/teasor_compare_with_sota.png" alt="Description of GIF" />
 							<!-- <figcaption style="text-align: center;">Caption describing the GIF</figcaption> -->
@@ -193,15 +197,21 @@ We observe that the multi-image format can naturally serve as a general data tem
 						</p>
 						<ol>
 							<li>
-								<strong>Training Data: M4-Instruct.</strong> We compile a high-quality dataset with 915K samples, spanning 3 primary domains (multi-image, video, and 3D) with 14 tasks and 43 datasets. It organizes diverse data in a unified multi-image format, including interleaved text-image data input, temporal videos across multiple frames, and 3D environments from different viewpoints. 
+								<strong>Interleave data format unifies different tasks.</strong> We convert multi-image, video, 3D, and single-image data all into an interleaved training format, which unifies different tasks in a single LLM.
 							</li>
 							<li>
-								<strong>SoTA Performance.</strong> We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. With a single model, LLaVA-NeXT-M4 can achieve leading results in different benchmarks compared to previous SoTA, indicating the superior generalization capacity of our approach.
+								<strong>New dataset: (1). Training Data: M4-Instruct. </strong> We compile a high-quality dataset with 1269k samples, spanning 4 primary domains (multi-image, video, 3D, and single-image) with 15 tasks and 44 datasets. It organizes diverse data in a unified multi-image format. (2).<strong>M4-Instruct benchmark.</strong>  We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. 
+							</li>
+							<li>
+								<strong>SoTA Performance.</strong>(1). With a single model, LLaVA-NeXT-Interleave can achieve leading results in different<strong> multi-image benchmarks</strong> compared to the previous SoTA. (2). With a proper data mix of different scenarios, the performance of previous <strong>individual tasks</strong> can be improved or maintained. For example, we maintain the single-image performance of LLaVA-NEXT and improve performance on video tasks.
+							</li>
+							<li>
+								<strong>Emerging capabilities with cross-task transfer. </strong> By jointly training on a diverse set of tasks, the model shows emerging capabilities to transfer tasks between different scenarios.
 							</li>
 							
 						</ol>
 						
-						<details>
+						<!-- <details>
 							<summary style="font-weight: bold; font-size: 16px;"
 								>[Notes on Image Detailed Caption and Video Detailed Caption Tasks.]</summary
 							>
@@ -228,7 +238,7 @@ We observe that the multi-image format can naturally serve as a general data tem
 								<a href="#benchmark-card">Dataset Card</a> section.
 							</p>
 						</details>
-						<br />
+						<br /> -->
 
 						<h2>Opensource Release</h2>
 						<p>Re-captioned Data with LLaVA-NeXT-34B is available on Hugging Face Datasets.</p>
@@ -248,18 +258,25 @@ We observe that the multi-image format can naturally serve as a general data tem
     <p>We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
     <ul>
         <li>
-            <strong>Multi-image scenarios</strong> include instructions with single or multiple images, and interleaved text-image input. This setting covers 12 challenging real-world tasks included in our training data, such as spotting the difference, visual storytelling, image editing instruction generation, interleaved multi-image dialogue, multi-image puzzle, low-level multi-image assessment, etc.
+            <strong>Multi-image</strong> scenarios include instructions with single or multiple images, and interleaved text-image input. This setting covers 12 challenging real-world tasks included in our training data, such as spotting the difference, visual storytelling, image editing instruction generation, interleaved multi-image dialogue, multi-image puzzle, low-level multi-image assessment, etc.
         </li>
         <li>
-            <strong>Multi-frame scenarios</strong> refer to taking as input the video data by sampling it into multiple frames, preserving temporal cues across the multi-image sequence. The video-based tasks mainly focus on 2 tasks: video detailed captioning and video VQA.
+            <strong>Multi-frame</strong> scenarios refer to taking as input the video data by sampling it into multiple frames, preserving temporal cues across the multi-image sequence. The video-based tasks mainly focus on 2 tasks: video detailed captioning and video VQA.
         </li>
         <li>
-            <strong>Multi-view scenarios</strong> represent 3D environments by multi-view images from different perspectives, where the visual correspondence and disparity can indicate spatial information in the 3D world. For 3D perception, we include 2 tasks: embodied VQA (dialogue and planning), and 3D scene VQA (captioning and grounding).
+            <strong>Multi-view</strong> scenarios represent 3D environments by multi-view images from different perspectives, where the visual correspondence and disparity can indicate spatial information in the 3D world. For 3D perception, we include 2 tasks: embodied VQA (dialogue and planning), and 3D scene VQA (captioning and grounding).
         </li>
+		<li>
+			<strong>Multi-patch</strong> represents the single-image scenario. This is because the design of anyres in LLaVA-NEXT allows us to divide a single image into multiple patches, compatible with our interleaved format. This is used to maintain single-image performance and accommodate cross-task transfer.
+		</li>
+		
     </ul>
-	<h1>M4-Instruct</h1>
+	<h1>M4-Instruct: Training</h1>
     <p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
-    <p>Most datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>, as highlighted in yellow.</p>
+    <p>Most multi-image datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>.</p>
+	<p>For video data, we collect a subset of 255k from LLaVA-Hound, including 240k video QA and 15k video captions. We also include NExT-QA and STAR in our training.</p>
+<p>For 3D data, we collect data 3D from Nuscenes QA, ALFRED, ScanQA, and 3D-LLM.</p>
+<p>For single-image data, we use  40% of original LLaVA-NEXT single-image data.</p>
     
     <figure>
         <img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/data-statistics.png" alt="Data Statistics Figure">
@@ -851,134 +868,11 @@ We observe that the multi-image format can naturally serve as a general data tem
 						<br />
 
 						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Benchmarks</h2>
-
-						<p>
-							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-M4, which covers a variety of existing and newly curated in/out-domain benchmarks. In the table below, we exhibit a summary of average results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
-For our final solution, LLaVA-NeXT-M4 (7B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
-						</p>
-						<style type="text/css">
-							.tg  {border-collapse:collapse;border-spacing:0;}
-							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-							  overflow:hidden;padding:10px 5px;word-break:normal;}
-							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-							.tg .tg-vwde{background-color:#F6F1FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-							.tg .tg-7hqs{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:left;vertical-align:middle}
-							.tg .tg-2pir{background-color:#F8F9FA;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
-							.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-							.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
-							.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
-							</style>
-							
-							<table class="tg"><thead>
-							  <tr>
-								<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Model</span></th>
-								<th class="tg-2bvs" colspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Multi-image</span></th>
-								<th class="tg-2bvs" colspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Multi-frame (video)</span></th>
-								<th class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Multi-view (3D)</span></th>
-							  </tr>
-							  <tr>
-								<th class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">In-domain</span></th>
-								<th class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">Out-domian</span></th>
-								<th class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">In-domain</span></th>
-								<th class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">Out-domian</span></th>
-								<th class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">In-domain</span></th>
-							  </tr></thead>
-							<tbody>
-							  <tr>
-								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Closed-source LMMs</span></td>
-								<td class="tg-7hqs"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.2</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">60.2</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.8</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">37.5</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-k8yq"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-image</span></td>
-								<td class="tg-7hqs"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2pir"><a href="https://tiger-ai-lab.github.io/Mantis/">Mantis-7B</a></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.9</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.9</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2pir"><a href="https://github.com/DCDmllm/Cheetah">VPG-C (7B)</a></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.2</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">41.7</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-frame</span></td>
-								<td class="tg-7hqs"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2pir"><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/">LLaVA-NeXT-Video (7B)</a></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">30.1</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.6</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2pir"><a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID (7B)</a></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">24.7</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">36.1</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-7hqs" colspan="5"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-view</span></td>
-								<td class="tg-7hqs"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2pir"><a href="https://github.com/ZiyuGuo99/Point-Bind_Point-LLM">Point-Bind &amp; Point-LLM</a><span style="color:#3F3F3F;background-color:#F8F9FA"> (13B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.2</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2pir"><a href="https://arxiv.org/pdf/2307.12981">3D-LLM</a><span style="color:#3F3F3F;background-color:#F8F9FA"> (7B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">N/A</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">N/A</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.5</span></td>
-							  </tr>
-							</tbody></table>
-						<br />
-						<h3 id="mi-eval">Section 2.1 Multi-image Evaluation</h3>
-						<p>
-						We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
-As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 surpasses previous open-source models in both in- and out-domain benchmarks. For in-domain evaluation, our model demonstrates significant advantages across various tasks as expected, due to the multi-image instruction tuning with M4-Instruct. For out-domain evaluation, LLaVA-NeXT-M4 also showcases superior generalization capacity within novel scenarios, e.g., comparable to GPT-4V on MathVerse-mv, SciVerse-mv, and BLINK.
-						</p>
-						
 						<details>
-							<br />
 							<summary style="font-weight: bold; font-size: 16px;"
-								>[Fold / Unfold to See detailed multi-image benchmark statistics]</summary
+								>[Fold / Unfold to See Table for detailed multi-image benchmark statistics]</summary
 							>
+							<br />
 							<style type="text/css">
 								.tg  {border-collapse:collapse;border-spacing:0;}
 								.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -1164,7 +1058,20 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 s
 									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.8K</span></td>
 								  </tr>
 								</tbody></table>
+							<br />
 						</details>
+						<p>
+							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-Interleave, which covers a variety of existing and newly curated in/out-domain benchmarks. In the table below, we exhibit a summary of average results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
+For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
+</p>
+
+						
+						<h3 id="mi-eval">Section 2.1 Multi-image Evaluation</h3>
+						<p>
+							As reported in the table, the average multi-image performance of LLaVA-NeXT-Interleave surpasses previous open-source models in both in- and out-domain benchmarks. For in-domain evaluation, our model demonstrates significant advantages across various tasks as expected, due to the multi-image instruction tuning with M4-Instruct. For out-domain evaluation, LLaVA-NeXT-Interleave also showcases superior generalization capacity within novel scenarios, e.g., comparable to GPT-4V on Mantis-Eval and BLINK.
+						</p>
+						
+						
 						<br />
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
@@ -1174,9 +1081,11 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 s
 							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 							.tg .tg-ahkj{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-vwde{background-color:#F6F1FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 							.tg .tg-7hqs{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:left;vertical-align:middle}
 							.tg .tg-2pir{background-color:#F8F9FA;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
 							.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 							.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
 							.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
 							.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
@@ -1303,9 +1212,9 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 s
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">17.1</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">88.8</span></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">80.6</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">87.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">57.78</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">60.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">66.9</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">62.7</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">51.1</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">47.9</span></td>
@@ -1325,12 +1234,31 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 s
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">68</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">38.6</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">33.2</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">38.4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">29.42</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">13.5</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">12.2</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.1</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">41.8</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">33.5</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">VPG-C (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.8</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">27.8</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">15.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">21.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">46.8</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">2.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">57.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">73.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.5</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">24.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">23.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">52.4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">43.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">29.4</span></td>
 							  </tr>
 							  <tr>
 								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Mantis (7B)</span></td>
@@ -1344,31 +1272,12 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 s
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">25.7</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">87.4</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.9</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">45.7</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">48.9</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">39.3</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">27.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">29.3</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">59.5</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">46.4</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.1</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">VPG-C (7B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.2</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">25.5</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">25.9</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">39.2</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">50.9</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.7</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">12.4</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">63.3</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.6</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">41.7</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">39.8</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">42.5</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">51.2</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">44.9</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">30.3</span></td>
 							  </tr>
 							  <tr>
 								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Idefics2 (8B)</span></td>
@@ -1393,48 +1302,69 @@ As reported in the table, the average multi-image performance of LLaVA-NeXT-M4 s
 								<td class="tg-7hqs" colspan="17"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.7</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (0.5B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">21.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">29.7</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">63.9</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">54.8</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">67.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">33.1</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">24.7</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">27.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">45.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">39.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">28.6</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58.6</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.1</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">24.3</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">33.1</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.1</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">84</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">87.5</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.7</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">88.8</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">60.2</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">70.1</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">82.7</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">59.9</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">53.3</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">35.2</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">42.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">32.8</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">31.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">62.7</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">52.6</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.5</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.5</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">33.2</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">78.6</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">88</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.9</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.7</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">91.1</span></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-t1u7"></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (14B)</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">62.3</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">40.5</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">24.5</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">33.3</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">61</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">78.6</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">95</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">59.9</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">76.7</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">91.1</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">44.3</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">33.4</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">32.7</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">66.4</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">52.1</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">37.1</span></td>
 							  </tr>
 							</tbody></table>
 						<h3 id="mf-eval">Section 2.2 Multi-frame Evaluation</h3>
 						<p>
-							For video understanding, we also evaluate our model by two schemes: (1) In-domain Evaluation includes 2 existing video-based benchmarks, i.e., NextQA and Video Detailed Description, which have similar training datasets within M4-Instruct. (2) Out-domain Evaluation involves 2 existing video-based benchmarks, i.e., ActivityNet-QA, and VideoChat-GPT.
-Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive results under two evaluation schemes, even not specifically designed for videos. This indicates the effective temporal understanding and reasoning capabilities of our model across sequential frames.
+							For video understanding, we also evaluate our models on NextQA, MVBench, Video Detailed Description (VDD), ActivityNet-QA, and VideoChat-GPT. For the tasks evaluated by GPT, we follow VideoChat-GPT  to use the same GPT version.	
+						</p>
+						<p>
+							Compared with previous video-based LMMs under similar model size, LLaVA-NeXT-Interleave achieves superior results on many benchmarks, though not specifically designed for video tasks. We also follow LLaVA-Hound to add DPO training after our M4-Instruct training. After adding DPO, our 7B model achieves SOTA performance on VDD and VideoChat-GPT benchmarks, surpassing previous SOTA model LLaVA-NEXT-Video (34B). This demonstrates the effective temporal understanding and reasoning capabilities of our model across sequential frames.
 						</p>
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
@@ -1458,7 +1388,7 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 							<table class="tg"><thead>
 							  <tr>
 								<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Model</span></th>
-								<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NextQA</span><br></th>
+								<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NextQA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(ACC)</span></th>
 								<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">MVBench</span></th>
 								<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ActivityNet-QA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(Acc/Score)</span></th>
 								<th class="tg-1jwe" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Video Detailed Description</span></th>
@@ -1478,48 +1408,9 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 								<td class="tg-7hqs"></td>
 							  </tr>
 							  <tr>
-								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Flamingo</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">45.3</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Gemini Pro</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">49.8</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2pir"><a href="https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/">Gemini Ultra</a></td>
-								<td class="tg-4p8v"></td>
-								<td class="tg-4p8v"></td>
-								<td class="tg-4p8v"></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">52.2</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
-								<td class="tg-t1u7"></td>
-							  </tr>
-							  <tr>
 								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">GPT-4V</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
-								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">4.09</span></td>
@@ -1534,16 +1425,16 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 							  </tr>
 							  <tr>
 								<td class="tg-2pir"><a href="https://arxiv.org/abs/2306.05424">VideoChatGPT</a><span style="text-decoration:underline;color:#00E;background-color:#F8F9FA"> (7B)</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">-</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.2/2.7</span></td>
-								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">-</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.4</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.52</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.62</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">1.98</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.37</span></td>
-								<td class="tg-t1u7"></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.38</span></td>
 							  </tr>
 							  <tr>
 								<td class="tg-2pir"><a href="https://arxiv.org/abs/2311.10122">Video-LLaVA</a><span style="text-decoration:underline;color:#00E;background-color:#F8F9FA"> (7B)</span></td>
@@ -1596,32 +1487,6 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.53</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.6</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.93</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Image (7B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">68</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">49.3/3.9</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.29</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.16</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.13</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.72</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.27</span></td>
-								<td class="tg-t1u7"></td>
-								<td class="tg-t1u7"></td>
-							  </tr>
-							  <tr>
-								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Image (7B)</span></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.5/3.2</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.12</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.05</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.12</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.68</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.37</span></td>
-								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.16</span></td>
-								<td class="tg-t1u7"></td>
 							  </tr>
 							  <tr>
 								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Video (7B)</span></td>
@@ -1679,7 +1544,20 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 								<td class="tg-7hqs" colspan="11"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (0.5B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">45.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.0/2.84</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.25</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.12</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.97</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.62</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.36</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.27</span></td>
+								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.07</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">78.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.1</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.3/3.13</span></td>
@@ -1692,7 +1570,7 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.43</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (14B)</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">79.1</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">54.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.2/3.19</span></td>
@@ -1705,14 +1583,14 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.48</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4-DPO (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave-DPO (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">77.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.3</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.0/3.13</span></td>
 								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.9</span></td>
 								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.99</span></td>
 								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.61</span></td>
-								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">4.23</span></td>
+								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">4.24</span></td>
 								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.19</span></td>
 								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">4.12</span></td>
 								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.83</span></td>
@@ -1720,11 +1598,13 @@ Compared with previous video-based LMMs, LLaVA-NeXT-M4 achieves competitive resu
 							</tbody></table>
 						
 						Note that we calculate the average scores by multiplying a weight of 10 times to the score of Video Detailed Description and VideoChat-GPT.
-						<h3 id="mv-eval">Section 2.1 Multi-view Evaluation</h3>
+						<h3 id="mv-eval">Section 2.3 Multi-view Evaluation (3D)</h3>
 						
 						<p>
-							For 3D perception, we adopt 3 in-domain benchmarks to evaluate the 3D spatial understanding performance of our model, which are 3D-assisted Dialog (5.8K), Task Decomposition (11.7K), ScanQA-val (4.7K), ALFRED (0.1K), and nuScenes VQA (0.1K). The first two tasks are constructed by 3D-LLM.
-Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-NeXT-M4 only accepts multi-view images to interpret the 3D world, attaining significantly higher scores for in-door and out-door scenarios.
+							For 3D perception, we adopt 3 in-domain benchmarks to evaluate the 3D spatial understanding performance of our model, which are 3D-assisted Dialog, Task Decomposition, ScanQA-val, ALFRED, and nuScenes VQA. The first two tasks are constructed by 3D-LLM.	
+						</p>
+						<p>
+							Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-NeXT-Interleave only accepts multi-view images to interpret the 3D world, attaining significantly higher scores for in-door and out-door scenarios.
 						</p>
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
@@ -1736,6 +1616,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 							.tg .tg-7hqs{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:left;vertical-align:middle}
 							.tg .tg-2pir{background-color:#F8F9FA;color:#00E;text-align:center;text-decoration:underline;vertical-align:top}
 							.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 							.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
 							.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
 							.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
@@ -1786,7 +1667,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 							  </tr>
 							  <tr>
 								<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">GPT-4V</span></td>
-								<td class="tg-k8yq"></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.6</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">31.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.4</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.6</span></td>
@@ -1819,7 +1700,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">22.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">39.3</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.8</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">35.7</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">35.7</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1.4</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.4</span></td>
 							  </tr>
@@ -1836,26 +1717,132 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 								<td class="tg-7hqs" colspan="7"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (7B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69.6</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51.4</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.1</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.6</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">79.5</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (0.5B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.0</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">67.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.5</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">29.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">57</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.8</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-M4 (14B)</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">70.6</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.2</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (7B)</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69.3</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51.4</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.6</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (14B)</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">70.6</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.5</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.7</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">62</span></td>
+								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">76.7</span></td>
 							  </tr>
 							</tbody></table>
 
 						<br />
+						<h3 id="mp-eval">Section 2.4 Single-image Evaluation (multi-patch)</h3>
+						<style type="text/css">
+							.tg  {border-collapse:collapse;border-spacing:0;}
+							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+							.tg .tg-yoyy{background-color:#ECE2FE;text-align:left;vertical-align:top}
+							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-c5pg{background-color:#D5F6F2;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-exqc{background-color:#FFF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							.tg .tg-5ge6{background-color:#F2F3F5;text-align:center;vertical-align:top}
+							.tg .tg-ktyi{background-color:#FFF;text-align:left;vertical-align:top}
+							.tg .tg-owtn{background-color:#FFF;color:#3F3F3F;text-align:center;vertical-align:middle}
+							.tg .tg-y6e1{background-color:#D5F6F2;text-align:left;vertical-align:top}
+							.tg .tg-2y23{background-color:#D5F6F2;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+							</style>
+							<table class="tg"><thead>
+							  <tr>
+								<th class="tg-5ge6"><span style="color:#000;background-color:#F2F3F5">Model</span></th>
+								<th class="tg-5ge6"><span style="color:#000;background-color:#F2F3F5">LLM</span></th>
+								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">ai2d</span></th>
+								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">chartqa</span></th>
+								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">docvqa</span></th>
+								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">mme*</span></th>
+								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">scienceqa</span></th>
+								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">pope</span></th>
+								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">Avg</span></th>
+							  </tr></thead>
+							<tbody>
+							  <tr>
+								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
+								<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">0.5B</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">51.65</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">50.16</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">59.13</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">52.83</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">59.96</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">85.36</span></td>
+								<td class="tg-owtn"><span style="color:#3F3F3F;background-color:#FFF">59.8</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">52.2</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">52.2</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">59.2</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">52.00</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">60.6</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">86.78</span></td>
+								<td class="tg-2y23"><span style="font-weight:bold;color:#3F3F3F;background-color:#D5F6F2">60.5</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
+								<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">7B</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">72.73</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">66.28</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">75.57</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">60.96</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">71.1</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">86.9</span></td>
+								<td class="tg-owtn"><span style="color:#3F3F3F;background-color:#FFF">72.3</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">73.9</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">67.16</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">75.7</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">63.53</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">72.63</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">86.75</span></td>
+								<td class="tg-2y23"><span style="font-weight:bold;color:#3F3F3F;background-color:#D5F6F2">73.3</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
+								<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">14B</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">77.49</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">72.12</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">79.96</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">67.68</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">78.88</span></td>
+								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">87.32</span></td>
+								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">77.2</span></td>
+							  </tr>
+							  <tr>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">76.52</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">71.24</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">78.91</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">66.21</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">77.44</span></td>
+								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">87.9</span></td>
+								<td class="tg-c5pg"><span style="color:#3F3F3F;background-color:#D5F6F2">76.4</span></td>
+							  </tr>
+							</tbody></table>
+						<p>
+						We also add 307k of original LLaVA-NEXT single image data, which makes our model capable of doing single-image tasks. We use anyres training for single-image data, which divides an image into multiple patches, forming another multi-image setting. By adding 307k single-image data (40% of original LLaVA-NEXT data), we maintain single-image performance of LLaVA-NEXT. As single-image data is of high quality and contains diverse instructions, adding single-image data also improves the instruction-following ability and enables task transfer from single-image to multi-image, which is demonstrated in our demo and the ablation study).
+						</p>
 
 						<h2 id="section-3-emerging-capbilities">Section 3 - Emerging Capbilities</h2>
 						<h3 id="section-3-emerging-capbilities">Task Transfer from Single-Image to Multi-Image </h3>
@@ -1909,7 +1896,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Please pay attention to the movement of the object from the first image to the second image, then write a HTML code to show this movement.</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
 											<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
 												currentPos += 1;if (currentPos > end) {
 												  currentPos = start;}
@@ -1950,7 +1937,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 									
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> what is fun about the images?</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The humor in these images comes from the anthropomorphized birds engaging in human-like activities and conversations. In the first image, one bird is asking about going to get some fries on the pier, which is a human activity. The second image shows a bird asking about the "culminating result of consciousness," which is a philosophical question rather than a literal one. The third image has a bird expressing its desire to do something with the fries on the pier, again referencing a human activity. The anthropomorphism of the birds adds a layer of humor by attributing human thoughts and desires to animals.</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The humor in these images comes from the anthropomorphized birds engaging in human-like activities and conversations. In the first image, one bird is asking about going to get some fries on the pier, which is a human activity. The second image shows a bird asking about the "culminating result of consciousness," which is a philosophical question rather than a literal one. The third image has a bird expressing its desire to do something with the fries on the pier, again referencing a human activity. The anthropomorphism of the birds adds a layer of humor by attributing human thoughts and desires to animals.</p>
 										</div>
 									</div> 
 								</div>
@@ -2031,7 +2018,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 									
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Help me write a twitter post to describe this video.</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> "Feeling the chill in the air, but the cherry blossoms are a sight to behold! 🌸❄️ Walking down the street, each person bundled up against the winter chill. The snow-covered trees and market stalls add to the serene beauty of this winter wonderland. #CherryBlossoms #WinterWalk #CityScenes".</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> "Feeling the chill in the air, but the cherry blossoms are a sight to behold! 🌸❄️ Walking down the street, each person bundled up against the winter chill. The snow-covered trees and market stalls add to the serene beauty of this winter wonderland. #CherryBlossoms #WinterWalk #CityScenes".</p>
 										 
 									
 										</div>
@@ -2116,11 +2103,11 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
 												<p style="text-align: left;"><b>User</b>  What is the price of iPhone 15 plus?</p>
-												<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
 												<p style="text-align: left;"><b>User</b> Why the dynamic island useful?</p>
-												<p style="text-align: left;"><b>LLaVA-NeXT-M4</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
 											
 											 
 	
@@ -2160,7 +2147,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b>Do you kown who draw these paintings?</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-M4</b>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
 										
 												Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
 
@@ -2197,7 +2184,7 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 
 						<br />
 						<h2 id="section-4-train-techniques">Section 4 - Training Techinques</h2>
-						<p>We illustrate two key techniques for training LLaVA-NeXT-M4 using the M4-Instruct dataset, and provide abalation studies for analysis.</p>
+						<p>We illustrate two key techniques for training LLaVA-NeXT-Interleave using the M4-Instruct dataset, and provide abalation studies for analysis.</p>
 						<h4 id="con">Continue training from single-image model</h2>
 						<p>  To better leverage the pre-trained vision-language alignment, we adopt an off-the-shelf LLaVA-NeXT-Image as the base model, which has gone through the stage-1 558K image-caption pre-training and stage-2 760K single-image fine-tuning. On top of this checkpoint, we perform the multi-image instruction tuning with M4-Instruct.
 							As shown by the ablation below, compared to the 'joint training' based on the stage-1 pre-training, the 'continue training' scheme performs better. In this way, we can inherit the instruction-following capabilities in single-image tasks, and better extend the scope to multi-image, video, and 3D scenarios. </p>
@@ -2208,253 +2195,373 @@ Compared to 3D-LLM and Point-LLM with additional point clouds as input, LLaVA-Ne
 								.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
 								  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 								.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-								.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-y5qo{background-color:#E1EAFF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+								.tg .tg-sw9x{background-color:#E1EAFF;font-weight:bold;text-align:left;vertical-align:middle}
 								.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-6nsv{background-color:#E1EAFF;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-3jjo{background-color:#E1EAFF;text-align:left;vertical-align:middle}
 								.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
 								.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
 								.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-8fyo{background-color:#E1EAFF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 								</style>
 								<table class="tg"><thead>
 								  <tr>
-									<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training Strategy</span></th>
-									<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
-									<th class="tg-mmbt" colspan="9"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
+									<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training Setting</span></th>
+									<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
+									<th class="tg-mmbt" colspan="5"><span style="color:#3F3F3F;background-color:#F8F9FA">Mutl-image</span></th>
+									<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Single-image</span></th>
+									<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">ActivityNet-QA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">(Acc/Score)</span></th>
+									<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">MVBench</span></th>
+									<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Video Detailed Description</span></th>
+									<th class="tg-y5qo" colspan="5"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">VideoChat-GPT</span></th>
 								  </tr>
 								  <tr>
-									<th class="tg-jag0" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
-									<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
-									<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
-								  </tr>
-								  <tr>
-									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span></th>
-									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span></th>
-									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span></th>
-									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span></th>
-									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span></th>
-									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Mantis-Eval</span><br></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">BLINK</span></th>
 									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></th>
 									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ScanQA</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ai2d</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">chartqa</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">docvqa</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">MME*</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">pope</span></th>
+									<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">scienceqa_img</span></th>
+									<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Correctness</span></th>
+									<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Detail</span></th>
+									<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Context</span></th>
+									<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Temporal</span></th>
+									<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Consistency</span></th>
 								  </tr>
 								</thead>
 								<tbody>
 								  <tr>
-									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Joint training for single/multi-image</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Continue training from stage-1 </span></td>
 									<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 0.5B</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">45.44</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">26.2</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">18</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">60.9</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">67.5</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.9</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.8</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">56.2</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">41</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.6</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">47</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">54</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">27.7</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">46.34</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.32</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">47.5</span></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">47.08</span></td>
+									<td class="tg-k8yq"></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.4</span></td>
+									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">44.7/2.17</span></td>
+									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">43</span></td>
+									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.96</span></td>
+									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.97</span></td>
+									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.87</span></td>
+									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.49</span></td>
+									<td class="tg-sw9x"><span style="font-weight:bold;background-color:#E1EAFF">2.42</span></td>
+									<td class="tg-3jjo"><span style="background-color:#E1EAFF">3.14</span></td>
 								  </tr>
 								  <tr>
-									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Continue training from single-image model</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">48.66</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">27.8</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">33.1</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">41</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">62.4</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">65</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">65.7</span></td>
-									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">44.9</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">49.4</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Continue training from stage-2 </span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">45.6</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">39.2</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">67.8</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">29.3</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52.2</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52.24</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">59.23</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">86.8</span></td>
+									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">60.63</span></td>
+									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">48.0/2.84</span></td>
+									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">45.6</span></td>
+									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.25</span></td>
+									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.12</span></td>
+									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">2.97</span></td>
+									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.62</span></td>
+									<td class="tg-3jjo"><span style="background-color:#E1EAFF">2.36</span></td>
+									<td class="tg-sw9x"><span style="font-weight:bold;background-color:#E1EAFF">3.27</span></td>
 								  </tr>
 								</tbody></table>
 								
 								<h4 id="mix">Mix training for in-the-front and interleaved formats</h2>
-								<p>  For interleaved multi-image input, we have two format choices for the positions of "<image>" placeholders during training. The first is to place all the "<image>" tokens in front of the text, aligning with the format in single-image model but losing interleaved information. The second preserves the interleaved instruction and extends models to this new data format.
-									The below ablation indicates that mixing two strategies during training leads to higher performance in both two inference schemes, which provides more flexibility for multi-image input format by users.</p>
-							
-									<style type="text/css">
-										.tg  {border-collapse:collapse;border-spacing:0;}
-										.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-										  overflow:hidden;padding:10px 5px;word-break:normal;}
-										.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-										  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-										.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-										.tg .tg-jag0{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
-										.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-										.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
-										.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
-										.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
-										</style>
-										<table class="tg"><thead>
-										  <tr>
-											<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
-											<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Inference</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
-											<th class="tg-2bvs" rowspan="3"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
-											<th class="tg-mmbt" colspan="9"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
-										  </tr>
-										  <tr>
-											<th class="tg-jag0" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
-											<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
-											<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
-										  </tr>
-										  <tr>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span></th>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span></th>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span></th>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span></th>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span></th>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span></th>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></th>
-											<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></th>
-										  </tr>
-										</thead>
-										<tbody>
-										  <tr>
-											<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
-											<td class="tg-mmbt" rowspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.69</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">30.5</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.8</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71.2</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">90.5</span></td>
-										  </tr>
-										  <tr>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">65.14</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">32.8</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.6</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">72.8</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">84.5</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">75.3</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">90.6</span></td>
-										  </tr>
-										  <tr>
-											<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">66.16</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.9</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.8</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">54</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">73.4</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">79</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">84.7</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">91.5</span></td>
-										  </tr>
-										  <tr>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">61.68</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">29</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.1</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71.2</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.5</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">68.7</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71.8</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">90.1</span></td>
-										  </tr>
-										  <tr>
-											<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Mix format</span></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">67.38</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.5</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">38.3</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">59</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.2</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">82</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">84.6</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">76.9</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">91.5</span></td>
-										  </tr>
-										  <tr>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">67.00</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.5</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.9</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">75.8</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">81</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">82.9</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.3</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">91.6</span></td>
-										  </tr>
-										</tbody></table>
-								<h4 id="pool"> Training strategy comparison on video (Pooling vs not pooling)</h2>
-									<p>Observation: not pooling delivers better performance than pooling. </p>
-									<style type="text/css">
-										.tg  {border-collapse:collapse;border-spacing:0;}
-										.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-										  overflow:hidden;padding:10px 5px;word-break:normal;}
-										.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-										  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-										.tg .tg-vwde{background-color:#F6F1FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-										.tg .tg-39pb{background-color:#F2F3F5;color:#3F3F3F;text-align:center;vertical-align:middle}
-										.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-										.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
-										.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
-										.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
-										.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
-										.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
-										</style>
-										<table class="tg"><thead>
-										  <tr>
-											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Train Setting</span></th>
-											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference Setting</span></th>
-											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference #frames</span></th>
-											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Data</span></th>
-											<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">LLM</span></th>
-											<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Video Detailed Description</span></th>
-											<th class="tg-1jwe" colspan="5"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">VideoChat-GPT</span></th>
-										  </tr>
-										  <tr>
-											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Correctness</span></th>
-											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Detail</span></th>
-											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Context</span></th>
-											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Temporal</span></th>
-											<th class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Consistency</span></th>
-										  </tr></thead>
-										<tbody>
-										  <tr>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">32</span></td>
-											<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">ShareGPTVideo-Caption+QA(255K)</span></td>
-											<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
-											<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">3.21</span></td>
-											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.32</span></td>
-											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.19</span></td>
-											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.74</span></td>
-											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">2.6</span></td>
-											<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.4</span></td>
-										  </tr>
-										  <tr>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">10</span></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">3.46</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.47</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.27</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.87</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">2.74</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.61</span></td>
-										  </tr>
-										  <tr>
-											<td class="tg-mmbt"></td>
-											<td class="tg-mmbt"></td>
-											<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">16</span></td>
-											<td class="tg-mmbt"></td>
-											<td class="tg-mmbt"></td>
-											<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">3.46</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.43</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.26</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.85</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">2.64</span></td>
-											<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">3.61</span></td>
-										  </tr>
-										</tbody></table>
+								<p>  
+									For interleaved multi-image input, we have two format choices for the positions of &lt;image&gt; placeholders during training. The first is to place all the &lt;image&gt; tokens in front of the text, aligning with the format in single-image model but losing interleaved information. The second preserves the interleaved instruction and extends models to this new data format.
+								</p>
+								<p>
+									In the below ablation, we train on the multi-image data with different formats. The results indicate that mixing two strategies during training leads to higher performance in both two inference schemes, which provides more flexibility for multi-image input format by users.
+								</p>
+								<style type="text/css">
+									.tg  {border-collapse:collapse;border-spacing:0;}
+									.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  overflow:hidden;padding:10px 5px;word-break:normal;}
+									.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+									.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+									.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+									</style>
+									<table class="tg"><thead>
+									  <tr>
+										<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
+										<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Inference</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
+										<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
+										<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
+									  </tr>
+									  <tr>
+										<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Avg</span></th>
+										<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span></th>
+										<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span></th>
+										<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span></th>
+										<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span></th>
+										<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></th>
+									  </tr></thead>
+									<tbody>
+									  <tr>
+										<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+										<td class="tg-mmbt" rowspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.88</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.8</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">30.5</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">70.1</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">54.27</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.6</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">32.8</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.65</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">75.3</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.38</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.8</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.9</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">54</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.2</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.35</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.1</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">29</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">72.85</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71.8</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Mix format</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">56.96</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">38.3</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.5</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">59</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">78.1</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">76.9</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.62</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.9</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">32.5</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">78.4</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.3</span></td>
+									  </tr>
+									</tbody></table>
+									
+								<h4 id="pool"> Training strategy comparison on video (Pooling vs not pooling)</h4>
+								<p>
+									In this ablation, we study the impact of image token pooling. We train and infer our model under two settings: pooling to 1/4 and not pooling with ShareGPTVideo-Caption+QA(255K) data. Pooling to a 1/4 setting is similar to LLaVA-NEXT-Video, which uses the pooling technique to tradeoff between the number of image tokens and the number of frames. In our experiment, we find that not pooling yields better performance under similar #image tokens. 
+								</p>
+								<p>
+									During training, we sample 10 frames for videos. In this table, we also observe that adding more frames (from 10 to 16) during inference improves performance.
+								</p>
+								<style type="text/css">
+									.tg  {border-collapse:collapse;border-spacing:0;}
+									.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  overflow:hidden;padding:10px 5px;word-break:normal;}
+									.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+									.tg .tg-y5qo{background-color:#E1EAFF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+									.tg .tg-39pb{background-color:#F2F3F5;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									.tg .tg-6nsv{background-color:#E1EAFF;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+									.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-8fyo{background-color:#E1EAFF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									</style>
+									<table class="tg"><thead>
+									  <tr>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Train Setting</span></th>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference Setting</span></th>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference #frames</span></th>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5"># Image tokens</span></th>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">LLM</span></th>
+										<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ActivityNet-QA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(Acc/Score)</span></th>
+										<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Avg</span></th>
+										<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Video Detailed Description</span></th>
+										<th class="tg-y5qo" colspan="5"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">VideoChat-GPT</span></th>
+									  </tr>
+									  <tr>
+										<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Correctness</span></th>
+										<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Detail</span></th>
+										<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Context</span></th>
+										<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Temporal</span></th>
+										<th class="tg-y5qo"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Consistency</span></th>
+									  </tr></thead>
+									<tbody>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">40</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">40x729x1/4=10x729</span></td>
+										<td class="tg-mmbt" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.75/3.53</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.35</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.38</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.46</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.25</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.87</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.59</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.57</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">64</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">64x729x1/4=16x729</span></td>
+										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.7/3.53</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.33</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.38</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.45</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.23</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.86</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.49</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.55</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">10</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">10x729</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52.9/3.48</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.38</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.46</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.43</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.26</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.85</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.64</span></td>
+										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.61</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Not Pooling</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">16</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">16x729</span></td>
+										<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">54.4/3.51</span></td>
+										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.41</span></td>
+										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.46</span></td>
+										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.48</span></td>
+										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.28</span></td>
+										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.87</span></td>
+										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">2.74</span></td>
+										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.62</span></td>
+									  </tr>
+									</tbody></table>
+								<h4 id="add_data"> - Effects of adding more tasks and data</h4>
+								<p>
+								To study the impact of adding more data, we conduct experiments under different data settings and evaluate the video benchmark. As we gradually add more data, performance consistently improves.
+								</p>
+								<style type="text/css">
+									.tg  {border-collapse:collapse;border-spacing:0;}
+									.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  overflow:hidden;padding:10px 5px;word-break:normal;}
+									.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+									.tg .tg-i9c1{background-color:#ECE2FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-p7dq{background-color:#D9F5D6;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									.tg .tg-39pb{background-color:#F2F3F5;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-zqtv{background-color:#D9F5D6;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-q8q6{background-color:#ECE2FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+									.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-wufi{background-color:#ECE2FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									</style>
+									<table class="tg"><thead>
+									  <tr>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">LLM</span></th>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Data</span></th>
+										<th class="tg-zqtv" rowspan="2"><span style="color:#3F3F3F;background-color:#D9F5D6">Next-QA</span></th>
+										<th class="tg-i9c1" rowspan="2"><span style="color:#3F3F3F;background-color:#ECE2FE">Avg</span></th>
+										<th class="tg-q8q6" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Video Detailed Description</span></th>
+										<th class="tg-q8q6" colspan="5"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">VideoChat-GPT</span></th>
+									  </tr>
+									  <tr>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Correctness</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Detail</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Context</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Temporal</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Consistency</span></th>
+									  </tr></thead>
+									<tbody>
+									  <tr>
+										<td class="tg-mmbt" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video data</span></td>
+										<td class="tg-zqtv"><span style="color:#3F3F3F;background-color:#D9F5D6">42.60</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.40</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.46</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.47</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.27</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.87</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">2.74</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.61</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + single-image </span></td>
+										<td class="tg-zqtv"><span style="color:#3F3F3F;background-color:#D9F5D6">67.70</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.40</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.49</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.46</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.3</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.85</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">2.71</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.6</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + multi-image </span></td>
+										<td class="tg-zqtv"><span style="color:#3F3F3F;background-color:#D9F5D6">77.70</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.42</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.5</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.5</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.31</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.9</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">2.7</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.63</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + multi-image + single-image</span></td>
+										<td class="tg-p7dq"><span style="font-weight:bold;color:#3F3F3F;background-color:#D9F5D6">78.20</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.45</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.58</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.5</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.27</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.87</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">2.77</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.68</span></td>
+									  </tr>
+									</tbody></table>
+
+
+
 
 								
 						<h2>Reference</h2>
