@@ -159,14 +159,12 @@
 								</li>
 								<li>
 									<a href="#section-3-emerging-capbilities">Section 3 - Emerging Capabilities</a></li>
-									<!-- <ul>
-										<li><a href="#image-editing">Section 3.1 - Image Editing</a></li>
-										<li>
-											<a href="#multi-video"
-												>Section 3.2 - Multi Video</a
-											>
-										</li>
-									</ul> -->
+									<ul>
+										<li><a href="#section-31">Task Transfer between Single-Image and Multi-Image</a></li>
+										<li><a href="#section-32">>Task Transfer between Image and Video</a></li>
+										<li><a href="#section-33">Real-World Applications</a></li>
+										
+									</ul>
 									<li>
 									<a href="#section-4-train-techniques">Section 4 - Training Techniques</a>
 									
@@ -1710,7 +1708,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								</p>
 						</details>
 						<h2 id="section-3-emerging-capbilities">Section 3 - Emerging Capbilities</h2>
-						<h3 id="section-3-emerging-capbilities">Task Transfer between Single-Image and Multi-Image </h3>
+						<h3 id="section-31">Task Transfer between Single-Image and Multi-Image </h3>
 						<p>Multi-image coding: Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
 						</p>
 						<p>
@@ -1843,7 +1841,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						</div>
 						<br/>
 
-						<h3 id="section-3-emerging-capbilities">Task Transfer between Image and Video </h3>
+						<h3 id="section-32">Task Transfer between Image and Video </h3>
 						<p>
 							 Multi-video difference: All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
 						</p>
@@ -1925,7 +1923,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 							</script>
 						</div>
 						<br/>
-						<h3 id="section-3-emerging-capbilities">Real-World Applications </h3>
+						<h3 id="section-33">Real-World Applications </h3>
 						<p>
 							PPT summarization and QA: The model can summarize and retrieve information from multiple images.
 						</p>
