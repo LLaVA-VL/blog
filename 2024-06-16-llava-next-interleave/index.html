@@ -1767,6 +1767,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Please pay attention to the movement of the object from the first image to the second image, then write a HTML code to show this movement.</p>
 										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
+											<!-- blog_new/assets/images/llava-m4/code_screenshot.png -->
+											<p></p>
+											<img src="/blog_new/assets/images/llava-m4/code_screenshot.png" alt="Image 1" style="width: 50%; height: auto;">
+											<p></p>
 											<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
 												currentPos += 1;if (currentPos > end) {
 												  currentPos = start;}
