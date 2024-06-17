@@ -161,7 +161,7 @@
 									<a href="#section-3-emerging-capbilities">Section 3 - Emerging Capabilities</a></li>
 									<ul>
 										<li><a href="#section-31">Task Transfer between Single-Image and Multi-Image</a></li>
-										<li><a href="#section-32">>Task Transfer between Image and Video</a></li>
+										<li><a href="#section-32">Task Transfer between Image and Video</a></li>
 										<li><a href="#section-33">Real-World Applications</a></li>
 										
 									</ul>
@@ -1768,17 +1768,17 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 											<!-- blog_new/assets/images/llava-m4/code_screenshot.png -->
 											<p></p>
 											<img src="/blog/assets/images/llava-m4/code_screenshot.png" alt="Image 1" style="width: 50%; height: auto;">
-											<p></p>
-											<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
-												currentPos += 1;if (currentPos > end) {
-												  currentPos = start;}
-												animatedObject.style.transform = `translateX(${currentPos}px)`;}, 50);setTimeout(() => {clearInterval(intervalId);}, 2000);</script></body></html>
+											
+						
 											This code will create an animation where the red object moves horizontally from left to right. The animation is set to last 2 seconds with an ease-in-out timing function. The object's width and height are set to 100 pixels, and the background color is red.
 											The animation is applied using the @keyframes rule, which defines the keyframes for the animation. The animation property on the object sets the animation to use the move keyframe defined earlier.
 											In the JavaScript part, we maintain a variable currentPos that keeps track of the current position of the object. We use setInterval to animate the object's movement, updating its position by 1 pixel every 5 milliseconds. After 2 seconds, we clear the interval id to stop the animation.
 											Remember to adjust the keyframes to match the exact movement you want to achieve.
-
 											</p>
+											<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
+												currentPos += 1;if (currentPos > end) {
+												  currentPos = start;}
+												animatedObject.style.transform = `translateX(${currentPos}px)`;}, 50);setTimeout(() => {clearInterval(intervalId);}, 2000);</script></body></html>
 												
 	
 										</div>
@@ -2362,7 +2362,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									  </tr>
 									</tbody></table>
 								
-								<h4 id="add_data"> - Effects of adding more tasks and data</h4>
+								<h4 id="add_data"> Effects of adding more tasks and data</h4>
 								<p>
 								To study the impact of adding more data, we conduct experiments under different data settings and evaluate the video benchmark. As we gradually add more data, performance consistently improves.
 								</p>
