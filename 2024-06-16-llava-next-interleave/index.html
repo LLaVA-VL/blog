@@ -1609,7 +1609,11 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 							</tbody></table>
 
 						<br />
-						<h3 id="mp-eval">Section 2.4 Single-image Evaluation (multi-patch)</h3>
+						<details>
+							<summary style="font-weight: bold; font-size: 16px;"
+								>[Fold / Unfold to See Single-image Evaluation (multi-patch)]</summary
+							>
+							<h3 id="mp-eval">Single-image Evaluation (multi-patch)</h3>
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
 							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -1703,10 +1707,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-c5pg"><span style="color:#3F3F3F;background-color:#D5F6F2">76.4</span></td>
 							  </tr>
 							</tbody></table>
-						<p>
-						We also add 307k of original LLaVA-NEXT single image data, which makes our model capable of doing single-image tasks. We use anyres training for single-image data, which divides an image into multiple patches, forming another multi-image setting. By adding 307k single-image data (40% of original LLaVA-NEXT data), we maintain single-image performance of LLaVA-NEXT. As single-image data is of high quality and contains diverse instructions, adding single-image data also improves the instruction-following ability and enables task transfer from single-image to multi-image, which is demonstrated in our demo and the ablation study).
-						</p>
-
+							<p>
+								We also add 307k of original LLaVA-NEXT single image data, which makes our model capable of doing single-image tasks. We use anyres training for single-image data, which divides an image into multiple patches, forming another multi-image setting. By adding 307k single-image data (40% of original LLaVA-NEXT data), we maintain single-image performance of LLaVA-NEXT. As single-image data is of high quality and contains diverse instructions, adding single-image data also improves the instruction-following ability and enables task transfer from single-image to multi-image, which is demonstrated in our demo and the ablation study).
+								</p>
+						</details>
 						<h2 id="section-3-emerging-capbilities">Section 3 - Emerging Capbilities</h2>
 						<h3 id="section-3-emerging-capbilities">Task Transfer between Single-Image and Multi-Image </h3>
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
