@@ -849,8 +849,8 @@ We observe that the image-text interleaved format can naturally serve as a gener
 							
 							</div>
 						<br />
+						<h3>Multi-Image Benchmark</h3>
 
-						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Results</h2>
 						<details>
 							<summary style="font-weight: bold; font-size: 16px;"
 								>[Fold / Unfold to See Table for detailed multi-image benchmark statistics]</summary
@@ -1043,6 +1043,13 @@ We observe that the image-text interleaved format can naturally serve as a gener
 								</tbody></table>
 							<br />
 						</details>
+						We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
+						<figure>
+							<img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Benchmark Statistics Figure">
+							<figcaption>Detailed data statistics for multi-image benchmarks.</figcaption>
+						</figure>
+						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Results</h2>
+						
 						<p>
 							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-Interleave, which covers a variety of existing and newly curated in/out-domain benchmarks. In the table below, we exhibit a summary of average results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
 For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
