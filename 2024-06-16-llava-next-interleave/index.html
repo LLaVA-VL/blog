@@ -1055,14 +1055,11 @@ We observe that the image-text interleaved format can naturally serve as a gener
 For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
 </p>
 
-						
-						<h3 id="mi-eval">Section 2.1 Multi-image Evaluation</h3>
+						<h3 id="mi-eval">Multi-image Evaluation</h3>
 						<p>
 							As reported in the table, the average multi-image performance of LLaVA-NeXT-Interleave surpasses previous open-source models in both in- and out-domain benchmarks. For in-domain evaluation, our model demonstrates significant advantages across various tasks as expected, due to the multi-image instruction tuning with M4-Instruct. For out-domain evaluation, LLaVA-NeXT-Interleave also showcases superior generalization capacity within novel scenarios, e.g., comparable to GPT-4V on Mantis-Eval and BLINK.
 						</p>
 						
-						
-						<br />
 						<style type="text/css">
 							.tg  {border-collapse:collapse;border-spacing:0;}
 							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -1089,10 +1086,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Out-domain Evaluation</span></th>
 							  </tr>
 							  <tr>
-								<th class="tg-jag0" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
+								<th class="tg-jag0" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Avg</span></th>
 								<th class="tg-mmbt" colspan="7"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
 								<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
-								<th class="tg-ahkj" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Average</span></th>
+								<th class="tg-ahkj" rowspan="2"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Avg</span></th>
 								<th class="tg-mmbt" colspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Newly Curated Benchmarks</span></th>
 								<th class="tg-mmbt" colspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Existing Benchmarks</span></th>
 							  </tr>
@@ -1194,10 +1191,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.1</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-7hqs" colspan="17"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
+								<td class="tg-7hqs" colspan="17"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models: LLaVA-NeXT-Interleave</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (0.5B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA"> 0.5B</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">43.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">34.3</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">21.6</span></td>
@@ -1216,7 +1213,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">28.6</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA"> 7B</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58.6</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.1</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">24.3</span></td>
@@ -1235,7 +1232,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">34.5</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">14B</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">62.3</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">40.5</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">24.5</span></td>
@@ -1254,7 +1251,8 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-vwde"><span style="font-weight:bold;color:#3F3F3F;background-color:#F6F1FE">37.1</span></td>
 							  </tr>
 							</tbody></table>
-						<h3 id="mf-eval">Section 2.2 Multi-frame Evaluation</h3>
+						
+						<h3 id="mf-eval">Multi-frame Evaluation</h3>
 						<p>
 							For video understanding, we also evaluate our models on NextQA, MVBench, Video Detailed Description (VDD), ActivityNet-QA, and VideoChat-GPT. For the tasks evaluated by GPT, we follow VideoChat-GPT  to use the same GPT version.	
 						</p>
@@ -1422,10 +1420,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.77</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-7hqs" colspan="11"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
+								<td class="tg-7hqs" colspan="11"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models: LLaVA-NeXT-Interleave</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (0.5B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA"> (0.5B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.5</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">45.6</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.0/2.84</span></td>
@@ -1438,7 +1436,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.07</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA"> (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">78.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.1</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.3/3.13</span></td>
@@ -1451,7 +1449,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.43</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">(14B)</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">79.1</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">54.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">56.2/3.19</span></td>
@@ -1464,7 +1462,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">3.48</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave-DPO (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">DPO (7B)</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">77.9</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.3</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">55.0/3.13</span></td>
@@ -1479,7 +1477,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 							</tbody></table>
 						
 						Note that we calculate the average scores by multiplying a weight of 10 times to the score of Video Detailed Description and VideoChat-GPT.
-						<h3 id="mv-eval">Section 2.3 Multi-view Evaluation (3D)</h3>
+						<h3 id="mv-eval">Multi-view Evaluation (3D)</h3>
 						
 						<p>
 							For 3D perception, we adopt 3 in-domain benchmarks to evaluate the 3D spatial understanding performance of our model, which are 3D-assisted Dialog, Task Decomposition, ScanQA-val, ALFRED, and nuScenes VQA. The first two tasks are constructed by 3D-LLM.	
@@ -1508,7 +1506,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
 							  </tr>
 							  <tr>
-								<th class="tg-jag0"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Average</span></th>
+								<th class="tg-jag0"><span style="font-weight:bold;font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Avg</span></th>
 								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">3D-assisted Dialogue</span></th>
 								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Task Decomposition</span></th>
 								<th class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ScanQA (val)</span></th>
@@ -1577,10 +1575,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">46.2</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-7hqs" colspan="7"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models</span></td>
+								<td class="tg-7hqs" colspan="7"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Our Models: LLaVA-NeXT-Interleave</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (0.5B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA"> 0.5B</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">53.0</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">67.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.5</span></td>
@@ -1589,7 +1587,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">62.8</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (7B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">7B</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">58.2</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">69.3</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">51.4</span></td>
@@ -1598,7 +1596,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.5</span></td>
 							  </tr>
 							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave (14B)</span></td>
+								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">14B</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">59.2</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">70.6</span></td>
 								<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52.2</span></td>
@@ -1614,105 +1612,110 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								>[Fold / Unfold to See Single-image Evaluation (multi-patch)]</summary
 							>
 							<h3 id="mp-eval">Single-image Evaluation (multi-patch)</h3>
-						<style type="text/css">
-							.tg  {border-collapse:collapse;border-spacing:0;}
-							.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-							  overflow:hidden;padding:10px 5px;word-break:normal;}
-							.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-							  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-							.tg .tg-yoyy{background-color:#ECE2FE;text-align:left;vertical-align:top}
-							.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-							.tg .tg-c5pg{background-color:#D5F6F2;color:#3F3F3F;text-align:center;vertical-align:middle}
-							.tg .tg-exqc{background-color:#FFF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-							.tg .tg-5ge6{background-color:#F2F3F5;text-align:center;vertical-align:top}
-							.tg .tg-ktyi{background-color:#FFF;text-align:left;vertical-align:top}
-							.tg .tg-owtn{background-color:#FFF;color:#3F3F3F;text-align:center;vertical-align:middle}
-							.tg .tg-y6e1{background-color:#D5F6F2;text-align:left;vertical-align:top}
-							.tg .tg-2y23{background-color:#D5F6F2;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-							</style>
-							<table class="tg"><thead>
-							  <tr>
-								<th class="tg-5ge6"><span style="color:#000;background-color:#F2F3F5">Model</span></th>
-								<th class="tg-5ge6"><span style="color:#000;background-color:#F2F3F5">LLM</span></th>
-								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">ai2d</span></th>
-								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">chartqa</span></th>
-								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">docvqa</span></th>
-								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">mme*</span></th>
-								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">scienceqa</span></th>
-								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">pope</span></th>
-								<th class="tg-yoyy"><span style="color:#000;background-color:#ECE2FE">Avg</span></th>
-							  </tr></thead>
-							<tbody>
-							  <tr>
-								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
-								<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">0.5B</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">51.65</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">50.16</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">59.13</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">52.83</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">59.96</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">85.36</span></td>
-								<td class="tg-owtn"><span style="color:#3F3F3F;background-color:#FFF">59.8</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">52.2</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">52.2</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">59.2</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">52.00</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">60.6</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">86.78</span></td>
-								<td class="tg-2y23"><span style="font-weight:bold;color:#3F3F3F;background-color:#D5F6F2">60.5</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
-								<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">7B</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">72.73</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">66.28</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">75.57</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">60.96</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">71.1</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">86.9</span></td>
-								<td class="tg-owtn"><span style="color:#3F3F3F;background-color:#FFF">72.3</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">73.9</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">67.16</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">75.7</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">63.53</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">72.63</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">86.75</span></td>
-								<td class="tg-2y23"><span style="font-weight:bold;color:#3F3F3F;background-color:#D5F6F2">73.3</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
-								<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">14B</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">77.49</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">72.12</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">79.96</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">67.68</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">78.88</span></td>
-								<td class="tg-ktyi"><span style="color:#000;background-color:#FFF">87.32</span></td>
-								<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">77.2</span></td>
-							  </tr>
-							  <tr>
-								<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">76.52</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">71.24</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">78.91</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">66.21</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">77.44</span></td>
-								<td class="tg-y6e1"><span style="color:#000;background-color:#D5F6F2">87.9</span></td>
-								<td class="tg-c5pg"><span style="color:#3F3F3F;background-color:#D5F6F2">76.4</span></td>
-							  </tr>
-							</tbody></table>
+							<style type="text/css">
+								.tg  {border-collapse:collapse;border-spacing:0;}
+								.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+								  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+								.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-ktng{background-color:#ECE2FE;text-align:center;vertical-align:top}
+								.tg .tg-c5pg{background-color:#D5F6F2;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-exqc{background-color:#FFF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								.tg .tg-5ge6{background-color:#F2F3F5;text-align:center;vertical-align:top}
+								.tg .tg-7yig{background-color:#FFF;text-align:center;vertical-align:top}
+								.tg .tg-owtn{background-color:#FFF;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-q7s7{background-color:#D5F6F2;text-align:center;vertical-align:top}
+								.tg .tg-2y23{background-color:#D5F6F2;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+								</style>
+								<table class="tg"><thead>
+								  <tr>
+									<th class="tg-5ge6"><span style="color:#000;background-color:#F2F3F5">Model</span></th>
+									<th class="tg-5ge6"><span style="color:#000;background-color:#F2F3F5">LLM</span></th>
+									<th class="tg-ktng"><span style="color:#000;background-color:#ECE2FE">ai2d</span></th>
+									<th class="tg-ktng"><span style="color:#000;background-color:#ECE2FE">chartqa</span></th>
+									<th class="tg-ktng"><span style="color:#000;background-color:#ECE2FE">docvqa</span></th>
+									<th class="tg-ktng"><span style="color:#000;background-color:#ECE2FE">mme*</span></th>
+									<th class="tg-ktng"><span style="color:#000;background-color:#ECE2FE">scienceqa</span></th>
+									<th class="tg-ktng"><span style="color:#000;background-color:#ECE2FE">pope</span></th>
+									<th class="tg-ktng"><span style="color:#000;background-color:#ECE2FE">Avg</span></th>
+								  </tr></thead>
+								<tbody>
+								  <tr>
+									<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
+									<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">0.5B</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">51.65</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">50.16</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">59.13</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">52.83</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">59.96</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">85.36</span></td>
+									<td class="tg-owtn"><span style="color:#3F3F3F;background-color:#FFF">59.8</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">52.2</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">52.2</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">59.2</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">52.00</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">60.6</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">86.78</span></td>
+									<td class="tg-2y23"><span style="font-weight:bold;color:#3F3F3F;background-color:#D5F6F2">60.5</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
+									<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">7B</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">72.73</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">66.28</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">75.57</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">60.96</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">71.1</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">86.9</span></td>
+									<td class="tg-owtn"><span style="color:#3F3F3F;background-color:#FFF">72.3</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">73.9</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">67.16</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">75.7</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">63.53</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">72.63</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">86.75</span></td>
+									<td class="tg-2y23"><span style="font-weight:bold;color:#3F3F3F;background-color:#D5F6F2">73.3</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">LLaVA-NeXT</span></td>
+									<td class="tg-exqc" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">14B</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">77.49</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">72.12</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">79.96</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">67.68</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">78.88</span></td>
+									<td class="tg-7yig"><span style="color:#000;background-color:#FFF">87.32</span></td>
+									<td class="tg-exqc"><span style="font-weight:bold;color:#3F3F3F;background-color:#FFF">77.2</span></td>
+								  </tr>
+								  <tr>
+									<td class="tg-2bvs"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLaVA-NeXT-Interleave</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">76.52</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">71.24</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">78.91</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">66.21</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">77.44</span></td>
+									<td class="tg-q7s7"><span style="color:#000;background-color:#D5F6F2">87.9</span></td>
+									<td class="tg-c5pg"><span style="color:#3F3F3F;background-color:#D5F6F2">76.4</span></td>
+								  </tr>
+								</tbody></table>
 							<p>
 								We also add 307k of original LLaVA-NEXT single image data, which makes our model capable of doing single-image tasks. We use anyres training for single-image data, which divides an image into multiple patches, forming another multi-image setting. By adding 307k single-image data (40% of original LLaVA-NEXT data), we maintain single-image performance of LLaVA-NEXT. As single-image data is of high quality and contains diverse instructions, adding single-image data also improves the instruction-following ability and enables task transfer from single-image to multi-image, which is demonstrated in our demo and the ablation study).
 								</p>
 						</details>
 						<h2 id="section-3-emerging-capbilities">Section 3 - Emerging Capbilities</h2>
 						<h3 id="section-3-emerging-capbilities">Task Transfer between Single-Image and Multi-Image </h3>
+						<p>Multi-image coding: Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
+						</p>
+						<p>
+							What is fun about the images: The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
+						</p>
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 							<style>
 								.slider-container {
@@ -1837,7 +1840,12 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						<br/>
 
 						<h3 id="section-3-emerging-capbilities">Task Transfer between Image and Video </h3>
-						
+						<p>
+							 Multi-video difference: All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
+						</p>
+						<p>
+							Twitter post for video: The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
+						</p>
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 							<style>
 								.slider-container {
@@ -1914,6 +1922,18 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						</div>
 						<br/>
 						<h3 id="section-3-emerging-capbilities">Real-World Applications </h3>
+						<p>
+							PPT summarization and QA: The model can summarize and retrieve information from multiple images.
+						</p>
+						<p>
+							 Painting styles/Category difference: The model generalizes to recognize artists' painting styles and tell different categories.
+						</p>
+						<p>
+							Image editing: The model can be used to create image editing prompts for image generation.
+						</p>
+						<p>
+							Multi-doc QA: The model can summarize the information of multiple documents and provide comparisons for different documents.
+						</p>
 
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 							<style>
@@ -2063,19 +2083,18 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 								.tg .tg-2bvs{background-color:#F8F9FA;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 								.tg .tg-y5qo{background-color:#E1EAFF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
-								.tg .tg-sw9x{background-color:#E1EAFF;font-weight:bold;text-align:left;vertical-align:middle}
 								.tg .tg-4p8v{background-color:#F0FBEF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 								.tg .tg-6nsv{background-color:#E1EAFF;color:#3F3F3F;text-align:center;vertical-align:middle}
-								.tg .tg-3jjo{background-color:#E1EAFF;text-align:left;vertical-align:middle}
+								.tg .tg-depu{background-color:#E1EAFF;text-align:center;vertical-align:middle}
 								.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
 								.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
 								.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+								.tg .tg-5a6l{background-color:#E1EAFF;font-weight:bold;text-align:center;vertical-align:middle}
 								.tg .tg-8fyo{background-color:#E1EAFF;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
 								</style>
 								<table class="tg"><thead>
 								  <tr>
-									<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training Setting</span></th>
-									<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
+									<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Continue training </span></th>
 									<th class="tg-mmbt" colspan="5"><span style="color:#3F3F3F;background-color:#F8F9FA">Mutl-image</span></th>
 									<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Single-image</span></th>
 									<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">ActivityNet-QA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">(Acc/Score)</span></th>
@@ -2104,8 +2123,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								</thead>
 								<tbody>
 								  <tr>
-									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Continue training from stage-1 </span></td>
-									<td class="tg-mmbt" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 0.5B</span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">from stage-1 </span></td>
 									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">41</span></td>
 									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">37.6</span></td>
 									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">47</span></td>
@@ -2115,7 +2133,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">38.32</span></td>
 									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">47.5</span></td>
 									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">47.08</span></td>
-									<td class="tg-k8yq"></td>
+									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">85.4</span></td>
 									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">59.4</span></td>
 									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">44.7/2.17</span></td>
 									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">43</span></td>
@@ -2123,11 +2141,11 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.97</span></td>
 									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">2.87</span></td>
 									<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.49</span></td>
-									<td class="tg-sw9x"><span style="font-weight:bold;background-color:#E1EAFF">2.42</span></td>
-									<td class="tg-3jjo"><span style="background-color:#E1EAFF">3.14</span></td>
+									<td class="tg-5a6l"><span style="font-weight:bold;background-color:#E1EAFF">2.42</span></td>
+									<td class="tg-depu"><span style="background-color:#E1EAFF">3.14</span></td>
 								  </tr>
 								  <tr>
-									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Continue training from stage-2 </span></td>
+									<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA"> from stage-2 </span></td>
 									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">45.6</span></td>
 									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">39.2</span></td>
 									<td class="tg-4p8v"><span style="font-weight:bold;color:#3F3F3F;background-color:#F0FBEF">52</span></td>
@@ -2145,8 +2163,8 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.12</span></td>
 									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">2.97</span></td>
 									<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.62</span></td>
-									<td class="tg-3jjo"><span style="background-color:#E1EAFF">2.36</span></td>
-									<td class="tg-sw9x"><span style="font-weight:bold;background-color:#E1EAFF">3.27</span></td>
+									<td class="tg-depu"><span style="background-color:#E1EAFF">2.36</span></td>
+									<td class="tg-5a6l"><span style="font-weight:bold;background-color:#E1EAFF">3.27</span></td>
 								  </tr>
 								</tbody></table>
 								
@@ -2173,7 +2191,6 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									  <tr>
 										<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Training</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
 										<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Inference</span><br><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">Setting</span></th>
-										<th class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">LLM</span></th>
 										<th class="tg-mmbt" colspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">In-domain Evaluation</span></th>
 									  </tr>
 									  <tr>
@@ -2188,7 +2205,6 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									  <tr>
 										<td class="tg-2bvs" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F8F9FA">In-the-front format</span></td>
 										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Interleaved format</span></td>
-										<td class="tg-mmbt" rowspan="6"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
 										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.88</span></td>
 										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">36.8</span></td>
 										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">30.5</span></td>
@@ -2273,7 +2289,6 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference Setting</span></th>
 										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Inference #frames</span></th>
 										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5"># Image tokens</span></th>
-										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">LLM</span></th>
 										<th class="tg-sr0x" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">ActivityNet-QA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(Acc/Score)</span></th>
 										<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Avg</span></th>
 										<th class="tg-y5qo" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#E1EAFF">Video Detailed Description</span></th>
@@ -2292,7 +2307,6 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">Pooling 1/4</span></td>
 										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">40</span></td>
 										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">40x729x1/4=10x729</span></td>
-										<td class="tg-mmbt" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
 										<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">52.75/3.53</span></td>
 										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.35</span></td>
 										<td class="tg-6nsv"><span style="color:#3F3F3F;background-color:#E1EAFF">3.38</span></td>
@@ -2345,6 +2359,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<td class="tg-8fyo"><span style="font-weight:bold;color:#3F3F3F;background-color:#E1EAFF">3.62</span></td>
 									  </tr>
 									</tbody></table>
+								
 								<h4 id="add_data"> - Effects of adding more tasks and data</h4>
 								<p>
 								To study the impact of adding more data, we conduct experiments under different data settings and evaluate the video benchmark. As we gradually add more data, performance consistently improves.
@@ -2365,7 +2380,6 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									</style>
 									<table class="tg"><thead>
 									  <tr>
-										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">LLM</span></th>
 										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Data</span></th>
 										<th class="tg-zqtv" rowspan="2"><span style="color:#3F3F3F;background-color:#D9F5D6">Next-QA</span></th>
 										<th class="tg-i9c1" rowspan="2"><span style="color:#3F3F3F;background-color:#ECE2FE">Avg</span></th>
@@ -2381,8 +2395,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 									  </tr></thead>
 									<tbody>
 									  <tr>
-										<td class="tg-mmbt" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Qwen 7B</span></td>
-										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video data</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video</span></td>
 										<td class="tg-zqtv"><span style="color:#3F3F3F;background-color:#D9F5D6">42.60</span></td>
 										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.40</span></td>
 										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.46</span></td>
@@ -2415,7 +2428,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.63</span></td>
 									  </tr>
 									  <tr>
-										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + multi-image + single-image</span></td>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + both</span></td>
 										<td class="tg-p7dq"><span style="font-weight:bold;color:#3F3F3F;background-color:#D9F5D6">78.20</span></td>
 										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.45</span></td>
 										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.58</span></td>
@@ -2426,8 +2439,6 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.68</span></td>
 									  </tr>
 									</tbody></table>
-
-
 
 
 								
