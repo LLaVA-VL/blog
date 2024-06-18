@@ -309,8 +309,9 @@ We observe that the image-text interleaved format can naturally serve as a gener
 						</ul>
 						<h2 id="section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</h2>
 						<!-- <h3 id="section-11">Task Overview</h1> -->
-    <p><strong>Task Overview.<strong/> We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
+    <p><strong>Task Overview.</strong> We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
     <ul>
+		
         <li>
             <strong>Multi-image</strong> scenarios include instructions with single or multiple images, and interleaved text-image input. This setting covers 12 challenging real-world tasks included in our training data, such as spotting the difference, visual storytelling, image editing instruction generation, interleaved multi-image dialogue, multi-image puzzle, low-level multi-image assessment, etc.
         </li>
@@ -630,20 +631,15 @@ We observe that the image-text interleaved format can naturally serve as a gener
 						<br />
 
 						<!-- <h3 id="section-13">Task Examples</h3> -->
-						<p><strong>Task Examples<strong/>We provide examples to illustrate the multi-image/fame/view tasks of M4-Instruct dataset.</p>
-						<details>
-							<br />
-							<summary style="font-weight: bold;"
-								>[Fold / Unfold to See task examples]</summary
-							>
-						<figure>
-							<img src="/blog/assets/images/llava-m4/task_examples.png" alt="Data Statistics Figure">
-							<center><figcaption>Examples of M4-Insutrct Dataset.</figcaption></center>
-						</figure>
-						</details>
-						<h4>More Examples </h3>
+						<p><strong>Task Examples. </strong>We provide examples to illustrate the multi-image/fame/view tasks of M4-Instruct dataset.</p>
+						
+
 							<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 10px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);width: 100%;height: auto;">
+								<div style="position: relative;">
+									<button id="prevBtn1" class="control-button prev-button">Prev</button>
+									<button id="nextBtn1" class="control-button next-button">Next</button>
+								</div>
 								<div class="slider-container">
 									<div class="slider-wrapper" id="sliderWrapper1">
 							
@@ -653,11 +649,11 @@ We observe that the image-text interleaved format can naturally serve as a gener
 												<h4>Multi-Image Scenarios</h4>
 							
 												<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m4/data/dog1.png" alt="Image 1" style="width: 100%; height: auto;">
+													<div >
+														<img src="/blog/assets/images/llava-m4/data/dog1.png" alt="Image 1" style="width: 50%; height: 100%;">
 													</div>
-													<div style="border: 1px solid #000;">
-														<img src="/blog/assets/images/llava-m4/data/dog2.png" alt="Image 2" style="width: 100%; height: auto;">
+													<div >
+														<img src="/blog/assets/images/llava-m4/data/dog2.png" alt="Image 2" style="width: 50%; height: 100%;">
 													</div>
 													
 													
@@ -794,14 +790,15 @@ We observe that the image-text interleaved format can naturally serve as a gener
 										</div> 
 									</div>
 								</div>
-								<div style="position: relative;">
-									<button id="prevBtn1" class="control-button prev-button">Prev</button>
-									<button id="nextBtn1" class="control-button next-button">Next</button>
-								</div>
+								
 							</div>
-
-							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 							
+
+							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 10px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);width: 100%;height: auto;">
+								<div style="position: relative;">
+									<button id="prevBtn2" class="control-button prev-button">Prev</button>
+									<button id="nextBtn2" class="control-button next-button">Next</button>
+								</div>
 								<div class="slider-container">
 									<div class="slider-wrapper" id="sliderWrapper2">
 							
@@ -860,14 +857,14 @@ We observe that the image-text interleaved format can naturally serve as a gener
 										
 									</div>
 								</div>
-								<div style="position: relative;">
-									<button id="prevBtn2" class="control-button prev-button">Prev</button>
-									<button id="nextBtn2" class="control-button next-button">Next</button>
-								</div>
+								
 
 							</div>
-							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-
+							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 10px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);width: 100%;height: auto;">
+								<div style="position: relative;">
+									<button id="prevBtn3" class="control-button prev-button">Prev</button>
+									<button id="nextBtn3" class="control-button next-button">Next</button>
+								</div>
 							
 								<div class="slider-container">
 									<div class="slider-wrapper" id="sliderWrapper3">
@@ -943,219 +940,226 @@ We observe that the image-text interleaved format can naturally serve as a gener
 										
 									</div>
 								</div>
-								<div style="position: relative;">
-									<button id="prevBtn3" class="control-button prev-button">Prev</button>
-									<button id="nextBtn3" class="control-button next-button">Next</button>
-								</div>
+								
 							
 							</div>
 							
 							
 							</div>
 						<br />
+						<details>
+							<br />
+							<summary style="font-weight: bold;"
+								>[Fold / Unfold to see task overview]</summary
+							>
+						<figure>
+							<img src="/blog/assets/images/llava-m4/task_examples.png" alt="Data Statistics Figure">
+							<center><figcaption>Examples of M4-Insutrct Dataset.</figcaption></center>
+						</figure>
+						</details>
 						<h3 id="section-14">LLaVA-Interleave Bench</h3>
 
-						<details>
-							<summary style="font-weight: bold; font-size: 16px;"
-								>[Fold / Unfold to See Table for detailed multi-image benchmark statistics]</summary
-							>
-							<br />
-							<style type="text/css">
-								.tg  {border-collapse:collapse;border-spacing:0;}
-								.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-								  overflow:hidden;padding:10px 5px;word-break:normal;}
-								.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-								  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-								.tg .tg-z0de{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
-								.tg .tg-bu28{background-color:#F2F3F5;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
-								.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
-								.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
-								.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
-								.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
-								</style>
-								<table class="tg"><thead>
-								  <tr>
-									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Task</span></th>
-									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Dataset</span></th>
-									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Scenario</span></th>
-									<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5"># Samples</span></th>
-								  </tr>
-								  <tr>
-								  </tr></thead>
-								<tbody>
-								  <tr>
-									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">In-domain Evaluation - Newly Curated Benchmarks</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x" rowspan="3"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.3K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Spot-the-Diff</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Surveilance</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Birds-to-Words</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Birds</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">CLEVR-Change</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Solids</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x" rowspan="3"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(2K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">HQ-Edit</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Sythentic</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MagicBrush</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.9K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">IEdit</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">AESOP</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">FlintstonesSV</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">PororoSV</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">VIST</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.1K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">COMICS_Dialogue</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">WebQA</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Webpage</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">TQA</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Textbook</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">OCR-VQA</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">OCR</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">DocVQA</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Document</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MIT-States_StateCoherence</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">General</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MIT-States_PropertyCoherence</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">General</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">RecipeQA_ImageCoherence</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Recipe</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">VISION</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Industrial</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Puzzle (1.4K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Raven</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Abstract</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1.4K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">In-domain Evaluation - Existing Benchmarks</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2 (7K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">7K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench (1K)</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Low-level</span></td>
-									<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Out-domain Evaluation - Newly Curated Benchmarks</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MathVerse-mv (0.8K)</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">MathVerse</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Math Diagram</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.8K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">SciVerse-mv (0.5K)</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">SciVerse</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Scientific Diagram</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.5K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Out-domain Evaluation - Existing Benchmarks</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Mantis-Eval (0.2K)</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Mantis-Eval</span><br></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">General</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.2K</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">BLINK (1.9K)</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">BLINK</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">General</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">1.9k</span></td>
-								  </tr>
-								  <tr>
-									<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MMMU-mv (test) (0.8K)</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">MMMU</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Scientific Diagram</span></td>
-									<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.8K</span></td>
-								  </tr>
-								</tbody></table>
-							<br />
-						</details>
+						
 		<div class="container_zh">
 			<div class="text_zh">
 				We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
 			</div>
 			<div class="image_zh">
-				<img style="margin: 0 auto;" width="100%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure">
+				<img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure" >
 			</div>	
 		</div>
-
+		<details>
+			<summary style="font-weight: bold; font-size: 16px;"
+				>[Fold / Unfold to See Table for detailed multi-image benchmark statistics]</summary
+			>
+			<br />
+			<style type="text/css">
+				.tg  {border-collapse:collapse;border-spacing:0;}
+				.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+				  overflow:hidden;padding:10px 5px;word-break:normal;}
+				.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+				  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+				.tg .tg-z0de{color:#3F3F3F;font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+				.tg .tg-bu28{background-color:#F2F3F5;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+				.tg .tg-sr0x{background-color:#F0FBEF;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+				.tg .tg-k8yq{background-color:#F0FBEF;color:#3F3F3F;text-align:center;vertical-align:middle}
+				.tg .tg-1jwe{background-color:#F6F1FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+				.tg .tg-t1u7{background-color:#F6F1FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+				</style>
+				<table class="tg"><thead>
+				  <tr>
+					<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Task</span></th>
+					<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Dataset</span></th>
+					<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5">Scenario</span></th>
+					<th class="tg-bu28" rowspan="2"><span style="font-weight:bold;color:#3F3F3F;background-color:#F2F3F5"># Samples</span></th>
+				  </tr>
+				  <tr>
+				  </tr></thead>
+				<tbody>
+				  <tr>
+					<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">In-domain Evaluation - Newly Curated Benchmarks</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x" rowspan="3"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Spot the Difference</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.3K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Spot-the-Diff</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Surveilance</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Birds-to-Words</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Birds</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">CLEVR-Change</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Solids</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x" rowspan="3"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Image Edit Instruction</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(2K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">HQ-Edit</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Sythentic</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MagicBrush</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.9K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">IEdit</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Story Telling</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">AESOP</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">FlintstonesSV</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">PororoSV</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">VIST</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Visual Cloze</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.1K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">COMICS_Dialogue</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Cartoon</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Text-rich VQA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">WebQA</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Webpage</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">TQA</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Textbook</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">OCR-VQA</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">OCR</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">DocVQA</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Document</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x" rowspan="4"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Multi-image VQA</span><br><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">(0.4K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MIT-States_StateCoherence</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">General</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">MIT-States_PropertyCoherence</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">General</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">RecipeQA_ImageCoherence</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Recipe</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">VISION</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Industrial</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">0.1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Puzzle (1.4K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Raven</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Abstract</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1.4K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">In-domain Evaluation - Existing Benchmarks</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">NLVR2 (7K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">NLVR2</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Realistic</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">7K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-sr0x"><span style="font-style:italic;color:#3F3F3F;background-color:#F0FBEF">Q-Bench (1K)</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Q-Bench</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">Low-level</span></td>
+					<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">1K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Out-domain Evaluation - Newly Curated Benchmarks</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MathVerse-mv (0.8K)</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">MathVerse</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Math Diagram</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.8K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">SciVerse-mv (0.5K)</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">SciVerse</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Scientific Diagram</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.5K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-z0de" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Out-domain Evaluation - Existing Benchmarks</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">Mantis-Eval (0.2K)</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Mantis-Eval</span><br></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">General</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.2K</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">BLINK (1.9K)</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">BLINK</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">General</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">1.9k</span></td>
+				  </tr>
+				  <tr>
+					<td class="tg-1jwe"><span style="font-style:italic;color:#3F3F3F;background-color:#F6F1FE">MMMU-mv (test) (0.8K)</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">MMMU</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">Scientific Diagram</span></td>
+					<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">0.8K</span></td>
+				  </tr>
+				</tbody></table>
+			<br />
+		</details>
 
 						<!-- <figure>
 							<img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Benchmark Statistics Figure">
