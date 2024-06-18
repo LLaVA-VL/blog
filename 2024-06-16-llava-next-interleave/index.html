@@ -116,6 +116,24 @@
 				width: 100%;
 				height: auto;
 			}
+			.video-container {
+				position: relative;
+				width: max-content; /* Adjust width to fit the video */
+			  }
+			  video {
+				display: block; /* Removes bottom margin/gap */
+				width: 100%; /* Responsive video width */
+			  }
+			  .caption {
+				position: absolute;
+				bottom: 0;
+				background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+				color: white;
+				width: 100%;
+				text-align: center;
+				padding: 5px 0; /* Padding for the caption text */
+				box-sizing: border-box;
+			  }
 		</style>
 	</head>
 
@@ -236,7 +254,7 @@
 										<li><a href="#section-33">Real-World Applications</a></li>
 										
 									</ul>
-									
+									<li>
 									<a href="#section-4-train-techniques">Section 4 - Training Techniques</a>
 									
 								</li>
@@ -1897,7 +1915,20 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
 											<!-- blog_new/assets/images/llava-m4/code_screenshot.png -->
 											<p></p>
-											<img src="/blog/assets/images/llava-m4/code_screenshot.png" alt="Image 1" style="width: 50%; height: auto;">
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+											<img src="/blog_new/assets/images/llava-m4/code_screenshot.png" alt="Image 1" style="width: 100%; height: auto;">
+											<!-- <video width="70%" controls loop autoplay>
+												<source src="/blog_new/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
+												Your browser does not support the video tag.
+											  </video> -->
+											  <div class="video-container" style="width: 70%; height: auto;">
+												<video controls>
+												  <source src="/blog_new/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
+												  Your browser does not support the video tag.
+												</video>
+												<div class="caption">The rendered video</div>
+											  </div>
+											</div>
 											<p></p>
 											This code will create an animation where the red object moves horizontally from left to right. The animation is set to last 2 seconds with an ease-in-out timing function. The object's width and height are set to 100 pixels, and the background color is red.
 											The animation is applied using the @keyframes rule, which defines the keyframes for the animation. The animation property on the object sets the animation to use the move keyframe defined earlier.
@@ -1905,16 +1936,16 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 											Remember to adjust the keyframes to match the exact movement you want to achieve.
 											</p>
 
-											<center>
+											<!-- <center>
 											<!-- <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
 												currentPos += 1;if (currentPos > end) {
 												  currentPos = start;}
 												animatedObject.style.transform = `translateX(${currentPos}px)`;}, 50);setTimeout(() => {clearInterval(intervalId);}, 2000);</script></body></html> -->
-												<video width="30%" controls loop autoplay>
+												<!-- <video width="30%" controls loop autoplay>
 													<source src="/blog/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
 													Your browser does not support the video tag.
 												  </video>
-											</center>
+											<!-- </center> -->
 	
 										</div>
 
@@ -2196,16 +2227,9 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b>How to edit image1 to make it look like image2?</p>
+											<p style="text-align: left;"><b>User</b>Please generate a brief sentence to edit image1 to make it look like image2.</p>
 											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-										
-												To edit image1 to make it look like image2, you would need to add a patterned cushion or seat cover to the bench. Here are the steps you might take:
-1. Select and clone: Use a photo editing tool to select the area around the dog and the bench. Then, use the clone tool to blend the background slightly so that it looks more natural.
-2. Add patterned cushion: Place a patterned cushion or seat cover over the bench where the dog is sitting. The pattern should match the color scheme of the dog's fur and the background, possibly with a floral or nature-inspired design.
-3. Adjust contrast and brightness: Adjust the contrast and brightness to match the lighting in image2. This will help the patterned cushion stand out against the dog and the background.
-4. Remove background noise: If there is any visible noise or graininess in the background, you can use a filter or a photo editing tool to remove it, making the image look cleaner.
-5. Finalize the edit: Review the edited image to ensure the patterned cushion blends well with the dog and the background. Make any final adjustments as needed.
-Remember, the goal is to create an image that looks like image2, which has a patterned cushion on the bench, while still maintaining the natural outdoor setting.
+												To edit image1 to make it look like image2, you would need to add a patterned cushion or seat cover to the bench. 
 											</p>
 												
 	
