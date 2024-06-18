@@ -1946,7 +1946,48 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						
 							<div class="slider-container">
 								<div class="slider-wrapper" id="sliderWrapper5">
-	
+									<div class="slider-item">
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+									
+											<h4>Twitter post for video</h4>
+									
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div style="border: 1px solid #000;">
+													<video width="100%" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/lion2.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+												</div>
+												<div style="border: 1px solid #000;">
+													<video width="100%" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/lion1.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+												</div>
+												
+												
+											</div>
+											
+									
+											<br>
+											
+										
+									
+										</div>
+										
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+									
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> The input contains two videos, the first half is the first video and the second half is the second video. What is the difference between the two videos?</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The first video shows a lion with a fiery mane, while the second video shows a lion with a bright yellow mane.</p>
+										<p style="text-align: left;"><b>User</b> List the detailed difference</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>The differences between the two videos are:
+											1. The mane of the lion in the first video is a fiery orange-red color, while in the second video, it is a vibrant yellow.
+											2. The background in the first video is dark and indistinct, whereas in the second video, the background is green, suggesting a natural setting.
+											3. The lion's expression changes from a neutral look to a more aggressive one with its mouth open in the second video.</p>
+										 
+										</div>
+									</div> 
 									<div class="slider-item">
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
 									
@@ -2095,6 +2136,100 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 											</p>
 												
 	
+										</div>
+										
+									</div>
+
+									<div class="slider-item">
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Image Editing</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/dog_to_monkey1.png" alt="Image 1" style="width: 100%; height: auto;">
+												</div>
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/changed_bench.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b>How to edit image1 to make it look like image2?</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+										
+												To edit image1 to make it look like image2, you would need to add a patterned cushion or seat cover to the bench. Here are the steps you might take:
+1. Select and clone: Use a photo editing tool to select the area around the dog and the bench. Then, use the clone tool to blend the background slightly so that it looks more natural.
+2. Add patterned cushion: Place a patterned cushion or seat cover over the bench where the dog is sitting. The pattern should match the color scheme of the dog's fur and the background, possibly with a floral or nature-inspired design.
+3. Adjust contrast and brightness: Adjust the contrast and brightness to match the lighting in image2. This will help the patterned cushion stand out against the dog and the background.
+4. Remove background noise: If there is any visible noise or graininess in the background, you can use a filter or a photo editing tool to remove it, making the image look cleaner.
+5. Finalize the edit: Review the edited image to ensure the patterned cushion blends well with the dog and the background. Make any final adjustments as needed.
+Remember, the goal is to create an image that looks like image2, which has a patterned cushion on the bench, while still maintaining the natural outdoor setting.
+											</p>
+												
+	
+										</div>
+										
+									</div>
+
+									<div class="slider-item">
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Multi-doc VQA</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/oprah-winfrey-resume.png" alt="Image 2" style="width: 100%; height:  100%;">
+												</div>
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/steve-jobs-resume.jpg" alt="Image 1" style="width: 100%; height: auto;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b>Hi, there are two candidates, can you provide a brief description for each of them for me?</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												Certainly! Here's a brief description of each candidate:
+1. Oprah Winfrey:
+  - Professional Experience: Known for her talk show, "The Oprah Winfrey Show," and her work on "COVID-19" as a presenter on Apple TV.
+  - Skills: Emphasized on emotional intelligence, interpersonal skills, and creativity.
+  - Honors & Awards: Notable achievements include the Golden Globe Award for Best Television Series and the Golden Globe Award for Best Television Special.
+2. Steve Jobs:
+  - Professional Experience: Co-founder of Apple Inc., where he led the development of iconic products like the iMac, iPod, and iPhone.
+  - Skills: Highlighted as a thinker with a focus on innovation and problem-solving.
+  - Honors & Awards: Recognized with numerous accolades, including the MacArthur Fellowship and the NeXT Computer Science Award.
+Please note that these descriptions are based on the information provided in the images and do not include any personal details or specific accomplishments mentioned in the images.
+
+											
+											</p>
+											<p style="text-align: left;"><b>User</b>
+												Which of them better suits the role of the Congressman of the US? Why?
+											</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												The first resume, featuring Oprah Winfrey, would better suit the role of a Congressman because it highlights skills and experiences that are relevant to political office, such as leadership, public speaking, and media experience. These qualities are essential for a politician to effectively represent their constituents and engage in legislative processes. The second resume, while it could be suitable for a creative or entrepreneurial role, does not specifically mention skills or experiences that align with the responsibilities of a Congressman.
+											</p>
 										</div>
 										
 									</div>
