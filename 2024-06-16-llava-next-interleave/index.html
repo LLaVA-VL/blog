@@ -810,6 +810,184 @@ We observe that the image-text interleaved format can naturally serve as a gener
 									<button id="nextBtn2" class="control-button next-button">Next</button>
 								</div>
 								<div class="slider-container">
+									<div class="slider-wrapper" id="sliderWrapper1">
+							
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Image Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<video width="100%" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/man_snow.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+													<!-- <div >
+														<img src="/blog/assets/images/llava-m4/data/dog2.png" alt="Image 2" style="width: 50%; height: 100%;">
+													</div> -->
+													
+													
+												</div>
+												
+							
+												<br>
+												
+											
+							
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Image Edit Instruction Generation</h4>
+												<p style="text-align: left;">For a pair of real-world or synthetic images, the model generates accurate image editing instruction. Such capabilities can potentially benefit research related to text-to-image synthesis and diffusion models.</p>
+												<p style="text-align: left;"><b>User</b> Please provide the image edit instruction that can transfrom the source image to the target image.</p>
+													<p style="text-align: left;"><b>Assistant</b> In Image 1, replace the black and white soccer ball in the puppy's mouth with a sunflower similar to the one in Image 2.</p>
+												</font> 
+												 
+							
+											</div>
+										</div>
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Frame Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<video width="100%" controls loop autoplay>
+														<source src="/blog/assets/videos/sora/tokyo_people.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+													
+												</div>
+												<br>
+												
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Video Detailed Description</h4>
+												<p style="text-align: left;"><b>User</b> Please provide a detailed description of the video.</p>
+													<p style="text-align: left;"><b>Assistant</b> The video shows a bustling street scene in Tokyo during winter. People are walking along a busy market street covered with snow. The street is lined with various stalls and shops under red and white striped awnings, and large, snow-covered trees add a beautiful, wintery charm to the scene. Everyone is dressed warmly, and most individuals are wearing masks, suggesting the scene occurs during a period of health precautions, possibly during the COVID-19 pandemic. This setting likely depicts a popular area for shopping or commuting, emphasized by the vibrant activity and dense foot traffic.</p>
+												</font> 
+												 
+							
+											</div>
+										</div> 
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Image Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/dogs1.png" alt="Image 1" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/dogs2.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													
+													
+												</div>
+												
+							
+												<br>
+												
+											
+							
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Spotting the Difference</h4>
+												<p style="text-align: left;">
+													When presented with two or more visually similar images, this task requires identifying and detailing their differences with fine-grained visual analysis.</p>
+												<p style="text-align: left;"><b>User</b> Given two similar images, please provide a list of their differences.</p>
+													<p style="text-align: left;"><b>Assistant</b> The differences between the two images are:\n1. In the first image, the dogs are biting a red frisbee, while in the second image, they are biting a stuffed toy.\n2. In the second image, the dog on the left is wearing a blue jacket with a decorative pattern around the collar.</p>
+												</font> 
+												 
+							
+											</div>
+										</div>
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Image Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post1.png" alt="Image 1" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post2.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post3.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post4.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													
+													
+												</div>
+												
+							
+												<br>
+												
+											
+							
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Social Media Post</h4>
+												<p style="text-align: left;">Given an idea and a collection of photos, Assistant produces captivating social media content, such as a Twitter post, featuring well-crafted copy.</p>
+												<p style="text-align: left;"><b>User</b>Help me write a Twitter post considering the following images.</p>
+													<p style="text-align: left;"><b>Assistant</b> Wandering through the enchanting streets of Milan, where the vibrant pulse of the city is as captivating as its historical architecture. From the mesmerizing ... the gentle glow of candles offers a moment of serenity in this bustling metropolis. #MilanDiaries #TravelMoments #CityLights</p>
+												</font> 
+												 
+							
+											</div>
+										</div> 
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Image Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<video width="100%" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/man_snow.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/plants.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													
+													
+													
+												</div>
+												
+							
+												<br>
+												
+											
+							
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Low-level Comparison</h4>
+												<p style="text-align: left;">
+													Provided with images subjected to low-level transformation, the model conducts quality comparison, assessment, and question-answering concerning distortions, debluring, and denoising.</p>
+												<p style="text-align: left;"><b>User</b>Compared to the first image, how is the sharpness of the second image?\n (A) Sharper\n (B) Blurrier\n (C) About the same</p>
+													<p style="text-align: left;"><b>Assistant</b> A</p>
+												</font> 
+												 
+							
+											</div>
+										</div> 
+									</div>
+								</div>
+								<!-- <div class="slider-container">
 									<div class="slider-wrapper" id="sliderWrapper2">
 							
 										<div class="slider-item">
@@ -866,7 +1044,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 										</div> 
 										
 									</div>
-								</div>
+								</div> -->
 								
 
 							</div>
@@ -946,6 +1124,118 @@ We observe that the image-text interleaved format can naturally serve as a gener
 							
 											</div>
 										</div> 
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Image Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/dogs1.png" alt="Image 1" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/dogs2.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													
+													
+												</div>
+												
+							
+												<br>
+												
+											
+							
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Spotting the Difference</h4>
+												<p style="text-align: left;">
+													When presented with two or more visually similar images, this task requires identifying and detailing their differences with fine-grained visual analysis.</p>
+												<p style="text-align: left;"><b>User</b> Given two similar images, please provide a list of their differences.</p>
+													<p style="text-align: left;"><b>Assistant</b> The differences between the two images are:\n1. In the first image, the dogs are biting a red frisbee, while in the second image, they are biting a stuffed toy.\n2. In the second image, the dog on the left is wearing a blue jacket with a decorative pattern around the collar.</p>
+												</font> 
+												 
+							
+											</div>
+										</div>
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Image Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post1.png" alt="Image 1" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post2.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post3.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/post4.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													
+													
+												</div>
+												
+							
+												<br>
+												
+											
+							
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Social Media Post</h4>
+												<p style="text-align: left;">Given an idea and a collection of photos, Assistant produces captivating social media content, such as a Twitter post, featuring well-crafted copy.</p>
+												<p style="text-align: left;"><b>User</b>Help me write a Twitter post considering the following images.</p>
+													<p style="text-align: left;"><b>Assistant</b> Wandering through the enchanting streets of Milan, where the vibrant pulse of the city is as captivating as its historical architecture. From the mesmerizing ... the gentle glow of candles offers a moment of serenity in this bustling metropolis. #MilanDiaries #TravelMoments #CityLights</p>
+												</font> 
+												 
+							
+											</div>
+										</div> 
+										<div class="slider-item">
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+							
+												<h4>Multi-Image Scenarios</h4>
+							
+												<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+													<video width="100%" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/man_snow.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+													<div style="border: 1px solid #000;">
+														<img src="/blog/assets/images/llava-m4/data/plants.png" alt="Image 2" style="width: 100%; height: auto;">
+													</div>
+													
+													
+													
+												</div>
+												
+							
+												<br>
+												
+											
+							
+											</div>
+											
+											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+												<font size="0.2"> 
+												<h4>Low-level Comparison</h4>
+												<p style="text-align: left;">
+													Provided with images subjected to low-level transformation, the model conducts quality comparison, assessment, and question-answering concerning distortions, debluring, and denoising.</p>
+												<p style="text-align: left;"><b>User</b>Compared to the first image, how is the sharpness of the second image?\n (A) Sharper\n (B) Blurrier\n (C) About the same</p>
+													<p style="text-align: left;"><b>Assistant</b> A</p>
+												</font> 
+												 
+							
+											</div>
+										</div> 
 										
 										
 									</div>
@@ -975,7 +1265,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 				We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
 			</div>
 			<div class="image_zh">
-				<img style="margin: 0 auto;" width="10%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure" >
+				<img style="margin: 0 auto;" width="30%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure" >
 			</div>	
 		</div>
 		<details>
