@@ -1,270 +1,145 @@
-<h3 id="section-3-emerging-capbilities">Real-World Applications </h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双图片展示窗口</title>
+    <style>
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .slider-item {
+            min-width: 100%;
+        }
+
+        .control-button {
+            border-radius: 12px;
+            padding: 3px 30px;
+            font-size: 9px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.8s ease;
+            position: relative;
+        }
+
+        .prev-button {
+            background-color: rgba(255, 0, 80, 0.8);
+            color: rgb(0, 0, 0);
+            z-index: 2;
+            right: -15px;
+        }
+
+        .next-button {
+            background-color: rgba(0, 242, 234, 0.8);
+            color: rgb(0, 0, 0);
+            left: -15px;
+        }
+    </style>
+</head>
+<body>
+
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-	<style>
-		.slider-container {
-			width: 100%;
-			overflow: hidden;
-		}
-		
-		.slider-wrapper {
-			display: flex;
-			transition: transform 0.3s ease-out;
-		}
-		
-		.slider-item {
-			min-width: 100%;
-		}
-	</style>
+    <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper1">
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>PPT Sumarization and QA</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div style="border: 1px solid #000;">
+                                <img src="/blog_new/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div> 
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>Painting styles</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div>
+                                <img src="/blog_new/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>                    
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;">
+            <button id="prevBtn1" class="control-button prev-button">Prev</button>
+            <button id="nextBtn1" class="control-button next-button">Next</button>
+        </div>
+    </div>
 
-	<div class="slider-container">
-		<div class="slider-wrapper" id="sliderWrapper2">
-
-			<div class="slider-item">
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-
-					<h4>PPT Sumarization and QA</h4>
-
-					<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/dynamic-island-1024x576.jpg" alt="Image 2" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/iphone-15-colors-1024x576.jpg" alt="Image 3" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/Iphone-15-Usb-c-charger-1024x576.jpg" alt="Image 4" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/A-17-processors-1024x576.jpg" alt="Image 5" style="width: 100%; height: auto;">
-						</div>
-						
-					</div>
-					
-
-					<br>
-					
-				
-
-				</div>
-				
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-					<font size="0.2"> 
-					<h4>Conversation</h4>
-					<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
-				<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
-						<p style="text-align: left;"><b>User</b>  What is the price of iPhone 15 plus?</p>
-						<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
-						<p style="text-align: left;"><b>User</b> Why the dynamic island useful?</p>
-						<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
-					</font> 
-					 
-
-				</div>
-			</div> 
-			
-			<div class="slider-item">
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-
-					<h4>Patining styles</h4>
-
-					<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-						<div style=>
-							<img src="/blog/assets/images/llava-m3/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
-						</div>
-						<div>
-							<img src="/blog/assets/images/llava-m3/examples/fangao2.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
-						</div>
-						<div >
-							<img src="/blog/assets/images/llava-m3/examples/fangao3.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
-						</div>
-						<div >
-							<img src="/blog/assets/images/llava-m3/examples/bijiasuo2.jpeg" alt="Image 2" style="width: 100%; height: auto;">
-						</div>
-						
-						
-					</div>
-					
-
-					<br>
-					
-				
-
-				</div>
-				
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-					<font size="0.2"> 
-					<h4>Conversation</h4>
-					<p style="text-align: left;"><b>User</b>Do you kown who draw these paintings?</p>
-					<p style="text-align: left;"><b>LLaVA-NeXT-M3</b>
-				
-						Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
-
-					</p>
-				</font> 
-
-					
-
-				</div>
-				
-			</div>
-		</div>
-	</div>
-	<div style="position: relative;">
-		<button id="prevBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
-		<button id="nextBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
-	</div>
-
-	<script>
-		const wrapper = document.getElementById('sliderWrapper2');
-		let index = 0;
-
-		document.getElementById('prevBtn2').addEventListener('click', () => {
-			index = Math.max(index - 1, 0);
-			wrapper.style.transform = `translateX(-${index * 100}%)`;
-		});
-
-		document.getElementById('nextBtn2').addEventListener('click', () => {
-			index = Math.min(index + 1, wrapper.children.length - 1);
-			wrapper.style.transform = `translateX(-${index * 100}%)`;
-		});
-	</script>
-</div>
-<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-	<style>
-		.slider-container {
-			width: 100%;
-			overflow: hidden;
-		}
-		
-		.slider-wrapper {
-			display: flex;
-			transition: transform 0.3s ease-out;
-		}
-		
-		.slider-item {
-			min-width: 100%;
-		}
-	</style>
-
-	<div class="slider-container">
-		<div class="slider-wrapper" id="sliderWrapper1">
-
-			<div class="slider-item">
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-
-					<h4>PPT Sumarization and QA</h4>
-
-					<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/dynamic-island-1024x576.jpg" alt="Image 2" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/iphone-15-colors-1024x576.jpg" alt="Image 3" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/Iphone-15-Usb-c-charger-1024x576.jpg" alt="Image 4" style="width: 100%; height: auto;">
-						</div>
-						<div style="border: 1px solid #000;">
-							<img src="/blog/assets/images/llava-m3/examples/A-17-processors-1024x576.jpg" alt="Image 5" style="width: 100%; height: auto;">
-						</div>
-						
-					</div>
-					
-
-					<br>
-					
-				
-
-				</div>
-				
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-					<font size="0.2"> 
-					<h4>Conversation</h4>
-					<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
-				<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
-						<p style="text-align: left;"><b>User</b>  What is the price of iPhone 15 plus?</p>
-						<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
-						<p style="text-align: left;"><b>User</b> Why the dynamic island useful?</p>
-						<p style="text-align: left;"><b>LLaVA-NeXT-M3</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
-					</font> 
-					 
-
-				</div>
-			</div> 
-			
-			<div class="slider-item">
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-
-					<h4>Patining styles</h4>
-
-					<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-						<div style=>
-							<img src="/blog/assets/images/llava-m3/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
-						</div>
-						<div>
-							<img src="/blog/assets/images/llava-m3/examples/fangao2.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
-						</div>
-						<div >
-							<img src="/blog/assets/images/llava-m3/examples/fangao3.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
-						</div>
-						<div >
-							<img src="/blog/assets/images/llava-m3/examples/bijiasuo2.jpeg" alt="Image 2" style="width: 100%; height: auto;">
-						</div>
-						
-						
-					</div>
-					
-
-					<br>
-					
-				
-
-				</div>
-				
-				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-					<font size="0.2"> 
-					<h4>Conversation</h4>
-					<p style="text-align: left;"><b>User</b>Do you kown who draw these paintings?</p>
-					<p style="text-align: left;"><b>LLaVA-NeXT-M3</b>
-				
-						Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
-
-					</p>
-				</font> 
-
-					
-
-				</div>
-				
-			</div>
-		</div>
-	</div>
-	<div style="position: relative;">
-		<button id="prevBtn1" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
-		<button id="nextBtn1" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
-	</div>
-
-	<script>
-		const wrapper = document.getElementById('sliderWrapper1');
-		let index = 0;
-
-		document.getElementById('prevBtn1').addEventListener('click', () => {
-			index = Math.max(index - 1, 0);
-			wrapper.style.transform = `translateX(-${index * 100}%)`;
-		});
-
-		document.getElementById('nextBtn1').addEventListener('click', () => {
-			index = Math.min(index + 1, wrapper.children.length - 1);
-			wrapper.style.transform = `translateX(-${index * 100}%)`;
-		});
-	</script>
+    <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper2">
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>PPT Sumarization and QA</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div style="border: 1px solid #000;">
+                                <img src="/blog_new/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div> 
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>Painting styles</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div>
+                                <img src="/blog_new/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>                    
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;">
+            <button id="prevBtn2" class="control-button prev-button">Prev</button>
+            <button id="nextBtn2" class="control-button next-button">Next</button>
+        </div>
+    </div>
 </div>
 
-</div>
+<script>
+    const wrapper1 = document.getElementById('sliderWrapper1');
+    let index1 = 0;
+
+    document.getElementById('prevBtn1').addEventListener('click', () => {
+        index1 = Math.max(index1 - 1, 0);
+        wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+    });
+
+    document.getElementById('nextBtn1').addEventListener('click', () => {
+        index1 = Math.min(index1 + 1, wrapper1.children.length - 1);
+        wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+    });
+
+    const wrapper2 = document.getElementById('sliderWrapper2');
+    let index2 = 0;
+
+    document.getElementById('prevBtn2').addEventListener('click', () => {
+        index2 = Math.max(index2 - 1, 0);
+        wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+    });
+
+    document.getElementById('nextBtn2').addEventListener('click', () => {
+        index2 = Math.min(index2 + 1, wrapper2.children.length - 1);
+        wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+    });
+</script>
+
+</body>
+</html>

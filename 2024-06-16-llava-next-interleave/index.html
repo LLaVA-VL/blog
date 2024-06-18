@@ -47,7 +47,44 @@
 		<link rel="stylesheet" href="/blog/2024-06-16-llava-next-interleave/style.css" />
 		<link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
 		<link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
-		
+		<style>
+			.slider-container {
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			.slider-wrapper {
+				display: flex;
+				transition: transform 0.3s ease-out;
+			}
+			
+			.slider-item {
+				min-width: 100%;
+			}
+	
+			.control-button {
+				border-radius: 12px;
+				padding: 3px 30px;
+				font-size: 9px;
+				border: none;
+				cursor: pointer;
+				transition: background-color 0.8s ease;
+				position: relative;
+			}
+	
+			.prev-button {
+				background-color: rgba(255, 0, 80, 0.8);
+				color: rgb(0, 0, 0);
+				z-index: 2;
+				right: -15px;
+			}
+	
+			.next-button {
+				background-color: rgba(0, 242, 234, 0.8);
+				color: rgb(0, 0, 0);
+				left: -15px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -131,10 +168,12 @@
 							<ul>
 								<li>
 									<a href="#section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</a>
-									<!-- <ul>
-										<li><a href="#section-1-1-m4-instruct">Section 1.1 - M4-Instruct</a></li>
-										<!-- <li><a href="#vision-encoders">Section 1.2 - Vision Encoders</a></li> -->
-									<!-- </ul>  -->
+									<ul>
+										<li><a href="#section-11"> Task Overview</a></li>
+										<li><a href="#section-12"> M4-Instruct</a></li>
+										<li><a href="#section-13"> Task Examples</a></li>
+										<li><a href="#section-14">LLaVA-Interleave Bench</a></li>
+									</ul> 
 								</li>
 								<li>
 									<a href="#section-2-evaluation-benchmarks">Section 2 - Evaluation Results</a>
@@ -193,7 +232,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 								<strong>Interleave data format unifies different tasks.</strong> We convert multi-image, video, 3D, and single-image data all into an interleaved training format, which unifies different tasks in a single LLM.
 							</li>
 							<li>
-								<strong>New dataset: (1). Training Data: M4-Instruct. </strong> We compile a high-quality dataset with 1269k samples, spanning 4 primary domains (multi-image, video, 3D, and single-image) with 15 tasks and 44 datasets. It organizes diverse data in a unified multi-image format. (2).<strong>M4-Instruct benchmark.</strong>  We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. 
+								<strong>New dataset: (1). Training Data: M4-Instruct. </strong> We compile a high-quality dataset with 1269k samples, spanning 4 primary domains (multi-image, video, 3D, and single-image) with 15 tasks and 44 datasets. It organizes diverse data in a unified multi-image format. (2).<strong>LLaVA-Interleave Bench.</strong>  We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. 
 							</li>
 							<li>
 								<strong>SoTA Performance.</strong>(1). With a single model, LLaVA-NeXT-Interleave can achieve leading results in different<strong> multi-image benchmarks</strong> compared to the previous SoTA. (2). With a proper data mix of different scenarios, the performance of previous <strong>individual tasks</strong> can be improved or maintained. For example, we maintain the single-image performance of LLaVA-NEXT and improve performance on video tasks.
@@ -247,7 +286,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 							</li>
 						</ul>
 						<h2 id="section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</h2>
-						<h1>Task Overview</h1>
+						<h3 id="section-11">Task Overview</h1>
     <p>We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
     <ul>
         <li>
@@ -264,7 +303,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 		</li>
 		
     </ul>
-	<h1>M4-Instruct: Training</h1>
+	<h3 id="section-12">M4-Instruct: Training</h1>
     <p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
     <p>Most multi-image datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>.</p>
 	<p>For video data, we collect a subset of 255k from LLaVA-Hound, including 240k video QA and 15k video captions. We also include NExT-QA and STAR in our training.</p>
@@ -561,7 +600,8 @@ We observe that the image-text interleaved format can naturally serve as a gener
 						</details>
 						<br />
 
-						<h3>Task Examples</h3>
+										<li><a href="#section-12"> M4-Instruct</a></li>
+						<h3 id="section-13">Task Examples</h3>
 						<p>We provide examples to illustrate the multi-image/fame/view tasks of M4-Instruct dataset.</p>
 						<figure>
 							<img src="/blog/assets/images/llava-m4/task_examples.png" alt="Data Statistics Figure">
@@ -570,24 +610,8 @@ We observe that the image-text interleaved format can naturally serve as a gener
 						<h4>Detailed Data Examples </h3>
 							<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-								<style>
-									.slider-container {
-										width: 100%;
-										overflow: hidden;
-									}
-									
-									.slider-wrapper {
-										display: flex;
-										transition: transform 0.3s ease-out;
-									}
-									
-									.slider-item {
-										min-width: 100%;
-									}
-								</style>
-							
 								<div class="slider-container">
-									<div class="slider-wrapper" id="sliderWrapper2">
+									<div class="slider-wrapper" id="sliderWrapper1">
 							
 										<div class="slider-item">
 											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
@@ -667,41 +691,12 @@ We observe that the image-text interleaved format can naturally serve as a gener
 									</div>
 								</div>
 								<div style="position: relative;">
-									<button id="prevBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
-									<button id="nextBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
+									<button id="prevBtn1" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
+									<button id="nextBtn1" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
 								</div>
-							
-								<script>
-									const wrapper = document.getElementById('sliderWrapper2');
-									let index = 0;
-							
-									document.getElementById('prevBtn2').addEventListener('click', () => {
-										index = Math.max(index - 1, 0);
-										wrapper.style.transform = `translateX(-${index * 100}%)`;
-									});
-							
-									document.getElementById('nextBtn2').addEventListener('click', () => {
-										index = Math.min(index + 1, wrapper.children.length - 1);
-										wrapper.style.transform = `translateX(-${index * 100}%)`;
-									});
-								</script>
 							</div>
+
 							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-								<style>
-									.slider-container {
-										width: 100%;
-										overflow: hidden;
-									}
-									
-									.slider-wrapper {
-										display: flex;
-										transition: transform 0.3s ease-out;
-									}
-									
-									.slider-item {
-										min-width: 100%;
-									}
-								</style>
 							
 								<div class="slider-container">
 									<div class="slider-wrapper" id="sliderWrapper2">
@@ -745,41 +740,13 @@ We observe that the image-text interleaved format can naturally serve as a gener
 									<button id="prevBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
 									<button id="nextBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
 								</div>
-							
-								<script>
-									const wrapper = document.getElementById('sliderWrapper2');
-									let index = 0;
-							
-									document.getElementById('prevBtn2').addEventListener('click', () => {
-										index = Math.max(index - 1, 0);
-										wrapper.style.transform = `translateX(-${index * 100}%)`;
-									});
-							
-									document.getElementById('nextBtn2').addEventListener('click', () => {
-										index = Math.min(index + 1, wrapper.children.length - 1);
-										wrapper.style.transform = `translateX(-${index * 100}%)`;
-									});
-								</script>
+
 							</div>
 							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-								<style>
-									.slider-container {
-										width: 100%;
-										overflow: hidden;
-									}
-									
-									.slider-wrapper {
-										display: flex;
-										transition: transform 0.3s ease-out;
-									}
-									
-									.slider-item {
-										min-width: 100%;
-									}
-								</style>
+
 							
 								<div class="slider-container">
-									<div class="slider-wrapper" id="sliderWrapper2">
+									<div class="slider-wrapper" id="sliderWrapper3">
 							
 										<div class="slider-item">
 											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
@@ -824,30 +791,16 @@ We observe that the image-text interleaved format can naturally serve as a gener
 									</div>
 								</div>
 								<div style="position: relative;">
-									<button id="prevBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
-									<button id="nextBtn2" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
+									<button id="prevBtn3" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -15px;">Prev</button>
+									<button id="nextBtn3" style="border-radius: 12px; padding: 3px 30px; font-size: 9px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -15px;">Next</button>
 								</div>
 							
-								<script>
-									const wrapper = document.getElementById('sliderWrapper2');
-									let index = 0;
-							
-									document.getElementById('prevBtn2').addEventListener('click', () => {
-										index = Math.max(index - 1, 0);
-										wrapper.style.transform = `translateX(-${index * 100}%)`;
-									});
-							
-									document.getElementById('nextBtn2').addEventListener('click', () => {
-										index = Math.min(index + 1, wrapper.children.length - 1);
-										wrapper.style.transform = `translateX(-${index * 100}%)`;
-									});
-								</script>
 							</div>
 							
 							
 							</div>
 						<br />
-						<h3>Multi-Image Benchmark</h3>
+						<h3 id="section-14">LLaVA-Interleave Bench</h3>
 
 						<details>
 							<summary style="font-weight: bold; font-size: 16px;"
@@ -1715,26 +1668,11 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 							What is fun about the images: The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
 						</p>
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-							<style>
-								.slider-container {
-									width: 100%;
-									overflow: hidden;
-								}
-								
-								.slider-wrapper {
-									display: flex;
-									transition: transform 0.3s ease-out;
-								}
-								
-								.slider-item {
-									min-width: 100%;
-								}
-							</style>
+
 							
-							
-							
+														
 							<div class="slider-container">
-								<div class="slider-wrapper" id="sliderWrapper">
+								<div class="slider-wrapper" id="sliderWrapper4">
 	
 									
 									<div class="slider-item">
@@ -1820,24 +1758,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 							
 	
 							<div style="position: relative;">
-								<button id="prevBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
-								<button id="nextBtn" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
+								<button id="prevBtn4" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
+								<button id="nextBtn4" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
 							</div>
-	
-							<script>
-								const wrapper = document.getElementById('sliderWrapper');
-								let index = 0;
-	
-								document.getElementById('prevBtn').addEventListener('click', () => {
-									index = Math.max(index - 1, 0);
-									wrapper.style.transform = `translateX(-${index * 100}%)`;
-								});
-	
-								document.getElementById('nextBtn').addEventListener('click', () => {
-									index = Math.min(index + 1, wrapper.children.length - 1);
-									wrapper.style.transform = `translateX(-${index * 100}%)`;
-								});
-							</script>
+
 						</div>
 						<br/>
 
@@ -1849,24 +1773,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 							Twitter post for video: The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
 						</p>
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-							<style>
-								.slider-container {
-									width: 100%;
-									overflow: hidden;
-								}
-								
-								.slider-wrapper {
-									display: flex;
-									transition: transform 0.3s ease-out;
-								}
-								
-								.slider-item {
-									min-width: 100%;
-								}
-							</style>
+
 						
 							<div class="slider-container">
-								<div class="slider-wrapper" id="sliderWrapper1">
+								<div class="slider-wrapper" id="sliderWrapper5">
 	
 									<div class="slider-item">
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
@@ -1903,25 +1813,38 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								</div>
 							</div>
 							<div style="position: relative;">
-								<button id="prevBtn1" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
-								<button id="nextBtn1" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
+								<button id="prevBtn5" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
+								<button id="nextBtn5" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
 							</div>
-	
-							<script>
-								const wrapper = document.getElementById('sliderWrapper1');
-								let index = 0;
-	
-								document.getElementById('prevBtn1').addEventListener('click', () => {
-									index = Math.max(index - 1, 0);
-									wrapper.style.transform = `translateX(-${index * 100}%)`;
-								});
-	
-								document.getElementById('nextBtn1').addEventListener('click', () => {
-									index = Math.min(index + 1, wrapper.children.length - 1);
-									wrapper.style.transform = `translateX(-${index * 100}%)`;
-								});
-							</script>
+
 						</div>
+						<script>
+							const wrapper1 = document.getElementById('sliderWrapper1');
+							let index1 = 0;
+						
+							document.getElementById('prevBtn1').addEventListener('click', () => {
+								index1 = Math.max(index1 - 1, 0);
+								wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn1').addEventListener('click', () => {
+								index1 = Math.min(index1 + 1, wrapper1.children.length - 1);
+								wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+							});
+						
+							const wrapper2 = document.getElementById('sliderWrapper2');
+							let index2 = 0;
+						
+							document.getElementById('prevBtn2').addEventListener('click', () => {
+								index2 = Math.max(index2 - 1, 0);
+								wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn2').addEventListener('click', () => {
+								index2 = Math.min(index2 + 1, wrapper2.children.length - 1);
+								wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+							});
+						</script>
 						<br/>
 						<h3 id="section-33">Real-World Applications </h3>
 						<p>
@@ -1938,24 +1861,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						</p>
 
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-							<style>
-								.slider-container {
-									width: 100%;
-									overflow: hidden;
-								}
-								
-								.slider-wrapper {
-									display: flex;
-									transition: transform 0.3s ease-out;
-								}
-								
-								.slider-item {
-									min-width: 100%;
-								}
-							</style>
+
 						
 							<div class="slider-container">
-								<div class="slider-wrapper" id="sliderWrapper2">
+								<div class="slider-wrapper" id="sliderWrapper6">
 	
 									<div class="slider-item">
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
@@ -2049,24 +1958,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 								</div>
 							</div>
 							<div style="position: relative;">
-								<button id="prevBtn2" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
-								<button id="nextBtn2" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
+								<button id="prevBtn6" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(255, 0, 80, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; z-index: 2; right: -25px;">Prev</button>
+								<button id="nextBtn6" style="border-radius: 25px; padding: 10px 60px; font-size: 22px; background-color: rgba(0, 242, 234, 0.8); color: rgb(0, 0, 0); border: none; cursor: pointer; transition: background-color 0.8s ease; position: relative; left: -25px;">Next</button>
 							</div>
-	
-							<script>
-								const wrapper = document.getElementById('sliderWrapper2');
-								let index = 0;
-	
-								document.getElementById('prevBtn2').addEventListener('click', () => {
-									index = Math.max(index - 1, 0);
-									wrapper.style.transform = `translateX(-${index * 100}%)`;
-								});
-	
-								document.getElementById('nextBtn2').addEventListener('click', () => {
-									index = Math.min(index + 1, wrapper.children.length - 1);
-									wrapper.style.transform = `translateX(-${index * 100}%)`;
-								});
-							</script>
+
 						</div>
 
 
