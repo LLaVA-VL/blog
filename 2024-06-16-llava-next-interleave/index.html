@@ -1711,11 +1711,17 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						</details>
 						<h2 id="section-3-emerging-capbilities">Section 3 - Emerging Capbilities</h2>
 						<h3 id="section-31">Task Transfer between Single-Image and Multi-Image </h3>
-						<p>Multi-image coding: Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
 						</p>
 						<p>
-							What is fun about the images: The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
 						</p>
+						<ul>
+							<li>Multi-image coding: Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
+							</li>
+							<li>
+								What is fun about the images: The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
+							</li>
+						  </ul>
+
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 
 							
@@ -1761,11 +1767,13 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 											In the JavaScript part, we maintain a variable currentPos that keeps track of the current position of the object. We use setInterval to animate the object's movement, updating its position by 1 pixel every 5 milliseconds. After 2 seconds, we clear the interval id to stop the animation.
 											Remember to adjust the keyframes to match the exact movement you want to achieve.
 											</p>
+
+											<center>
 											<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
 												currentPos += 1;if (currentPos > end) {
 												  currentPos = start;}
 												animatedObject.style.transform = `translateX(${currentPos}px)`;}, 50);setTimeout(() => {clearInterval(intervalId);}, 2000);</script></body></html>
-												
+											</center>
 	
 										</div>
 
@@ -1814,12 +1822,13 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						<br/>
 
 						<h3 id="section-32">Task Transfer between Image and Video </h3>
-						<p>
-							 Multi-video difference: All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
-						</p>
-						<p>
-							Twitter post for video: The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
-						</p>
+						
+						<ul>
+							<li>Multi-video difference: All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
+							</li>
+							<li>Twitter post for video: The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
+							</li>
+						  </ul>
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 
 						
@@ -1870,17 +1879,24 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						<br/>
 						<h3 id="section-33">Real-World Applications </h3>
 						<p>
-							PPT summarization and QA: The model can summarize and retrieve information from multiple images.
 						</p>
 						<p>
-							 Painting styles/Category difference: The model generalizes to recognize artists' painting styles and tell different categories.
 						</p>
 						<p>
-							Image editing: The model can be used to create image editing prompts for image generation.
 						</p>
 						<p>
-							Multi-doc QA: The model can summarize the information of multiple documents and provide comparisons for different documents.
 						</p>
+						<ul>
+							<li>PPT summarization and QA: The model can summarize and retrieve information from multiple images.
+							</li>
+							<li>Painting styles/Category difference: The model generalizes to recognize artists' painting styles and tell different categories.
+							</li>
+							<li>Image editing: The model can be used to create image editing prompts for image generation.
+							</li>
+							<li>
+								Multi-doc QA: The model can summarize the information of multiple documents and provide comparisons for different documents.
+							</li>
+						  </ul>
 
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 
