@@ -1715,10 +1715,10 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						<p>
 						</p>
 						<ul>
-							<li>Multi-image coding: Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
+							<li><strong>Multi-image coding:</strong> Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
 							</li>
 							<li>
-								What is fun about the images: The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
+							<strong>What is fun about the images:</strong> The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
 							</li>
 						  </ul>
 
@@ -1824,9 +1824,9 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						<h3 id="section-32">Task Transfer between Image and Video </h3>
 						
 						<ul>
-							<li>Multi-video difference: All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
+							<li><strong>Multi-video difference:</strong> All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
 							</li>
-							<li>Twitter post for video: The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
+							<li><strong>Twitter post for video:</strong> The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
 							</li>
 						  </ul>
 						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
@@ -1878,23 +1878,16 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 						
 						<br/>
 						<h3 id="section-33">Real-World Applications </h3>
-						<p>
-						</p>
-						<p>
-						</p>
-						<p>
-						</p>
-						<p>
-						</p>
+
 						<ul>
-							<li>PPT summarization and QA: The model can summarize and retrieve information from multiple images.
+							<li><strong>PPT summarization and QA:</strong> The model can summarize and retrieve information from multiple images.
 							</li>
-							<li>Painting styles/Category difference: The model generalizes to recognize artists' painting styles and tell different categories.
+							<li><strong>Painting styles/Category difference:</strong> The model generalizes to recognize artists' painting styles and tell different categories.
 							</li>
-							<li>Image editing: The model can be used to create image editing prompts for image generation.
+							<li><strong>Image editing:</strong> The model can be used to create image editing prompts for image generation.
 							</li>
 							<li>
-								Multi-doc QA: The model can summarize the information of multiple documents and provide comparisons for different documents.
+								<strong>Multi-doc QA</strong>: The model can summarize the information of multiple documents and provide comparisons for different documents.
 							</li>
 						  </ul>
 
@@ -2457,29 +2450,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 
 
 								
-						<h2>Reference</h2>
-						<ol>
-							<li>
-								Hoffmann, Jordan, et al. "Training compute-optimal large language models." arXiv preprint
-								arXiv:2203.15556 (2022).
-							</li>
-							<li>
-								Rae, Jack W., et al. "Scaling language models: Methods, analysis & insights from training gopher." arXiv
-								preprint arXiv:2112.11446 (2021).
-							</li>
-							<li>
-								Chen, Lin, et al. "Sharegpt4v: Improving large multi-modal models with better captions." arXiv preprint
-								arXiv:2311.12793 (2023).
-							</li>
-							<li>
-								Caba Heilbron, Fabian, et al. "Activitynet: A large-scale video benchmark for human activity
-								understanding." Proceedings of the ieee conference on computer vision and pattern recognition. 2015.
-							</li>
-							<li>
-								Maaz, Muhammad, et al. "Video-chatgpt: Towards detailed video understanding via large vision and
-								language models." arXiv preprint arXiv:2306.05424 (2023).
-							</li>
-						</ol>
+				
 
 						<h2 id="team">Team</h2>
 
