@@ -84,6 +84,28 @@
 				color: rgb(0, 0, 0);
 				left: -15px;
 			}
+			.container_zh {
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				padding: 20px 0;
+			}
+			.text_zh {
+				flex: 1;
+				padding-right: 20px;
+				font-size: 1.2em;
+				line-height: 1.5;
+				color: #333;
+			}
+			.image_zh {
+				flex: 1;
+				padding-left: 20px;
+				text-align: center;
+			}
+			.image img {
+				max-width: 100%;
+				height: auto;
+			}
 		</style>
 	</head>
 
@@ -304,16 +326,23 @@ We observe that the image-text interleaved format can naturally serve as a gener
 		
     </ul>
 	<h3 id="section-12">M4-Instruct: Training</h1>
-    <p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
+		<div class="container_zh">
+			<div class="text_zh">
+				<p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
     <p>Most multi-image datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>.</p>
 	<p>For video data, we collect a subset of 255k from LLaVA-Hound, including 240k video QA and 15k video captions. We also include NExT-QA and STAR in our training.</p>
 <p>For 3D data, we collect data 3D from Nuscenes QA, ALFRED, ScanQA, and 3D-LLM.</p>
 <p>For single-image data, we use  40% of original LLaVA-NEXT single-image data.</p>
+			</div>	
+			<div class="image_zh">
+				<img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/data-statistics.png" alt="Data Statistics Figure">
+			</div>	
+		</div>
     
-    <figure>
-        <img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/data-statistics.png" alt="Data Statistics Figure">
+    <!-- <figure>
+        
         <figcaption>Detailed data statistics for M4-Instruct dataset.</figcaption>
-    </figure>
+    </figure> -->
 
 						<details>
 							<br />
@@ -1113,11 +1142,20 @@ We observe that the image-text interleaved format can naturally serve as a gener
 								</tbody></table>
 							<br />
 						</details>
-						We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
-						<figure>
+		<div class="container_zh">
+			<div class="text_zh">
+				We categorize multi-image reasoning task into two classes: (1) In-domain Evaluation includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. (2) Out-domain Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.
+			</div>
+			<div class="image_zh">
+				<img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure">
+			</div>	
+		</div>
+
+
+						<!-- <figure>
 							<img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Benchmark Statistics Figure">
 							<figcaption>Detailed data statistics for multi-image benchmarks.</figcaption>
-						</figure>
+						</figure> -->
 						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Results</h2>
 						
 						<p>
