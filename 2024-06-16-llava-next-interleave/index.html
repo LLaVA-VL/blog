@@ -2932,6 +2932,81 @@ Please note that these descriptions are based on the information provided in the
 								<style type="text/css">
 									.tg  {border-collapse:collapse;border-spacing:0;}
 									.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  overflow:hidden;padding:0px 3px;word-break:normal;}
+									.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+									  font-weight:normal;overflow:hidden;padding:0px 3px;word-break:normal;}
+									.tg .tg-i9c1{background-color:#ECE2FE;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-p7dq{background-color:#D9F5D6;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									.tg .tg-39pb{background-color:#F2F3F5;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-zqtv{background-color:#D9F5D6;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-q8q6{background-color:#ECE2FE;color:#3F3F3F;font-style:italic;text-align:center;vertical-align:middle}
+									.tg .tg-mmbt{background-color:#F8F9FA;color:#3F3F3F;text-align:center;vertical-align:middle}
+									.tg .tg-wufi{background-color:#ECE2FE;color:#3F3F3F;font-weight:bold;text-align:center;vertical-align:middle}
+									</style>
+									<table class="tg"><thead>
+									  <tr>
+										<th class="tg-39pb" rowspan="2"><span style="color:#3F3F3F;background-color:#F2F3F5">Data</span></th>
+										<th class="tg-zqtv" rowspan="2"><span style="color:#3F3F3F;background-color:#D9F5D6">Next-QA</span></th>
+										<th class="tg-i9c1" rowspan="2"><span style="color:#3F3F3F;background-color:#ECE2FE">Avg</span></th>
+										<th class="tg-q8q6" rowspan="2"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Video Detailed Description</span></th>
+										<th class="tg-q8q6" colspan="5"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">VideoChat-GPT</span></th>
+									  </tr>
+									  <tr>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Correctness</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Detail</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Context</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Temporal</span></th>
+										<th class="tg-q8q6"><span style="font-style:italic;color:#3F3F3F;background-color:#ECE2FE">Consistency</span></th>
+									  </tr></thead>
+									<tbody>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video</span></td>
+										<td class="tg-zqtv"><span style="color:#3F3F3F;background-color:#D9F5D6">42.60</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.40</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.46</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.47</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.27</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.87</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">2.74</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.61</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + single-image </span></td>
+										<td class="tg-zqtv"><span style="color:#3F3F3F;background-color:#D9F5D6">67.70</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.40</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.49</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.46</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.3</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.85</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">2.71</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.6</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + multi-image </span></td>
+										<td class="tg-zqtv"><span style="color:#3F3F3F;background-color:#D9F5D6">77.70</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.42</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.5</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.5</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.31</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.9</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">2.7</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.63</span></td>
+									  </tr>
+									  <tr>
+										<td class="tg-mmbt"><span style="color:#3F3F3F;background-color:#F8F9FA">video + both</span></td>
+										<td class="tg-p7dq"><span style="font-weight:bold;color:#3F3F3F;background-color:#D9F5D6">78.20</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.45</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.58</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.5</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.27</span></td>
+										<td class="tg-i9c1"><span style="color:#3F3F3F;background-color:#ECE2FE">3.87</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">2.77</span></td>
+										<td class="tg-wufi"><span style="font-weight:bold;color:#3F3F3F;background-color:#ECE2FE">3.68</span></td>
+									  </tr>
+									</tbody></table>
+								<style type="text/css">
+									.tg  {border-collapse:collapse;border-spacing:0;}
+									.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
 									  overflow:hidden;padding:10px 5px;word-break:normal;}
 									.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
 									  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
