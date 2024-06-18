@@ -191,9 +191,9 @@
 								<li>
 									<a href="#section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</a>
 									<ul>
-										<li><a href="#section-11"> Task Overview</a></li>
-										<li><a href="#section-12"> M4-Instruct</a></li>
-										<li><a href="#section-13"> Task Examples</a></li>
+										<!-- <li><a href="#section-11"> Task Overview</a></li> -->
+										<li><a href="#section-12"> M4-Instruct: Traing Data</a></li>
+										<!-- <li><a href="#section-13"> Task Examples</a></li> -->
 										<li><a href="#section-14">LLaVA-Interleave Bench</a></li>
 									</ul> 
 								</li>
@@ -308,8 +308,8 @@ We observe that the image-text interleaved format can naturally serve as a gener
 							</li>
 						</ul>
 						<h2 id="section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</h2>
-						<h3 id="section-11">Task Overview</h1>
-    <p>We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
+						<!-- <h3 id="section-11">Task Overview</h1> -->
+    <p><strong>Task Overview.<strong/> We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
     <ul>
         <li>
             <strong>Multi-image</strong> scenarios include instructions with single or multiple images, and interleaved text-image input. This setting covers 12 challenging real-world tasks included in our training data, such as spotting the difference, visual storytelling, image editing instruction generation, interleaved multi-image dialogue, multi-image puzzle, low-level multi-image assessment, etc.
@@ -325,7 +325,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 		</li>
 		
     </ul>
-	<h3 id="section-12">M4-Instruct: Training</h1>
+	<h3 id="section-12">M4-Instruct: Training Data</h1>
 		<div class="container_zh">
 			<div class="text_zh">
 				<p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
@@ -629,14 +629,19 @@ We observe that the image-text interleaved format can naturally serve as a gener
 						</details>
 						<br />
 
-							
-						<h3 id="section-13">Task Examples</h3>
-						<p>We provide examples to illustrate the multi-image/fame/view tasks of M4-Instruct dataset.</p>
+						<!-- <h3 id="section-13">Task Examples</h3> -->
+						<p><strong>Task Examples<strong/>We provide examples to illustrate the multi-image/fame/view tasks of M4-Instruct dataset.</p>
+						<details>
+							<br />
+							<summary style="font-weight: bold;"
+								>[Fold / Unfold to See task examples]</summary
+							>
 						<figure>
 							<img src="/blog/assets/images/llava-m4/task_examples.png" alt="Data Statistics Figure">
-							<figcaption>Examples of M4-Insutrct Dataset.</figcaption>
+							<center><figcaption>Examples of M4-Insutrct Dataset.</figcaption></center>
 						</figure>
-						<h4>Detailed Data Examples </h3>
+						</details>
+						<h4>More Examples </h3>
 							<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 								<div class="slider-container">
