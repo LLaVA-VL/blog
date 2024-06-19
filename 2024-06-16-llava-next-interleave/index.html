@@ -266,6 +266,7 @@
 We observe that the image-text interleaved format can naturally serve as a general data template to unify different scenarios, e.g., single-image or multi-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present LLaVA-NeXT-Interleave, an all-around LMM that extends the model capabilities to new real-world settings: Multi-image,  Multi-frame (videos), Multi-view (3D) and maintains the performance of the Multi-patch (single-image) scenarios. We denote the four settings as M4.</p>
 						<figure>
 							<img style="margin: 0 auto;" width="80%" src="/blog/assets/images/llava-m4/teasor_compare_with_sota.png" alt="Description of GIF" />
+							<center><figcaption>Performance Comparison in Three Multi-image Scenarios. We showcase the scores on three real-world scenarios for multi-image, video, and 3D. 'VST' refers to 'visual storytelling', 'VDD' refers to 'video detailed description', and 'VCG' is the video tasks from VideoChatGPT (CI is Correctness of Information, DO is Detail Orientation, CU is Context Understanding, TU is Temporal Understanding, and CO is Consistency).</figcaption></center>
 							<!-- <figcaption style="text-align: center;">Caption describing the GIF</figcaption> -->
 						</figure>
 						<p>
@@ -351,7 +352,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 	<h3 id="section-12">M4-Instruct: Training Data</h1>
 		<div class="container_zh">
 			<div class="text_zh">
-				<p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive 1262.5K dataset, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
+				<p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive dataset including 1269K training samples, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
     <p>Most multi-image datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>.</p>
 	<p>For video data, we collect a subset of 255k from LLaVA-Hound, including 240k video QA and 15k video captions. We also include NExT-QA and STAR in our training.</p>
 <p>For 3D data, we collect data 3D from Nuscenes QA, ALFRED, ScanQA, and 3D-LLM.</p>
@@ -768,7 +769,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 												<font size="0.2"> 
 												<h4>Social Media Post</h4>
 												<p style="text-align: left;">Given an idea and a collection of photos, Assistant produces captivating social media content, such as a Twitter post, featuring well-crafted copy.</p>
-												<p style="text-align: left;"><b>User</b>Help me write a Twitter post considering the following images.</p>
+												<p style="text-align: left;"><b>User</b> Help me write a Twitter post considering the following images.</p>
 													<p style="text-align: left;"><b>Assistant</b> Wandering through the enchanting streets of Milan, where the vibrant pulse of the city is as captivating as its historical architecture. From the mesmerizing ... the gentle glow of candles offers a moment of serenity in this bustling metropolis. #MilanDiaries #TravelMoments #CityLights</p>
 												</font> 
 												 
@@ -804,7 +805,7 @@ We observe that the image-text interleaved format can naturally serve as a gener
 												<h4>Low-level Comparison</h4>
 												<p style="text-align: left;">
 													Provided with images subjected to low-level transformation, the model conducts quality comparison, assessment, and question-answering concerning distortions, debluring, and denoising.</p>
-												<p style="text-align: left;"><b>User</b>Compared to the first image, how is the sharpness of the second image?\n (A) Sharper\n (B) Blurrier\n (C) About the same</p>
+												<p style="text-align: left;"><b>User</b> Compared to the first image, how is the sharpness of the second image?\n (A) Sharper\n (B) Blurrier\n (C) About the same</p>
 													<p style="text-align: left;"><b>Assistant</b> A</p>
 												</font> 
 												 
@@ -915,10 +916,10 @@ We observe that the image-text interleaved format can naturally serve as a gener
 												<font size="0.2"> 
 												<h4>Embodied VQA</h4>
 												<!-- <p style="text-align: left;">    This task enables the model to interact with a 3D environment to solve problems or answer questions by navigating and manipulating its surroundings, which are essential for robotics and augmented reality applications.</p> -->
-												<p style="text-align: left;"><b>User:</b>  What is on the left of the TV? </p>
-													<p style="text-align: left;"><b>Assistant:</b> A bicycle on the floor.</p>
-													<p style="text-align: left;"><b>User:</b>  How many trash cans can be seen on your right when you enter? </p>
-													<p style="text-align: left;"><b>Assistant:</b> A bicycle on the floor.</p>
+												<p style="text-align: left;"><b>User</b>  What is on the left of the TV? </p>
+													<p style="text-align: left;"><b>Assistant</b> A bicycle on the floor.</p>
+													<p style="text-align: left;"><b>User</b>  How many trash cans can be seen on your right when you enter? </p>
+													<p style="text-align: left;"><b>Assistant</b> A bicycle on the floor.</p>
 												</font> 
 												 
 							
@@ -952,9 +953,9 @@ We observe that the image-text interleaved format can naturally serve as a gener
 												<font size="0.2"> 
 												<h4>Embodied VQA</h4>
 												<p style="text-align: left;">    This task enables the model to interact with a 3D environment to solve problems or answer questions by navigating and manipulating its surroundings, which are essential for robotics and augmented reality applications.</p>
-												<p style="text-align: left;"><b>User:</b>Your Main Goal:  Place a glass with a fork in it on the table in front of a glass pitcher.  Step Details: &lt;image&gt;Step#1: Move forward, turn right at the refrigerator, turn left at the stove and face the sink.
+												<p style="text-align: left;"><b>User</b> Your Main Goal:  Place a glass with a fork in it on the table in front of a glass pitcher.  Step Details: &lt;image&gt;Step#1: Move forward, turn right at the refrigerator, turn left at the stove and face the sink.
 													&lt;image&gt;Step#2: Pick up the fork from in the sink. &lt;image&gt; Current Step: </p>
-													<p style="text-align: left;"><b>Assistant:</b> Turn to the left, move forward, turn to the right and face the refrigerator.</p>
+													<p style="text-align: left;"><b>Assistant</b> Turn to the left, move forward, turn to the right and face the refrigerator.</p>
 												</font> 
 												 
 							
@@ -1198,8 +1199,8 @@ We observe that the image-text interleaved format can naturally serve as a gener
 						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Results</h2>
 						
 						<p>
-							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-Interleave, which covers a variety of existing and newly curated in/out-domain benchmarks. In the table below, we exhibit a summary of average results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
-For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
+							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-Interleave, which covers a variety of existing and newly curated in/out-domain benchmarks. In the tables below, we exhibit the results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
+For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 7B and -14B as base LLMs, SigLIP-400M with 384x384 resolutions as the vision encoder, and a two-layer MLP as the projection layer.
 </p>
 
 						<h3 id="mi-eval">Multi-image Evaluation</h3>
@@ -2183,7 +2184,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b>Do you kown who draw these paintings?</p>
+											<p style="text-align: left;"><b>User</b> Do you kown who draw these paintings?</p>
 											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
 										
 												Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
@@ -2221,7 +2222,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b>Please generate a brief sentence to edit image1 to make it look like image2.</p>
+											<p style="text-align: left;"><b>User</b> Please generate a brief sentence to edit image1 to make it look like image2.</p>
 											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
 												To edit image1 to make it look like image2, you would need to add a patterned cushion or seat cover to the bench. 
 											</p>
@@ -2257,7 +2258,7 @@ For our final solution, LLaVA-NeXT-Interleave (7/14B) adopts Qwen 1.5-7B and -14
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b>Hi, there are two candidates, can you provide a brief description for each of them for me?</p>
+											<p style="text-align: left;"><b>User</b> Hi, there are two candidates, can you provide a brief description for each of them for me?</p>
 											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
 												Certainly! Here's a brief description of each candidate:
 1. Oprah Winfrey:
@@ -2308,7 +2309,7 @@ Please note that these descriptions are based on the information provided in the
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b>What is his email?</p>
+											<p style="text-align: left;"><b>User</b> What is his email?</p>
 											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
 												The email address provided in the image is "herman.walton@gmail.com".
 											</p>
@@ -2351,7 +2352,7 @@ Please note that these descriptions are based on the information provided in the
 										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b>Please write a twitter blog post with the images.</p>
+											<p style="text-align: left;"><b>User</b> Please write a twitter blog post with the images.</p>
 											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
 												🚀✨ Launch! 🚀✨ The sky is alight with the brilliance of a rocket's ascent. The rocket, a magnificent arc against the night sky, leaves behind a trail of light that cuts through the darkness. It's a moment frozen in time, where human ingenuity and nature's grandeur converge. The rocket's trajectory is a testament to our progress, pushing the boundaries of what's possible. This is not just a launch; it's a celebration of human aspiration and the relentless pursuit of knowledge. #SpaceExploration #RocketLaunch
 											
@@ -2453,8 +2454,9 @@ Please note that these descriptions are based on the information provided in the
 						<h2 id="section-4-train-techniques">Section 4 - Training Techinques</h2>
 						<p>We illustrate two key techniques for training LLaVA-NeXT-Interleave using the M4-Instruct dataset, and provide abalation studies for analysis.</p>
 						<h4 id="con">Continue training from single-image model</h2>
-						<p>  To better leverage the pre-trained vision-language alignment, we adopt an off-the-shelf LLaVA-NeXT-Image as the base model, which has gone through the stage-1 558K image-caption pre-training and stage-2 760K single-image fine-tuning. On top of this checkpoint, we perform the multi-image instruction tuning with M4-Instruct.
-							As shown by the ablation below, compared to the 'joint training' based on the stage-1 pre-training, the 'continue training' scheme performs better. In this way, we can inherit the instruction-following capabilities in single-image tasks, and better extend the scope to multi-image, video, and 3D scenarios. </p>
+						<p>    To better leverage the pre-trained vision-language alignment, we adopt an off-the-shelf LLaVA-NeXT-Image as the base model, which has gone through stage-1 558K image-caption pre-training and stage-2 760K single-image fine-tuning. On top of this checkpoint, we perform the multi-image instruction tuning with the M4-Instruct dataset.</p>
+						<p> As shown by the ablation below, compared to the training based on the stage-1 pre-training, the 'continue training from stage 2' scheme performs better. In this way, we can inherit the instruction-following capabilities in single-image tasks, and better extend the scope to multi-image, video, and 3D scenarios. 
+							In addition, single-image performance cannot be maintained if training directly from stage 1. </p>
 							<style type="text/css">
 								.tg  {border-collapse:collapse;border-spacing:0;}
 								.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -2550,7 +2552,7 @@ Please note that these descriptions are based on the information provided in the
 								
 								<h4 id="mix">Mix training for in-the-front and interleaved formats</h2>
 								<p>  
-									For interleaved multi-image input, we have two format choices for the positions of &lt;image&gt; placeholders during training. The first is to place all the &lt;image&gt; tokens in front of the text, aligning with the format in single-image model but losing interleaved information. The second preserves the interleaved instruction and extends models to this new data format.
+									For interleaved multi-image input, we have two format choices for the positions of image tokens during training. The first is to place all the image tokens in front of the text and refer to each image in the sentence with a special token, aligning with the format in the single-image model. The second preserves the interleaved instruction to put image tokens in the place they are originally in, which extends models to real interleaved data format.
 								</p>
 								<p>
 									In the below ablation, we train on the multi-image data with different formats. The results indicate that mixing two strategies during training leads to higher performance in both two inference schemes, which provides more flexibility for multi-image input format by users.
