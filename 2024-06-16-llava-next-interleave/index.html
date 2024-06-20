@@ -1794,7 +1794,7 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 							</li>
 						  </ul>
 
-                          <div style="text-align: center; width: 100%; height:auto; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+                          <div style="text-align: center; width: 100%; height:auto; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 16px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 							<div class="slider-container">
 								<div class="slider-wrapper" id="sliderWrapper4">
 									<div class="slider-item">
@@ -1830,7 +1830,8 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 												<div class="caption">The rendered video</div>
 											  </div>
 											</div>
-											<p></p>
+                                            <br>
+											<p style="text-align: left;">
 											This code will create an animation where the red object moves horizontally from left to right. The animation is set to last 2 seconds with an ease-in-out timing function. The object's width and height are set to 100 pixels, and the background color is red.
 											The animation is applied using the @keyframes rule, which defines the keyframes for the animation. The animation property on the object sets the animation to use the move keyframe defined earlier.
 											In the JavaScript part, we maintain a variable currentPos that keeps track of the current position of the object. We use setInterval to animate the object's movement, updating its position by 1 pixel every 5 milliseconds. After 2 seconds, we clear the interval id to stop the animation.
@@ -1946,7 +1947,14 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 									</div> 
 								</div>
 							</div>
-
+                            <style>
+                                .control-button {
+                                    padding: 15px 30px; /* Increase padding to make the button larger */
+                                    font-size: 20px; /* Increase font size for better visibility */
+                                    width: 150px; /* Set a specific width for the buttons */
+                                    margin: 10px;
+                                }
+                            </style>
 							<div style="position: relative;">
 								<button id="prevBtn5" class="control-button prev-button">Prev</button>
 								<button id="nextBtn5" class="control-button next-button">Next</button>
