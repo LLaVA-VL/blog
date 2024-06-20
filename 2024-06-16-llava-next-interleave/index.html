@@ -1,149 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!-- Begin Jekyll SEO tag v2.8.0 -->
-		<title>LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models</title>
-		<meta name="generator" content="Jekyll v3.9.4" />
-		<meta property="og:title" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
-		<meta
-			name="author"
-			content="Feng Li, Renrui Zhang,..., Chunyuan Li"
-		/>
-		<meta property="og:locale" content="en_US" />
-		<meta name="description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
-		<meta property="og:description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
-		<link rel="canonical" href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave" />
-		<meta property="og:url" content="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave" />
-		<meta property="og:site_name" content="LLaVA-NeXT" />
-		<meta property="og:type" content="article" />
-		<meta property="article:published_time" content="2024-06-16T12:33:38-06:00" />
-		<meta name="twitter:card" content="summary" />
-		<meta property="twitter:title" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "BlogPosting",
-				"author": {
-					"@type": "Person",
-					"name": "Feng Li, Renrui Zhang,..., Chunyuan Li"
-				},
-				"dateModified": "2024-05-25T12:33:38-06:00",
-				"datePublished": "2024-05-25T12:33:38-06:00",
-				"description": "LLaVA team presents LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models",
-				"headline": "LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models",
-				"mainEntityOfPage": {
-					"@type": "WebPage",
-					"@id": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
-				},
-				"url": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
-			}
-		</script>
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-		<!-- End Jekyll SEO tag -->
-		<link rel="stylesheet" href="/blog/2024-06-16-llava-next-interleave/style.css" />
-		<link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
-		<link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
-		<style>
-			.slider-container {
-				width: 100%;
-				overflow: hidden;
-			}
-			
-			.slider-wrapper {
-				display: flex;
-				transition: transform 0.3s ease-out;
-			}
-			
-			.slider-item {
-				min-width: 100%;
-			}
-	
-			.control-button {
-				border-radius: 12px;
-				padding: 3px 30px;
-				font-size: 9px;
-				border: none;
-				cursor: pointer;
-				transition: background-color 0.8s ease;
-				position: relative;
-			}
-	
-			.prev-button {
-				background-color: rgba(255, 0, 80, 0.8);
-				color: rgb(0, 0, 0);
-				z-index: 2;
-				right: -15px;
-			}
-	
-			.next-button {
-				background-color: rgba(0, 242, 234, 0.8);
-				color: rgb(0, 0, 0);
-				left: -15px;
-			}
-			.container_zh {
-				display: flex;
-				align-items: flex-start;
-				justify-content: space-between;
-				padding: 20px 0;
-			}
-			.text_zh {
-				flex: 1;
-				padding-right: 20px;
-				font-size: 1.0em;
-				line-height: 1.5;
-				color: #333;
-			}
-			.image_zh {
-				flex: 1;
-				padding-left: 20px;
-				text-align: center;
-			}
-			.image img {
-				max-width: 100%;
-				height: auto;
-			}
-			.grid-container {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				grid-template-rows: repeat(1, 1fr);
-				gap: 10px;
-			}
-			.grid-item img {
-				width: 100%;
-				height: auto;
-			}
-			.video-container {
-				position: relative;
-				width: max-content; /* Adjust width to fit the video */
-			  }
-			  video {
-				display: block; /* Removes bottom margin/gap */
-				width: 100%; /* Responsive video width */
-			  }
-			  .caption {
-				position: absolute;
-				bottom: 0;
-				background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-				color: white;
-				width: 100%;
-				text-align: center;
-				padding: 5px 0; /* Padding for the caption text */
-				box-sizing: border-box;
-			  }
-		</style>
-	</head>
 
-	<body>
-		<header class="site-header" role="banner">
-			<div class="wrapper">
-				<a class="site-title" rel="author" href="/blog/">LLaVA</a>
-				<nav class="site-nav">
-					<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-					<label for="nav-trigger">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models</title>
+    <meta name="generator" content="Jekyll v3.9.4" />
+    <meta property="og:title" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+    <meta name="author" content="Feng Li, Renrui Zhang,..., Chunyuan Li" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+    <meta property="og:description" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+    <link rel="canonical" href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave" />
+    <meta property="og:url" content="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave" />
+    <meta property="og:site_name" content="LLaVA-NeXT" />
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="2024-06-16T12:33:38-06:00" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "author": {
+                "@type": "Person",
+                "name": "Feng Li, Renrui Zhang,..., Chunyuan Li"
+            },
+            "dateModified": "2024-05-25T12:33:38-06:00",
+            "datePublished": "2024-05-25T12:33:38-06:00",
+            "description": "LLaVA team presents LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models",
+            "headline": "LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+            },
+            "url": "https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/"
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- End Jekyll SEO tag -->
+    <link rel="stylesheet" href="/blog/2024-06-16-llava-next-interleave/style.css" />
+    <link type="application/atom+xml" rel="alternate" href="https://llava-vl.github.io/blog/feed.xml" title="LLaVA" />
+    <link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico" />
+    <style>
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .slider-item {
+            min-width: 100%;
+        }
+        
+        .control-button {
+            border-radius: 12px;
+            padding: 3px 30px;
+            font-size: 9px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.8s ease;
+            position: relative;
+        }
+        
+        .prev-button {
+            background-color: rgba(255, 0, 80, 0.8);
+            color: rgb(0, 0, 0);
+            z-index: 2;
+            right: -15px;
+        }
+        
+        .next-button {
+            background-color: rgba(0, 242, 234, 0.8);
+            color: rgb(0, 0, 0);
+            left: -15px;
+        }
+        
+        .container_zh {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+        
+        .text_zh {
+            flex: 1;
+            padding-right: 20px;
+            font-size: 1.0em;
+            line-height: 1.5;
+            color: #333;
+        }
+        
+        .image_zh {
+            flex: 1;
+            padding-left: 20px;
+            text-align: center;
+        }
+        
+        .image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+            gap: 10px;
+        }
+        
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .video-container {
+            position: relative;
+            width: max-content;
+            /* Adjust width to fit the video */
+        }
+        
+        video {
+            display: block;
+            /* Removes bottom margin/gap */
+            width: 100%;
+            /* Responsive video width */
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            /* Padding for the caption text */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header" role="banner">
+        <div class="wrapper">
+            <a class="site-title" rel="author" href="/blog/">LLaVA</a>
+            <nav class="site-nav">
+                <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+                <label for="nav-trigger">
 						<span class="menu-icon">
 							<svg viewBox="0 0 18 15" width="18px" height="15px">
 								<path
@@ -153,20 +165,19 @@
 						</span>
 					</label>
 
-					<div class="trigger"></div>
-				</nav>
-			</div>
-		</header>
-		<main class="page-content" aria-label="Content">
-			<div class="wrapper">
-				<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-					<header class="post-header">
-						<h1 class="post-title p-name" itemprop="name headline">
-							LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models
-						</h1>
-						<p class="post-meta">
-							<time class="dt-published" datetime="2024-06-16T12:00:00-06:00" itemprop="datePublished"
-								>May 25, 2024</time
+                <div class="trigger"></div>
+            </nav>
+        </div>
+    </header>
+    <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+                <header class="post-header">
+                    <h1 class="post-title p-name" itemprop="name headline">
+                        LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models
+                    </h1>
+                    <p class="post-meta">
+                        <time class="dt-published" datetime="2024-06-16T12:00:00-06:00" itemprop="datePublished">May 25, 2024</time
 							>
 							•
 							<span itemprop="author" itemscope itemtype="http://schema.org/Person"
@@ -655,10 +666,7 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 
 						<!-- <h3 id="section-13">Task Examples</h3> -->
 						<p><strong>Task Examples. </strong>We provide examples to illustrate the multi-image/fame/view tasks of M4-Instruct dataset.</p>
-						
-						<center>
-
-							<div style="display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+							<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 							<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 10px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)">
 								<div style="position: relative;">
 									<button id="prevBtn1" class="control-button prev-button">Prev</button>
@@ -667,7 +675,7 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 								<div class="slider-container">
 									<div class="slider-wrapper" id="sliderWrapper1">
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 							
 												<h4>Multi-Image Scenarios</h4>
 							
@@ -684,30 +692,18 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 													<div>
 														<img src="/blog/assets/images/llava-m4/data/post4.png" alt="Image 2" style="width: 60%; height: auto;">
 													</div>
-													
-													
 												</div>
-												
-							
 												<br>
-												
-											
-							
 											</div>
-											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Social Media Post</h4>
 												<p style="text-align: left;">Given an idea and a collection of photos, Assistant produces captivating social media content, such as a Twitter post, featuring well-crafted copy.</p>
 												<p style="text-align: left;"><b>User</b> Help me write a Twitter post considering the following images.</p>
 													<p style="text-align: left;"><b>Assistant</b> Wandering through the enchanting streets of Milan, where the vibrant pulse of the city is as captivating as its historical architecture. From the mesmerizing ... the gentle glow of candles offers a moment of serenity in this bustling metropolis. #MilanDiaries #TravelMoments #CityLights</p>
-												</font> 
-												 
-							
 											</div>
 										</div> 
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 							
 												<h4>Multi-Image Scenarios</h4>
 							
@@ -718,30 +714,18 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 													<div >
 														<img src="/blog/assets/images/llava-m4/data/dog2.png" alt="Image 2" style="width: 50%; height: 100%;">
 													</div>
-													
-													
 												</div>
-												
-							
 												<br>
-												
-											
-							
 											</div>
-											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Image Edit Instruction Generation</h4>
 												<p style="text-align: left;">For a pair of real-world or synthetic images, the model generates accurate image editing instruction. Such capabilities can potentially benefit research related to text-to-image synthesis and diffusion models.</p>
 												<p style="text-align: left;"><b>User</b> Please provide the image edit instruction that can transfrom the source image to the target image.</p>
 													<p style="text-align: left;"><b>Assistant</b> In Image 1, replace the black and white soccer ball in the puppy's mouth with a sunflower similar to the one in Image 2.</p>
-												</font> 
-												 
-							
 											</div>
 										</div>
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 							
 												<h4>Multi-Image Scenarios</h4>
 							
@@ -763,21 +747,17 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 							
 											</div>
 											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Spotting the Difference</h4>
 												<p style="text-align: left;">
 													When presented with two or more visually similar images, this task requires identifying and detailing their differences with fine-grained visual analysis.</p>
 												<p style="text-align: left;"><b>User</b> Given two similar images, please provide a list of their differences.</p>
 													<p style="text-align: left;"><b>Assistant</b> The differences between the two images are:\n1. In the first image, the dogs are biting a red frisbee, while in the second image, they are biting a stuffed toy.\n2. In the second image, the dog on the left is wearing a blue jacket with a decorative pattern around the collar.</p>
-												</font> 
-												 
-							
 											</div>
 										</div>
 										
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 							
 												<h4>Multi-Image Scenarios</h4>
 							
@@ -788,33 +768,19 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 													<div >
 														<img src="/blog/assets/images/llava-m4/data/plants.png" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
-													
-													
-													
 												</div>
-												
-							
 												<br>
-												
-											
-							
 											</div>
-											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Low-level Comparison</h4>
 												<p style="text-align: left;">
 													Provided with images subjected to low-level transformation, the model conducts quality comparison, assessment, and question-answering concerning distortions, debluring, and denoising.</p>
 												<p style="text-align: left;"><b>User</b> Compared to the first image, how is the sharpness of the second image?\n (A) Sharper\n (B) Blurrier\n (C) About the same</p>
 													<p style="text-align: left;"><b>Assistant</b> A</p>
-												</font> 
-												 
-							
 											</div>
 										</div> 
 									</div>
 								</div>
-								
 							</div>
 							
 
@@ -828,33 +794,26 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 									<div class="slider-wrapper" id="sliderWrapper2">
 							
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 							
 												<h4>Multi-Frame Scenarios</h4>
 							
-												<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-													<video width="100%" controls loop autoplay>
+												<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 5px;">
+													<video width="80%" controls loop autoplay>
 														<source src="/blog/assets/images/llava-m4/data/man_snow.mp4" type="video/mp4">
 														Your browser does not support the video tag.
-													  </video>
-													
+													  </video>													
 												</div>
 												<br>
-												
-											</div>
-											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											</div>											
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Video Detailed Description</h4>
 												<p style="text-align: left;"><b>User</b> Please provide a detailed description of the video.</p>
 													<p style="text-align: left;"><b>Assistant</b> The video opens with a close-up of a person wearing a white space suit with red detailing, including a helmet with the number "33" on it. The individual is standing in a vast, snow-covered landscape under a clear blue sky. The scene transitions to show the person walking away from the camera towards a large, metallic UFO parked on the snow. The person then enters the UFO through a hatch, and the interior is briefly visible, showing control panels and screens. The final scenes depict the person adjusting controls within the UFO, with a focus on the gloved hands manipulating the controls.</p>
-												</font> 
-												 
-							
 											</div>
 										</div> 
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 							
 												<h4>Multi-Frame Scenarios</h4>
 							
@@ -869,14 +828,10 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 												
 											</div>
 											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Video Detailed Description</h4>
 												<p style="text-align: left;"><b>User</b> Please provide a detailed description of the video.</p>
 													<p style="text-align: left;"><b>Assistant</b> The video shows a bustling street scene in Tokyo during winter. People are walking along a busy market street covered with snow. The street is lined with various stalls and shops under red and white striped awnings, and large, snow-covered trees add a beautiful, wintery charm to the scene. Everyone is dressed warmly, and most individuals are wearing masks, suggesting the scene occurs during a period of health precautions, possibly during the COVID-19 pandemic. This setting likely depicts a popular area for shopping or commuting, emphasized by the vibrant activity and dense foot traffic.</p>
-												</font> 
-												 
-							
 											</div>
 										</div> 
 										
@@ -894,10 +849,8 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 								<div class="slider-container">
 									<div class="slider-wrapper" id="sliderWrapper3">
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-							
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 												<h4>Multi-View Scenarios</h4>
-							
 												<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 													<div style="border: 1px solid #000;">
 														<img src="/blog/assets/images/llava-m4/data/room1.jpg" alt="Image 1" style="width: 100%; height: auto;">
@@ -908,70 +861,39 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 													<div style="border: 1px solid #000;">
 														<img src="/blog/assets/images/llava-m4/data/room3.jpg" alt="Image 2" style="width: 100%; height: auto;">
 													</div>
-	
 												</div>
-				
 												<br>
-												
-											
-							
 											</div>
-											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Embodied VQA</h4>
 												<p style="text-align: left;">    This task enables the model to interact with a 3D environment to solve problems or answer questions by navigating and manipulating its surroundings, which are essential for robotics and augmented reality applications.</p>
 												<p style="text-align: left;"><b>User</b> Your Main Goal:  Place a glass with a fork in it on the table in front of a glass pitcher.  Step Details: &lt;image&gt;Step#1: Move forward, turn right at the refrigerator, turn left at the stove and face the sink.
 													&lt;image&gt;Step#2: Pick up the fork from in the sink. &lt;image&gt; Current Step: </p>
 													<p style="text-align: left;"><b>Assistant</b> Turn to the left, move forward, turn to the right and face the refrigerator.</p>
-												</font> 
-												 
-							
 											</div>
 										</div> 
 										<div class="slider-item">
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-							
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 												<h4>Multi-View Scenarios</h4>
-							
 												<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
 													<div style="border: 1px solid #000;">
 														<img src="/blog/assets/images/llava-m4/data/3d_video.gif" alt="Image 1" style="width: 100%; height: auto;">
 													</div>
-													
-	
 												</div>
-				
 												<br>
-												
-											
-							
 											</div>
-											
-											<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-												<font size="0.2"> 
+											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Embodied VQA</h4>
 												<!-- <p style="text-align: left;">    This task enables the model to interact with a 3D environment to solve problems or answer questions by navigating and manipulating its surroundings, which are essential for robotics and augmented reality applications.</p> -->
 												<p style="text-align: left;"><b>User</b>  What is on the left of the TV? </p>
 													<p style="text-align: left;"><b>Assistant</b> A bicycle on the floor.</p>
 													<p style="text-align: left;"><b>User</b>  How many trash cans can be seen on your right when you enter? </p>
 													<p style="text-align: left;"><b>Assistant</b> A bicycle on the floor.</p>
-												</font> 
-												 
-							
 											</div>
 										</div> 
-										
-										
-										
-										
 									</div>
 								</div>
-								
-							
 							</div>
-							
-							
 							</div>
 						</center>
 						<br />
@@ -985,20 +907,20 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 							<center><figcaption>Examples of M4-Insutrct Dataset.</figcaption></center>
 						</figure>
 						</details>
-					</br>
+					<br>
 						<h3 id="section-14">LLaVA-Interleave Bench</h3>
 
 						
-		<div class="container_zh">
-			<div class="text_zh">
-				<p>We categorize multi-image reasoning task into two classes:</p>
-				<p>(1) <strong>In-domain Evaluation</strong>> includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total. </p>
-					<p> (2) <strong> Out-domain</strong>  Evaluation involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.</p>
-			</div>
-			<div class="image_zh">
-				<img style="margin: 0 auto;" width="40%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure" >
-			</div>	
-		</div>
+        <div class="container_zh" style="padding: 0; margin: 0;">
+            <div class="text_zh" style="padding: 0; margin: 0;">
+                <p>We categorize multi-image reasoning task into two classes:</p>
+                <p>(1) <strong>In-domain Evaluation</strong> includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total.</p>
+                <p>(2) <strong>Out-domain Evaluation</strong> involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.</p>
+            </div>
+            <div class="image_zh" style="padding: 0; margin: 0 auto;">
+                <img style="width: 50%;" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure">
+            </div>
+        </div>
 		<details>
 			<summary style="font-weight: bold; font-size: 16px;"
 				>[Fold / Unfold to See Table for detailed multi-image benchmark statistics]</summary
@@ -1872,40 +1794,23 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 							</li>
 						  </ul>
 
-						  <center>
-						<div style="text-align: center; width: 100%; height:auto; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-
-							
-														
+                          <div style="text-align: center; width: 100%; height:auto; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 							<div class="slider-container">
 								<div class="slider-wrapper" id="sliderWrapper4">
-	
-									
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-	
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 											<h4>Multi-image Coding</h4>
-	
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div >
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px; align-items: center;">
+												<div>
 													<img src="/blog/assets/images/llava-m4/examples/pyf1.png" alt="Image 1" style="width: 35%; height: auto;">
 												</div>
 												<div>
 													<img src="/blog/assets/images/llava-m4/examples/pyf2.png" alt="Image 2" style="width: 35%; height: auto;">
 												</div>
-												
-												
 											</div>
-											
-
 											<br>
-											
-										
-	
 										</div>
-										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-	
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Please pay attention to the movement of the object from the first image to the second image, then write a HTML code to show this movement.</p>
 										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
@@ -1931,27 +1836,15 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 											In the JavaScript part, we maintain a variable currentPos that keeps track of the current position of the object. We use setInterval to animate the object's movement, updating its position by 1 pixel every 5 milliseconds. After 2 seconds, we clear the interval id to stop the animation.
 											Remember to adjust the keyframes to match the exact movement you want to achieve.
 											</p>
-
-											<!-- <center>
-											<!-- <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Animated Object</title><style>.animated-object {width: 100px;height: 100px;background-color: red;animation: move 2s ease-in-out; /* Add your animation keyframes here */}@keyframes move {0% { transform: translateX(0); }100% { transform: translateX(100px); }}</style></head><body><div class="animated-object"></div><script>const animatedObject = document.querySelector('.animated-object');const start = 0;const end = 100;let currentPos = start;const intervalId = setInterval(() => {
-												currentPos += 1;if (currentPos > end) {
-												  currentPos = start;}
-												animatedObject.style.transform = `translateX(${currentPos}px)`;}, 50);setTimeout(() => {clearInterval(intervalId);}, 2000);</script></body></html> -->
-												<!-- <video width="30%" controls loop autoplay>
-													<source src="/blog/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
-													Your browser does not support the video tag.
-												  </video>
-											<!-- </center> -->
-	
 										</div>
 
 									</div>
-									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                                    <div class="slider-item" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 									
 											<h4>Fun Mems</h4>
 									
-											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px; align-items: center;">
 												<div style="border: 1px solid #000;">
 													<img src="/blog/assets/images/llava-m4/examples/shub.jpg" alt="Image 1" style="width: 100%; height: auto;">
 												</div>
@@ -1967,7 +1860,7 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 									
 										</div>
 										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 									
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> what is fun about the images?</p>
@@ -1976,18 +1869,20 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 									</div> 
 								</div>
 							</div>
-
-							
-
-							
-	
-							<div style="position: relative;">
-								<button id="prevBtn4" class="control-button prev-button">Prev</button>
-								<button id="nextBtn4" class="control-button next-button">Next</button>
-							</div>
+                            <style>
+                                .control-button {
+                                    padding: 15px 30px; /* Increase padding to make the button larger */
+                                    font-size: 20px; /* Increase font size for better visibility */
+                                    width: 150px; /* Set a specific width for the buttons */
+                                    border-radius: 24px;
+                                }
+                            </style>
+                            <div style="position: relative;">
+                                <button id="prevBtn4" class="control-button prev-button">Prev</button>
+                                <button id="nextBtn4" class="control-button next-button">Next</button>
+                            </div>
 
 						</div>
-					</center>
 						<br/>
 
 						<h3 id="section-32">Task Transfer between Image and Video </h3>
@@ -1998,42 +1893,28 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 							<li><strong>Twitter post for video:</strong> The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
 							</li>
 						  </ul>
-						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-
-						
+                          <div style="text-align: center; margin-top: 6px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 5px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 							<div class="slider-container">
 								<div class="slider-wrapper" id="sliderWrapper5">
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-									
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 											<h4>Multi-video difference</h4>
-									
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div >
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 1px; align-items: center;">
+												<div style="display: flex; justify-content: center; align-items: center;">
 													<video style="width: 70%; height: 60%;" controls loop autoplay>
 														<source src="/blog/assets/images/llava-m4/data/lion2_.mp4" type="video/mp4">
 														Your browser does not support the video tag.
 													  </video>
 												</div>
-												<div >
-													<video style="width: 70%; height: 60%;" controls loop autoplay>
+												<div style="display: flex; justify-content: center; align-items: center;">
+													<video style="width: 78%; height: 60%;" controls loop autoplay>
 														<source src="/blog/assets/images/llava-m4/data/lion1_.mp4" type="video/mp4">
 														Your browser does not support the video tag.
 													  </video>
 												</div>
-												
-												
 											</div>
-											
-									
-											<!-- <br> -->
-											
-										
-									
 										</div>
-										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-									
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> The input contains two videos, the first half is the first video and the second half is the second video. What is the difference between the two videos?</p>
 										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The first video shows a lion with a fiery mane, while the second video shows a lion with a bright yellow mane.</p>
@@ -2042,43 +1923,30 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 											1. The mane of the lion in the first video is a fiery orange-red color, while in the second video, it is a vibrant yellow.
 											2. The background in the first video is dark and indistinct, whereas in the second video, the background is green, suggesting a natural setting.
 											3. The lion's expression changes from a neutral look to a more aggressive one with its mouth open in the second video.</p>
-										 
 										</div>
 									</div> 
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
-									
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 											<h4>Twitter post for video</h4>
-									
-											<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div >
-													<video style="width: 100%; height: 50%;" controls loop autoplay>
-														<source src="/blog/assets/videos/sora/tokyo_people.mp4" type="video/mp4">
+											<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 1px; align-items: center;">
+												<div style="display: flex; justify-content: center; align-items: center;">
+													<video style="width: 70%; height: 60%;" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/tokyo_people.mp4" type="video/mp4">
 														Your browser does not support the video tag.
 													  </video>
 												</div>
-												
-												
 											</div>
-											
-									
 											<br>
-											
-										
-									
 										</div>
-										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
-									
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Help me write a twitter post to describe this video.</p>
 										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> "Feeling the chill in the air, but the cherry blossoms are a sight to behold! 🌸❄️ Walking down the street, each person bundled up against the winter chill. The snow-covered trees and market stalls add to the serene beauty of this winter wonderland. #CherryBlossoms #WinterWalk #CityScenes".</p>
-										 
-									
 										</div>
 									</div> 
 								</div>
 							</div>
+
 							<div style="position: relative;">
 								<button id="prevBtn5" class="control-button prev-button">Prev</button>
 								<button id="nextBtn5" class="control-button next-button">Next</button>
@@ -2101,13 +1969,13 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 							</li>
 						  </ul>
 
-						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+						<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 1px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
 
 						
 							<div class="slider-container">
 								<div class="slider-wrapper" id="sliderWrapper6">
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>Multi-doc VQA</h4>
 	
@@ -2129,7 +1997,7 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 	
 										</div>
 										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Hi, there are two candidates, can you provide a brief description for each of them for me?</p>
@@ -2158,7 +2026,7 @@ Please note that these descriptions are based on the information provided in the
 									</div>
 	
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>PPT Sumarization and QA</h4>
 	
@@ -2188,7 +2056,7 @@ Please note that these descriptions are based on the information provided in the
 	
 										</div>
 										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
@@ -2204,7 +2072,7 @@ Please note that these descriptions are based on the information provided in the
 									</div> 
 									
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>Patining styles</h4>
 	
@@ -2232,7 +2100,7 @@ Please note that these descriptions are based on the information provided in the
 	
 										</div>
 										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Do you kown who draw these paintings?</p>
@@ -2248,7 +2116,7 @@ Please note that these descriptions are based on the information provided in the
 									</div>
 
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>Image Editing</h4>
 	
@@ -2270,7 +2138,7 @@ Please note that these descriptions are based on the information provided in the
 	
 										</div>
 										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Please generate a brief sentence to edit image1 to make it look like image2.</p>
@@ -2286,7 +2154,7 @@ Please note that these descriptions are based on the information provided in the
 									
 
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>Multi page doc vqa (information retrival)</h4>
 	
@@ -2308,7 +2176,7 @@ Please note that these descriptions are based on the information provided in the
 	
 										</div>
 										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> What is his email?</p>
@@ -2326,7 +2194,7 @@ Please note that these descriptions are based on the information provided in the
 									</div>
 
 									<div class="slider-item">
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
 	
 											<h4>Twitter blog</h4>
 	
@@ -2351,7 +2219,7 @@ Please note that these descriptions are based on the information provided in the
 	
 										</div>
 										
-										<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(249, 242, 248, 1);">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 	
 											<h4>Conversation</h4>
 											<p style="text-align: left;"><b>User</b> Please write a twitter blog post with the images.</p>
