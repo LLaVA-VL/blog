@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双图片展示窗口</title>
+    <style>
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .slider-item {
+            min-width: 100%;
+        }
+
+        .control-button {
+            border-radius: 12px;
+            padding: 3px 30px;
+            font-size: 9px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.8s ease;
+            position: relative;
+        }
+
+        .prev-button {
+            background-color: rgba(255, 0, 80, 0.8);
+            color: rgb(0, 0, 0);
+            z-index: 2;
+            right: -15px;
+        }
+
+        .next-button {
+            background-color: rgba(0, 242, 234, 0.8);
+            color: rgb(0, 0, 0);
+            left: -15px;
+        }
+    </style>
+</head>
+<body>
+
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+    <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper1">
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>PPT Sumarization and QA</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div style="border: 1px solid #000;">
+                                <img src="/blog_new/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div> 
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>Painting styles</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div>
+                                <img src="/blog_new/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>                    
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;">
+            <button id="prevBtn1" class="control-button prev-button">Prev</button>
+            <button id="nextBtn1" class="control-button next-button">Next</button>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+        <div class="slider-container">
+            <div class="slider-wrapper" id="sliderWrapper2">
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>PPT Sumarization and QA</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div style="border: 1px solid #000;">
+                                <img src="/blog_new/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div> 
+                <div class="slider-item">
+                    <div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+                        <h4>Painting styles</h4>
+                        <div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+                            <div>
+                                <img src="/blog_new/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
+                            </div>
+                        </div>                    
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative;">
+            <button id="prevBtn2" class="control-button prev-button">Prev</button>
+            <button id="nextBtn2" class="control-button next-button">Next</button>
+        </div>
+    </div>
+</div>
+<div style="text-align: center; margin-top: 30px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 30px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+	<div class="slider-container">
+		<div class="slider-wrapper" id="sliderWrapper3">
+			<div class="slider-item">
+				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+					<h4>PPT Sumarization and QA</h4>
+					<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+						<div style="border: 1px solid #000;">
+							<img src="/blog_new/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+						</div>
+					</div>
+					<br>
+				</div>
+			</div> 
+			<div class="slider-item">
+				<div style="display: block; padding: 4px 10px; margin: 5px; border-radius: 3px; background-color: rgba(117, 209, 215, 0.1);">
+					<h4>Painting styles</h4>
+					<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+						<div>
+							<img src="/blog_new/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 1" style="width: 100%; height: auto;">
+						</div>
+					</div>                    
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="position: relative;">
+		<button id="prevBtn3" class="control-button prev-button">Prev</button>
+		<button id="nextBtn3" class="control-button next-button">Next</button>
+	</div>
+</div>
+<script>
+    const wrapper1 = document.getElementById('sliderWrapper1');
+    let index1 = 0;
+
+    document.getElementById('prevBtn1').addEventListener('click', () => {
+        index1 = Math.max(index1 - 1, 0);
+        wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+    });
+
+    document.getElementById('nextBtn1').addEventListener('click', () => {
+        index1 = Math.min(index1 + 1, wrapper1.children.length - 1);
+        wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+    });
+
+    const wrapper2 = document.getElementById('sliderWrapper2');
+    let index2 = 0;
+
+    document.getElementById('prevBtn2').addEventListener('click', () => {
+        index2 = Math.max(index2 - 1, 0);
+        wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+    });
+
+    document.getElementById('nextBtn2').addEventListener('click', () => {
+        index2 = Math.min(index2 + 1, wrapper2.children.length - 1);
+        wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+    });
+
+	const wrapper3 = document.getElementById('sliderWrapper3');
+    let index3 = 0;
+
+    document.getElementById('prevBtn3').addEventListener('click', () => {
+        index3 = Math.max(index2 - 1, 0);
+        wrapper3.style.transform = `translateX(-${index3 * 100}%)`;
+    });
+
+    document.getElementById('nextBtn3').addEventListener('click', () => {
+        index3 = Math.min(index3 + 1, wrapper2.children.length - 1);
+        wrapper3.style.transform = `translateX(-${index3 * 100}%)`;
+    });
+</script>
+
+</body>
+</html>
