@@ -273,7 +273,7 @@
 						</div>
 
 						<p>
-							Recent advancements in Large Multimodal Models (LMMs) have showcased impressive capabilities in multimodal understanding and reasoning. However, most existing open-source LMMs such as LLaVA-NeXT have primarily focused on pushing the performance limit of single-image, leaving the potential of multi-image scenarios largely unexplored. Considering the diverse range of computer vision scenarios and data formats—including single and multi-image inputs, interleaved image-text pairs, videos, and 3D data—there is a pressing need to develop methodologies for open LMMs that can operate effectively across these varied contexts.
+							Recent advancements in Large Multimodal Models (LMMs) have showcased impressive capabilities in multimodal understanding and reasoning. However, most existing open-source LMMs such as LLaVA-NeXT have primarily focused on pushing the performance limit of single-image, leaving the potential of multi-image scenarios largely unexplored. Considering the diverse range of computer vision scenarios and data formats—including single and multi-image inputs, videos, and 3D data—there is a pressing need to develop methodologies for open LMMs that can operate effectively across these varied contexts.
 We observe that the <strong>image-text interleaved format</strong> can naturally serve as a general data template to unify different scenarios, e.g., single-image or multi-image as special cases, video as multi-frames, and 3D as multi-views. Therefore, we present <strong>LLaVA-NeXT-Interleave</strong>, an all-around LMM that extends the model capabilities to new real-world settings: <strong>M</strong>ulti-image,  <strong>M</strong>ulti-frame (videos), <strong>M</strong>ulti-view (3D) and maintains the performance of the <strong>M</strong>ulti-patch (single-image) scenarios. We denote the four settings as <strong>M4</strong>.</p>
 						<figure>
 							<img style="margin: 0 auto;" width="80%" src="/blog/assets/images/llava-m4/teasor_compare_with_sota.png" alt="Description of GIF" />
@@ -285,16 +285,16 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 						</p>
 						<ol>
 							<li>
-								<strong>Interleave data format unifies different tasks.</strong> We convert multi-image, video, 3D, and single-image data all into an interleaved training format, which unifies different tasks in a single LLM.
+								<strong>Interleave data format unifies different tasks.</strong> We represent multi-image, video, 3D, and single-image data all into an interleaved training format, which unifies different tasks in a single LLM.
 							</li>
 							<li>
-								<strong>New dataset: (1). Training Data: M4-Instruct. </strong> We compile a high-quality dataset with 1269k samples, spanning 4 primary domains (multi-image, video, 3D, and single-image) with 15 tasks and 44 datasets. It organizes diverse data in a unified multi-image format. (2).<strong>LLaVA-Interleave Bench.</strong>  We curate a diverse set of benchmarks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. 
+								<strong>New datasets</strong>: (1) <em>Training Data: M4-Instruct</em>.  We compile a high-quality dataset with 1269k samples, spanning 4 primary domains (multi-image, video, 3D, and single-image). (2). <em>LLaVA-Interleave Bench</em>.  We curate a diverse set of tasks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. 
 							</li>
 							<li>
-								<strong>SoTA Performance.</strong>(1). With a single model, LLaVA-NeXT-Interleave can achieve leading results in different<strong> multi-image benchmarks</strong> compared to the previous SoTA. (2). With a proper data mix of different scenarios, the performance of previous <strong>individual tasks</strong> can be improved or maintained. For example, we maintain the single-image performance of LLaVA-NEXT and improve performance on video tasks.
+								<strong>SoTA Performance.</strong>(1). With a single model, LLaVA-NeXT-Interleave can achieve leading results in different<em> multi-image benchmarks</em> compared to the previous SoTA. (2). With a proper data mix of different scenarios, the performance of previous <em>individual tasks</em> can be improved or maintained. For example, we maintain the single-image performance of LLaVA-NeXT and improve performance on video tasks.
 							</li>
 							<li>
-								<strong>Emerging capabilities with cross-task transfer. </strong> By jointly training on a diverse set of tasks, the model shows emerging capabilities to transfer tasks between different scenarios.
+								<strong>Emerging capabilities with cross-task transfer. </strong> By jointly training on a diverse set of visual data modalities, the model shows emerging capabilities to transfer tasks between different scenarios.
 							</li>
 							
 						</ol>
@@ -328,7 +328,7 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 						</details>
 						<br /> -->
 
-						<h2>Opensource Release</h2>
+						<h2>Release</h2>
 						<!-- <p>Re-captioned Data with LLaVA-NeXT-34B is available on Hugging Face Datasets.</p> -->
 						<ul>
 							<li>
@@ -338,12 +338,12 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 								<a href="https://huggingface.co/datasets/lmms-lab/...">M4 Instruct Data</a>
 							</li>
 							<li>
-								<a href="https://llava-next-intlv.lmms-lab.com/">One Demo for All: Multi-image, Video, 3D</a>
+								<a href="https://llava-next-intlv.lmms-lab.com/">Demo</a>
 							</li>
 						</ul>
-						<h2 id="section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</h2>
+						<h2 id="section-1-insights-on-architectures">Section 1 - Interleaved Visual Instruction Tuning</h2>
 						<!-- <h3 id="section-11">Task Overview</h1> -->
-    <p><strong>Task Overview.</strong> We utilize a general multi-image format to unify different tasks of data input, including the following three settings:</p>
+    <p><strong>Task Overview.</strong> We utilize interleave format to unify different tasks of data input, including the following four settings:</p>
     <ul>
 		
         <li>
@@ -356,18 +356,18 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
             <strong>Multi-view</strong> scenarios represent 3D environments by multi-view images from different perspectives, where the visual correspondence and disparity can indicate spatial information in the 3D world. For 3D perception, we include 2 tasks: embodied VQA (dialogue and planning), and 3D scene VQA (captioning and grounding).
         </li>
 		<li>
-			<strong>Multi-patch</strong> represents the single-image scenario. This is because the design of anyres in LLaVA-NEXT allows us to divide a single image into multiple patches, compatible with our interleaved format. This is used to maintain single-image performance and accommodate cross-task transfer.
+			<strong>Multi-patch</strong> represents the single-image scenario. This is because the design of AnyRes in LLaVA-NeXT allows us to divide a single image into multiple patches, compatible with the interleaved format. This is used to maintain single-image performance and accommodate cross-task transfer.
 		</li>
 		
     </ul>
 	<h3 id="section-12">M4-Instruct: Training Data</h1>
 		<div class="container_zh">
 			<div class="text_zh">
-				<p>To empower all-round multi-image capabilities, we meticulously curate a comprehensive dataset including 1269K training samples, <strong>M4-Instruct</strong>, widely spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
+				<p>To empower all-round multi-image capabilities, we curate a comprehensive dataset including 1269K training samples, <strong>M4-Instruct</strong>, spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
     <p>Most multi-image datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>.</p>
-	<p>For video data, we collect a subset of 255k from LLaVA-Hound, including 240k video QA and 15k video captions. We also include NExT-QA and STAR in our training.</p>
-<p>For 3D data, we collect data 3D from Nuscenes QA, ALFRED, ScanQA, and 3D-LLM.</p>
-<p>For single-image data, we use  40% of original LLaVA-NEXT single-image data.</p>
+	<p>For video data, we utilize a subset of 255k from LLaVA-Hound, including 240k video QA and 15k video captions. We also include NExT-QA and STAR in our training.</p>
+<p>For 3D data, we utilize 3D data from Nuscenes QA, ALFRED, ScanQA, and 3D-LLM.</p>
+<p>For single-image data, we use 40% of original LLaVA-NeXT single-image data.</p>
 			</div>	
 			<div class="image_zh">
 				<img style="margin: 0 auto;" width="70%" src="/blog/assets/images/llava-m4/data-statistics.png" alt="Data Statistics Figure">
@@ -719,7 +719,7 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 											</div>
 											<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
 												<h4>Image Edit Instruction Generation</h4>
-												<p style="text-align: left;">For a pair of real-world or synthetic images, the model generates accurate image editing instruction. Such capabilities can potentially benefit research related to text-to-image synthesis and diffusion models.</p>
+												<p style="text-align: left;">For a pair of images, the model generates accurate image editing instruction. Such capabilities can potentially benefit research related to text-to-image synthesis and diffusion models.</p>
 												<p style="text-align: left;"><b>User</b> Please provide the image edit instruction that can transfrom the source image to the target image.</p>
 													<p style="text-align: left;"><b>Assistant</b> In Image 1, replace the black and white soccer ball in the puppy's mouth with a sunflower similar to the one in Image 2.</p>
 											</div>
