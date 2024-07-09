@@ -228,7 +228,15 @@
 							<h3>Table of Contents</h3>
 							<ul>
 								<li>
-									<a href="#section-1-insights-on-architectures">Section 1 - Multi-image Instruction Tuning</a>
+									<a href="#section-3-emerging-capbilities">Section 1 - Emerging Capabilities</a></li>
+									<ul>
+										<li><a href="#section-31">Task Transfer between Single-Image and Multi-Image</a></li>
+										<li><a href="#section-32">Task Transfer between Image and Video</a></li>
+										<li><a href="#section-33">Real-World Applications</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#section-1-insights-on-architectures">Section 2 - Multi-image Instruction Tuning</a>
 									<ul>
 										<!-- <li><a href="#section-11"> Task Overview</a></li> -->
 										<li><a href="#section-12"> M4-Instruct: Traing Data</a></li>
@@ -237,7 +245,7 @@
 									</ul> 
 								</li>
 								<li>
-									<a href="#section-2-evaluation-benchmarks">Section 2 - Evaluation Results</a>
+									<a href="#section-2-evaluation-benchmarks">Section 3 - Evaluation Results</a>
 									<ul>
 									<li>
 										<a href="#mi-eval"
@@ -257,14 +265,7 @@
 									</ul>
 									
 								</li>
-								<li>
-									<a href="#section-3-emerging-capbilities">Section 3 - Emerging Capabilities</a></li>
-									<ul>
-										<li><a href="#section-31">Task Transfer between Single-Image and Multi-Image</a></li>
-										<li><a href="#section-32">Task Transfer between Image and Video</a></li>
-										<li><a href="#section-33">Real-World Applications</a></li>
-									</ul>
-								</li>
+								
 								<li><a href="#section-4-train-techniques">Section 4 - Training Techniques</a></li>									
 								<li><a href="#team">Team</a></li>
 								<!-- <li><a href="#acknowledgement">Acknowledgement</a></li>
@@ -346,7 +347,543 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 								
 							</li>
 						</ul>
-						<h2 id="section-1-insights-on-architectures">Section 1 - Interleaved Visual Instruction Tuning</h2>
+						<h2 id="section-3-emerging-capabilities">Section 1 - Emerging Capabilities</h2>
+						<h3 id="section-31">Task Transfer between Single-Image and Multi-Image </h3>
+						</p>
+						<p>
+						</p>
+						<ul>
+							<li><strong>Multi-image coding:</strong> Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
+							</li>
+							<li>
+							<strong>What is fun about the images:</strong> The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
+							</li>
+						  </ul>
+
+                          <div style="text-align: center; margin-top: 6px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 5px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+							<div class="slider-container">
+								<div class="slider-wrapper" id="sliderWrapper4">
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+											<h4>Multi-image Coding</h4>
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px; align-items: center;">
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/pyf1.png" alt="Image 1" style="width: 35%; height: auto;">
+												</div>
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/pyf2.png" alt="Image 2" style="width: 35%; height: auto;">
+												</div>
+											</div>
+											<br>
+										</div>
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> Please pay attention to the movement of the object from the first image to the second image, then write a HTML code to show this movement.</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
+											<!-- blog_new/assets/images/llava-m4/code_screenshot.png -->
+											<p></p>
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+											<img src="/blog/assets/images/llava-m4/code_screenshot.png" alt="Image 1" style="width: 100%; height: auto;">
+											<!-- <video width="70%" controls loop autoplay>
+												<source src="/blog_new/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
+												Your browser does not support the video tag.
+											  </video> -->
+											  <div class="video-container" style="width: 70%; height: auto;">
+												<video controls>
+												  <source src="/blog/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
+												  Your browser does not support the video tag.
+												</video>
+												<div class="caption">The rendered video</div>
+											  </div>
+											</div>
+                                            <br>
+											<p style="text-align: left;">
+											This code will create an animation where the red object moves horizontally from left to right. The animation is set to last 2 seconds with an ease-in-out timing function. The object's width and height are set to 100 pixels, and the background color is red.
+											The animation is applied using the @keyframes rule, which defines the keyframes for the animation. The animation property on the object sets the animation to use the move keyframe defined earlier.
+											In the JavaScript part, we maintain a variable currentPos that keeps track of the current position of the object. We use setInterval to animate the object's movement, updating its position by 1 pixel every 5 milliseconds. After 2 seconds, we clear the interval id to stop the animation.
+											Remember to adjust the keyframes to match the exact movement you want to achieve.
+											</p>
+										</div>
+
+									</div>
+                                    <div class="slider-item" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+									
+											<h4>Fun Mems</h4>
+									
+											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px; align-items: center;">
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/shub.jpg" alt="Image 1" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/shuc.jpg" alt="Image 2" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/shud.jpg" alt="Image 3" style="width: 100%; height: auto;">
+												</div>
+												
+											</div>
+											<br>
+									
+										</div>
+										
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+									
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> what is fun about the images?</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The humor in these images comes from the anthropomorphized birds engaging in human-like activities and conversations. In the first image, one bird is asking about going to get some fries on the pier, which is a human activity. The second image shows a bird asking about the "culminating result of consciousness," which is a philosophical question rather than a literal one. The third image has a bird expressing its desire to do something with the fries on the pier, again referencing a human activity. The anthropomorphism of the birds adds a layer of humor by attributing human thoughts and desires to animals.</p>
+										</div>
+									</div> 
+								</div>
+							</div>
+                            <style>
+                                .control-button {
+                                    padding: 15px 30px; /* Increase padding to make the button larger */
+                                    font-size: 20px; /* Increase font size for better visibility */
+                                    width: 150px; /* Set a specific width for the buttons */
+                                    border-radius: 24px;
+                                }
+                            </style>
+                            <div style="position: relative;">
+                                <button id="prevBtn4" class="control-button prev-button">Prev</button>
+                                <button id="nextBtn4" class="control-button next-button">Next</button>
+                            </div>
+
+						</div>
+						<br/>
+
+						<h3 id="section-32">Task Transfer between Image and Video </h3>
+						
+						<ul>
+							<li><strong>Multi-video difference:</strong> All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
+							</li>
+							<li><strong>Twitter post for video:</strong> The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
+							</li>
+						  </ul>
+                          <div style="text-align: center; margin-top: 6px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 5px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+							<div class="slider-container">
+								<div class="slider-wrapper" id="sliderWrapper5">
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+											<h4>Multi-video difference</h4>
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 1px; align-items: center;">
+												<div style="display: flex; justify-content: center; align-items: center;">
+													<video style="width: 70%; height: 60%;" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/lion2_.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+												</div>
+												<div style="display: flex; justify-content: center; align-items: center;">
+													<video style="width: 78%; height: 60%;" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/lion1_.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+												</div>
+											</div>
+										</div>
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> The input contains two videos, the first half is the first video and the second half is the second video. What is the difference between the two videos?</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The first video shows a lion with a fiery mane, while the second video shows a lion with a bright yellow mane.</p>
+										<p style="text-align: left;"><b>User</b> List the detailed difference</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>The differences between the two videos are:
+											1. The mane of the lion in the first video is a fiery orange-red color, while in the second video, it is a vibrant yellow.
+											2. The background in the first video is dark and indistinct, whereas in the second video, the background is green, suggesting a natural setting.
+											3. The lion's expression changes from a neutral look to a more aggressive one with its mouth open in the second video.</p>
+										</div>
+									</div> 
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+											<h4>Twitter post for video</h4>
+											<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 1px; align-items: center;">
+												<div style="display: flex; justify-content: center; align-items: center;">
+													<video style="width: 70%; height: 60%;" controls loop autoplay>
+														<source src="/blog/assets/images/llava-m4/data/tokyo_people.mp4" type="video/mp4">
+														Your browser does not support the video tag.
+													  </video>
+												</div>
+											</div>
+											<br>
+										</div>
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> Help me write a twitter post to describe this video.</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> "Feeling the chill in the air, but the cherry blossoms are a sight to behold! 🌸❄️ Walking down the street, each person bundled up against the winter chill. The snow-covered trees and market stalls add to the serene beauty of this winter wonderland. #CherryBlossoms #WinterWalk #CityScenes".</p>
+										</div>
+									</div> 
+								</div>
+							</div>
+                            <style>
+                                .control-button {
+                                    padding: 15px 30px; /* Increase padding to make the button larger */
+                                    font-size: 20px; /* Increase font size for better visibility */
+                                    width: 150px; /* Set a specific width for the buttons */
+                                    margin: 10px;
+                                }
+                            </style>
+							<div style="position: relative;">
+								<button id="prevBtn5" class="control-button prev-button">Prev</button>
+								<button id="nextBtn5" class="control-button next-button">Next</button>
+							</div>
+
+						</div>
+						
+						<br/>
+						<h3 id="section-33">Real-World Applications </h3>
+
+						<ul>
+							<li><strong>PPT summarization and QA:</strong> The model can summarize and retrieve information from multiple images.
+							</li>
+							<li><strong>Painting styles/Category difference:</strong> The model generalizes to recognize artists' painting styles and tell different categories.
+							</li>
+							<li><strong>Image editing:</strong> The model can be used to create image editing prompts for image generation.
+							</li>
+							<li>
+								<strong>Multi-doc QA</strong>: The model can summarize the information of multiple documents and provide comparisons for different documents.
+							</li>
+						  </ul>
+
+                          <div style="text-align: center; margin-top: 6px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 5px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+							<div class="slider-container">
+								<div class="slider-wrapper" id="sliderWrapper6">
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+											<h4>Multi-doc VQA</h4>
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/oprah-winfrey-resume.png" alt="Image 2" style="width: 50%; height:  100%;">
+												</div>
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/steve-jobs-resume.jpg" alt="Image 1" style="width: 50%; height: 100%;">
+												</div>
+											</div>
+											<br>
+										</div>
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> Hi, there are two candidates, can you provide a brief description for each of them for me?</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												Certainly! Here's a brief description of each candidate:
+1. Oprah Winfrey:
+  - Professional Experience: Known for her talk show, "The Oprah Winfrey Show," and her work on "COVID-19" as a presenter on Apple TV.
+  - Skills: Emphasized on emotional intelligence, interpersonal skills, and creativity.
+  - Honors & Awards: Notable achievements include the Golden Globe Award for Best Television Series and the Golden Globe Award for Best Television Special.
+2. Steve Jobs:
+  - Professional Experience: Co-founder of Apple Inc., where he led the development of iconic products like the iMac, iPod, and iPhone.
+  - Skills: Highlighted as a thinker with a focus on innovation and problem-solving.
+  - Honors & Awards: Recognized with numerous accolades, including the MacArthur Fellowship and the NeXT Computer Science Award.
+Please note that these descriptions are based on the information provided in the images and do not include any personal details or specific accomplishments mentioned in the images.
+
+											
+											</p>
+											<p style="text-align: left;"><b>User</b>
+												Which of them better suits the role of the Congressman of the US? Why?
+											</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												The first resume, featuring Oprah Winfrey, would better suit the role of a Congressman because it highlights skills and experiences that are relevant to political office, such as leadership, public speaking, and media experience. These qualities are essential for a politician to effectively represent their constituents and engage in legislative processes. The second resume, while it could be suitable for a creative or entrepreneurial role, does not specifically mention skills or experiences that align with the responsibilities of a Congressman.
+											</p>
+										</div>
+										
+									</div>
+	
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>PPT Sumarization and QA</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/dynamic-island-1024x576.jpg" alt="Image 2" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/iphone-15-colors-1024x576.jpg" alt="Image 3" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/Iphone-15-Usb-c-charger-1024x576.jpg" alt="Image 4" style="width: 100%; height: auto;">
+												</div>
+												<div style="border: 1px solid #000;">
+													<img src="/blog/assets/images/llava-m4/examples/A-17-processors-1024x576.jpg" alt="Image 5" style="width: 100%; height: auto;">
+												</div>
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
+										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
+												<p style="text-align: left;"><b>User</b>  What is the price of iPhone 15 plus?</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
+												<p style="text-align: left;"><b>User</b> Why the dynamic island useful?</p>
+												<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
+											
+											 
+	
+										</div>
+									</div> 
+									
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Patining styles</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/fangao3.jpeg" alt="Image 1" style="width: 100%; height: 100%;">
+												</div>
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/fangao2.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
+												</div>
+												<div >
+													<img src="/blog/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
+												</div>
+												<div >
+													<img src="/blog/assets/images/llava-m4/examples/bijiasuo2.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> Do you kown who draw these paintings?</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+										
+												Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
+
+											</p>
+												
+	
+										</div>
+										
+									</div>
+
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Image Editing</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/dog_to_monkey1.png" alt="Image 1" style="width: 50%; height: auto;">
+												</div>
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/changed_bench.jpeg" alt="Image 2" style="width: 50%; height:  100%;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> Please generate a brief sentence to edit image1 to make it look like image2.</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												To edit image1 to make it look like image2, you would need to add a patterned cushion or seat cover to the bench. 
+											</p>
+												
+	
+										</div>
+										
+									</div>
+
+									
+
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Multi page doc vqa (information retrival)</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/doc1.jpg" alt="Image 1" style="width: 60%; height:  100%;">
+												</div>
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/doc2.jpg" alt="Image 2" style="width: 60%; height: auto;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> What is his email?</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												The email address provided in the image is "herman.walton@gmail.com".
+											</p>
+											<p style="text-align: left;"><b>User</b>
+												What language can he speak?
+											</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												The language skills section of the resume mentions that the individual is fluent in English and Dutch.	
+											</p>
+										</div>
+										
+									</div>
+
+									<div class="slider-item">
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
+	
+											<h4>Twitter blog</h4>
+	
+											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
+												<div>
+													<img src="/blog/assets/images/llava-m4/examples/twitter2.jpeg" alt="Image 2" style="width: 60%; height:  60%;">
+												</div>
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/twitter3.jpeg" alt="Image 1" style="width: 60%; height: 60%;">
+												</div>
+												<div style=>
+													<img src="/blog/assets/images/llava-m4/examples/twitter4.jpeg" alt="Image 1" style="width: 60%; height: 60%;">
+												</div>
+												
+												
+											</div>
+											
+
+											<br>
+											
+										
+	
+										</div>
+										
+										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
+	
+											<h4>Conversation</h4>
+											<p style="text-align: left;"><b>User</b> Please write a twitter blog post with the images.</p>
+											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
+												🚀✨ Launch! 🚀✨ The sky is alight with the brilliance of a rocket's ascent. The rocket, a magnificent arc against the night sky, leaves behind a trail of light that cuts through the darkness. It's a moment frozen in time, where human ingenuity and nature's grandeur converge. The rocket's trajectory is a testament to our progress, pushing the boundaries of what's possible. This is not just a launch; it's a celebration of human aspiration and the relentless pursuit of knowledge. #SpaceExploration #RocketLaunch
+											
+											</p>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<div style="position: relative;">
+								<button id="prevBtn6" class="control-button prev-button">Prev</button>
+								<button id="nextBtn6" class="control-button next-button">Next</button>
+							</div>
+
+						</div>
+						<script>
+							const wrapper1 = document.getElementById('sliderWrapper1');
+							let index1 = 0;
+						
+							document.getElementById('prevBtn1').addEventListener('click', () => {
+								index1 = Math.max(index1 - 1, 0);
+								wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn1').addEventListener('click', () => {
+								index1 = Math.min(index1 + 1, wrapper1.children.length - 1);
+								wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
+							});
+						
+							const wrapper2 = document.getElementById('sliderWrapper2');
+							let index2 = 0;
+						
+							document.getElementById('prevBtn2').addEventListener('click', () => {
+								index2 = Math.max(index2 - 1, 0);
+								wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn2').addEventListener('click', () => {
+								index2 = Math.min(index2 + 1, wrapper2.children.length - 1);
+								wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
+							});
+
+							const wrapper3 = document.getElementById('sliderWrapper3');
+							let index3 = 0;
+						
+							document.getElementById('prevBtn3').addEventListener('click', () => {
+								index3 = Math.max(index3 - 1, 0);
+								wrapper3.style.transform = `translateX(-${index3 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn3').addEventListener('click', () => {
+								index3 = Math.min(index3 + 1, wrapper3.children.length - 1);
+								wrapper3.style.transform = `translateX(-${index3 * 100}%)`;
+							});
+
+							const wrapper4 = document.getElementById('sliderWrapper4');
+							let index4 = 0;
+						
+							document.getElementById('prevBtn4').addEventListener('click', () => {
+								index4 = Math.max(index4 - 1, 0);
+								wrapper4.style.transform = `translateX(-${index4 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn4').addEventListener('click', () => {
+								index4 = Math.min(index4 + 1, wrapper4.children.length - 1);
+								wrapper4.style.transform = `translateX(-${index4 * 100}%)`;
+							});
+
+							const wrapper5 = document.getElementById('sliderWrapper5');
+							let index5 = 0;
+						
+							document.getElementById('prevBtn5').addEventListener('click', () => {
+								index5 = Math.max(index5 - 1, 0);
+								wrapper5.style.transform = `translateX(-${index5 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn5').addEventListener('click', () => {
+								index5 = Math.min(index5 + 1, wrapper5.children.length - 1);
+								wrapper5.style.transform = `translateX(-${index5 * 100}%)`;
+							});
+
+							const wrapper6 = document.getElementById('sliderWrapper6');
+							let index6 = 0;
+						
+							document.getElementById('prevBtn6').addEventListener('click', () => {
+								index6 = Math.max(index6 - 1, 0);
+								wrapper6.style.transform = `translateX(-${index6 * 100}%)`;
+							});
+						
+							document.getElementById('nextBtn6').addEventListener('click', () => {
+								index6 = Math.min(index6 + 1, wrapper6.children.length - 1);
+								wrapper6.style.transform = `translateX(-${index6 * 100}%)`;
+							});
+						</script>
+
+
+
+						<br />
+
+						<h2 id="section-1-insights-on-architectures">Section 2 - Interleaved Visual Instruction Tuning</h2>
 						<!-- <h3 id="section-11">Task Overview</h1> -->
     <p><strong>Task Overview.</strong> We utilize interleave format to unify different tasks of data input, including the following four settings:</p>
     <ul>
@@ -1102,7 +1639,7 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 							<img style="margin: 0 auto;" width="50%" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Benchmark Statistics Figure">
 							<figcaption>Detailed data statistics for multi-image benchmarks.</figcaption>
 						</figure> -->
-						<h2 id="section-2-evaluation-benchmarks">Section 2 - Evaluation Results</h2>
+						<h2 id="section-2-evaluation-benchmarks">Section 3 - Evaluation Results</h2>
 						
 						<p>
 							We conduct extensive evaluation compared with existing open-source models to demonstrate the multimodal capabilities of LLaVA-NeXT-Interleave, which covers a variety of existing and newly curated in/out-domain benchmarks. In the tables below, we exhibit the results across 3 primary scenarios, where our model achieves consistently leading performance for multi-image/frame/view reasoning.
@@ -1766,541 +2303,7 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 					</br>
 				</br>
 
-						<h2 id="section-3-emerging-capabilities">Section 3 - Emerging Capabilities</h2>
-						<h3 id="section-31">Task Transfer between Single-Image and Multi-Image </h3>
-						</p>
-						<p>
-						</p>
-						<ul>
-							<li><strong>Multi-image coding:</strong> Our multi-image training data does not include the coding-related problem. However, by jointly training on single-image data with coding problems, the model learns to write code based on multiple images. In this example, the model writes an HTML code to simulate the movement of the square from the first image to the second image.
-							</li>
-							<li>
-							<strong>What is fun about the images:</strong> The model learns to reason over mutliple images and tell the funny part of the images. It is only in single-image tasks but not in multi-image tasks.
-							</li>
-						  </ul>
 
-                          <div style="text-align: center; margin-top: 6px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 5px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-							<div class="slider-container">
-								<div class="slider-wrapper" id="sliderWrapper4">
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-											<h4>Multi-image Coding</h4>
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px; align-items: center;">
-												<div>
-													<img src="/blog/assets/images/llava-m4/examples/pyf1.png" alt="Image 1" style="width: 35%; height: auto;">
-												</div>
-												<div>
-													<img src="/blog/assets/images/llava-m4/examples/pyf2.png" alt="Image 2" style="width: 35%; height: auto;">
-												</div>
-											</div>
-											<br>
-										</div>
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> Please pay attention to the movement of the object from the first image to the second image, then write a HTML code to show this movement.</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> Certainly! To create an animation that shows the object moving from one position to another, you can use HTML with CSS for styling and JavaScript for the animation. Below is a simple example of how you might code this:
-											<!-- blog_new/assets/images/llava-m4/code_screenshot.png -->
-											<p></p>
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-											<img src="/blog/assets/images/llava-m4/code_screenshot.png" alt="Image 1" style="width: 100%; height: auto;">
-											<!-- <video width="70%" controls loop autoplay>
-												<source src="/blog_new/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
-												Your browser does not support the video tag.
-											  </video> -->
-											  <div class="video-container" style="width: 70%; height: auto;">
-												<video controls>
-												  <source src="/blog/assets/images/llava-m4/examples/code.mp4" type="video/mp4">
-												  Your browser does not support the video tag.
-												</video>
-												<div class="caption">The rendered video</div>
-											  </div>
-											</div>
-                                            <br>
-											<p style="text-align: left;">
-											This code will create an animation where the red object moves horizontally from left to right. The animation is set to last 2 seconds with an ease-in-out timing function. The object's width and height are set to 100 pixels, and the background color is red.
-											The animation is applied using the @keyframes rule, which defines the keyframes for the animation. The animation property on the object sets the animation to use the move keyframe defined earlier.
-											In the JavaScript part, we maintain a variable currentPos that keeps track of the current position of the object. We use setInterval to animate the object's movement, updating its position by 1 pixel every 5 milliseconds. After 2 seconds, we clear the interval id to stop the animation.
-											Remember to adjust the keyframes to match the exact movement you want to achieve.
-											</p>
-										</div>
-
-									</div>
-                                    <div class="slider-item" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-									
-											<h4>Fun Mems</h4>
-									
-											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px; align-items: center;">
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/shub.jpg" alt="Image 1" style="width: 100%; height: auto;">
-												</div>
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/shuc.jpg" alt="Image 2" style="width: 100%; height: auto;">
-												</div>
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/shud.jpg" alt="Image 3" style="width: 100%; height: auto;">
-												</div>
-												
-											</div>
-											<br>
-									
-										</div>
-										
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-									
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> what is fun about the images?</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The humor in these images comes from the anthropomorphized birds engaging in human-like activities and conversations. In the first image, one bird is asking about going to get some fries on the pier, which is a human activity. The second image shows a bird asking about the "culminating result of consciousness," which is a philosophical question rather than a literal one. The third image has a bird expressing its desire to do something with the fries on the pier, again referencing a human activity. The anthropomorphism of the birds adds a layer of humor by attributing human thoughts and desires to animals.</p>
-										</div>
-									</div> 
-								</div>
-							</div>
-                            <style>
-                                .control-button {
-                                    padding: 15px 30px; /* Increase padding to make the button larger */
-                                    font-size: 20px; /* Increase font size for better visibility */
-                                    width: 150px; /* Set a specific width for the buttons */
-                                    border-radius: 24px;
-                                }
-                            </style>
-                            <div style="position: relative;">
-                                <button id="prevBtn4" class="control-button prev-button">Prev</button>
-                                <button id="nextBtn4" class="control-button next-button">Next</button>
-                            </div>
-
-						</div>
-						<br/>
-
-						<h3 id="section-32">Task Transfer between Image and Video </h3>
-						
-						<ul>
-							<li><strong>Multi-video difference:</strong> All the video data trained is about single-video QA or caption. Tell-the-difference data only appears in multi-image data, and the difference is only about the difference between two single images. By joint training, the model generalizes to tell the difference of two videos. In this example, viewing two similar videos of different styles, the model can tell the general difference and list the detailed differences. 
-							</li>
-							<li><strong>Twitter post for video:</strong> The model is trained to write a Twitter post on multi-image data. By joint training, the model can write a Twitter post of a video.
-							</li>
-						  </ul>
-                          <div style="text-align: center; margin-top: 6px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 5px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-							<div class="slider-container">
-								<div class="slider-wrapper" id="sliderWrapper5">
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-											<h4>Multi-video difference</h4>
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 1px; align-items: center;">
-												<div style="display: flex; justify-content: center; align-items: center;">
-													<video style="width: 70%; height: 60%;" controls loop autoplay>
-														<source src="/blog/assets/images/llava-m4/data/lion2_.mp4" type="video/mp4">
-														Your browser does not support the video tag.
-													  </video>
-												</div>
-												<div style="display: flex; justify-content: center; align-items: center;">
-													<video style="width: 78%; height: 60%;" controls loop autoplay>
-														<source src="/blog/assets/images/llava-m4/data/lion1_.mp4" type="video/mp4">
-														Your browser does not support the video tag.
-													  </video>
-												</div>
-											</div>
-										</div>
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> The input contains two videos, the first half is the first video and the second half is the second video. What is the difference between the two videos?</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The first video shows a lion with a fiery mane, while the second video shows a lion with a bright yellow mane.</p>
-										<p style="text-align: left;"><b>User</b> List the detailed difference</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>The differences between the two videos are:
-											1. The mane of the lion in the first video is a fiery orange-red color, while in the second video, it is a vibrant yellow.
-											2. The background in the first video is dark and indistinct, whereas in the second video, the background is green, suggesting a natural setting.
-											3. The lion's expression changes from a neutral look to a more aggressive one with its mouth open in the second video.</p>
-										</div>
-									</div> 
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-											<h4>Twitter post for video</h4>
-											<div style="display: grid; grid-template-columns: repeat(1, 1fr); grid-template-rows: repeat(1, 1fr); gap: 1px; align-items: center;">
-												<div style="display: flex; justify-content: center; align-items: center;">
-													<video style="width: 70%; height: 60%;" controls loop autoplay>
-														<source src="/blog/assets/images/llava-m4/data/tokyo_people.mp4" type="video/mp4">
-														Your browser does not support the video tag.
-													  </video>
-												</div>
-											</div>
-											<br>
-										</div>
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> Help me write a twitter post to describe this video.</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> "Feeling the chill in the air, but the cherry blossoms are a sight to behold! 🌸❄️ Walking down the street, each person bundled up against the winter chill. The snow-covered trees and market stalls add to the serene beauty of this winter wonderland. #CherryBlossoms #WinterWalk #CityScenes".</p>
-										</div>
-									</div> 
-								</div>
-							</div>
-                            <style>
-                                .control-button {
-                                    padding: 15px 30px; /* Increase padding to make the button larger */
-                                    font-size: 20px; /* Increase font size for better visibility */
-                                    width: 150px; /* Set a specific width for the buttons */
-                                    margin: 10px;
-                                }
-                            </style>
-							<div style="position: relative;">
-								<button id="prevBtn5" class="control-button prev-button">Prev</button>
-								<button id="nextBtn5" class="control-button next-button">Next</button>
-							</div>
-
-						</div>
-						
-						<br/>
-						<h3 id="section-33">Real-World Applications </h3>
-
-						<ul>
-							<li><strong>PPT summarization and QA:</strong> The model can summarize and retrieve information from multiple images.
-							</li>
-							<li><strong>Painting styles/Category difference:</strong> The model generalizes to recognize artists' painting styles and tell different categories.
-							</li>
-							<li><strong>Image editing:</strong> The model can be used to create image editing prompts for image generation.
-							</li>
-							<li>
-								<strong>Multi-doc QA</strong>: The model can summarize the information of multiple documents and provide comparisons for different documents.
-							</li>
-						  </ul>
-
-                          <div style="text-align: center; margin-top: 6px; background: linear-gradient(45deg, rgba(255, 0, 80, 0.2), rgba(0, 242, 234, 0.25)); padding: 5px; border-radius: 37px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
-							<div class="slider-container">
-								<div class="slider-wrapper" id="sliderWrapper6">
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-											<h4>Multi-doc VQA</h4>
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div>
-													<img src="/blog/assets/images/llava-m4/examples/oprah-winfrey-resume.png" alt="Image 2" style="width: 50%; height:  100%;">
-												</div>
-												<div style=>
-													<img src="/blog/assets/images/llava-m4/examples/steve-jobs-resume.jpg" alt="Image 1" style="width: 50%; height: 100%;">
-												</div>
-											</div>
-											<br>
-										</div>
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> Hi, there are two candidates, can you provide a brief description for each of them for me?</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-												Certainly! Here's a brief description of each candidate:
-1. Oprah Winfrey:
-  - Professional Experience: Known for her talk show, "The Oprah Winfrey Show," and her work on "COVID-19" as a presenter on Apple TV.
-  - Skills: Emphasized on emotional intelligence, interpersonal skills, and creativity.
-  - Honors & Awards: Notable achievements include the Golden Globe Award for Best Television Series and the Golden Globe Award for Best Television Special.
-2. Steve Jobs:
-  - Professional Experience: Co-founder of Apple Inc., where he led the development of iconic products like the iMac, iPod, and iPhone.
-  - Skills: Highlighted as a thinker with a focus on innovation and problem-solving.
-  - Honors & Awards: Recognized with numerous accolades, including the MacArthur Fellowship and the NeXT Computer Science Award.
-Please note that these descriptions are based on the information provided in the images and do not include any personal details or specific accomplishments mentioned in the images.
-
-											
-											</p>
-											<p style="text-align: left;"><b>User</b>
-												Which of them better suits the role of the Congressman of the US? Why?
-											</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-												The first resume, featuring Oprah Winfrey, would better suit the role of a Congressman because it highlights skills and experiences that are relevant to political office, such as leadership, public speaking, and media experience. These qualities are essential for a politician to effectively represent their constituents and engage in legislative processes. The second resume, while it could be suitable for a creative or entrepreneurial role, does not specifically mention skills or experiences that align with the responsibilities of a Congressman.
-											</p>
-										</div>
-										
-									</div>
-	
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-	
-											<h4>PPT Sumarization and QA</h4>
-	
-											<div style="display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px;">
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/iphone-15-price-1024x576.jpg" alt="Image 1" style="width: 100%; height: auto;">
-												</div>
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/dynamic-island-1024x576.jpg" alt="Image 2" style="width: 100%; height: auto;">
-												</div>
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/iphone-15-colors-1024x576.jpg" alt="Image 3" style="width: 100%; height: auto;">
-												</div>
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/Iphone-15-Usb-c-charger-1024x576.jpg" alt="Image 4" style="width: 100%; height: auto;">
-												</div>
-												<div style="border: 1px solid #000;">
-													<img src="/blog/assets/images/llava-m4/examples/A-17-processors-1024x576.jpg" alt="Image 5" style="width: 100%; height: auto;">
-												</div>
-												
-											</div>
-											
-
-											<br>
-											
-										
-	
-										</div>
-										
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-	
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> The images are the PPT of iPhone 15 review. can you summarize the main information?</p>
-										<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The PPT features a sleek design with a black background and includes text and images related to the iPhone 15. It highlights the phone's innovative features such as a custom dual glass back cover, a dynamic island display for delivery tracking, and a USB-C compatible fast charging cable. The color options are showcased in a gradient of pink, green, gray, and onyx. The presentation also emphasizes the phone's powerful processors, including the A16 Bionic chip and A17 Pro chip.</p>
-												<p style="text-align: left;"><b>User</b>  What is the price of iPhone 15 plus?</p>
-												<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The price of iPhone 15 plus is Rs. 89,000 as mentioned in the PPT slide.</p>
-												<p style="text-align: left;"><b>User</b> Why the dynamic island useful?</p>
-												<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b> The dynamic island is useful for delivery tracking, as it allows the user to know when their order will arrive and if there are any delays. It also provides a new way to interact with the phone's interface, making it easier to navigate and access various features.</p>
-											
-											 
-	
-										</div>
-									</div> 
-									
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-	
-											<h4>Patining styles</h4>
-	
-											<div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div style=>
-													<img src="/blog/assets/images/llava-m4/examples/fangao3.jpeg" alt="Image 1" style="width: 100%; height: 100%;">
-												</div>
-												<div>
-													<img src="/blog/assets/images/llava-m4/examples/fangao2.jpeg" alt="Image 2" style="width: 100%; height:  100%;">
-												</div>
-												<div >
-													<img src="/blog/assets/images/llava-m4/examples/fangao1.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
-												</div>
-												<div >
-													<img src="/blog/assets/images/llava-m4/examples/bijiasuo2.jpeg" alt="Image 2" style="width: 100%; height: 100%;">
-												</div>
-												
-												
-											</div>
-											
-
-											<br>
-											
-										
-	
-										</div>
-										
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-	
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> Do you kown who draw these paintings?</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-										
-												Yes, these paintings are by the renowned artist Vincent van Gogh. The first painting is his famous work "The Starry Night," which depicts a swirling night sky with a bright crescent moon and stars. The second painting is his self-portrait, which shows him smoking a pipe and wearing a hat. The third painting is also a self-portrait, but it features a different expression and hairstyle. The fourth painting is by another artist, not Van Gogh, and depicts a person seated with flowers in the background.
-
-											</p>
-												
-	
-										</div>
-										
-									</div>
-
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-	
-											<h4>Image Editing</h4>
-	
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div style=>
-													<img src="/blog/assets/images/llava-m4/examples/dog_to_monkey1.png" alt="Image 1" style="width: 50%; height: auto;">
-												</div>
-												<div>
-													<img src="/blog/assets/images/llava-m4/examples/changed_bench.jpeg" alt="Image 2" style="width: 50%; height:  100%;">
-												</div>
-												
-												
-											</div>
-											
-
-											<br>
-											
-										
-	
-										</div>
-										
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-	
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> Please generate a brief sentence to edit image1 to make it look like image2.</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-												To edit image1 to make it look like image2, you would need to add a patterned cushion or seat cover to the bench. 
-											</p>
-												
-	
-										</div>
-										
-									</div>
-
-									
-
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-	
-											<h4>Multi page doc vqa (information retrival)</h4>
-	
-											<div style="display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div>
-													<img src="/blog/assets/images/llava-m4/examples/doc1.jpg" alt="Image 1" style="width: 60%; height:  100%;">
-												</div>
-												<div style=>
-													<img src="/blog/assets/images/llava-m4/examples/doc2.jpg" alt="Image 2" style="width: 60%; height: auto;">
-												</div>
-												
-												
-											</div>
-											
-
-											<br>
-											
-										
-	
-										</div>
-										
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-	
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> What is his email?</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-												The email address provided in the image is "herman.walton@gmail.com".
-											</p>
-											<p style="text-align: left;"><b>User</b>
-												What language can he speak?
-											</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-												The language skills section of the resume mentions that the individual is fluent in English and Dutch.	
-											</p>
-										</div>
-										
-									</div>
-
-									<div class="slider-item">
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(117, 209, 215, 0.1);">
-	
-											<h4>Twitter blog</h4>
-	
-											<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(1, 1fr); gap: 10px;">
-												<div>
-													<img src="/blog/assets/images/llava-m4/examples/twitter2.jpeg" alt="Image 2" style="width: 60%; height:  60%;">
-												</div>
-												<div style=>
-													<img src="/blog/assets/images/llava-m4/examples/twitter3.jpeg" alt="Image 1" style="width: 60%; height: 60%;">
-												</div>
-												<div style=>
-													<img src="/blog/assets/images/llava-m4/examples/twitter4.jpeg" alt="Image 1" style="width: 60%; height: 60%;">
-												</div>
-												
-												
-											</div>
-											
-
-											<br>
-											
-										
-	
-										</div>
-										
-										<div style="display: block; padding: 5px 10px; margin: 5px; border-radius: 24px; background-color: rgba(249, 242, 248, 1);">
-	
-											<h4>Conversation</h4>
-											<p style="text-align: left;"><b>User</b> Please write a twitter blog post with the images.</p>
-											<p style="text-align: left;"><b>LLaVA-NeXT-Interleave</b>
-												🚀✨ Launch! 🚀✨ The sky is alight with the brilliance of a rocket's ascent. The rocket, a magnificent arc against the night sky, leaves behind a trail of light that cuts through the darkness. It's a moment frozen in time, where human ingenuity and nature's grandeur converge. The rocket's trajectory is a testament to our progress, pushing the boundaries of what's possible. This is not just a launch; it's a celebration of human aspiration and the relentless pursuit of knowledge. #SpaceExploration #RocketLaunch
-											
-											</p>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-							<div style="position: relative;">
-								<button id="prevBtn6" class="control-button prev-button">Prev</button>
-								<button id="nextBtn6" class="control-button next-button">Next</button>
-							</div>
-
-						</div>
-						<script>
-							const wrapper1 = document.getElementById('sliderWrapper1');
-							let index1 = 0;
-						
-							document.getElementById('prevBtn1').addEventListener('click', () => {
-								index1 = Math.max(index1 - 1, 0);
-								wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
-							});
-						
-							document.getElementById('nextBtn1').addEventListener('click', () => {
-								index1 = Math.min(index1 + 1, wrapper1.children.length - 1);
-								wrapper1.style.transform = `translateX(-${index1 * 100}%)`;
-							});
-						
-							const wrapper2 = document.getElementById('sliderWrapper2');
-							let index2 = 0;
-						
-							document.getElementById('prevBtn2').addEventListener('click', () => {
-								index2 = Math.max(index2 - 1, 0);
-								wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
-							});
-						
-							document.getElementById('nextBtn2').addEventListener('click', () => {
-								index2 = Math.min(index2 + 1, wrapper2.children.length - 1);
-								wrapper2.style.transform = `translateX(-${index2 * 100}%)`;
-							});
-
-							const wrapper3 = document.getElementById('sliderWrapper3');
-							let index3 = 0;
-						
-							document.getElementById('prevBtn3').addEventListener('click', () => {
-								index3 = Math.max(index3 - 1, 0);
-								wrapper3.style.transform = `translateX(-${index3 * 100}%)`;
-							});
-						
-							document.getElementById('nextBtn3').addEventListener('click', () => {
-								index3 = Math.min(index3 + 1, wrapper3.children.length - 1);
-								wrapper3.style.transform = `translateX(-${index3 * 100}%)`;
-							});
-
-							const wrapper4 = document.getElementById('sliderWrapper4');
-							let index4 = 0;
-						
-							document.getElementById('prevBtn4').addEventListener('click', () => {
-								index4 = Math.max(index4 - 1, 0);
-								wrapper4.style.transform = `translateX(-${index4 * 100}%)`;
-							});
-						
-							document.getElementById('nextBtn4').addEventListener('click', () => {
-								index4 = Math.min(index4 + 1, wrapper4.children.length - 1);
-								wrapper4.style.transform = `translateX(-${index4 * 100}%)`;
-							});
-
-							const wrapper5 = document.getElementById('sliderWrapper5');
-							let index5 = 0;
-						
-							document.getElementById('prevBtn5').addEventListener('click', () => {
-								index5 = Math.max(index5 - 1, 0);
-								wrapper5.style.transform = `translateX(-${index5 * 100}%)`;
-							});
-						
-							document.getElementById('nextBtn5').addEventListener('click', () => {
-								index5 = Math.min(index5 + 1, wrapper5.children.length - 1);
-								wrapper5.style.transform = `translateX(-${index5 * 100}%)`;
-							});
-
-							const wrapper6 = document.getElementById('sliderWrapper6');
-							let index6 = 0;
-						
-							document.getElementById('prevBtn6').addEventListener('click', () => {
-								index6 = Math.max(index6 - 1, 0);
-								wrapper6.style.transform = `translateX(-${index6 * 100}%)`;
-							});
-						
-							document.getElementById('nextBtn6').addEventListener('click', () => {
-								index6 = Math.min(index6 + 1, wrapper6.children.length - 1);
-								wrapper6.style.transform = `translateX(-${index6 * 100}%)`;
-							});
-						</script>
-
-
-
-						<br />
 						<h2 id="section-4-train-techniques">Section 4 - Training Techinques</h2>
 						<p>We illustrate two key techniques for training LLaVA-NeXT-Interleave using the M4-Instruct dataset, and provide abalation studies for analysis.</p>
 						<h4 id="con">Continue training from single-image model</h2>
