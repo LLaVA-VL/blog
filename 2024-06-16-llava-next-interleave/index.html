@@ -372,7 +372,7 @@ We observe that the <strong>image-text interleaved format</strong> can naturally
 								<strong>Interleave data format unifies different tasks.</strong> We represent multi-image, video, 3D, and single-image data all into an interleaved training format, which unifies different tasks in a single LLM.
 							</li>
 							<li>
-								<strong>New datasets</strong>: (1) <em>Training Data: M4-Instruct</em>.  We compile a high-quality dataset with 1269k samples, spanning 4 primary domains (multi-image, video, 3D, and single-image). (2). <em>LLaVA-Interleave Bench</em>.  We curate a diverse set of tasks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. 
+								<strong>New datasets</strong>: (1) <em>Training Data: M4-Instruct</em>.  We compile a high-quality dataset with 1177.6k samples, spanning 4 primary domains (multi-image, video, 3D, and single-image). (2). <em>LLaVA-Interleave Bench</em>.  We curate a diverse set of tasks to evaluate the multi-image capabilities in 3 scenarios, including 9 newly collected and 13 existing  in/out-domain benchmarks. 
 							</li>
 							<li>
 								<strong>SoTA Performance.</strong>(1). With a single model, LLaVA-NeXT-Interleave can achieve leading results in different<em> multi-image benchmarks</em> compared to the previous SoTA. (2). With a proper data mix of different scenarios, the performance of previous <em>individual tasks</em> can be improved or maintained. For example, we maintain the single-image performance of LLaVA-NeXT and improve performance on video tasks.
@@ -988,7 +988,7 @@ Please note that these descriptions are based on the information provided in the
 	<h3 id="section-12">M4-Instruct: Training Data</h1>
 		<div class="container_zh">
 			<div class="text_zh">
-				<p>To empower all-round multi-image capabilities, we curate a comprehensive dataset including 1269K training samples, <strong>M4-Instruct</strong>, spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 43 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
+				<p>To empower all-round multi-image capabilities, we curate a comprehensive dataset including 1177.6K training samples, <strong>M4-Instruct</strong>, spanning multi-image, multi-frame, and multi-view scenarios with 14 tasks and 41 datasets, along with single-image data to preserve basic instruction-following capabilities. We exhibit the detailed data statistics in the table below.</p>
     <p>Most multi-image datasets are collected from previous public efforts and rigorously converted into our data format, referring to <a href="https://demon.mantis.com">DEMON</a> and <a href="https://mantis.com">Mantis</a>. On top of that, we also utilize GPT-4V to <strong>annotate 5 new tasks</strong> to enable more diverse capabilities, i.e., <em>Real-world Difference, Synthetic Difference, COCO Difference, Twitter Post, and Interleaved Multi-image Dialogue</em>.</p>
 	<p>For video data, we utilize a subset of 255k from LLaVA-Hound, including 240k video QA and 15k video captions. We also include NExT-QA and STAR in our training.</p>
 <p>For 3D data, we utilize 3D data from Nuscenes QA, ALFRED, ScanQA, and 3D-LLM.</p>
@@ -1034,7 +1034,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-2fcb" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-image Scenarios</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="5"><span style="color:#3F3F3F;background-color:#F8F9FA">Spot the Difference</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(42.6K)</span></td>
+									<td class="tg-oe2o" rowspan="5"><span style="color:#3F3F3F;background-color:#F8F9FA">Spot the Difference</span><span style="color:#3F3F3F;background-color:#F8F9FA">(42.6K)</span></td>
 									<td class="tg-d83x"><span style="color:#3F3F3F;background-color:#FAF1D1">Real-world Difference</span></td>
 									<td class="tg-d83x"><span style="color:#3F3F3F;background-color:#FAF1D1">Realistic</span></td>
 									<td class="tg-d83x"><span style="color:#3F3F3F;background-color:#FAF1D1">6.7K</span></td>
@@ -1060,7 +1060,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">3.9K</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Image Edit Instruction</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(67.7K)</span></td>
+									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Image Edit Instruction</span><span style="color:#3F3F3F;background-color:#F8F9FA">(67.7K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">HQ-Edit</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Sythentic</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">50K</span></td>
@@ -1076,7 +1076,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">3.5K</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Visual Story Telling</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(67.5K)</span></td>
+									<td class="tg-oe2o" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Visual Story Telling</span><span style="color:#3F3F3F;background-color:#F8F9FA">(67.5K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">AESOP</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Cartoon</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">6.9K</span></td>
@@ -1097,7 +1097,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">26K</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Text-rich VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(21.3K)</span></td>
+									<td class="tg-oe2o" rowspan="4"><span style="color:#3F3F3F;background-color:#F8F9FA">Text-rich VQA</span><span style="color:#3F3F3F;background-color:#F8F9FA">(21.3K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">WebQA</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Webpage</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">9.3K</span></td>
@@ -1118,7 +1118,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">1.9K</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="8"><span style="color:#3F3F3F;background-color:#F8F9FA">Multi-image VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(153.3K)</span></td>
+									<td class="tg-oe2o" rowspan="8"><span style="color:#3F3F3F;background-color:#F8F9FA">Multi-image VQA</span><span style="color:#3F3F3F;background-color:#F8F9FA">(153.3K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">NLVR2</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Realistic</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">86.4K</span></td>
@@ -1159,7 +1159,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">4.9K</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Low-level Comparison</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(65.9K)</span></td>
+									<td class="tg-oe2o" rowspan="2"><span style="color:#3F3F3F;background-color:#F8F9FA">Low-level Comparison</span><span style="color:#3F3F3F;background-color:#F8F9FA">(65.9K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Coinstruct</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Low-level</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">50K</span></td>
@@ -1196,7 +1196,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-2fcb" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-frame (Video) Scenarios</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Video QA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(246.9K)</span></td>
+									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Video QA</span><span style="color:#3F3F3F;background-color:#F8F9FA">(246.9K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">NExT-QA</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">3.9K</span></td>
@@ -1221,7 +1221,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-2fcb" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Multi-view (3D) Scenarios</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Scene VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(45.4K)</span></td>
+									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Scene VQA</span><span style="color:#3F3F3F;background-color:#F8F9FA">(45.4K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Nuscenes</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Outdoor</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">9.8K</span></td>
@@ -1237,7 +1237,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">10K</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Embodied VQA</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(62.5K)</span></td>
+									<td class="tg-oe2o" rowspan="3"><span style="color:#3F3F3F;background-color:#F8F9FA">Embodied VQA</span><span style="color:#3F3F3F;background-color:#F8F9FA">(62.5K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">ALFRED</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Indoor Synthetic</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">22.6K</span></td>
@@ -1256,7 +1256,7 @@ Please note that these descriptions are based on the information provided in the
 									<td class="tg-2fcb" colspan="4"><span style="font-weight:bold;font-style:italic;color:#3F3F3F">Single-image Scenarios</span></td>
 								  </tr>
 								  <tr style="line-height: 5px;">
-									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Single-image Tasks</span><br><span style="color:#3F3F3F;background-color:#F8F9FA">(307K)</span></td>
+									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Single-image Tasks</span><span style="color:#3F3F3F;background-color:#F8F9FA">(307K)</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">Randomly sampling 40% SFT data of LLaVA-NeXT</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">General</span></td>
 									<td class="tg-oe2o"><span style="color:#3F3F3F;background-color:#F8F9FA">307K</span></td>
@@ -1515,8 +1515,8 @@ Please note that these descriptions are based on the information provided in the
         <div class="container_zh" style="padding: 0; margin: 0;">
             <div class="text_zh" style="padding: 0; margin: 0;">
                 <p>We categorize multi-image reasoning task into two classes:</p>
-                <p>(1) <strong>In-domain Evaluation</strong> includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 13.1K samples in total.</p>
-                <p>(2) <strong>Out-domain Evaluation</strong> involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.2K samples in total.</p>
+                <p>(1) <strong>In-domain Evaluation</strong> includes tasks that have been "seen" during training, designed to verify the model performance within familiar scenarios. We adopt 7 newly curated multi-image tasks corresponding to training datasets, and 2 existing benchmarks, Q-Bench and NLVR2, with 12.9K samples in total.</p>
+                <p>(2) <strong>Out-domain Evaluation</strong> involves tasks that do not overlap with the training scenarios, aiming to reveal the generalization capacity of LMMs. We construct 2 new tasks for multi-image mathematical and scientific comprehension, and utilize 3 existing benchmarks, Mantis-Eval, BLINK, and MMMU, with 4.1K samples in total.</p>
             </div>
             <div class="image_zh" style="padding: 0; margin: 0 auto;">
                 <img style="width: 50%;" src="/blog/assets/images/llava-m4/bench-statistics.png" alt="Data Statistics Figure">
@@ -1896,7 +1896,7 @@ For our final solution, LLaVA-NeXT-Interleave (0.5/7/14B) adopts Qwen 1.5-0.5B, 
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">76.1</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">87.5</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">48.7</span></td>
-								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">74.2</span></td>
+								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">71177.6</span></td>
 								<td class="tg-k8yq"><span style="color:#3F3F3F;background-color:#F0FBEF">88.8</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">42.8</span></td>
 								<td class="tg-t1u7"><span style="color:#3F3F3F;background-color:#F6F1FE">32.8</span></td>
