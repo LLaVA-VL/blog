@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html>
+
+    
+
 <head>
   <meta charset="utf-8">
   <meta name="description"
         content="Evaluating mathematical reasoning of foundation models in visual contexts">
   <meta name="keywords" content="MathVista, Math Vista">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> LLaVA-OneVision: Visual Task Transfer Made Easy</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
-  <!-- <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-/Users/panlu/Library/Mobile Documents/com~apple~CloudDocs/ImageMath/visual-mathqa-server/data_final/images
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script> -->
-
-  <!-- <link rel="icon" href="./static/images/mathverse.png"> -->
   <link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico">
 
 
@@ -52,6 +40,35 @@
   <script src="./data/results/model_scores.js" defer></script>
 
   <script src="./visualizer/data/data_public.js" defer></script>
+
+  <style>
+      .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    .node {
+      fill: #f8f1e4;
+      stroke: #000;
+      stroke-width: 1;
+      rx: 10;
+      ry: 10;
+    }
+    .node text {
+      font-size: 14px;
+      text-anchor: middle;
+    }
+    .link {
+      fill: none;
+      stroke: #000;
+      stroke-width: 2;
+    }
+    .badge {
+      font-size: 12px;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -238,13 +255,70 @@
 </div>
 </section>
 
+<div class="center-container">
+<svg width="900" height="400">
+
+    <defs>
+        <marker id="arrowhead" markerWidth="5" markerHeight="3.5" 
+                refX="5" refY="1.75" orient="auto">
+            <polygon points="0 0, 5 1.75, 0 3.5" />
+        </marker>
+    </defs>
+    
+    <!-- Nodes -->
+    <rect x="50" y="150" width="200" height="50" fill="#fdecdc" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+    <text x="78" y="180.5" font-family="Times New Roman" font-size="14">Jan</text>
+    <circle cx="120" cy="176" r="5" fill="#b22222"></circle>
+    <text x="140" y="180.5" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/" fill="blue">LLaVA-NeXT</a></text>
+
+    <rect x="300" y="50" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+    <text x="328" y="79" font-family="Times New Roman" font-size="14">April</text>
+    <circle cx="375" cy="74.5" r="5" fill="#1e90ff"></circle>
+    <text x="390" y="70" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+    <text x="390" y="90" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/" fill="blue">(Video)</a></text>
+
+    <rect x="300" y="125" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+    <text x="328" y="154" font-family="Times New Roman" font-size="14">May</text>
+    <circle cx="375" cy="149.5" r="5" fill="#1e90ff"></circle>
+    <text x="390" y="145" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+    <text x="390" y="165" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/" fill="blue">(Stronger)</a></text>
+
+    <rect x="300" y="200" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+    <text x="328" y="229" font-family="Times New Roman" font-size="14">May</text>
+    <circle cx="375" cy="224.5" r="5" fill="#1e90ff"></circle>
+    <text x="390" y="220" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+    <text x="390" y="240" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" fill="blue">(Ablations)</a></text>
+
+    <rect x="300" y="275" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+    <text x="328" y="304" font-family="Times New Roman" font-size="14">June</text>
+    <circle cx="375" cy="299.5" r="5" fill="#1e90ff"></circle>
+    <text x="390" y="295" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+    <text x="390" y="315" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave/" fill="blue">(Interleave)</a></text>
+
+    <rect x="550" y="150" width="240" height="50" fill="#e6ffe6" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+    <text x="578" y="180.5" font-family="Times New Roman" font-size="14">July</text>
+    <circle cx="625" cy="176" r="5" fill="#008000"></circle>
+    <text x="640" y="180.5" font-family="Times New Roman" font-size="14" style="font-weight:bold;">LLaVA-OneVision</text>
+
+    <!-- Links -->
+    <line x1="250" y1="175" x2="300" y2="75" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"></line>
+    <line x1="250" y1="175" x2="300" y2="150" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+    <line x1="250" y1="175" x2="300" y2="225" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+    <line x1="250" y1="175" x2="300" y2="300" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+    <line x1="500" y1="75" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+    <line x1="500" y1="150" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+    <line x1="500" y1="225" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+    <line x1="500" y1="300" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+</svg>
+</div>
+
 
 <section class="section">
     <div class="container" style="margin-bottom: 2vh;">
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Related Blogs</h2>
+          <h2 class="title is-3">Development Roadmap</h2>
           <div class="content has-text-justified">
             <ul>
                 <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a></li>
@@ -278,20 +352,7 @@
   </div>
 </section>
 
-<!-- <h2 id="citation">Citation</h2>
 
-<div class="language-bibtex highlighter-rouge">
-    <div class="highlight"><pre class="highlight"><code>
-
-<span class="nc">@misc</span><span class="p">{</span><span class="nl">li2024llava-onevision</span><span class="p">,</span>
-<span class="na">title</span><span class="p">=</span><span class="s">{LLaVA-OneVision: Visual Task Transfer Made Easy}</span><span class="p">,</span>
-<span class="na">url</span><span class="p">=</span><span class="s">{https://llava-vl.github.io/blog/2024-08-05-llava-onevision/}</span><span class="p">,</span>
-<span class="na">author</span><span class="p">=</span><span class="s">{Li, Bo and Zhang, Yuanhan and Guo, Dong and Zhang, Renrui and Li, Feng and Zhang, Hao and Zhang, Kaichen and Li, Yanwei and Liu, Ziwei and Li, Chunyuan}</span><span class="p">,</span>
-<span class="na">month</span><span class="p">=</span><span class="s">{Aug}</span><span class="p">,</span>
-<span class="na">year</span><span class="p">=</span><span class="s">{2024}</span>
-<span class="p">}</span>
-</code></pre></div>
-</div> -->
 
 </div>
 <a class="u-url" href="/blog/2024-08-05-llava-onevision/" hidden></a>
