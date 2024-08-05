@@ -134,19 +134,6 @@
             <!-- <span class="paper-block"><b style="color:#f41c1c">ICLR 2024 Oral</b> (85 in 7304, 1.2%)</span> -->
           </div>
         
-          <!-- <section> -->
-            <!-- <div class="section" id="org-banners" style="display:fle">
-              <a href="https://www.ucla.edu/" target="_blank" rel="external">
-                  <img class="center-block org-banner" src="static/images/ucla.png" style="height:3em">
-              </a>
-              <a href="https://www.washington.edu/" target="blank" class="ext-link">
-                  <img class="center-block org-banner" src="static/images/uw.png" style="height:3em">
-              </a>
-              <a href="https://www.microsoft.com/en-us/research/" target="_blank" rel="external">
-                  <img class="center-block org-banner" src="static/images/microsoft.png" style="height:3em">
-              </a>
-            </div> -->
-          <!-- </section> -->
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -196,14 +183,14 @@
               </span> 
               <!-- Visualization Link. -->
               <span class="link-block">
-                <a href="https://huggingface.co/lmms-lab"
+                <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-Data"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <!-- <i class="far fa-images"></i> -->
                       <p style="font-size:18px">🤗</p>
                       <!-- 🔗 -->
                   </span>
-                  <span>LLaVA OneVision Data</span>
+                  <span>LLaVA-OneVision Data</span>
                 </a>
               </span> 
               <!-- Leaderboard Link. -->
@@ -216,18 +203,6 @@
                   <span>Live Demo</span>
                 </a>
               </span>
-              <!-- Twitter Link. -->
-              <!-- <span class="link-block">
-                <a href="https://twitter.com/lupantech/status/1717313355780964608"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"> -->
-                      <!-- <i class="far fa-images"></i> -->
-                      <!-- 💻🔗 -->
-                      <!-- <p style="font-size:18px">🌐</p> -->
-                  <!-- </span>
-                  <span>Twitter</span>
-                </a>
-              </span> -->
             </div>
 
           </div>
@@ -247,7 +222,7 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
             <p>
-				We present LLaVA-OneVision, a family of open large multimodal models (LMMs) developed by consolidating our insights into data, models, and visual representations in the <a href="https://llava-vl.github.io/blog/">LLaVA-NeXT blog series</a>, as shown by the development roadmap below. Our experimental results demonstrate show that LLaVA-OneVision is the first single model that can simultaneously push the performance boundaries of open LMMs in three important computer vision scenarios: single-image, multi-image and video scenarios. Importantly, the design of LLaVA-OneVision allow strong transfer learning across different modalities/scenarios, yielding new emerging capabilities. In particular, strong video understanding and cross-scenario capabilities are demosntrated through task transfer from images to videos.
+				We present <b>LLaVA-OneVision</b>, a family of open large multimodal models (LMMs) developed by consolidating our insights into data, models, and visual representations in the <a href="https://llava-vl.github.io/blog/">LLaVA-NeXT blog series</a>, as shown by the development roadmap below. Our experimental results demonstrate show that LLaVA-OneVision is the first single model that can simultaneously push the performance boundaries of open LMMs in three important computer vision scenarios: <b>single-image, multi-image and video scenarios</b>. Importantly, the design of LLaVA-OneVision allow strong transfer learning across different modalities/scenarios, yielding new emerging capabilities. In particular, strong video understanding and cross-scenario capabilities are demosntrated through task transfer from images to videos.
             </p>
         </div>
       </div>
@@ -256,7 +231,8 @@
 </div>
 </section>
 
-<div class="center-container" style="margin-top: -50px; margin-left: 70px;">
+
+<div class="center-container" style="margin-top: -50px; margin-left: 90px;">
 <svg width="900" height="400">
 
     <defs>
@@ -313,6 +289,28 @@
 </svg>
 </div>
 
+<section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Open-source Release</h2>
+          <div class="content has-text-justified">
+            <ul>
+                <p>
+                We open-source the LLaVA-OneVision to facilitate future development of LMM in the community.
+                </p>
+                <li> <p style="font-size:18px"><i class="fab fa-github"></i>  <a href="https://github.com/LLaVA-VL/LLaVA-NeXT"> Training Code</a>: Reproduce our results with training and inference code</li>
+                <li><p style="font-size:18px">🤗 <a href="https://huggingface.co/lmms-lab"> Checkpoints</a>: Access pre-trained model checkpoints (0.5B, 7B, 72B)</li>
+                <li><p style="font-size:18px">🤗 <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-Data">LLaVA-OneVision Data</a>: Explore training datasets for Single-Image and OneVision stages</li>
+                <li><p style="font-size:18px">🎨 <a href="https://llava-onevision.lmms-lab.com/">Live Demo</a>: Try it out yourself!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+  </div>
+  </section>
 
 <section class="section">
     <div class="container" style="margin-bottom: 2vh;">
