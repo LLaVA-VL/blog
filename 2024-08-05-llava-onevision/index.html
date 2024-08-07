@@ -139,7 +139,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://github.com/LLaVA-VL/blog/blob/main/2024-08-05-llava-onevision/llava-onevision.pdf"
+                <a href="https://drive.google.com/file/d/1apfvUKDvOGfvwcHVjASPwo1cLNDYiIMG/view"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -148,7 +148,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://github.com/LLaVA-VL/blog/blob/main/2024-08-05-llava-onevision/llava-onevision.pdf"
+                <a href="https://drive.google.com/file/d/1apfvUKDvOGfvwcHVjASPwo1cLNDYiIMG/view"
                    class="external-link button is-normal is-rounded is-dark">
                 <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
                    class="external-link button is-normal is-rounded is-dark"> -->
@@ -221,72 +221,45 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
             <p>
-				We present <b>LLaVA-OneVision</b>, a family of open large multimodal models (LMMs) developed by consolidating our insights into data, models, and visual representations in the <a href="https://llava-vl.github.io/blog/">LLaVA-NeXT blog series</a>, as shown by the development roadmap below. Our experimental results demonstrate show that LLaVA-OneVision is the first single model that can simultaneously push the performance boundaries of open LMMs in three important computer vision scenarios: <b>single-image, multi-image and video scenarios</b>. Importantly, the design of LLaVA-OneVision allow strong transfer learning across different modalities/scenarios, yielding new emerging capabilities. In particular, strong video understanding and cross-scenario capabilities are demosntrated through task transfer from images to videos.
+				We present <b>LLaVA-OneVision</b>, a family of open large multimodal models (LMMs) developed by consolidating our insights into data, models, and visual representations in the <a href="https://llava-vl.github.io/blog/">LLaVA-NeXT blog series</a>. Our experimental results demonstrate show that LLaVA-OneVision is the first single model that can simultaneously push the performance boundaries of open LMMs in three important computer vision scenarios: <b>single-image, multi-image and video scenarios</b>. Importantly, the design of LLaVA-OneVision allow strong transfer learning across different modalities/scenarios, yielding new emerging capabilities. In particular, strong video understanding and cross-scenario capabilities are demosntrated through task transfer from images to videos.
             </p>
+
         </div>
+
+    
+
+      </div>
+    </div>
+  </div>
+
+  <div class="columns is-centered"  style="margin-bottom: 90px;">
+      <div class="content has-text-centered">
+        <img src="demos/fig1.png" alt="data-overview" style="max-width: 45%;"/>
+        <p> 
+          <b>LLaVA-OneVision Network Architecture.</b> <br>
+          Left: Current model instantiation; Right: The general form of LLaVA extended to more visual signals.
+        </p> 
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="content has-text-centered">
+        <img src="demos/fig3.png" alt="data-overview" style="max-width: 45%;"/>
+        <p> 
+          <b>Visual Representation Strategy in LLaVA-OneVision.</b><br>
+The maximum number of visual tokens across different scenarios is designed to be similar,<br>
+ensuring balanced representations to accommodate cross-scenario capability transfer.
+        </p> 
+      </div>
+    </div>
+    
+
       </div>
     </div>
     <!--/ Abstract. -->
 </div>
 </section>
 
-
-<div class="center-container" style="margin-top: -50px; margin-left: 90px;">
-<svg width="900" height="400">
-
-    <defs>
-        <marker id="arrowhead" markerWidth="5" markerHeight="3.5" 
-                refX="5" refY="1.75" orient="auto">
-            <polygon points="0 0, 5 1.75, 0 3.5" />
-        </marker>
-    </defs>
-    
-    <!-- Nodes -->
-    <rect x="50" y="150" width="200" height="50" fill="#fdecdc" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
-    <text x="78" y="180.5" font-family="Times New Roman" font-size="14">Jan</text>
-    <circle cx="120" cy="176" r="5" fill="#b22222"></circle>
-    <text x="140" y="180.5" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/" fill="blue">LLaVA-NeXT</a></text>
-
-    <rect x="300" y="50" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
-    <text x="328" y="79" font-family="Times New Roman" font-size="14">April</text>
-    <circle cx="375" cy="74.5" r="5" fill="#1e90ff"></circle>
-    <text x="390" y="70" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
-    <text x="390" y="90" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/" fill="blue">(Video)</a></text>
-
-    <rect x="300" y="125" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
-    <text x="328" y="154" font-family="Times New Roman" font-size="14">May</text>
-    <circle cx="375" cy="149.5" r="5" fill="#1e90ff"></circle>
-    <text x="390" y="145" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
-    <text x="390" y="165" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/" fill="blue">(Stronger)</a></text>
-
-    <rect x="300" y="200" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
-    <text x="328" y="229" font-family="Times New Roman" font-size="14">May</text>
-    <circle cx="375" cy="224.5" r="5" fill="#1e90ff"></circle>
-    <text x="390" y="220" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
-    <text x="390" y="240" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" fill="blue">(Ablations)</a></text>
-
-    <rect x="300" y="275" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
-    <text x="328" y="304" font-family="Times New Roman" font-size="14">June</text>
-    <circle cx="375" cy="299.5" r="5" fill="#1e90ff"></circle>
-    <text x="390" y="295" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
-    <text x="390" y="315" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave/" fill="blue">(Interleave)</a></text>
-
-    <rect x="550" y="150" width="240" height="50" fill="#e6ffe6" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
-    <text x="578" y="180.5" font-family="Times New Roman" font-size="14">July</text>
-    <circle cx="625" cy="176" r="5" fill="#008000"></circle>
-    <text x="640" y="180.5" font-family="Times New Roman" font-size="14" style="font-weight:bold;">LLaVA-OneVision</text>
-
-    <!-- Links -->
-    <line x1="250" y1="175" x2="300" y2="75" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"></line>
-    <line x1="250" y1="175" x2="300" y2="150" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
-    <line x1="250" y1="175" x2="300" y2="225" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
-    <line x1="250" y1="175" x2="300" y2="300" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
-    <line x1="500" y1="75" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
-    <line x1="500" y1="150" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
-    <line x1="500" y1="225" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
-    <line x1="500" y1="300" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
-</svg>
-</div>
 
 <section class="section">
     <div class="container" style="margin-bottom: 2vh;">
@@ -413,11 +386,72 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Related Blogs</h2>
+          <h2 class="title is-3">Development Roadmap of LLaVA-NeXT Series</h2>
+
+
+
+          <div class="center-container" style="margin-top: -70px; margin-bottom: -90px; margin-left: 90px;">
+            <svg width="900" height="400">
+            
+                <defs>
+                    <marker id="arrowhead" markerWidth="5" markerHeight="3.5" 
+                            refX="5" refY="1.75" orient="auto">
+                        <polygon points="0 0, 5 1.75, 0 3.5" />
+                    </marker>
+                </defs>
+                
+                <!-- Nodes -->
+                <rect x="50" y="150" width="200" height="50" fill="#fdecdc" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+                <text x="78" y="180.5" font-family="Times New Roman" font-size="14">Jan</text>
+                <circle cx="120" cy="176" r="5" fill="#b22222"></circle>
+                <text x="140" y="180.5" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/" fill="blue">LLaVA-NeXT</a></text>
+            
+                <rect x="300" y="50" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+                <text x="328" y="79" font-family="Times New Roman" font-size="14">April</text>
+                <circle cx="375" cy="74.5" r="5" fill="#1e90ff"></circle>
+                <text x="390" y="70" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+                <text x="390" y="90" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/" fill="blue">(Video)</a></text>
+            
+                <rect x="300" y="125" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+                <text x="328" y="154" font-family="Times New Roman" font-size="14">May</text>
+                <circle cx="375" cy="149.5" r="5" fill="#1e90ff"></circle>
+                <text x="390" y="145" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+                <text x="390" y="165" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/" fill="blue">(Stronger)</a></text>
+            
+                <rect x="300" y="200" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+                <text x="328" y="229" font-family="Times New Roman" font-size="14">May</text>
+                <circle cx="375" cy="224.5" r="5" fill="#1e90ff"></circle>
+                <text x="390" y="220" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+                <text x="390" y="240" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/" fill="blue">(Ablations)</a></text>
+            
+                <rect x="300" y="275" width="200" height="50" fill="#f0f8ff" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+                <text x="328" y="304" font-family="Times New Roman" font-size="14">June</text>
+                <circle cx="375" cy="299.5" r="5" fill="#1e90ff"></circle>
+                <text x="390" y="295" font-family="Times New Roman" font-size="14">LLaVA-NeXT</text>
+                <text x="390" y="315" font-family="Times New Roman" font-size="14" style="font-weight:bold;"><a href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave/" fill="blue">(Interleave)</a></text>
+            
+                <rect x="550" y="150" width="240" height="50" fill="#e6ffe6" stroke="black" stroke-width="1" rx="10" ry="10"></rect>
+                <text x="578" y="180.5" font-family="Times New Roman" font-size="14">July</text>
+                <circle cx="625" cy="176" r="5" fill="#008000"></circle>
+                <text x="640" y="180.5" font-family="Times New Roman" font-size="14" style="font-weight:bold;">LLaVA-OneVision</text>
+            
+                <!-- Links -->
+                <line x1="250" y1="175" x2="300" y2="75" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"></line>
+                <line x1="250" y1="175" x2="300" y2="150" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+                <line x1="250" y1="175" x2="300" y2="225" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+                <line x1="250" y1="175" x2="300" y2="300" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+                <line x1="500" y1="75" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+                <line x1="500" y1="150" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+                <line x1="500" y1="225" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+                <line x1="500" y1="300" x2="550" y2="175" stroke="black" stroke-width="2"  marker-end="url(#arrowhead)"></line>
+            </svg>
+            </div>
+
+
+
           <div class="content has-text-justified">
             <ul>
                 <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a></li>
-
                 <li><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/">LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</a></li>
                 <li><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a></li>
                 <li><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/">LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?</a></li>
@@ -435,7 +469,7 @@
 
 <!-- @PAN TODO: bibtex -->
 <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
+  <div class="container is-max-desktop content" style="margin-top: 60px;">
     <h2 class="title is-3 has-text-centered">Citation</h2>
     <pre><code>@misc{li2024llava-onevision,
     author = {Li, Bo and Zhang, Yuanhan and Guo, Dong and Zhang, Renrui and Li, Feng and Zhang, Hao and Zhang, Kaichen and Li, Yanwei and Liu, Ziwei and Li, Chunyuan},
