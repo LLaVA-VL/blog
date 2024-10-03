@@ -9,7 +9,7 @@
         content="Evaluating mathematical reasoning of foundation models in visual contexts">
   <meta name="keywords" content="MathVista, Math Vista">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> LLaVA-Video: Video Instruction Tuning with Synthetic Data</title>
+  <title> LLaVA-NeXT-Video: Video Instruction Tuning with Synthetic Data</title>
 
   <link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico">
 
@@ -94,41 +94,43 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title is-bold"  style="display: inline-block">
-            <span style="vertical-align: middle">LLaVA-Video</span>
+            <span style="vertical-align: middle">Video Instruction Tuning with Synthetic Data</span>
             </h1>
           <br>
-          <h2 class="subtitle is-3 publication-subtitle" style="display: inline-block">
+          <!-- <h2 class="subtitle is-3 publication-subtitle" style="display: inline-block">
             <span style="vertical-align: middle">Video Instruction Tuning with Synthetic Data</span>
-          </h2>
+          </h2> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a><sup style="color:#ed4b82;">2,</sup><sup style="color:#6fbf73;">♡</sup>,</span>
+              <a href="https://zhangyuanhan-ai.github.io/">Yuanhan Zhang</a><sup style="color:#9400D3;">&dagger;</sup><sup style="color:#6fbf73;">♡</sup>,</span>
             <span class="author-block">
-              <a href="https://github.com/kiming-ng">Jinming Wu</a><sup style="color:#9400D3">3,</sup><sup style="color:#6fbf73;">♡</sup>,</span>
+              <a href="https://github.com/kiming-ng">Jinming Wu</a><sup style="color:#008000;">&ddagger;</sup><sup style="color:#6fbf73;">♡</sup>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=q8ZrKVIAAAAJ&hl=zh-CN">Wei Li</a><sup style="color:#6fbf73">1</sup>,</span>
+              <a href="https://scholar.google.com/citations?user=q8ZrKVIAAAAJ&hl=zh-CN">Wei Li</a><sup style="color:#bf906f;">&natural;</sup>,</span>
             
             <span class="author-block">
-              <a href="https://brianboli.com/">Bo Li</a><sup style="color:#ed4b82;">2,</sup><sup style="color:#6fbf73;">♡</sup>,</span>
+              <a href="https://brianboli.com/">Bo Li</a><sup style="color:#9400D3;">&dagger;</sup><sup style="color:#6fbf73;">♡</sup>,</span>
             
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=XwY9LXoAAAAJ&hl=zh-CN">Zejun Ma</a><sup style="color:#6fbf73">1</sup></span><br>
+              <a href="https://scholar.google.com/citations?user=XwY9LXoAAAAJ&hl=zh-CN">Zejun Ma</a><sup style="color:#bf906f;">&natural;</sup></span><br>
             
-              <a href="https://liuziwei7.github.io/">Ziwei Liu</a><sup style="color:#ed4b82">2,</sup><sup style="color:#6fbf73;">*</sup>,
+              <a href="https://liuziwei7.github.io/">Ziwei Liu</a><sup style="color:#9400D3;">&dagger;</sup><sup style="color:#6fbf73;">*</sup>,
             </span>
             <span class="author-block" style="margin-bottom: 10px;">
-              <a href="https://chunyuan.li/">Chunyuan Li</a><sup style="color:#6fbf73">1,</sup><sup style="color:#6fbf73;">*</sup>
+              <a href="https://chunyuan.li/">Chunyuan Li</a><sup style="color:#bf906f;">&natural;</sup><sup style="color:#6fbf73;">*</sup>
             </span>
           </div>
-
+          
           <div class="is-size-5 publication-authors">
-            <span class="author-block" style="margin-right: 15px;"><sup style="color:#6fbf73;">1</sup>ByteDance,</span>
-            <span class="author-block" style="margin-right: 15px;"><sup style="color:#ed4b82">2</sup>NTU S-Lab,</span>
-            <span class="author-block" style="margin-right: 15px;"><sup style="color:#9400D3">3</sup>BUPT,</span><br>
+            <span class="author-block" style="margin-right: 15px;"><sup style="color:#bf906f;">&natural;</sup>ByteDance,</span>
+            <span class="author-block" style="margin-right: 15px;"><sup style="color:#9400D3;">&dagger;</sup>NTU S-Lab,</span>
+            <span class="author-block" style="margin-right: 15px;"><sup style="color:#008000;">&ddagger;</sup>BUPT</span><br>
             <span class="author-block"><sup style="color:#6fbf73;">♡</sup> Work collaborated with ByteDance</span>
-            <span class="author-block"><sup style="color:#6fbf73;">*</sup> Co-senior supervisor</span><br>
+            <span class="author-block"><sup style="color:#6fbf73;">*</sup> Co-senior authors</span><br>
             <!-- <span class="paper-block"><b style="color:#f41c1c">ICLR 2024 Oral</b> (85 in 7304, 1.2%)</span> -->
           </div>
+          
+          
         
 
           <div class="column has-text-centered">
@@ -143,6 +145,17 @@
                   <span>Paper</span>
                 </a>
               </span> -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-Video-178K"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">🎬</p>
+                      <!-- 🔗 -->
+                  </span>
+                  <span>LLaVA-Video-178K</span>
+                </a>
+              </span> 
               <span class="link-block">
                 <a href="https://arxiv.org/abs/2408.03326"
                    class="external-link button is-normal is-rounded is-dark">
@@ -166,7 +179,7 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://huggingface.co/lmms-lab"
+                <a href="https://huggingface.co/collections/lmms-lab/llava-next-video-661e86f5e8dabc3ff793c944"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <!-- <i class="far fa-images"></i> -->
@@ -174,18 +187,6 @@
                       <!-- 🔗 -->
                   </span>
                   <span>Checkpoints</span>
-                </a>
-              </span> 
-              <!-- Visualization Link. -->
-              <span class="link-block">
-                <a href="https://huggingface.co/datasets/lmms-lab/LLaVA-Video-178K"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <!-- <i class="far fa-images"></i> -->
-                      <p style="font-size:18px">🤗</p>
-                      <!-- 🔗 -->
-                  </span>
-                  <span>LLaVA-Video-178K Data</span>
                 </a>
               </span> 
               <!-- Leaderboard Link. -->
@@ -217,8 +218,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
             <p>
-              The development of video large multimodal models (LMMs) has been hindered by the difficulty of curating large amounts of high-quality raw data from the web. To address this, we consider an alternative approach, creating a high-quality synthetic dataset specifically for video instruction-following. It consists of key tasks such as detailed captioning, open-ended question-answering (QA), and multiple-choice QA. By training on this proposed dataset, in combination with existing visual instruction tuning data, we introduce LLaVA-Video, a new video LMM. Our experiments demonstrate that LLaVA-Video achieves strong performance across various video benchmarks, highlighting the effectiveness of our dataset. We plan to release the dataset, its generation pipeline, and the model checkpoints.
-  
+            The development of video large multimodal models (LMMs) has been hindered by the difficulty of curating large amounts of high-quality raw data from the web. To address this, we consider an alternative approach, creating a high-quality synthetic dataset specifically for video instruction-following, namely LLaVA-Video-178K. This dataset includes key tasks such as detailed captioning, open-ended question-answering (QA), and multiple-choice QA. By training on this proposed dataset, in combination with existing visual instruction tuning data, we introduce LLaVA-Video, a new video LMM. Our experiments demonstrate that LLaVA-Video achieves strong performance across various video benchmarks, highlighting the effectiveness of our dataset. We plan to release the dataset, its generation pipeline, and the model checkpoints.  
 
               <br><br>
               
@@ -302,6 +302,78 @@
                   </figcaption>
               </figure>
             </d-figure>    
+            
+            <h3 class="title is-4">Dataset Comparison</h3>
+            <p>We provide a comparison of high-quality instruction-following video-language datasets, with a focus on synthetic data created with strong AI models, as shown in Table 1.</p>
+
+            <ol>
+                <li><strong>A broad collection of dynamic videos.</strong> In terms of video sources, although LLaVA-Hound contains the largest number of videos, 44% of its video data are sourced from <a href="https://ak.picdn.net/shutterstock/videos/21179416/preview/stock-footage-aerial-shot-winter-forest.mp4">WebVid</a>, where most videos are static. ShareGPT4Video includes 30% of its videos from <a href="https://www.pexels.com/video/a-bird-is-standing-on-the-beach-27916646/">Pexels</a>, 
+                  ,<a href="https://pixabay.com/videos/plane-modelling-miniature-lockheed-134519/">Pixabay</a>, and <a href="https://mixkit.co/free-stock-video/a-young-woman-clad-in-snugly-black-sportswear-doing-lunges-52112/">Mixkit</a>, which are aesthetically good but also mostly static. Additionally, the majority of its videos come from Panda-70M, which are short clips from longer videos, suggesting simpler plots. In contrast, we carefully select video sources that offer dynamic, untrimmed videos with complex plots, which are crucial for developing a powerful video understanding model.
+                </li>
+                
+                <li><strong>High frames per second.</strong> Regarding frame sampling in language annotations, the proposed dataset considers 1 FPS, while other datasets consider much lower FPS. LLaVA-Hound uniformly samples 10 frames from videos of any length. The average FPS is 0.008, which may miss some fine details. ShareGPT4Video picks key frames using CLIP based on frame uniqueness. This method might also miss subtle changes in the video because CLIP embeddings do not capture fine-grained dynamics well. Our method samples FPS=1 without using key frame selection algorithms, ensuring that detailed temporal information can be expressed in annotations with high coverage.</li>
+                
+                <li><strong>Diverse tasks.</strong> The proposed dataset considers three common task types, including caption, free-form, and closed-form QA, while existing datasets only consider a subset. Meanwhile, the quality and number of samples in our dataset is higher.</li>
+            </ol>
+
+            <div id="tab:dataset_comparison" style="display: flex; flex-direction: column; align-items: center;" class="figure">
+              <div class="table-container">
+                <table class="data-table" style="border-collapse: collapse; text-align: center;">
+                  <thead>
+                          <tr>
+                              <th></th>
+                              <th>Text</th>
+                              <th>Video Source</th>
+                              <th>#Video</th>
+                              <th>Total Video Length</th>
+                              <th>Average FPS</th>
+                              <th>#Caption</th>
+                              <th>#OE QA</th>
+                              <th>#MC QA</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>LLaVA-Hound</td>
+                              <td>GPT-4V</td>
+                              <td><span>&#9733;</span></td>
+                              <td>900K</td>
+                              <td>3Khr</td>
+                              <td>0.008</td>
+                              <td>900K</td>
+                              <td>900K</td>
+                              <td>0</td>
+                          </tr>
+                          <tr>
+                              <td>ShareGPT4Video</td>
+                              <td>GPT-4V</td>
+                              <td><span>&#9726</span></td>
+                              <td>40K</td>
+                              <td>0.2Khr</td>
+                              <td>0.15</td>
+                              <td>40K</td>
+                              <td>0</td>
+                              <td>0</td>
+                          </tr>
+                          <tr class="highlight-orange">
+                              <td><i>LLaVA-Video-178K</i></td>
+                              <td>GPT-4o</td>
+                              <td><span>&#x272A;</span></td>
+                              <td>178K</td>
+                              <td>2Khr</td>
+                              <td>1</td>
+                              <td>178K</td>
+                              <td>960K</td>
+                              <td>196K</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <figcaption>
+                <strong>Table 1:</strong> Comparison of LLaVA-Video-178K and other video-language datasets. Average FPS represents the average number of frames per second that are used to prompt GPT-4o/GPT-4V for annotation.  <span>&#9733;</span>: VIDAL, WebVid, ActivityNet. <span>&#9726</span>: Panda-70M, Pexels, Pixabay, Mixkit, BDD100K, Ego4d.  <span>&#x272A;</span>: HD-VILA-100M, Kinetics-700M, Ego4D, VidOR, InternVid, YouCook2, ActivityNet, Sth-sthv2, VIDAL, Charades.
+            </figcaption>
+            </div>
+          
 
         </div>
 
@@ -372,36 +444,52 @@
             ActivityNet-QA, NExT-QA, PerceptionTest, and LLaVA-Hound-255K, focusing on videos shorter than three minutes. These datasets were selected to improve our model’s performance, contributing to a total of 1.6 million video-language samples, which include 193,510 video descriptions, 1,240,801 open-ended questions, and 215,625 multiple-choice questions. Remarkably, 92.2% of the video descriptions, 77.4% of the open-ended questions, and 90.9% of the multiple-choice questions were newly annotated. Additionally, we used 1.1 million image-language pairs from the LLaVA-OneVision model.
           </p>
 
-
           <div id="tab:video_bench" style="display: flex; flex-direction: column; align-items: center;" class="figure">
             <div class="table-container">
-                <table class="data-table">
-                    <thead>
+              <table class="data-table" style="border-collapse: collapse; text-align: left;">
+                <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan="2">Open-Ended Q&amp;A</th>
+                            <th colspan="2">Caption</th>
+                            <th colspan="7">Multi-Choice Q&amp;A</th>
+                        </tr>
                         <tr>
                             <th>Model</th>
                             <th class="rotate">ActNet-QA</th>
+                            <th class="rotate">VideoChatGPT</th>
+                            <th class="rotate">VideoDC</th>
+                            <th class="rotate">Dream-1K</th>
                             <th class="rotate">EgoSchema</th>
                             <th class="rotate">MLVU</th>
                             <th class="rotate">MVBench</th>
                             <th class="rotate">NExT-QA</th>
                             <th class="rotate">PerceptionTest</th>
-                            <th class="rotate">VideoChatGPT</th>
-                            <th class="rotate">VideoDC</th>
                             <th class="rotate">LongVideoBench</th>
                             <th class="rotate">VideoMME</th>
                         </tr>
+                        <tr style="border-bottom: 2px solid #000;">
+                            <td></td>
+                            <td colspan="2" style="border-right: 1px solid #000;"></td>
+                            <td colspan="2" style="border-right: 1px solid #000;"></td>
+                            <td colspan="7"></td>
+                        </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td colspan="12" style="font-style: italic;">Proprietary models</td>
+                        </tr>
                         <tr class="highlight-gray">
                             <td>GPT-4V</td>
                             <td>57.0</td>
+                            <td>4.00</td>
+                            <td>4.06</td>
+                            <td>34.4</td>
                             <td>-</td>
                             <td>49.2</td>
                             <td>43.5</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>4.06</td>
-                            <td>4.00</td>
                             <td>-</td>
                             <td>59.9/63.3</td>
                         </tr>
@@ -409,9 +497,10 @@
                             <td>GPT-4o</td>
                             <td>-</td>
                             <td>-</td>
+                            <td>-</td>
+                            <td>39.2</td>
+                            <td>-</td>
                             <td>64.6</td>
-                            <td>-</td>
-                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
@@ -421,9 +510,10 @@
                         <tr class="highlight-gray">
                             <td>Gemini-1.5-Flash</td>
                             <td>55.3</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>34.8</td>
                             <td>65.7</td>
-                            <td>-</td>
-                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
@@ -434,9 +524,10 @@
                         <tr class="highlight-gray">
                             <td>Gemini-1.5-Pro</td>
                             <td>57.5</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>36.2</td>
                             <td>72.2</td>
-                            <td>-</td>
-                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
@@ -445,27 +536,32 @@
                             <td>75.0/81.3</td>
                         </tr>
                         <tr>
+                            <td colspan="12" style="font-style: italic;">Open-source models</td>
+                        </tr>
+                        <tr>
                             <td>VILA-40B</td>
                             <td>58.0</td>
+                            <td>3.36</td>
+                            <td>-</td>
+                            <td>33.2</td>
                             <td>58.0</td>
                             <td>-</td>
                             <td>-</td>
                             <td>67.9</td>
                             <td>54.0</td>
-                            <td>3.36</td>
                             <td>3.37</td>
-                            <td>-</td>
                             <td>60.1/61.1</td>
                         </tr>
                         <tr>
                             <td>PLLaVA-34B</td>
                             <td>60.9</td>
+                            <td>3.48</td>
+                            <td>-</td>
+                            <td>28.2</td>
                             <td>-</td>
                             <td>-</td>
                             <td>58.1</td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>3.48</td>
                             <td>-</td>
                             <td>53.2</td>
                             <td>-</td>
@@ -473,78 +569,84 @@
                         <tr>
                             <td>LongVA-7B</td>
                             <td>50.0</td>
+                            <td>3.20</td>
+                            <td>-</td>
+                            <td>-</td>
                             <td>-</td>
                             <td>56.3</td>
                             <td>-</td>
                             <td>68.3</td>
                             <td>-</td>
-                            <td>3.20</td>
                             <td>3.14</td>
-                            <td>-</td>
                             <td>52.6/54.3</td>
                         </tr>
                         <tr>
                             <td>IXC-2.5-7B</td>
                             <td>52.8</td>
+                            <td>3.46</td>
+                            <td>-</td>
+                            <td>-</td>
                             <td>-</td>
                             <td>37.3</td>
                             <td>69.1</td>
                             <td>71.0</td>
                             <td>34.4</td>
-                            <td>3.46</td>
-                            <td>3.73</td>
                             <td>-</td>
                             <td>55.8/58.8</td>
                         </tr>
                         <tr>
                             <td>LLaVA-OV-7B</td>
                             <td>56.6</td>
+                            <td>3.51</td>
+                            <td>3.75</td>
+                            <td>31.7</td>
                             <td>60.1</td>
                             <td>64.7</td>
                             <td>56.7</td>
                             <td>79.4*</td>
                             <td>57.1</td>
-                            <td>3.51</td>
-                            <td>3.75</td>
                             <td>56.5</td>
                             <td>58.2/61.5</td>
                         </tr>
                         <tr>
-                          <td>LLaVA-OV-72B</td>
-                          <td>62.3</td>
-                          <td>62.0</td>
-                          <td>68.0</td>
-                          <td>59.4</td>
-                          <td>80.2*</td>
-                          <td>66.9</td>
-                          <td>3.62</td>
-                          <td>3.60</td>
-                          <td>61.3</td>
-                          <td>66.2/69.5</td>
-                      </tr>
+                            <td>LLaVA-OV-72B</td>
+                            <td>62.3</td>
+                            <td>3.62</td>
+                            <td>3.60</td>
+                            <td>33.2</td>
+                            <td>62.0</td>
+                            <td>68.0</td>
+                            <td>59.4</td>
+                            <td>80.2*</td>
+                            <td>66.9</td>
+                            <td>61.3</td>
+                            <td>66.2/69.5</td>
+                        </tr>
                         <tr class="highlight-orange">
                             <td>LLaVA-Video-7B</td>
                             <td>56.5*</td>
+                            <td>3.52</td>
+                            <td>3.66</td>
+                            <td>32.5</td>
                             <td>57.3</td>
                             <td>70.8</td>
                             <td>58.6</td>
                             <td>83.2*</td>
                             <td>67.9*</td>
-                            <td>3.52</td>
-                            <td>3.66</td>
                             <td>58.2</td>
                             <td>63.3/69.7</td>
                         </tr>
                         <tr class="highlight-orange">
                             <td>LLaVA-Video-72B</td>
                             <td>63.4*</td>
+                            <td>3.62</td>
+                            <td>3.73</td>
+                            <td>34.0</td>
                             <td>65.6</td>
                             <td>74.4</td>
                             <td>64.1</td>
                             <td>85.4*</td>
                             <td>74.3*</td>
-                            <td>3.62</td>
-                            <td>3.73</td>
                             <td>61.9</td>
                             <td>70.5/76.9</td>
                         </tr>
@@ -556,6 +658,8 @@
             </figcaption>
         </div>
         
+        
+        
 
       </div>
     </div>
@@ -563,10 +667,31 @@
 </section>
 
 
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusion</h2>
+        <div class="content has-text-justified">
+            <p>
+            This study introduces the LLaVA-Video-178K dataset, a high-quality synthetic dataset for video-language instruction-following. It is favored for its dense frame sampling rate in longer, untrimmed videos, covering diverse tasks such as captioning, open-ended and multi-choice QA. By training on the joint dataset of \DataName{} with existing visual instruction tuning data, we developed a new model family, LLaVA-Video, which also considers video representation to effectively use GPU resources. This allows us to include more frames in the training process. The experimental results have demonstrated the effectiveness of the proposed synthetic dataset, and \ModelName{} models have achieved excellent performance on a wide range of video benchmarks.
+            </p>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
       
 
 <!-- @PAN TODO: bibtex -->
-<!-- <section class="section" id="BibTeX">
+<section class="section" id="BibTeX">
   <div class="container is-max-desktop content" style="margin-top: 60px;">
     <h2 class="title is-3 has-text-centered">Citation</h2>
 	<pre><code>@article{li2024llava,
@@ -576,14 +701,33 @@
   	year={2024}
 }</code></pre>
   </div>
-</section> -->
+</section>
 
 
 
 </div>
-<a class="u-url" href="/blog/2024-09-30-llava-video/" hidden></a>
+<a class="u-url" href="/blog/2024-09-30-LLaVA-Video/" hidden></a>
 </article>
 </div>
+
+
+<!-- <d-appendix>
+  <h3>BibTeX</h3>
+  <p class="bibtex">
+      @article{tong2024cambrian,<br>
+      &nbsp;&nbsp;title={{Cambrian-1: A Fully Open, Vision-Centric Exploration of Multimodal LLMs}},<br>
+      &nbsp;&nbsp;author={Tong, Shengbang and Brown, Ellis and Wu, Penghao and Woo, Sanghyun and Middepogu, Manoj and Akula, Sai Charitha and Yang, Jihan and Yang, Shusheng, and Iyer, Adithya and Pan, Xichen and Wang, Austin and Fergus, Rob and LeCun, Yann and Xie, Saining},<br>
+      &nbsp;&nbsp;journal={arXiv preprint arXiv:2406.16860},<br>
+      &nbsp;&nbsp;year={2024}<br>
+      }
+  </p>
+
+  <d-footnote-list></d-footnote-list>
+  <d-citation-list></d-citation-list>
+</d-appendix>   
+
+<d-bibliography src="main.bib"></d-bibliography>
+<script src="./static/js/nav-bar.js"></script> -->
 
 
 </body>
