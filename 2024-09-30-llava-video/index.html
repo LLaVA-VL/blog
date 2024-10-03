@@ -446,45 +446,53 @@
 
           <div id="tab:video_bench" style="display: flex; flex-direction: column; align-items: center;" class="figure">
             <div class="table-container">
-              <table class="data-table" style="border-collapse: collapse; text-align: left;">
-                <thead>
-                        <tr>
-                            <th></th>
-                            <th colspan="2">Open-Ended Q&amp;A</th>
-                            <th colspan="2">Caption</th>
-                            <th colspan="7">Multi-Choice Q&amp;A</th>
-                        </tr>
-                        <tr>
-                            <th>Model</th>
-                            <th class="rotate">ActNet-QA</th>
-                            <th class="rotate">VideoChatGPT</th>
-                            <th class="rotate">VideoDC</th>
-                            <th class="rotate">Dream-1K</th>
-                            <th class="rotate">EgoSchema</th>
-                            <th class="rotate">MLVU</th>
-                            <th class="rotate">MVBench</th>
-                            <th class="rotate">NExT-QA</th>
-                            <th class="rotate">PerceptionTest</th>
-                            <th class="rotate">LongVideoBench</th>
-                            <th class="rotate">VideoMME</th>
-                        </tr>
-                        <tr style="border-bottom: 2px solid #000;">
-                            <td></td>
-                            <td colspan="2" style="border-right: 1px solid #000;"></td>
-                            <td colspan="2" style="border-right: 1px solid #000;"></td>
-                            <td colspan="7"></td>
-                        </tr>
-                    </thead>
+                <table class="data-table" style="border-collapse: collapse; text-align: left;">
+                  <thead>
+                    <tr style="border-bottom: 1px solid #000;"> <!-- Apply border to the row -->
+                      <th></th> <!-- Empty cell with border -->
+                      <th colspan="2">Caption</th>
+                      <th colspan="2">Open-Ended Q&amp;A</th>
+                      <th colspan="7" align="center">Multiple-Choice Q&amp;A</th>
+                  </tr>
+                    <tr style="border-bottom: 1px solid #000;"> <!-- Border applied to the row -->
+                      <th>Model</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">VideoDC</th>
+                      <th class="rotate" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">Dream-1K</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">ActNet-QA</th>
+                      <th class="rotate" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">VideoChatGPT</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">EgoSchema</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">MLVU</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">MVBench</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">NExT-QA</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">PerceptionTest</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">LongVideoBench</th>
+                      <th class="rotate" style="border-bottom: 1px solid #000;">VideoMME</th>
+                  </tr>
+                    <tr style="border-bottom: 2px solid #000;"> <!-- Added another border here -->
+                        <th></th>
+                        <th>test</th>
+                        <th style="border-right: 1px solid #000;">test</th>
+                        <th>test</th>
+                        <th style="border-right: 1px solid #000;">test</th>
+                        <th>test</th>
+                        <th>m-avg</th>
+                        <th>test</th>
+                        <th>mc</th>
+                        <th>val</th>
+                        <th>val</th>
+                        <th>wo/w-subs</th>
+                    </tr>
+                </thead>
                     <tbody>
                         <tr>
                             <td colspan="12" style="font-style: italic;">Proprietary models</td>
                         </tr>
                         <tr class="highlight-gray">
                             <td>GPT-4V</td>
-                            <td>57.0</td>
-                            <td>4.00</td>
                             <td>4.06</td>
-                            <td>34.4</td>
+                            <td style="border-right: 1px solid #000">34.4</td>
+                            <td>57.0</td>
+                            <td style="border-right: 1px solid #000">4.00</td>
                             <td>-</td>
                             <td>49.2</td>
                             <td>43.5</td>
@@ -496,9 +504,9 @@
                         <tr class="highlight-gray">
                             <td>GPT-4o</td>
                             <td>-</td>
+                            <td style="border-right: 1px solid #000">39.2</td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>39.2</td>
+                            <td style="border-right: 1px solid #000">-</td>
                             <td>-</td>
                             <td>64.6</td>
                             <td>-</td>
@@ -509,10 +517,10 @@
                         </tr>
                         <tr class="highlight-gray">
                             <td>Gemini-1.5-Flash</td>
+                            <td>-</td>
+                            <td style="border-right: 1px solid #000">34.8</td>
                             <td>55.3</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>34.8</td>
+                            <td style="border-right: 1px solid #000">-</td>
                             <td>65.7</td>
                             <td>-</td>
                             <td>-</td>
@@ -523,10 +531,10 @@
                         </tr>
                         <tr class="highlight-gray">
                             <td>Gemini-1.5-Pro</td>
+                            <td>-</td>
+                            <td style="border-right: 1px solid #000">36.2</td>
                             <td>57.5</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>36.2</td>
+                            <td style="border-right: 1px solid #000">-</td>
                             <td>72.2</td>
                             <td>-</td>
                             <td>-</td>
@@ -540,10 +548,10 @@
                         </tr>
                         <tr>
                             <td>VILA-40B</td>
-                            <td>58.0</td>
-                            <td>3.36</td>
                             <td>-</td>
-                            <td>33.2</td>
+                            <td style="border-right: 1px solid #000">33.2</td>
+                            <td>58.0</td>
+                            <td style="border-right: 1px solid #000">3.36</td>
                             <td>58.0</td>
                             <td>-</td>
                             <td>-</td>
@@ -554,10 +562,10 @@
                         </tr>
                         <tr>
                             <td>PLLaVA-34B</td>
-                            <td>60.9</td>
-                            <td>3.48</td>
                             <td>-</td>
-                            <td>28.2</td>
+                            <td style="border-right: 1px solid #000">28.2</td>
+                            <td>60.9</td>
+                            <td style="border-right: 1px solid #000">3.48</td>
                             <td>-</td>
                             <td>-</td>
                             <td>58.1</td>
@@ -568,10 +576,10 @@
                         </tr>
                         <tr>
                             <td>LongVA-7B</td>
+                            <td>-</td>
+                            <td style="border-right: 1px solid #000">-</td>
                             <td>50.0</td>
-                            <td>3.20</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td style="border-right: 1px solid #000">3.20</td>
                             <td>-</td>
                             <td>56.3</td>
                             <td>-</td>
@@ -582,10 +590,10 @@
                         </tr>
                         <tr>
                             <td>IXC-2.5-7B</td>
+                            <td>-</td>
+                            <td style="border-right: 1px solid #000">-</td>
                             <td>52.8</td>
-                            <td>3.46</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td style="border-right: 1px solid #000">3.46</td>
                             <td>-</td>
                             <td>37.3</td>
                             <td>69.1</td>
@@ -596,10 +604,10 @@
                         </tr>
                         <tr>
                             <td>LLaVA-OV-7B</td>
-                            <td>56.6</td>
-                            <td>3.51</td>
                             <td>3.75</td>
-                            <td>31.7</td>
+                            <td style="border-right: 1px solid #000">31.7</td>
+                            <td>56.6</td>
+                            <td style="border-right: 1px solid #000">3.51</td>
                             <td>60.1</td>
                             <td>64.7</td>
                             <td>56.7</td>
@@ -610,10 +618,10 @@
                         </tr>
                         <tr>
                             <td>LLaVA-OV-72B</td>
-                            <td>62.3</td>
-                            <td>3.62</td>
                             <td>3.60</td>
-                            <td>33.2</td>
+                            <td style="border-right: 1px solid #000">33.2</td>
+                            <td>62.3</td>
+                            <td style="border-right: 1px solid #000">3.62</td>
                             <td>62.0</td>
                             <td>68.0</td>
                             <td>59.4</td>
@@ -624,10 +632,10 @@
                         </tr>
                         <tr class="highlight-orange">
                             <td>LLaVA-Video-7B</td>
-                            <td>56.5*</td>
-                            <td>3.52</td>
                             <td>3.66</td>
-                            <td>32.5</td>
+                            <td style="border-right: 1px solid #000">32.5</td>
+                            <td>56.5*</td>
+                            <td style="border-right: 1px solid #000">3.52</td>
                             <td>57.3</td>
                             <td>70.8</td>
                             <td>58.6</td>
@@ -638,10 +646,10 @@
                         </tr>
                         <tr class="highlight-orange">
                             <td>LLaVA-Video-72B</td>
-                            <td>63.4*</td>
-                            <td>3.62</td>
                             <td>3.73</td>
-                            <td>34.0</td>
+                            <td style="border-right: 1px solid #000">34.0</td>
+                            <td>63.4*</td>
+                            <td style="border-right: 1px solid #000">3.62</td>
                             <td>65.6</td>
                             <td>74.4</td>
                             <td>64.1</td>
@@ -657,6 +665,8 @@
                 Table: LLaVA-Video performance on video benchmarks. We report the score out of 5 for VideoDC, VideoChatGPT while other results are reported in accuracy. All results are reported as 0-shot accuracy. *indicates that the training set has been observed in our data mixture.
             </figcaption>
         </div>
+        
+        
         
         
         
@@ -687,6 +697,45 @@
     </div>
   </div>
 </section>
+
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Related Blogs
+        </h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a></li>
+            <li><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/">LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</a></li>
+            <li><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a></li>
+            <li><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/">LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?</a></li>
+            <li><a href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave/">LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models</a></li>
+            <li><a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/">Accelerating the Development of Large Multimodal Models with LMMs-Eval</a></li>
+            <li><a href="https://llava-vl.github.io/blog/2024-08-05-llava-onevision/">LLaVA-OneVision: Easy Visual Task Transfer</a></li>
+        </ul>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="content has-text-justified">
+  <ul>
+      <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a></li>
+      <li><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/">LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</a></li>
+      <li><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a></li>
+      <li><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/">LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?</a></li>
+      <li><a href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave/">LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models</a></li>
+      <li><a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/">Accelerating the Development of Large Multimodal Models with LMMs-Eval</a></li>
+  </ul>
+</div> -->
 
       
 
