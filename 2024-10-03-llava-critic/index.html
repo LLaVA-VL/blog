@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Learning to Evaluate Multimodal Models">
+  <meta name="keywords" content="LLaVA-Critic">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> LLaVA-OneVision: Easy Visual Task Transfer</title>
+
+  <link rel="icon" type="image/x-icon" href="/blog/assets/images/logos/favicon.ico">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+
+  <style>
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      margin-top: -20px;
+    }
+
+    .node {
+      fill: #f8f1e4;
+      stroke: #000;
+      stroke-width: 1;
+      rx: 10;
+      ry: 10;
+    }
+
+    .node text {
+      font-size: 14px;
+      text-anchor: middle;
+    }
+
+    .link {
+      fill: none;
+      stroke: #000;
+      stroke-width: 2;
+    }
+
+    .badge {
+      font-size: 12px;
+    }
+
+    .algorithm-box {
+      background-color: #f4f4f4;
+      /* 浅灰色背景 */
+      border: 1px solid #d3d3d3;
+      /* 浅灰色边框 */
+      padding: 5px;
+      /* 内边距 */
+      padding-right: 25px;
+      padding-bottom: 25px;
+      border-radius: 8px;
+      /* 圆角边框 */
+      /* font-family: "Courier New", Courier, monospace; 使用等宽字体 */
+      max-width: 97%;
+      margin: 30px auto;
+      /* 居中 */
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title is-bold" style="display: inline-block; margin-right: 500px;">
+              <span style="vertical-align: middle">LLaVA-Critic</span>
+            </h1>
+            <!-- <h1 class="title is-1 publication-title is-bold"  style="display: inline-block;">
+              <span style="vertical-align: middle">LLaVA-Critic: Learning to Evaluate Multimodal Models</span>
+              </h1> -->
+            <h2 class="subtitle is-3 publication-subtitle" style="display: inline-block; margin-left: 210px;">
+              Learning to Evaluate Multimodal Models
+            </h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://tyxiong23.github.io/">Tianyi Xiong</a><sup style="color:#ed4b82;">2,</sup><sup
+                  style="color:#6fbf73;">♡</sup>,</span>
+              <span class="author-block">
+                <a href="https://si0wang.github.io/">Xiyao Wang</a><sup style="color:#ed4b82;">2,</sup><sup
+                  style="color:#6fbf73;">♡</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/dongguoset">Dong Guo</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=ZYOhaGwAAAAJ&hl=en&oi=ao">Qinghao Ye</a><sup
+                  style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://haoqifan.github.io/">Haoqi Fan</a><sup style="color:#6fbf73;">1</sup>,
+              </span> <br>
+
+              <span class="author-block">
+                <a href="https://web.cs.ucla.edu/~qgu/">Quanquan Gu</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.umd.edu/~heng/">Heng Huang</a><sup style="color:#ed4b82;">2</sup></span>
+              <span class="author-block" style="margin-bottom: 10px;">
+                <a href="https://chunyuan.li/">Chunyuan Li</a><sup style="color:#6fbf73">1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block" style="margin-right: 15px;"><sup
+                  style="color:#6fbf73;">1</sup>ByteDance,</span>
+              <span class="author-block" style="margin-right: 15px;"><sup style="color:#ed4b82">2</sup>University of
+                Maryland, College Park</span><br>
+              <span class="author-block"><sup style="color:#6fbf73;">♡</sup> Work collaborated with ByteDance</span><br>
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/LLaVA-VL/LLaVA-NeXT"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Training Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/collections/lmms-lab/llava-critic-66fe3ef8c6e586d8435b4af8"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">🤗</p>
+                      <!-- 🔗 -->
+                    </span>
+                    <span>Checkpoints</span>
+                  </a>
+                </span>
+                <!-- Visualization Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/lmms-lab/llava-critic-113k"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">🤗</p>
+                      <!-- 🔗 -->
+                    </span>
+                    <span>LLaVA-Critic Data</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce <b>LLaVA-Critic</b>, the <b style="color:#b02727;">first open-source large multimodal model
+                (LMM) designed as a generalist evaluator</b> to assess performance across a wide range of multimodal
+              tasks. LLaVA-Critic is trained using a high-quality <b>critic instruction-following dataset</b> that
+              incorporates diverse evaluation criteria and scenarios. Our experiments demonstrate the model's
+              effectiveness in <b>two key areas</b>: <b><i>(i)</i> LMM-as-a-Judge</b>, where LLaVA-Critic provides
+              reliable evaluation scores, performing on par with or surpassing GPT models on multiple evaluation
+              benchmarks; and <b><i>(ii)</i> Preference Learning</b>, where it generates reward signals for preference
+              learning, enhancing model alignment capabilities. This work underscores the potential of open-source LMMs
+              in self-critique and evaluation, setting the stage for future research into scalable, superhuman alignment
+              feedback mechanisms for LMMs.
+            </p>
+            <p>
+              Explore the sections belows to learn more about the project:
+            </p>
+            <ul class="text">
+              <li><strong><a href="#LLaVA-Critic-113k">Curation of Critic Instruction-Following Dataset</a></strong>
+              </li>
+              <li><strong><a href="#lmm-judge">Scenario 1: LMM-as-a-Judge</a></strong></li>
+              <li><strong><a href="#preference-learning">Scenario 2: Preference Learning</a></strong></li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Open-source Release</h2>
+          <div class="content has-text-justified">
+            <ul>
+              <p>
+                We open-source the LLaVA-Critic to facilitate future development of LMM evaluators in the community.
+              </p>
+              <li>
+                <p style="font-size:18px">🤗 <b><a
+                      href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-Data">LLaVA-Critic Data</a></b>:
+                  Explore the 113k critic instruction-following data across various evaluation scenarios
+              </li>
+              <li>
+                <p style="font-size:18px"><i class="fab fa-github"></i> <a
+                    href="https://github.com/LLaVA-VL/LLaVA-NeXT"> <b>Training Code</b></a>: Build LLaVA-Critic with
+                  standard LLaVA-OneVision's training code
+              </li>
+              <li>
+                <p style="font-size:18px">🤗 <a
+                    href="https://huggingface.co/collections/lmms-lab/llava-critic-66fe3ef8c6e586d8435b4af8"><b>LLaVA-Critic
+                      Checkpoints</b></a>: Access pre-trained model checkpoints (7B, 72B)
+              </li>
+
+              <li>
+                <p style="font-size:18px">🤗 <b>LLaVA-OneVision-Chat <a
+                      href="https://huggingface.co/lmms-lab/llava-onevision-qwen2-7b-ov-chat">[7B]</a>/<a
+                      href="https://huggingface.co/lmms-lab/llava-onevision-qwen2-72b-ov-chat">[72B]</a></b>: Enjoy
+                  enhanced visual chat through preference alignment with LLaVA-Critic
+              </li><br>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+
+  <section class="section" id="LLaVA-Critic-113k">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Curation of Critic Instruction-Following Dataset</h2>
+          <div class="content has-text-justified">
+
+            <p>
+              To develop a generalist evaluator for LMM responses, as with GPT-4/4V, we curate
+              <b><i>LLaVA-Critic-113k</i></b>, a high-quality dataset tailored to follow instructions in complex
+              evaluation setting to provide <b>quantitative judgment</b> and the <b>corresponding reasoning process</b>.
+              It consists of 46k images with 113k evaluation instruction samples, primarily including two evaluation
+              settings:
+            </p>
+
+            <div class="container">
+
+              <div class="columns" style="text-align: left;">
+
+                <div class="column is-two-thirds">
+
+                  <!-- <p>
+                    To develop a generalist evaluator for LMM responses, as with GPT-4/4V, we curate
+                    <b><i>LLaVA-Critic-113k</i></b>, a high-quality dataset tailored to follow instructions in complex
+                    evaluation setting to provide <b>quantitative judgment</b> and the <b>corresponding reasoning process</b>.
+                    It consists of 46k images with 113k evaluation instruction samples, primarily including two evaluation
+                    settings:
+                  </p> -->
+                  
+
+                  <ol>
+                    <li><span style="color:#b02727"><b>Pointwise Scoring</b>: Assign a score to an individual candidate
+                        response.</li></span> We collect instrucion-response pairs across 8 multimodal datasets and 13
+                    response models, gather evaluation prompts from 7 open-ended benchmarks, and utilize GPT-4o to
+                    produce judgment scores and reasons. <br>
+                    <!-- <span class="mathjax">\(\mathtt{Components: [Image, Question, Response, Reference, Evaluation \ Criteria, Score, Reason]}\)</span> -->
+
+                    <li style="margin-top: 8px;"><span style="color:#2b68c9"><b>Pairwise Ranking</b>: Compare two
+                        candidate responses to determine their relative quality.</li></span> We gather pairwise
+                    responses with known preferences, design a set of 30 pairwise evaluation prompt templates, and ask
+                    GPT-4o to generate justification for the preference.<br>
+                    <!-- <span class="mathjax">\(\mathtt{Components: [Image, Question, Response 1\&2, Evaluation Criteria, Preference, Reason]}\)</span> -->
+                  </ol>
+                </div>
+
+                <div class="column is-one-thirds", style="padding: 0;">
+                  <d-figure id="fig-statistics" style="padding-right: 0;">
+                    <figure>
+                      <img data-zoomable="" draggable="false" src="static/images/data_statistics.png"
+                        alt="benchmark category" style="width: 75%;">
+                      <!-- <figcaption>
+                        <strong>Figure 1:</strong> Data Statistics 
+                        LLaVA-Critic-113k dataset includes diverse instruction-response pairs, spanning multiple evaluation tasks and domains.
+                      </figcaption> -->
+                    </figure>
+                  </d-figure><br>
+                </div>
+              </div>
+            </div>
+
+            <d-figure id="fig-example">
+              <figure>
+                <img data-zoomable="" draggable="false" src="static/images/example_critic_data.png"
+                  alt="benchmark category" style="width: 85%;">
+                <figcaption>
+                  <strong>Figure 1:</strong> Example of training data. LLaVA-Critic learns to predict both <span
+                    style="color:#ff0505;background-color: #F7F7CC;">quantitative judgements</span> and the <span
+                    style="background-color: #F7F7CC;">corresponding reasons</span>.
+                </figcaption>
+              </figure>
+            </d-figure>
+
+
+          </div>
+          <!--/ Abstract. -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="lmm-judge">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Scenario 1: LMM-as-a-Judge</h2>
+          <div class="content has-text-justified">
+            <p>
+              <b>LLaVA-Critic serves as a general evaluator for LMM responses, reducing labor costs by automating the
+                evaluation process.</b> It consistently provides reliable judgments and justifications aligned with
+              GPT-4o or human evaluations across a range of widely used multimodal benchmarks. This consistency holds
+              true for both instance-level scoring and model-level ranking.
+            </p>
+
+            <d-figure id="fig-example">
+              <figure>
+                <img data-zoomable="" draggable="false" src="static/images/score_pointwise_v1p3.png"
+                  alt="benchmark category" style="width: 90%;">
+                <figcaption>
+                  <strong>Figure 2:</strong> <i>(Top)</i>: Overall distribution of evaluation scores across 4
+                  benchmarks. <i>(Bottom)</i>: Calculated average evaluation score for each response model on each
+                  benchmark. Leveraging high-quality critic training data, LLaVA-Critic closely aligns with GPT-4o in
+                  delivering balanced evaluation scores and accurately ranking response LMMs.
+                </figcaption>
+              </figure>
+            </d-figure><br>
+
+            <p style="padding-bottom: 0;">
+              Compared to LLaVA-OneVision, LLaVA-Critic delivers more accurate judgments, and <b>provides more concrete,
+                image-grounded justifications</b>. This is crucial for reliable AI, as offering
+              well-supported reasons for evaluations establishes LLaVA-Critic as a transparent evaluator of LMM-generated responses.
+              </p>
+          </div>
+          <div class="has-text-justified is-centered"  style="align-items: center; margin-top: 0px; padding-top: 0;">
+            <div id="results-carousel" class="carousel results-carousel">
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="static/images/critic_example_pairwise.png" alt="pairtwise" width="75%" style="margin-bottom: 13px;" />
+                  <p> By accurately recognizing the visual content of the input image and grounding the differences between the responses, LLaVA-Critic offers judgments consistent with human evaluators, along with clear justifications.
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="static/images/critic_example_pointwise.png" alt="pointwise" width="62%" style="margin-bottom: 6px;" />
+                  <p> LLaVA-Critic closely follows the evaluation prompt and, by referring to the image content, accurately identifies the <span style="color:blue">strengths</span> and <span style="color: red;">weaknesses</span> of the response at both overall and fine-grained levels.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ Abstract. -->
+      </div>
+  </section>
+
+  <section class="section" id="preference-learning">
+    <div class="container" style="margin-bottom: 2vh;">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Scenario 2: Preference Learning</h2>
+          <div class="content has-text-justified">
+            <p>
+              <b>LLaVA-Critic produces AI-generated feedback datasets, thereby improving the visual chat
+                performance of supervised fine-tuned LMMs through preference alignment.</b> Notably, the reward signals
+              generated by our critic can be utilized in any preference learning algorithms, including RLHF and DPO.
+              Here, we focus on incorpating LLaVA-Critic into the iterative DPO training process:
+            </p>
+
+            <div class="algorithm-box">
+              <!-- <h3>Algorithm 1: Example Algorithm</h3> -->
+              <ul>
+                <li>
+                  <i><b>Step 1: Response generation.</b></i> The iterative DPO process begins with a pretrained LMM
+                  <span class="mathjax">\(\pi_0\)</span> as the initial checkpoint and a set of multimodal instructions
+                  <span class="mathjax">\(\{(x_k, v_k)\}_{k=1}^N\)</span>.
+                  For each question-image pair <span class="mathjax">\((x_k, v_k)\)</span>, the pretrained LMM <span
+                    class="mathjax">\(\pi_0\)</span> randomly generates <span class="mathjax">\(K\)</span> responses
+                  <span class="mathjax">\(\{y_1, y_2, ..., y_k\}\), sampled independently from its distribution.
+                </li>
+
+                <li style="margin-top: 8px;">
+                  <i><b>Step 2: Scoring.</b></i> To mitigate order-related variance in \ours's preferences, we form all
+                  possible ordered pairs from these responses, resulting in <span class="mathjax">\(K \times
+                    (K-1)\)</span> pairs.
+                  For each response pair <span class="mathjax">\((y_i, y_j)\)</span>, we apply LLaVA-Critic with an
+                  evaluation prompt to generate a relative score <span class="mathjax">\(a_{ij}\)</span>,
+                  which normalizes the score of <span class="mathjax">\(y_j\)</span> based on <span
+                    class="mathjax">\(y_i\)</span>.
+                </li>
+
+                <li style="margin-top: 8px;">
+                  <i><b>Step 3: Reward Preference.</b></i> The overall reward score <span class="mathjax">\(r_i\)</span>
+                  for each response <span class="mathjax">\(y_i\)</span> is calculated by aggregating these preference
+                  scores:
+                  <br>
+                  <!-- <code>
+                      <span class="mathjax">\(\pi_0\)</span>
+                        r<sub>i</sub> = &Sigma;(k&ne;i) a<sub>ki</sub> - &Sigma;(l&ne;i) a<sub>il</sub>
+                    </code> -->
+                  <div style="text-align: center; margin: 3px;">
+                    <span class="mathjax" , style="text-align: center;">\( r_i = \sum_{k \ne i} a_{ki} - \sum_{l \ne i}
+                      a_{il} \)</span>
+                  </div>
+                  <!-- <code>
+                      <span class="mathjax">\( \pi_0 \)</span> r<sub>i</sub> = 
+                      <span class="mathjax">\( \sum_{k \ne i} a_{ki} - \sum_{l \ne i} a_{il} \)</span>
+                  </code> -->
+                  <!-- This calculation effectively measures how much better or worse <span class="mathjax">\(y_i\)</span> is compared to all other responses.  -->
+                  We then select the responses with the highest and lowest reward scores as the best and worst
+                  responses, denoted as <span class="mathjax">\(y^+\)</span> and <span class="mathjax">\(y^-\)</span>,
+                  respectively.
+                  These form the pairwise feedback data <span class="mathjax">\((y^+, y^-)\)</span>, which is used for
+                  DPO training.
+                </li>
+
+                <li style="margin-top: 8px;">
+                  <i><b>Iterative Improvement.</b></i> After each round of DPO training, the updated LMM becomes the new
+                  starting checkpoint. The process is then repeated iteratively for another <span
+                    class="mathjax">\(M-1\)</span> rounds.
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              In experiment, we take LLaVA-OneVision as the base policy model, and use the question-image pairs from <a
+                href="https://llava-rlhf.github.io/">LLaVA-RLHF</a> as multimodal instructions. We conduct iterative DPO
+              training for <span class="mathjax">\(M=3\)</span> rounds to obtain the final LMM checkpoint, which is
+              referred to as <a
+                href="https://github.com/LLaVA-VL/LLaVA-NeXT/blob/main/docs/LLaVA_OneVision_Chat.md"><i><u>LLaVA-OneVision-Chat</u></i></a>.
+              </a>
+              For both LLaVA-OV-7B and LLaVA-OV-72B base
+              models, feedback from LLaVA-Critic progressively improves the LLaVA-OV's performance based on its
+              self-generated responses, leading to consistent gain across 6 open-ended multimodal benchmarks.
+            </p>
+
+            <d-figure id="fig-example">
+              <figure>
+                <img data-zoomable="" draggable="false" src="static/images/chat_delta_blog1.png"
+                  alt="benchmark category" style="width: 75%;">
+                <figcaption>
+                  <strong>Figure 3:</strong> Performance gain from preference learning with LLaVA-Critic. The delta
+                  numbers above the bars indicate the improvement of the iterative DPO-trained variant(7B/72B) over its
+                  base model LLaVA-OneVision.
+                </figcaption>
+              </figure>
+            </d-figure>
+          </div>
+        </div>
+        <!--/ Abstract. -->
+      </div>
+  </section>
+  <!-- @PAN TODO: bibtex -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content" style="margin-top: 0px;">
+      <h2 class="title is-3 has-text-centered">Citation</h2>
+      <pre><code>@article{xiong2024llavacritic,
+  title={LLaVA-Critic: Learning to Evaluate Multimodal Models},
+  author={Xiong, Tianyi and Wang, Xiyao and Guo, Dong and Ye, Qinghao and Fan, Haoqi and Gu, Quanquan and Huang, Heng and Li, Chunyuan},
+  year={2024},
+}</code></pre>
+    </div>
+  </section>
+  </div>
+  <a class="u-url" href="/blog/2024-08-05-llava-onevision/" hidden></a>
+  </article>
+  </div>
+
+
+</body>
+
+</html>
