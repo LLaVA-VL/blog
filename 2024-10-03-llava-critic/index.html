@@ -92,27 +92,27 @@
   </style>
 
 
-<style>
-  /* Basic styling for the bar */
-  .navbar {
+  <style>
+    /* Basic styling for the bar */
+    .navbar {
       background-color: #333;
       overflow: hidden;
-  }
-  
-  .navbar a {
+    }
+
+    .navbar a {
       float: left;
       display: block;
       color: #f2f2f2;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
-  }
-  
-  .navbar a:hover {
+    }
+
+    .navbar a:hover {
       background-color: #ddd;
       color: black;
-  }
-</style>
+    }
+  </style>
 
 </head>
 
@@ -122,10 +122,10 @@
 <body>
 
 
-<!-- Navigation Bar -->
-<div class="navbar">
-  <a href="https://llava-vl.github.io/blog">Blog Series</a>
-</div>  
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="https://llava-vl.github.io/blog">Blog Series</a>
+  </div>
 
   <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -143,15 +143,15 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title is-bold" style="display: inline-block; margin-right: 500px;">
+            <!-- <h1 class="title is-1 publication-title is-bold" style="display: inline-block; margin-right: 500px;">
               <span style="vertical-align: middle">LLaVA-Critic</span>
-            </h1>
-            <!-- <h1 class="title is-1 publication-title is-bold"  style="display: inline-block;">
+            </h1> -->
+            <h1 class="title is-1 publication-title is-bold" style="display: inline-block;">
               <span style="vertical-align: middle">LLaVA-Critic: Learning to Evaluate Multimodal Models</span>
-              </h1> -->
-            <h2 class="subtitle is-3 publication-subtitle" style="display: inline-block; margin-left: 210px;">
+            </h1>
+            <!-- <h2 class="subtitle is-3 publication-subtitle" style="display: inline-block; margin-left: 210px;">
               Learning to Evaluate Multimodal Models
-            </h2>
+            </h2> -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://tyxiong23.github.io/">Tianyi Xiong</a><sup style="color:#ed4b82;">2,</sup><sup
@@ -354,7 +354,7 @@
                     It consists of 46k images with 113k evaluation instruction samples, primarily including two evaluation
                     settings:
                   </p> -->
-                  
+
 
                   <ol>
                     <li><span style="color:#b02727"><b>Pointwise Scoring</b>: Assign a score to an individual candidate
@@ -371,7 +371,7 @@
                   </ol>
                 </div>
 
-                <div class="column is-one-thirds", style="padding: 0;">
+                <div class="column is-one-thirds" , style="padding: 0;">
                   <d-figure id="fig-statistics" style="padding-right: 0;">
                     <figure>
                       <img data-zoomable="" draggable="false" src="static/images/data_statistics.png"
@@ -436,23 +436,30 @@
             <p style="padding-bottom: 0;">
               Compared to LLaVA-OneVision, LLaVA-Critic delivers more accurate judgments, and <b>provides more concrete,
                 image-grounded justifications</b>. This is crucial for reliable AI, as offering
-              well-supported reasons for evaluations establishes LLaVA-Critic as a transparent evaluator of LMM-generated responses.
-              </p>
+              well-supported reasons for evaluations establishes LLaVA-Critic as a transparent evaluator of
+              LMM-generated responses.
+            </p>
           </div>
-          <div class="has-text-justified is-centered"  style="align-items: center; margin-top: 0px; padding-top: 0;">
+          <div class="has-text-justified is-centered" style="align-items: center; margin-top: 0px; padding-top: 0;">
             <div id="results-carousel" class="carousel results-carousel">
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="static/images/critic_example_pairwise.png" alt="pairtwise" width="75%" style="margin-bottom: 13px;" />
-                  <p> By accurately recognizing the visual content of the input image and grounding the differences between the responses, LLaVA-Critic offers judgments consistent with human evaluators, along with clear justifications.
+                  <img src="static/images/critic_example_pairwise.png" alt="pairtwise" width="75%"
+                    style="margin-bottom: 13px;" />
+                  <p> By accurately recognizing the visual content of the input image and grounding the differences
+                    between the responses, LLaVA-Critic offers judgments consistent with human evaluators, along with
+                    clear justifications.
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="static/images/critic_example_pointwise.png" alt="pointwise" width="62%" style="margin-bottom: 6px;" />
-                  <p> LLaVA-Critic closely follows the evaluation prompt and, by referring to the image content, accurately identifies the <span style="color:blue">strengths</span> and <span style="color: red;">weaknesses</span> of the response at both overall and fine-grained levels.
+                  <img src="static/images/critic_example_pointwise.png" alt="pointwise" width="62%"
+                    style="margin-bottom: 6px;" />
+                  <p> LLaVA-Critic closely follows the evaluation prompt and, by referring to the image content,
+                    accurately identifies the <span style="color:blue">strengths</span> and <span
+                      style="color: red;">weaknesses</span> of the response at both overall and fine-grained levels.
                 </div>
               </div>
             </div>
@@ -489,7 +496,8 @@
                 </li>
 
                 <li style="margin-top: 8px;">
-                  <i><b>Step 2: Scoring.</b></i> To mitigate order-related variance in LLaVA-Critic's preferences, we form all
+                  <i><b>Step 2: Scoring.</b></i> To mitigate order-related variance in LLaVA-Critic's preferences, we
+                  form all
                   possible ordered pairs from these responses, resulting in <span class="mathjax">\(K \times
                     (K-1)\)</span> pairs.
                   For each response pair <span class="mathjax">\((y_i, y_j)\)</span>, we apply LLaVA-Critic with an
@@ -532,17 +540,19 @@
             </div>
 
             <p>
-              <strong>LLaVA-OneVision-Chat</strong>. In experiment, we take LLaVA-OneVision as the base policy model, and use the question-image pairs from <a
-                href="https://llava-rlhf.github.io/">LLaVA-RLHF</a> as multimodal instructions. We conduct iterative DPO
+              <strong>LLaVA-OneVision-Chat</strong>. In experiment, we take LLaVA-OneVision as the base policy model,
+              and use the question-image pairs from <a href="https://llava-rlhf.github.io/">LLaVA-RLHF</a> as multimodal
+              instructions. We conduct iterative DPO
               training for <span class="mathjax">\(M=3\)</span> rounds to obtain the final LMM checkpoint, which is
               referred to as <a
                 href="https://github.com/LLaVA-VL/LLaVA-NeXT/blob/main/docs/LLaVA_OneVision_Chat.md"><i><u>LLaVA-OneVision-Chat</u></i></a>.
               </a>
               For both LLaVA-OV-7B and LLaVA-OV-72B base
               models, feedback from LLaVA-Critic progressively improves their performance based on their
-              self-generated responses, leading to consistent gain across 6 open-ended multimodal benchmarks. 
-              The performance gain is more pronounced, by leanring from AI feedback of LLaVA-Critic than the feedbck of reward model from LLaVA-RLHF that is trained with human preference.
-              It indicates a promising path to learn from superhuman feedback for self-improvement AI.  
+              self-generated responses, leading to consistent gain across 6 open-ended multimodal benchmarks.
+              The performance gain is more pronounced, by leanring from AI feedback of LLaVA-Critic than the feedbck of
+              reward model from LLaVA-RLHF that is trained with human preference.
+              It indicates a promising path to learn from superhuman feedback for self-improvement AI.
             </p>
 
             <d-figure id="fig-example">
@@ -571,19 +581,27 @@
           </h2>
           <div class="content has-text-justified">
             <ul>
-              <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR, and world knowledge</a></li>
-              <li><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/">LLaVA-NeXT: A Strong Zero-shot Video Understanding Model</a></li>
-              <li><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT: Stronger LLMs Supercharge Multimodal Capabilities in the Wild</a></li>
-              <li><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/">LLaVA-NeXT: What Else Influences Visual Instruction Tuning Beyond Data?</a></li>
-              <li><a href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave/">LLaVA-NeXT: Tackling Multi-image, Video, and 3D in Large Multimodal Models</a></li>
-              <li><a href="https://llava-vl.github.io/blog/2024-08-05-llava-onevision/">LLaVA-OneVision: Easy Visual Task Transfer</a></li>
-              <li><a href="https://llava-vl.github.io/blog/2024-09-30-llava-video/">LLaVA-Video: Video Instruction Tuning with Synthetic Data</a></li>
-              <li><a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/">Accelerating the Development of Large Multimodal Models with LMMs-Eval</a></li>
-          </ul>
-  
+              <li><a href="https://llava-vl.github.io/blog/2024-01-30-llava-next/">LLaVA-NeXT: Improved reasoning, OCR,
+                  and world knowledge</a></li>
+              <li><a href="https://llava-vl.github.io/blog/2024-04-30-llava-next-video/">LLaVA-NeXT: A Strong Zero-shot
+                  Video Understanding Model</a></li>
+              <li><a href="https://llava-vl.github.io/blog/2024-05-10-llava-next-stronger-llms/">LLaVA-NeXT: Stronger
+                  LLMs Supercharge Multimodal Capabilities in the Wild</a></li>
+              <li><a href="https://llava-vl.github.io/blog/2024-05-25-llava-next-ablations/">LLaVA-NeXT: What Else
+                  Influences Visual Instruction Tuning Beyond Data?</a></li>
+              <li><a href="https://llava-vl.github.io/blog/2024-06-16-llava-next-interleave/">LLaVA-NeXT: Tackling
+                  Multi-image, Video, and 3D in Large Multimodal Models</a></li>
+              <li><a href="https://llava-vl.github.io/blog/2024-08-05-llava-onevision/">LLaVA-OneVision: Easy Visual
+                  Task Transfer</a></li>
+              <li><a href="https://llava-vl.github.io/blog/2024-09-30-llava-video/">LLaVA-Video: Video Instruction
+                  Tuning with Synthetic Data</a></li>
+              <li><a href="https://lmms-lab.github.io/lmms-eval-blog/lmms-eval-0.1/">Accelerating the Development of
+                  Large Multimodal Models with LMMs-Eval</a></li>
+            </ul>
+
           </div>
-  
-  
+
+
         </div>
       </div>
     </div>
