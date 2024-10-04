@@ -328,7 +328,18 @@
                       <strong>Figure 4:</strong> Distribution of data across different datasets and question types (Caption, Open-ended, and Multi-Choice).
                   </figcaption>
               </figure>
-            </d-figure>    
+            </d-figure>  
+            
+            <br>
+            <br>
+            <d-figure id="fig-comparison" >
+              <figure>
+                  <img data-zoomable="" draggable="false" src="static/images/llava_video_dataset_task_page-0001.jpg" alt="benchmark category">
+                  <figcaption>
+                      <strong>Figure 5:</strong> One example to illustrate the video instruction-following data.
+                  </figcaption>
+              </figure>
+            </d-figure>  
             
             <h3 class="title is-4">Dataset Comparison</h3>
             <p>We provide a comparison of high-quality instruction-following video-language datasets, with a focus on synthetic data created with strong AI models, as shown in Table 1.</p>
@@ -525,7 +536,7 @@
                             <td>43.5</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>-</td>
+                            <td>61.3</td>
                             <td>59.9/63.3</td>
                         </tr>
                         <tr class="highlight-gray">
@@ -575,7 +586,7 @@
                         </tr>
                         <tr>
                             <td>VILA-40B</td>
-                            <td>-</td>
+                            <td>3.37</td>
                             <td style="border-right: 1px solid #000">33.2</td>
                             <td>58.0</td>
                             <td style="border-right: 1px solid #000">3.36</td>
@@ -584,7 +595,7 @@
                             <td>-</td>
                             <td>67.9</td>
                             <td>54.0</td>
-                            <td>3.37</td>
+                            <td>-</td>
                             <td>60.1/61.1</td>
                         </tr>
                         <tr>
@@ -603,7 +614,7 @@
                         </tr>
                         <tr>
                             <td>LongVA-7B</td>
-                            <td>-</td>
+                            <td>3.14</td>
                             <td style="border-right: 1px solid #000">-</td>
                             <td>50.0</td>
                             <td style="border-right: 1px solid #000">3.20</td>
@@ -612,7 +623,7 @@
                             <td>-</td>
                             <td>68.3</td>
                             <td>-</td>
-                            <td>3.14</td>
+                            <td>-</td>
                             <td>52.6/54.3</td>
                         </tr>
                         <tr>
@@ -643,6 +654,20 @@
                             <td>56.5</td>
                             <td>58.2/61.5</td>
                         </tr>
+                        <tr>
+                          <td>VideoLLaMA2-72B</td>
+                          <td>-</td>
+                          <td style="border-right: 1px solid #000">27.1</td>
+                          <td>55.2</td>
+                          <td style="border-right: 1px solid #000">3.16</td>
+                          <td>63.9</td>
+                          <td>61.2</td>
+                          <td>62.0</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>61.4/63.1</td>
+                      </tr>
                         <tr>
                             <td>LLaVA-OV-72B</td>
                             <td>3.60</td>
@@ -689,7 +714,7 @@
                 </table>
             </div>
             <figcaption>
-                Table: LLaVA-Video performance on video benchmarks. We report the score out of 5 for VideoDC, VideoChatGPT while other results are reported in accuracy. All results are reported as 0-shot accuracy. *indicates that the training set has been observed in our data mixture.
+                Table 2: LLaVA-Video performance on video benchmarks. We report the score out of 5 for VideoDC, VideoChatGPT while other results are reported in accuracy. All results are reported as 0-shot accuracy. *indicates that the training set has been observed in our data mixture.
             </figcaption>
         </div>
         
