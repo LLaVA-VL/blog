@@ -781,7 +781,9 @@
             <!-- First Video Box -->
             <div class="box m-5">
               <div class="content has-text-centered">
-                <div id="player1"></div>
+                <div class="video-container">
+                  <div id="player1"></div>
+                </div>
                 <p>LLaVA-Video teaches me how to download "TikTok" on my iPhone, step by step.</p>
               </div>
             </div>
@@ -790,7 +792,9 @@
             <!-- Second Video Box -->
             <div class="box m-5">
               <div class="content has-text-centered">
-                <div id="player2"></div>
+                <div class="video-container">
+                  <div id="player2"></div>
+                </div>
                 <p>LLaVA-Video helps me find the healthy drink in the living room, and describe the living room.</p>
               </div>
             </div>
@@ -811,8 +815,6 @@
 
   function onYouTubeIframeAPIReady() {
     player1 = new YT.Player('player1', {
-      height: '600',
-      width: '560',
       videoId: 'JCC9amG1kZE',
       events: {
         'onStateChange': onPlayerStateChange
@@ -821,8 +823,6 @@
     players.push(player1); // Add player to array
 
     player2 = new YT.Player('player2', {
-      height: '600',
-      width: '560',
       videoId: 'HAytzvpiQAw',
       events: {
         'onStateChange': onPlayerStateChange
@@ -843,6 +843,38 @@
     }
   }
 </script>
+
+<style>
+/* Responsive iframe container */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #000;
+}
+
+.video-container iframe,
+.video-container div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive box size adjustments for mobile */
+@media only screen and (max-width: 768px) {
+  .box {
+    margin: 2vh 1vw;
+  }
+  .video-container {
+    padding-bottom: 75%; /* Adjust for a different aspect ratio on smaller screens */
+  }
+}
+
+</style>
 
 
 
