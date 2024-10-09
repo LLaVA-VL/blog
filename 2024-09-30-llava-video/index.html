@@ -368,63 +368,62 @@
             </ol>
 
             <div id="tab:dataset_comparison" style="display: flex; flex-direction: column; align-items: center;" class="figure">
-              <div class="table-container">
+              <div class="table-container" style="overflow-x:auto;">
                 <table class="data-table" style="border-collapse: collapse; text-align: center;">
                   <thead>
-                          <tr>
-                              <th></th>
-                              <th>Text</th>
-                              <th>Video Source</th>
-                              <th>#Video</th>
-                              <th>Total Video Length</th>
-                              <th>Average FPS</th>
-                              <th>#Caption</th>
-                              <th>#OE QA</th>
-                              <th>#MC QA</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>LLaVA-Hound</td>
-                              <td>GPT-4V</td>
-                              <td><span>&#9733;</span></td>
-                              <td>900K</td>
-                              <td>3Khr</td>
-                              <td>0.008</td>
-                              <td>900K</td>
-                              <td>900K</td>
-                              <td>0</td>
-                          </tr>
-                          <tr>
-                              <td>ShareGPT4Video</td>
-                              <td>GPT-4V</td>
-                              <td><span>&#9726</span></td>
-                              <td>40K</td>
-                              <td>0.2Khr</td>
-                              <td>0.15</td>
-                              <td>40K</td>
-                              <td>0</td>
-                              <td>0</td>
-                          </tr>
-                          <tr class="highlight-orange">
-                              <td>LLaVA-Video-178K</td>
-                              <td>GPT-4o</td>
-                              <td><span>&#x272A;</span></td>
-                              <td>178K</td>
-                              <td>2Khr</td>
-                              <td>1</td>
-                              <td>178K</td>
-                              <td>960K</td>
-                              <td>196K</td>
-                          </tr>
-                      </tbody>
-                  </table>
+                    <tr>
+                      <th></th>
+                      <th>Text</th>
+                      <th>Video Source</th>
+                      <th>#Video</th>
+                      <th>Total Video Length</th>
+                      <th>Average FPS</th>
+                      <th>#Caption</th>
+                      <th>#OE QA</th>
+                      <th>#MC QA</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>LLaVA-Hound</td>
+                      <td>GPT-4V</td>
+                      <td><span>&#9733;</span></td>
+                      <td>900K</td>
+                      <td>3Khr</td>
+                      <td>0.008</td>
+                      <td>900K</td>
+                      <td>900K</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>ShareGPT4Video</td>
+                      <td>GPT-4V</td>
+                      <td><span>&#9726;</span></td>
+                      <td>40K</td>
+                      <td>0.2Khr</td>
+                      <td>0.15</td>
+                      <td>40K</td>
+                      <td>0</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="highlight-orange">
+                      <td>LLaVA-Video-178K</td>
+                      <td>GPT-4o</td>
+                      <td><span>&#x272A;</span></td>
+                      <td>178K</td>
+                      <td>2Khr</td>
+                      <td>1</td>
+                      <td>178K</td>
+                      <td>960K</td>
+                      <td>196K</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <figcaption>
-                <strong>Table 1:</strong> Comparison of LLaVA-Video-178K and other video-language datasets. Average FPS represents the average number of frames per second that are used to prompt GPT-4o/GPT-4V for annotation.  <span>&#9733;</span>: VIDAL, WebVid, ActivityNet. <span>&#9726</span>: Panda-70M, Pexels, Pixabay, Mixkit, BDD100K, Ego4d.  <span>&#x272A;</span>: HD-VILA-100M, Kinetics-700M, Ego4D, VidOR, InternVid, YouCook2, ActivityNet, Sth-sthv2, VIDAL, Charades.
-            </figcaption>
-            </div>
-          
+                <strong>Table 1:</strong> Comparison of LLaVA-Video-178K and other video-language datasets. Average FPS represents the average number of frames per second that are used to prompt GPT-4o/GPT-4V for annotation. <span>&#9733;</span>: VIDAL, WebVid, ActivityNet. <span>&#9726;</span>: Panda-70M, Pexels, Pixabay, Mixkit, BDD100K, Ego4d. <span>&#x272A;</span>: HD-VILA-100M, Kinetics-700M, Ego4D, VidOR, InternVid, YouCook2, ActivityNet, Sth-sthv2, VIDAL, Charades.
+              </figcaption>
+            </div>          
 
         </div>
 
@@ -434,6 +433,52 @@
   </div>
 </section>
 
+
+<style>
+  /* Table container for horizontal scrolling on smaller screens */
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  /* General styling for the table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+  
+  .data-table th, .data-table td {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Specific colors and highlights */
+  .data-table tr.highlight-orange {
+    background-color: #ffe4b2;
+  }
+  
+  .data-table th {
+    background-color: #f4f4f4;
+    white-space: nowrap;
+  }
+  
+  .data-table td span {
+    font-size: 1.5em;
+  }
+  
+  /* Responsive adjustments for mobile */
+  @media only screen and (max-width: 768px) {
+    .data-table th, .data-table td {
+      padding: 6px 8px;
+      font-size: 0.8em;
+    }
+    .data-table td span {
+      font-size: 1.2em;
+    }
+  }
+  
+  </style>
+  
 
 
 <section class="section" id="Video Representation">
@@ -496,250 +541,307 @@
           </p>
 
           <div id="tab:video_bench" style="display: flex; flex-direction: column; align-items: center;" class="figure">
-            <div class="table-container">
-                <table class="data-table" style="border-collapse: collapse; text-align: left;">
-                  <thead>
-                    <tr style="border-bottom: 1px solid #000;"> <!-- Apply border to the row -->
-                      <th></th> <!-- Empty cell with border -->
-                      <th colspan="2">Caption</th>
-                      <th colspan="2">Open-Ended Q&amp;A</th>
-                      <th colspan="7" align="center">Multiple-Choice Q&amp;A</th>
+            <div class="table-container" style="overflow-x:auto;"> <!-- Add scrollable container -->
+              <table class="data-table" style="border-collapse: collapse; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1px solid #000;"> <!-- Apply border to the row -->
+                    <th></th> <!-- Empty cell with border -->
+                    <th colspan="2">Caption</th>
+                    <th colspan="2">Open-Ended Q&amp;A</th>
+                    <th colspan="7" align="center">Multiple-Choice Q&amp;A</th>
+                </tr>
+                  <tr style="border-bottom: 1px solid #000;",align="center"> <!-- Border applied to the row -->
+                    <th>Model</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">VideoDC</th>
+                    <th class="rotate" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">Dream-1K</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">ActNet-QA</th>
+                    <th class="rotate" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">VideoChatGPT</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">EgoSchema</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">MLVU</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">MVBench</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">NExT-QA</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">PerceptionTest</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">LongVideoBench</th>
+                    <th class="rotate" style="border-bottom: 1px solid #000;">VideoMME</th>
+                </tr>
+                  <tr style="border-bottom: 2px solid #000;"> <!-- Added another border here -->
+                      <th></th>
+                      <th>test</th>
+                      <th style="border-right: 1px solid #000;">test</th>
+                      <th>test</th>
+                      <th style="border-right: 1px solid #000;">test</th>
+                      <th>test</th>
+                      <th>m-avg</th>
+                      <th>test</th>
+                      <th>mc</th>
+                      <th>val</th>
+                      <th>val</th>
+                      <th>wo/w-subs</th>
                   </tr>
-                    <tr style="border-bottom: 1px solid #000;",align="center"> <!-- Border applied to the row -->
-                      <th>Model</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">VideoDC</th>
-                      <th class="rotate" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">Dream-1K</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">ActNet-QA</th>
-                      <th class="rotate" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">VideoChatGPT</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">EgoSchema</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">MLVU</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">MVBench</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">NExT-QA</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">PerceptionTest</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">LongVideoBench</th>
-                      <th class="rotate" style="border-bottom: 1px solid #000;">VideoMME</th>
-                  </tr>
-                    <tr style="border-bottom: 2px solid #000;"> <!-- Added another border here -->
-                        <th></th>
-                        <th>test</th>
-                        <th style="border-right: 1px solid #000;">test</th>
-                        <th>test</th>
-                        <th style="border-right: 1px solid #000;">test</th>
-                        <th>test</th>
-                        <th>m-avg</th>
-                        <th>test</th>
-                        <th>mc</th>
-                        <th>val</th>
-                        <th>val</th>
-                        <th>wo/w-subs</th>
-                    </tr>
-                </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="12" style="font-style: italic;">Proprietary models</td>
-                        </tr>
-                        <tr class="highlight-gray">
-                            <td>GPT-4V</td>
-                            <td>4.06</td>
-                            <td style="border-right: 1px solid #000">34.4</td>
-                            <td>57.0</td>
-                            <td style="border-right: 1px solid #000">4.00</td>
-                            <td>-</td>
-                            <td>49.2</td>
-                            <td>43.5</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>61.3</td>
-                            <td>59.9/63.3</td>
-                        </tr>
-                        <tr class="highlight-gray">
-                            <td>GPT-4o</td>
-                            <td>-</td>
-                            <td style="border-right: 1px solid #000">39.2</td>
-                            <td>-</td>
-                            <td style="border-right: 1px solid #000">-</td>
-                            <td>-</td>
-                            <td>64.6</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>66.7</td>
-                            <td>71.9/77.2</td>
-                        </tr>
-                        <tr class="highlight-gray">
-                            <td>Gemini-1.5-Flash</td>
-                            <td>-</td>
-                            <td style="border-right: 1px solid #000">34.8</td>
-                            <td>55.3</td>
-                            <td style="border-right: 1px solid #000">-</td>
-                            <td>65.7</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>61.6</td>
-                            <td>70.3/75.0</td>
-                        </tr>
-                        <tr class="highlight-gray">
-                            <td>Gemini-1.5-Pro</td>
-                            <td>-</td>
-                            <td style="border-right: 1px solid #000">36.2</td>
-                            <td>57.5</td>
-                            <td style="border-right: 1px solid #000">-</td>
-                            <td>72.2</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>64.0</td>
-                            <td>75.0/81.3</td>
-                        </tr>
-                        <tr>
-                            <td colspan="12" style="font-style: italic;">Open-source models</td>
-                        </tr>
-                        <tr>
-                            <td>VILA-40B</td>
-                            <td>3.37</td>
-                            <td style="border-right: 1px solid #000">33.2</td>
-                            <td>58.0</td>
-                            <td style="border-right: 1px solid #000">3.36</td>
-                            <td>58.0</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>67.9</td>
-                            <td>54.0</td>
-                            <td>-</td>
-                            <td>60.1/61.1</td>
-                        </tr>
-                        <tr>
-                            <td>PLLaVA-34B</td>
-                            <td>-</td>
-                            <td style="border-right: 1px solid #000">28.2</td>
-                            <td>60.9</td>
-                            <td style="border-right: 1px solid #000">3.48</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>58.1</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>53.2</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>LongVA-7B</td>
-                            <td>3.14</td>
-                            <td style="border-right: 1px solid #000">-</td>
-                            <td>50.0</td>
-                            <td style="border-right: 1px solid #000">3.20</td>
-                            <td>-</td>
-                            <td>56.3</td>
-                            <td>-</td>
-                            <td>68.3</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>52.6/54.3</td>
-                        </tr>
-                        <tr>
-                            <td>IXC-2.5-7B</td>
-                            <td>-</td>
-                            <td style="border-right: 1px solid #000">-</td>
-                            <td>52.8</td>
-                            <td style="border-right: 1px solid #000">3.46</td>
-                            <td>-</td>
-                            <td>37.3</td>
-                            <td>69.1</td>
-                            <td>71.0</td>
-                            <td>34.4</td>
-                            <td>-</td>
-                            <td>55.8/58.8</td>
-                        </tr>
-                        <tr>
-                            <td>LLaVA-OV-7B</td>
-                            <td>3.75</td>
-                            <td style="border-right: 1px solid #000">31.7</td>
-                            <td>56.6</td>
-                            <td style="border-right: 1px solid #000">3.51</td>
-                            <td>60.1</td>
-                            <td>64.7</td>
-                            <td>56.7</td>
-                            <td>79.4*</td>
-                            <td>57.1</td>
-                            <td>56.5</td>
-                            <td>58.2/61.5</td>
-                        </tr>
-                        <tr>
-                          <td>VideoLLaMA2-72B</td>
-                          <td>-</td>
-                          <td style="border-right: 1px solid #000">27.1</td>
-                          <td>55.2</td>
-                          <td style="border-right: 1px solid #000">3.16</td>
-                          <td>63.9</td>
-                          <td>61.2</td>
-                          <td>62.0</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>-</td>
-                          <td>61.4/63.1</td>
+              </thead>
+                  <tbody>
+                      <tr>
+                          <td colspan="12" style="font-style: italic;">Proprietary models</td>
                       </tr>
-                        <tr>
-                            <td>LLaVA-OV-72B</td>
-                            <td>3.60</td>
-                            <td style="border-right: 1px solid #000">33.2</td>
-                            <td>62.3</td>
-                            <td style="border-right: 1px solid #000">3.62</td>
-                            <td>62.0</td>
-                            <td>68.0</td>
-                            <td>59.4</td>
-                            <td>80.2*</td>
-                            <td>66.9</td>
-                            <td>61.3</td>
-                            <td>66.2/69.5</td>
-                        </tr>
-                        <tr class="highlight-orange">
-                            <td>LLaVA-Video-7B</td>
-                            <td>3.66</td>
-                            <td style="border-right: 1px solid #000">32.5</td>
-                            <td>56.5*</td>
-                            <td style="border-right: 1px solid #000">3.52</td>
-                            <td>57.3</td>
-                            <td>70.8</td>
-                            <td>58.6</td>
-                            <td>83.2*</td>
-                            <td>67.9*</td>
-                            <td>58.2</td>
-                            <td>63.3/69.7</td>
-                        </tr>
-                        <tr class="highlight-orange">
-                            <td>LLaVA-Video-72B</td>
-                            <td>3.73</td>
-                            <td style="border-right: 1px solid #000">34.0</td>
-                            <td>63.4*</td>
-                            <td style="border-right: 1px solid #000">3.62</td>
-                            <td>65.6</td>
-                            <td>74.4</td>
-                            <td>64.1</td>
-                            <td>85.4*</td>
-                            <td>74.3*</td>
-                            <td>61.9</td>
-                            <td>70.5/76.9</td>
-                        </tr>
-                    </tbody>
-                </table>
+                      <tr class="highlight-gray">
+                          <td>GPT-4V</td>
+                          <td>4.06</td>
+                          <td style="border-right: 1px solid #000">34.4</td>
+                          <td>57.0</td>
+                          <td style="border-right: 1px solid #000">4.00</td>
+                          <td>-</td>
+                          <td>49.2</td>
+                          <td>43.5</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>61.3</td>
+                          <td>59.9/63.3</td>
+                      </tr>
+                      <tr class="highlight-gray">
+                          <td>GPT-4o</td>
+                          <td>-</td>
+                          <td style="border-right: 1px solid #000">39.2</td>
+                          <td>-</td>
+                          <td style="border-right: 1px solid #000">-</td>
+                          <td>-</td>
+                          <td>64.6</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>66.7</td>
+                          <td>71.9/77.2</td>
+                      </tr>
+                      <tr class="highlight-gray">
+                          <td>Gemini-1.5-Flash</td>
+                          <td>-</td>
+                          <td style="border-right: 1px solid #000">34.8</td>
+                          <td>55.3</td>
+                          <td style="border-right: 1px solid #000">-</td>
+                          <td>65.7</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>61.6</td>
+                          <td>70.3/75.0</td>
+                      </tr>
+                      <tr class="highlight-gray">
+                          <td>Gemini-1.5-Pro</td>
+                          <td>-</td>
+                          <td style="border-right: 1px solid #000">36.2</td>
+                          <td>57.5</td>
+                          <td style="border-right: 1px solid #000">-</td>
+                          <td>72.2</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>64.0</td>
+                          <td>75.0/81.3</td>
+                      </tr>
+                      <tr>
+                          <td colspan="12" style="font-style: italic;">Open-source models</td>
+                      </tr>
+                      <tr>
+                          <td>VILA-40B</td>
+                          <td>3.37</td>
+                          <td style="border-right: 1px solid #000">33.2</td>
+                          <td>58.0</td>
+                          <td style="border-right: 1px solid #000">3.36</td>
+                          <td>58.0</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>67.9</td>
+                          <td>54.0</td>
+                          <td>-</td>
+                          <td>60.1/61.1</td>
+                      </tr>
+                      <tr>
+                          <td>PLLaVA-34B</td>
+                          <td>-</td>
+                          <td style="border-right: 1px solid #000">28.2</td>
+                          <td>60.9</td>
+                          <td style="border-right: 1px solid #000">3.48</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>58.1</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>53.2</td>
+                          <td>-</td>
+                      </tr>
+                      <tr>
+                          <td>LongVA-7B</td>
+                          <td>3.14</td>
+                          <td style="border-right: 1px solid #000">-</td>
+                          <td>50.0</td>
+                          <td style="border-right: 1px solid #000">3.20</td>
+                          <td>-</td>
+                          <td>56.3</td>
+                          <td>-</td>
+                          <td>68.3</td>
+                          <td>-</td>
+                          <td>-</td>
+                          <td>52.6/54.3</td>
+                      </tr>
+                      <tr>
+                          <td>IXC-2.5-7B</td>
+                          <td>-</td>
+                          <td style="border-right: 1px solid #000">-</td>
+                          <td>52.8</td>
+                          <td style="border-right: 1px solid #000">3.46</td>
+                          <td>-</td>
+                          <td>37.3</td>
+                          <td>69.1</td>
+                          <td>71.0</td>
+                          <td>34.4</td>
+                          <td>-</td>
+                          <td>55.8/58.8</td>
+                      </tr>
+                      <tr>
+                          <td>LLaVA-OV-7B</td>
+                          <td>3.75</td>
+                          <td style="border-right: 1px solid #000">31.7</td>
+                          <td>56.6</td>
+                          <td style="border-right: 1px solid #000">3.51</td>
+                          <td>60.1</td>
+                          <td>64.7</td>
+                          <td>56.7</td>
+                          <td>79.4*</td>
+                          <td>57.1</td>
+                          <td>56.5</td>
+                          <td>58.2/61.5</td>
+                      </tr>
+                      <tr>
+                        <td>VideoLLaMA2-72B</td>
+                        <td>-</td>
+                        <td style="border-right: 1px solid #000">27.1</td>
+                        <td>55.2</td>
+                        <td style="border-right: 1px solid #000">3.16</td>
+                        <td>63.9</td>
+                        <td>61.2</td>
+                        <td>62.0</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>61.4/63.1</td>
+                    </tr>
+                      <tr>
+                          <td>LLaVA-OV-72B</td>
+                          <td>3.60</td>
+                          <td style="border-right: 1px solid #000">33.2</td>
+                          <td>62.3</td>
+                          <td style="border-right: 1px solid #000">3.62</td>
+                          <td>62.0</td>
+                          <td>68.0</td>
+                          <td>59.4</td>
+                          <td>80.2*</td>
+                          <td>66.9</td>
+                          <td>61.3</td>
+                          <td>66.2/69.5</td>
+                      </tr>
+                      <tr class="highlight-orange">
+                          <td>LLaVA-Video-7B</td>
+                          <td>3.66</td>
+                          <td style="border-right: 1px solid #000">32.5</td>
+                          <td>56.5*</td>
+                          <td style="border-right: 1px solid #000">3.52</td>
+                          <td>57.3</td>
+                          <td>70.8</td>
+                          <td>58.6</td>
+                          <td>83.2*</td>
+                          <td>67.9*</td>
+                          <td>58.2</td>
+                          <td>63.3/69.7</td>
+                      </tr>
+                      <tr class="highlight-orange">
+                          <td>LLaVA-Video-72B</td>
+                          <td>3.73</td>
+                          <td style="border-right: 1px solid #000">34.0</td>
+                          <td>63.4*</td>
+                          <td style="border-right: 1px solid #000">3.62</td>
+                          <td>65.6</td>
+                          <td>74.4</td>
+                          <td>64.1</td>
+                          <td>85.4*</td>
+                          <td>74.3*</td>
+                          <td>61.9</td>
+                          <td>70.5/76.9</td>
+                      </tr>
+                  </tbody>
+              </table>
             </div>
             <figcaption>
                 Table 2: LLaVA-Video performance on video benchmarks. We report the score out of 5 for VideoDC, VideoChatGPT while other results are reported in accuracy. All results are reported as 0-shot accuracy. *indicates that the training set has been observed in our data mixture.
             </figcaption>
         </div>
-        
-        
-        
-        
-        
-
       </div>
     </div>
   </div>
 </section>
+
+<!-- Adjusted HTML for the Dream-1K Column -->
+<!-- <th class="rotate" style="border-right: 1px solid #000; border-bottom: 1px solid #000;">Dream-1K</th> -->
+
+<!-- Add this CSS -->
+<style>
+/* Ensure the table is responsive and properly formatted */
+.table-container {
+  overflow-x: auto;
+}
+
+/* General styling for the table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+}
+
+/* Styling for rotated table headers */
+th.rotate {
+  /* transform: rotate(-90deg); Rotate the text */
+  white-space: nowrap; /* Ensure text doesn't wrap */
+  padding: 0 10px; /* Adjust padding */
+  height: 150px; /* Increase height to fit rotated text */
+  vertical-align: bottom; /* Align text to bottom */
+}
+
+/* Add the border-right to the correct location */
+th.rotate {
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 1.5em;
+  }
+
+  .content p {
+    font-size: 0.9em;
+  }
+
+  .data-table th, .data-table td {
+    padding: 6px 8px;
+    font-size: 0.8em;
+  }
+
+  th.rotate {
+    transform: rotate(-45deg);
+    white-space: nowrap;
+    padding: 0 10px;
+    height: 60px;
+    vertical-align: bottom;
+  }
+}
+</style>
+
+
 
 
 
