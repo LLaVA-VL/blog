@@ -922,36 +922,34 @@ th.rotate {
 </script>
 
 <style>
-/* Responsive iframe container */
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  height: 0;
-  overflow: hidden;
-  max-width: 100%;
-  background-color: #000;
-}
-
-.video-container iframe,
-.video-container div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Responsive box size adjustments for mobile */
-@media only screen and (max-width: 768px) {
-  .box {
-    margin: 2vh 1vw;
-  }
+  /* Responsive iframe container with a consistent 16:9 aspect ratio */
   .video-container {
-    padding-bottom: 75%; /* Adjust for a different aspect ratio on smaller screens */
+    position: relative;
+    padding-bottom: 56.25%; /* This maintains the 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background-color: #000;
   }
-}
-
-</style>
+  
+  .video-container iframe,
+  .video-container div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Adjustments for mobile */
+  @media only screen and (max-width: 768px) {
+    .box {
+      margin: 2vh 1vw;
+    }
+  }
+  
+  </style>
+  
 
 
 
