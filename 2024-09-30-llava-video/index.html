@@ -765,9 +765,10 @@
 
 
 
+
 <section class="section" id="Interactive Demos">
   <div class="container" style="margin-bottom: 2vh;">
-    <!-- Abstract. -->
+    <!-- Abstract -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Interactive Demos</h2>
@@ -777,33 +778,77 @@
           </p>
           <div id="results-carousel" class="carousel results-carousel">
 
+            <!-- First Video Box -->
             <div class="box m-5">
               <div class="content has-text-centered">
-                <video width="40%" controls>
-                  <source src="demos/tiktok.mp4" alt="algebraic reasoning" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <p> LLaVA-Video teach me how to download "TikTok'' on my iPhone, step by step.</p>
+                <div id="player1"></div>
+                <p>LLaVA-Video teaches me how to download "TikTok" on my iPhone, step by step.</p>
               </div>
             </div>
+            <!--/ First Video Box -->
 
+            <!-- Second Video Box -->
             <div class="box m-5">
               <div class="content has-text-centered">
-                <video width="40%" controls>
-                  <source src="demos/living_room.mp4" alt="arithmetic reasoning" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <p> LLaVA-Video help me find the healthy drink in the living room, and describe the living room.</p>
+                <div id="player2"></div>
+                <p>LLaVA-Video helps me find the healthy drink in the living room, and describe the living room.</p>
               </div>
             </div>
+            <!--/ Second Video Box -->
 
           </div>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
+    <!--/ Abstract -->
   </div>
 </section>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  var player1, player2;
+  var players = []; // Array to keep track of all players
+
+  function onYouTubeIframeAPIReady() {
+    player1 = new YT.Player('player1', {
+      height: '600',
+      width: '560',
+      videoId: 'JCC9amG1kZE',
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+    players.push(player1); // Add player to array
+
+    player2 = new YT.Player('player2', {
+      height: '600',
+      width: '560',
+      videoId: 'HAytzvpiQAw',
+      events: {
+        'onStateChange': onPlayerStateChange
+      }
+    });
+    players.push(player2); // Add player to array
+  }
+
+  // Function to handle video state changes
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+      // Stop all other players
+      players.forEach(function(player) {
+        if (player != event.target) {
+          player.pauseVideo();
+        }
+      });
+    }
+  }
+</script>
+
+
+
+
+
+
 
 
 <section class="section">
