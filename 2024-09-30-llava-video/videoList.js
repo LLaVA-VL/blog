@@ -1,4 +1,4 @@
-const videoFiles = [
+export const videoFiles = [
   "10440265715.mp4",
   "12843838795.mp4",
   "24ba7993-7fc8-4447-afd5-7ff6d548b11a.mp4",
