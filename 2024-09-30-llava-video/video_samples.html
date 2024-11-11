@@ -13,6 +13,7 @@
         import { videoFiles } from './videoList.js';
 
         const videoContainer = document.getElementById("video-container");
+        const videoPath = "../assets/llava_video_selected/";
 
         videoFiles.forEach((file) => {
             const videoElement = document.createElement("div");
@@ -25,7 +26,7 @@
 
             // Video Player
             const video = document.createElement("video");
-            video.src = file;
+            video.src = videoPath + file;
             video.controls = true;
             video.width = 320;
             video.height = 240;
