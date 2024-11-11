@@ -1,0 +1,1260 @@
+{
+    "0_30_s_academic_v0_1-academic_source-Charades": {
+        "video_path": "0_30_s_academic_v0_1/academic_source/Charades/RW587.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the color of the wall in the kitchen?\nA. Light green\nB. Light blue\nC. Light yellow\nD. Light pink\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Light pink."
+            },
+            {
+                "from": "human",
+                "value": "What does the man do at one point during the video?\nA. He opens the window\nB. He bends down to pick something up from the floor\nC. He sits down on the chair\nD. He leaves the kitchen\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "Which of the following items is NOT mentioned as being on the table?\nA. Yellow plate\nB. Red container\nC. Green can\nD. Blue bowl\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Yellow plate."
+            },
+            {
+                "from": "human",
+                "value": "What new item appears in the background by the end of the video?\nA. A calendar\nB. A painting\nC. A mirror\nD. A clock\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. A calendar."
+            },
+            {
+                "from": "human",
+                "value": "What is the man wearing in the video?\nA. White t-shirt and gray shorts\nB. Blue t-shirt and black pants\nC. Green shirt and brown shorts\nD. Red t-shirt and blue jeans\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. White t-shirt and gray shorts."
+            }
+        ]
+    },
+    "0_30_s_academic_v0_1-academic_source-NextQA": {
+        "video_path": "0_30_s_academic_v0_1/academic_source/NextQA/1102/3564576864.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the initial setting of the video?\nA. A city park\nB. A beach\nC. An above-ground swimming pool in a backyard\nD. A mountain cabin\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "C."
+            },
+            {
+                "from": "human",
+                "value": "What object is floating in the swimming pool?\nA. A purple ball\nB. A red boat\nC. A yellow duck\nD. A green leaf\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What does the overcast weather in the video suggest?\nA. A snowy day\nB. A windy day\nC. A sunny day\nD. A calm, possibly rainy day\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. A calm, possibly rainy day."
+            },
+            {
+                "from": "human",
+                "value": "What type of furniture is found on the covered patio area?\nA. Hammocks\nB. Wooden table and chairs with cushions\nC. Metal benches\nD. Plastic chairs and tables\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What are the people on the patio doing?\nA. Engaged in conversation and perusing books and newspapers\nB. Cooking on a grill\nC. Exercising\nD. Playing board games\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            }
+        ]
+    },
+    "0_30_s_academic_v0_1-academic_source-youcook2": {
+        "video_path": "0_30_s_academic_v0_1/academic_source/youcook2/203/Qh_rtJaCpXs/split_6.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhere does the video take place?\nA. A bakery\nB. A professional kitchen\nC. A home kitchen\nD. An outdoor barbecue\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A professional kitchen."
+            },
+            {
+                "from": "human",
+                "value": "What is the chef wearing?\nA. A black chef's coat and a red apron\nB. A blue chef's coat and a white apron\nC. A white t-shirt and jeans\nD. A white chef's coat and a striped apron\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What does the chef sprinkle into the sauce?\nA. Pepper\nB. Salt\nC. Sugar\nD. Flour\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What is added to the red sauce to enhance its flavor and appearance?\nA. Chopped onions\nB. Grated cheese\nC. Diced tomatoes\nD. Fresh green herbs\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What color is the cutting board used by the chef?\nA. Green\nB. Blue\nC. Red\nD. Yellow\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Green."
+            }
+        ]
+    },
+    "0_30_s_academic_v0_1-academic_source-activitynet": {
+        "video_path": "0_30_s_academic_v0_1/academic_source/activitynet/v_oZTFplEHVDo.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the main gymnastics move described in the video?\nA. Kip on HB with a 180\u00b0 turn\nB. Vault jump\nC. Balance beam routine\nD. Backflip on the floor\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Kip on HB with a 180\u00b0 turn."
+            },
+            {
+                "from": "human",
+                "value": "In which two languages are the instructional diagrams and text presented?\nA. Russian and Spanish\nB. Russian and English\nC. English and German\nD. English and French\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Russian and English."
+            },
+            {
+                "from": "human",
+                "value": "What colors are the gymnast's outfit in the video?\nA. Green and yellow\nB. Black and red\nC. Blue and white\nD. Purple and gold\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Black and red."
+            },
+            {
+                "from": "human",
+                "value": "What is visible in the background during the gymnast's performance?\nA. A forest\nB. An audience, judges, and other gymnasts\nC. A beach\nD. A cityscape\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. An audience, judges, and other gymnasts."
+            },
+            {
+                "from": "human",
+                "value": "Which of the following sequences correctly describes the gymnast's movements in the video?\nA. Kip, straddle support, swing, press to handstand, 180\u00b0 turn\nB. Swing, handstand, kip, straddle support, 180\u00b0 turn\nC. Handstand, swing, straddle support, kip, 180\u00b0 turn\nD. 180\u00b0 turn, kip, swing, straddle support, handstand\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Kip, straddle support, swing, press to handstand, 180\u00b0 turn."
+            }
+        ]
+    },
+    "0_30_s_academic_v0_1-academic_source-ego4d": {
+        "video_path": "0_30_s_academic_v0_1/academic_source/ego4d/43299c49-5466-44c0-b786-1100467ef836.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhere does the video take place?\nA. In a garage\nB. In a kitchen\nC. In a living room\nD. On a tiled patio area\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What is the person holding at the beginning of the video?\nA. A red bucket with a brick inside\nB. A yellow hose\nC. A garden tool\nD. A scooter\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What is connected to the faucet on the wall?\nA. A garden tool\nB. A yellow hose\nC. A red bucket\nD. A scooter\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What does the person do after filling the bucket with water?\nA. They use the water to water the plants\nB. They turn off the faucet and lift the bucket\nC. They place the bucket on the ground\nD. They leave the bucket under the faucet\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. They turn off the faucet and lift the bucket."
+            },
+            {
+                "from": "human",
+                "value": "Which of the following is NOT mentioned as part of the background in the video?\nA. A garden gnome\nB. A black car\nC. Garden plants\nD. A scooter\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. A garden gnome."
+            }
+        ]
+    },
+    "0_30_s_activitynetqa-ActivityNet-QA-activitynet": {
+        "video_path": "0_30_s_activitynetqa/ActivityNet-QA/activitynet/train/v1-3/train_val/v_yvTmIulkl7c.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nis the child indoors\nAnswer the question using few words or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "yes"
+            }
+        ]
+    },
+    "0_30_s_nextqa-NextQA-NExTVideo": {
+        "video_path": "0_30_s_nextqa/NextQA/NExTVideo/1006/8968804598.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhy is the blue sweater guy looking at the shirtless men?\nOptions:\nA. sharing with his friends.\nB. found the man funny.\nC. poor vision.\nD. keep hands warm.\nE. training.\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "E. training."
+            }
+        ]
+    },
+    "0_30_s_perceptiontest-perception_test-videos": {
+        "video_path": "0_30_s_perceptiontest/perception_test/videos/video_2779.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the person preparing?\nA. a tea\nB. a sandwich\nC. a salad\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. a tea"
+            },
+            {
+                "from": "human",
+                "value": "What action not related to making tea did the person do?\nA. hitting the spoon with a fork\nB. showing an egg to the camera\nC. putting eggs in a bowl\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. hitting the spoon with a fork"
+            },
+            {
+                "from": "human",
+                "value": "What can you say about the temperature of the water being poured?\nA. The water seems cold.\nB. No water was poured.\nC. The water seems hot.\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. The water seems hot."
+            }
+        ]
+    },
+    "0_30_s_youtube_v0_1-liwei_youtube_videos-videos": {
+        "video_path": "0_30_s_youtube_v0_1/liwei_youtube_videos/videos/youtube_video_2024/ytb_YVQwAEKZpaU.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the background setting of the diving performances in the video?\nA. A forest with tall trees\nB. A clear blue sky, a building, and several white tents with spectators\nC. A stadium with a large crowd\nD. A beach with palm trees\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What event is being showcased in the video?\nA. An Olympic Games diving event\nB. A local swimming competition\nC. A recreational pool party\nD. A high school diving meet\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What acrobatic skills do the divers demonstrate in the video?\nA. Flips and twists\nB. Swimming laps\nC. Dancing on the diving board\nD. Running and jumping\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Flips and twists."
+            },
+            {
+                "from": "human",
+                "value": "Where is the Olympic Games logo displayed in the video?\nA. In the top right corner\nB. In the bottom left corner\nC. In the center of the screen\nD. In the top left corner\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. In the top right corner."
+            },
+            {
+                "from": "human",
+                "value": "How does the video sequence reset after each dive?\nA. The person is back on the diving board, ready to perform another dive\nB. The scene changes to a different location\nC. The video ends\nD. The camera focuses on the audience\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. The person is back on the diving board, ready to perform another dive."
+            }
+        ]
+    },
+    "1_2_m_academic_v0_1-academic_source-activitynet": {
+        "video_path": "1_2_m_academic_v0_1/academic_source/activitynet/v_bpB0GiH6uDw.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhere does the video primarily take place?\nA. A park\nB. A garage and a backyard\nC. A front yard\nD. A living room\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A garage and a backyard."
+            },
+            {
+                "from": "human",
+                "value": "What is the person in the turquoise shirt doing in the video?\nA. Cutting the grass and playing with dogs\nB. Planting flowers\nC. Painting a fence\nD. Washing a car\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Cutting the grass and playing with dogs."
+            },
+            {
+                "from": "human",
+                "value": "Which of the following tools is NOT mentioned as being in the garage?\nA. Leaf blower\nB. Broom\nC. Shovel\nD. Rake\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Shovel."
+            },
+            {
+                "from": "human",
+                "value": "What happens after the person finishes cutting the grass?\nA. They start painting the house\nB. They plant new flowers\nC. They interact and play with two small dogs\nD. They wash the lawnmower\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. They interact and play with two small dogs."
+            },
+            {
+                "from": "human",
+                "value": "What text appears at the end of the video?\nA. 'The End'\nB. 'See You Next Time'\nC. 'Thank You for Watching'\nD. 'To Be Continued'\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. 'The End'."
+            }
+        ]
+    },
+    "1_2_m_academic_v0_1-academic_source-Charades": {
+        "video_path": "1_2_m_academic_v0_1/academic_source/Charades/IKZJE.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the background setting of the video?\nA. A white wall and a dark-colored door frame\nB. A living room with a fireplace\nC. A kitchen with wooden cabinets\nD. A garden with various plants\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What is the person in the video wearing?\nA. A dark blue shirt\nB. A red and white striped shirt\nC. A light blue and white striped shirt\nD. A plain white shirt\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. A light blue and white striped shirt."
+            },
+            {
+                "from": "human",
+                "value": "What does the person do after cleaning the tiles?\nA. They leave the room\nB. They start painting the wall\nC. They take a photo or video of the wall\nD. They sit down to rest\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. They take a photo or video of the wall."
+            },
+            {
+                "from": "human",
+                "value": "What object does the person use to clean the tiles?\nA. A mop\nB. A cloth\nC. A sponge\nD. A brush\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A cloth."
+            },
+            {
+                "from": "human",
+                "value": "What action does the person repeat multiple times in the video?\nA. Rearranging the furniture\nB. Adjusting the phone to capture the decorative image\nC. Washing their hands\nD. Painting the wall\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            }
+        ]
+    },
+    "1_2_m_academic_v0_1-academic_source-NextQA": {
+        "video_path": "1_2_m_academic_v0_1/academic_source/NextQA/1150/7149197841.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhere does the video take place?\nA. Playground\nB. Beach\nC. Indoor swimming pool\nD. Outdoor park\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "C."
+            },
+            {
+                "from": "human",
+                "value": "What is the child wearing in the video?\nA. Blue swimsuit\nB. Green swimsuit\nC. Yellow swimsuit\nD. Red swimsuit\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What activity is the person engaging in with the child?\nA. Teaching the child to swim\nB. Engaging in playful activities while ensuring the child's safety\nC. Playing with a ball\nD. Reading a book\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Engaging in playful activities while ensuring the child's safety."
+            },
+            {
+                "from": "human",
+                "value": "How does the child appear to feel during the video?\nA. Indifferent\nB. Scared\nC. Joyful and excited\nD. Sad\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Joyful and excited."
+            },
+            {
+                "from": "human",
+                "value": "How is the atmosphere described in the video?\nA. Dark and gloomy\nB. Quiet and somber\nC. Bright and cheerful\nD. Noisy and chaotic\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "C."
+            }
+        ]
+    },
+    "1_2_m_academic_v0_1-academic_source-youcook2": {
+        "video_path": "1_2_m_academic_v0_1/academic_source/youcook2/106/UHmKlQ2OkTM/split_11.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat type of cabinets are in the kitchen?\nA. Glass\nB. Plastic\nC. Wooden\nD. Metal\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "C."
+            },
+            {
+                "from": "human",
+                "value": "What is the person wearing while preparing the pasta dish?\nA. Green long-sleeve shirt\nB. Red long-sleeve shirt\nC. Yellow short-sleeve shirt\nD. Blue short-sleeve shirt\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What is the likely content of the glass measuring cup?\nA. Milk\nB. Olive oil\nC. Water\nD. Melted butter\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Melted butter."
+            },
+            {
+                "from": "human",
+                "value": "What tool does the person use to mix the ingredients in the glass container?\nA. Metal whisk\nB. Green spatula\nC. Plastic fork\nD. Wooden spoon\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "How does the person ensure an even distribution of cheese over the pasta mixture?\nA. Using a knife\nB. Using a spoon\nC. Using a fork\nD. Using their hands\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Using their hands."
+            }
+        ]
+    },
+    "1_2_m_academic_v0_1-academic_source-ego4d": {
+        "video_path": "1_2_m_academic_v0_1/academic_source/ego4d/6362c66e-473f-4a09-a736-6425165aa63d.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat color are the cabinets in the modern kitchen?\nA. Black\nB. Blue\nC. Gray\nD. White\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "Which appliance is visible on the kitchen countertop?\nA. Dishwasher\nB. Microwave\nC. Toaster\nD. Coffee maker\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What does the person filming do in the bathroom?\nA. Washes hands\nB. Takes a shower\nC. Cleans the sink\nD. Adjusts headgear\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Adjusts headgear."
+            },
+            {
+                "from": "human",
+                "value": "What is next to the bed in the room with white walls and a blue accent stripe?\nA. A small white nightstand\nB. A bookshelf\nC. A wardrobe\nD. A desk\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What item is on the bed along with white bedding and a pillow?\nA. A yellow throw\nB. A blue cushion\nC. A red item\nD. A green blanket\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "C."
+            }
+        ]
+    },
+    "1_2_m_activitynetqa-ActivityNet-QA-activitynet": {
+        "video_path": "1_2_m_activitynetqa/ActivityNet-QA/activitynet/train/v1-3/train_val/v_okC18bPTils.mkv",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nare all the people in the video men\nAnswer the question using few words or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "no"
+            }
+        ]
+    },
+    "1_2_m_nextqa-NextQA-NExTVideo": {
+        "video_path": "1_2_m_nextqa/NextQA/NExTVideo/1122/7417682572.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat does the man playing the drums do with his feet as he plays the drum?\nOptions:\nA. look through the box.\nB. moves his feet.\nC. smoke.\nD. walk around the hoop.\nE. cap.\n"
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            }
+        ]
+    },
+    "1_2_m_youtube_v0_1-liwei_youtube_videos-videos": {
+        "video_path": "1_2_m_youtube_v0_1/liwei_youtube_videos/videos/youtube_video_2024/ytb__nUy2Oaf27w.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the color of the wall in front of which the person is standing?\nA. Maroon\nB. Beige\nC. Blue\nD. Red\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What is the person wearing in the video?\nA. A white chef's coat\nB. A red and blue checkered shirt and a beige apron\nC. A green sweater and black pants\nD. A black t-shirt and jeans\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A red and blue checkered shirt and a beige apron."
+            },
+            {
+                "from": "human",
+                "value": "What is the label on the jar that the person uses in the video?\nA. BAKING POWDER\nB. XANTHAN POWDER\nC. PROTEIN POWDER\nD. FLOUR\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. XANTHAN POWDER."
+            },
+            {
+                "from": "human",
+                "value": "What does the person do with the green liquid in the blender?\nA. Discards it\nB. Pours it into a glass over a sink\nC. Pours it into a bowl\nD. Adds it to a pot\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What text appears to encourage viewers to subscribe to the channel?\nA. SUBSCRIBE\nB. FOLLOW\nC. LIKE\nD. SHARE\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. SUBSCRIBE."
+            }
+        ]
+    },
+    "2_3_m_academic_v0_1-academic_source-activitynet": {
+        "video_path": "2_3_m_academic_v0_1/academic_source/activitynet/v_yEFS8M4pgMU.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhere does the tug-of-war competition take place?\nA. Park\nB. Gymnasium\nC. Beach\nD. Outdoor field\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What is the attire of the participants in the tug-of-war competition?\nA. Red shirts and blue shorts\nB. White shirts and black shorts\nC. Green shirts and white pants\nD. Yellow shirts and black pants\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What role does the person in the white shirt and red pants play?\nA. Judge\nB. Referee\nC. Coach or supporter\nD. Spectator\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Coach or supporter."
+            },
+            {
+                "from": "human",
+                "value": "What happens at the end of the video?\nA. The participants rest and recover on the floor\nB. The spectators leave the gymnasium\nC. The teams celebrate their victory\nD. The referee announces the winner\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. The participants rest and recover on the floor."
+            },
+            {
+                "from": "human",
+                "value": "What color are the chairs that the judges or spectators are seated on?\nA. Orange\nB. Green\nC. Blue\nD. Red\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            }
+        ]
+    },
+    "2_3_m_academic_v0_1-academic_source-ego4d": {
+        "video_path": "2_3_m_academic_v0_1/academic_source/ego4d/24ba7993-7fc8-4447-afd5-7ff6d548b11a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat kind of atmosphere is created in the kitchen at the beginning of the video?\nA. Bright and lively\nB. Modern and sleek\nC. Noisy and chaotic\nD. Dimly lit and cozy\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Dimly lit and cozy."
+            },
+            {
+                "from": "human",
+                "value": "What does the person do after placing a package of food on the counter?\nA. Washes a utensil in the sink\nB. Reaches for a utensil from a container next to the sink\nC. Opens the refrigerator\nD. Slices a piece of bread\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What is the first food item the person slices?\nA. Butter\nB. Bread\nC. Cheese\nD. Cherry tomatoes\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Bread."
+            },
+            {
+                "from": "human",
+                "value": "What does the person pour onto the cheese slices?\nA. Olive oil\nB. Honey\nC. Vinegar\nD. Dark sauce\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What is placed on the white plate alongside the cherry tomatoes?\nA. A slice of cheese\nB. A small container\nC. A piece of bread\nD. A knife\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            }
+        ]
+    },
+    "2_3_m_academic_v0_1-academic_source-NextQA": {
+        "video_path": "2_3_m_academic_v0_1/academic_source/NextQA/1021/10440265715.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat color is the jacket of the person who first makes a snow angel?\nA. Blue\nB. Green\nC. Yellow\nD. Red\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What is the setting of the video?\nA. A forest\nB. A snowy suburban neighborhood\nC. A city park\nD. A beach\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A snowy suburban neighborhood."
+            },
+            {
+                "from": "human",
+                "value": "What do the two people do after making snow angels?\nA. Go sledding\nB. Build a snowman\nC. Make a snow fort\nD. Have a snowball fight\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Have a snowball fight."
+            },
+            {
+                "from": "human",
+                "value": "What does the person in the red jacket do with the snow?\nA. Makes a snow fort\nB. Throws it into the air\nC. Forms it into a snowball\nD. Builds a snowman\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Forms it into a snowball."
+            },
+            {
+                "from": "human",
+                "value": "What does the person in the blue jacket do while the person in the red jacket walks away?\nA. Throws a snowball\nB. Crouches down to gather snow\nC. Walks away\nD. Stands still\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            }
+        ]
+    },
+    "2_3_m_academic_v0_1-academic_source-Charades": {
+        "video_path": "2_3_m_academic_v0_1/academic_source/Charades/4VYE5.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat color are the walls in the room where the video takes place?\nA. Green\nB. Yellow\nC. Blue\nD. Purple\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "Which of the following items is NOT mentioned as being on the wooden table in the center of the room?\nA. Green Sprite bottle\nB. Blue vase\nC. Small yellow bottle\nD. Red bowl\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What repetitive action does the person perform throughout the video?\nA. Typing on the laptop\nB. Reading a book\nC. Writing in a notebook\nD. Drinking from a black mug\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Drinking from a black mug."
+            },
+            {
+                "from": "human",
+                "value": "What is the person wearing when they are seen adjusting the pink and white checkered cloth?\nA. Red shirt with white stripes and blue jeans\nB. Dark blue shirt with light-colored stripes and dark pants with red stripes\nC. Light blue shirt with dark-colored stripes and light pants with blue stripes\nD. Dark green shirt with yellow stripes and black pants\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Dark blue shirt with light-colored stripes and dark pants with red stripes."
+            },
+            {
+                "from": "human",
+                "value": "What is visible in the background throughout most of the video?\nA. A window with dark, patterned curtains\nB. A television set\nC. A bookshelf with various books\nD. A painting of a landscape\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            }
+        ]
+    },
+    "2_3_m_academic_v0_1-academic_source-youcook2": {
+        "video_path": "2_3_m_academic_v0_1/academic_source/youcook2/110/k7EVFW1nCNI/split_0.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat color are the cabinets in the kitchen?\nA. Black\nB. White\nC. Red\nD. Green\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. White."
+            },
+            {
+                "from": "human",
+                "value": "What does the woman use to scrape the bowl clean?\nA. A green knife\nB. A red spatula\nC. A yellow fork\nD. A blue spoon\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "Which ingredient does the woman emphasize the importance of in the recipe?\nA. Amore Anchovy Paste\nB. Finely chopped garlic\nC. Balsamic glaze\nD. Black pepper\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Finely chopped garlic."
+            },
+            {
+                "from": "human",
+                "value": "What social media platform does the text on the screen invite viewers to follow?\nA. Facebook\nB. Twitter\nC. Pinterest\nD. Instagram\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "Which branded container is visible in the background?\nA. A blue Facebook-branded container\nB. A yellow Twitter-branded container\nC. A red YouTube-branded container\nD. A green Instagram-branded container\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. A red YouTube-branded container."
+            }
+        ]
+    },
+    "2_3_m_activitynetqa-ActivityNet-QA-activitynet": {
+        "video_path": "2_3_m_activitynetqa/ActivityNet-QA/activitynet/train/v_Mzt-E6pxuUI.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nis the child indoors\nAnswer the question using few words or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "yes"
+            }
+        ]
+    },
+    "2_3_m_nextqa-NextQA-NExTVideo": {
+        "video_path": "2_3_m_nextqa/NextQA/NExTVideo/0075/12843838795.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhere do the people carry out the activity?\nOptions:\nA. room.\nB. bar.\nC. ring.\nD. clinic.\nE. ice field.\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "E."
+            }
+        ]
+    },
+    "2_3_m_youtube_v0_1-liwei_youtube_videos-videos": {
+        "video_path": "2_3_m_youtube_v0_1/liwei_youtube_videos/videos/youtube_video_2024/ytb_MCYTTbFJhzY.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the initial visual effect in the video?\nA. A dynamic text overlay introducing Maya Butler\nB. A rotating blue background with 'PLAYSTATION BLOG' text\nC. A static image of the PlayStation console\nD. A close-up of the 'SONY' logo\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A rotating blue background with 'PLAYSTATION BLOG' text."
+            },
+            {
+                "from": "human",
+                "value": "Who is introduced as the Public Relations Generalist in the video?\nA. Emily Davis\nB. Sarah Johnson\nC. Maya Butler\nD. John Smith\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Maya Butler."
+            },
+            {
+                "from": "human",
+                "value": "What label is prominently displayed on the 'UNCHARTED 3: Drake's Deception' game case?\nA. 'Standard Edition'\nB. 'Limited Edition'\nC. 'Collector's Edition'\nD. 'Game of the Year Edition'\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What offer is highlighted on the 'PlayStation Plus' card?\nA. 15-Day Free Membership\nB. 60-Day Free Membership\nC. 30-Day Free Membership\nD. 90-Day Free Membership\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. 30-Day Free Membership."
+            },
+            {
+                "from": "human",
+                "value": "What design feature is highlighted in the close-up of the PlayStation console?\nA. The glossy finish\nB. The textured surface\nC. The metallic parts\nD. The disc drive\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            }
+        ]
+    },
+    "30_60_s_academic_v0_1-academic_source-Charades": {
+        "video_path": "30_60_s_academic_v0_1/academic_source/Charades/W4C5O.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the person wearing in the video?\nA. A dark jacket with a white shirt underneath\nB. A light jacket with a blue shirt underneath\nC. A dark jacket with a red shirt underneath\nD. A light jacket with a red shirt underneath\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. A dark jacket with a red shirt underneath."
+            },
+            {
+                "from": "human",
+                "value": "What does the person do with the clear glass?\nA. Puts it on a table\nB. Holds it in their left hand\nC. Drinks from it\nD. Throws it away\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Drinks from it."
+            },
+            {
+                "from": "human",
+                "value": "What item does the person hold in their left hand?\nA. A yellow cloth\nB. A blue cloth\nC. A red cloth\nD. A green cloth\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. A red cloth."
+            },
+            {
+                "from": "human",
+                "value": "What is the background like throughout the video?\nA. A light-colored wall with a vertical line\nB. A dark-colored wall with a vertical line\nC. A dark-colored wall with a horizontal line\nD. A light-colored wall with a horizontal line\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. A light-colored wall with a vertical line."
+            },
+            {
+                "from": "human",
+                "value": "What happens in the final segment of the video?\nA. The person moves out of the frame to the right\nB. The person is seen drinking from the glass\nC. The person holds the red cloth in their right hand\nD. The person stands still with a shadow on the wall\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. The person stands still with a shadow on the wall."
+            }
+        ]
+    },
+    "30_60_s_academic_v0_1-academic_source-NextQA": {
+        "video_path": "30_60_s_academic_v0_1/academic_source/NextQA/1006/4009018967.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the child with curly blonde hair wearing?\nA. A blue dress over a yellow shirt and black pants\nB. A green dress over a white long-sleeve shirt and brown pants\nC. A purple long-sleeve shirt and plaid pants\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A green dress over a white long-sleeve shirt and brown pants."
+            },
+            {
+                "from": "human",
+                "value": "What is in the background of the room where the children are dancing?\nA. A bookshelf filled with books\nB. A wooden entertainment center with a television on top\nC. A fireplace with a mantel\nD. A large window with curtains\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "What are the children doing in the video?\nA. Reading books\nB. Playing with toys\nC. Dancing and spinning around\nD. Watching television\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "C."
+            },
+            {
+                "from": "human",
+                "value": "Which toys are mentioned as being scattered around the room?\nA. Building blocks and a teddy bear\nB. A push toy and a stuffed lion\nC. A puzzle and a ball\nD. A toy car and a doll\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            },
+            {
+                "from": "human",
+                "value": "How do the children feel while dancing together?\nA. Tired\nB. Sad\nC. Joyful\nD. Angry\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Joyful."
+            }
+        ]
+    },
+    "30_60_s_academic_v0_1-academic_source-ego4d": {
+        "video_path": "30_60_s_academic_v0_1/academic_source/ego4d/76cf9569-3e80-4f42-b01e-2f804815c3c0.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhere does the video take place?\nA. Backyard\nB. Indoor play area\nC. Outdoor playground\nD. School gym\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Outdoor playground."
+            },
+            {
+                "from": "human",
+                "value": "What is the child playing on in the video?\nA. Slide\nB. Spring rider toy\nC. Sandbox\nD. Swing\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Spring rider toy."
+            },
+            {
+                "from": "human",
+                "value": "What is the child wearing in the video?\nA. Light-colored outfit\nB. School uniform\nC. Sportswear\nD. Dark-colored outfit\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Light-colored outfit."
+            },
+            {
+                "from": "human",
+                "value": "What are the consistent elements in the background throughout the video?\nA. Cityscape, cars, and streetlights\nB. Mountains, river, and bridge\nC. Ocean, sand, and palm trees\nD. Grassy hill, brick building, and tree\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What is visible on the right side of the frame at the beginning of the video?\nA. A black stroller with several water bottles\nB. A bench\nC. A bicycle\nD. A picnic table\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. A black stroller with several water bottles."
+            }
+        ]
+    },
+    "30_60_s_academic_v0_1-academic_source-youcook2": {
+        "video_path": "30_60_s_academic_v0_1/academic_source/youcook2/102/dmJB7NHZ2cI/split_0.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is the person wearing in the video?\nA. A green sweater\nB. A red apron\nC. A black and white patterned dress\nD. A blue shirt\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. A black and white patterned dress."
+            },
+            {
+                "from": "human",
+                "value": "What color is the knife used by the person in the video?\nA. Blue\nB. Green\nC. Yellow\nD. Pink\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Pink."
+            },
+            {
+                "from": "human",
+                "value": "What is the person doing with the onion in the video?\nA. Chopping it into cubes\nB. Blending it\nC. Grating it\nD. Slicing it into thin rings\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "Which appliances are visible in the background?\nA. Cuisinart food processor and rice cooker\nB. Microwave and oven\nC. Coffee maker and mixer\nD. Blender and toaster\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "What is spread on the kitchen counter?\nA. A blue towel\nB. A green mat\nC. A red cloth\nD. A yellow cloth\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            }
+        ]
+    },
+    "30_60_s_academic_v0_1-academic_source-activitynet": {
+        "video_path": "30_60_s_academic_v0_1/academic_source/activitynet/v_abjQ1EyqJuw.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat is visible to the left of the garden area at the beginning of the video?\nA. A wooden bench\nB. A large tree\nC. A blue tarp\nD. A brick house with a tiled roof and a window\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            },
+            {
+                "from": "human",
+                "value": "What is placed against the hedge in the background?\nA. A wooden bench\nB. A ladder\nC. A blue tarp\nD. Two orange gardening tools\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. A ladder."
+            },
+            {
+                "from": "human",
+                "value": "What is the person in dark clothing doing in the video?\nA. Trimming the hedge from a ladder\nB. Sitting on a bench\nC. Raking leaves\nD. Watering the plants\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. Trimming the hedge from a ladder."
+            },
+            {
+                "from": "human",
+                "value": "What indicates ongoing garden maintenance in the video?\nA. The presence of a wooden bench\nB. The neatly trimmed hedges\nC. Various gardening tools and equipment scattered on the lawn\nD. The bright and sunny weather\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. Various gardening tools and equipment scattered on the lawn."
+            },
+            {
+                "from": "human",
+                "value": "What does the focus on the person on the ladder emphasize?\nA. The size of the garden\nB. The meticulous care being taken to maintain the garden\nC. The design of the garden pathway\nD. The position of the sun\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            }
+        ]
+    },
+    "30_60_s_activitynetqa-ActivityNet-QA-activitynet": {
+        "video_path": "30_60_s_activitynetqa/ActivityNet-QA/activitynet/train/v1-3/train_val/v_XQWebGbAjxU.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nis the person in black pants a boy or a girl\nAnswer the question using few words or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "boy"
+            }
+        ]
+    },
+    "30_60_s_nextqa-NextQA-NExTVideo": {
+        "video_path": "30_60_s_nextqa/NextQA/NExTVideo/0071/2617504308.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhy does the man have to throw the plane first in the middle of the video?\nOptions:\nA. chase the ball.\nB. the toy car hit the wall.\nC. put on earmuffs.\nD. get it start flying.\nE. bounce baby on cushion.\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "D."
+            }
+        ]
+    },
+    "30_60_s_perceptiontest-perception_test-videos": {
+        "video_path": "30_60_s_perceptiontest/perception_test/videos/video_9431.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nIs the camera moving or static?\nA. I don't know\nB. static or shaking\nC. moving\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "C. moving"
+            },
+            {
+                "from": "human",
+                "value": "Where is the person?\nA. Indoors in the living room or bedroom\nB. Indoors in the kitchen\nC. Outdoors\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Indoors in the kitchen"
+            },
+            {
+                "from": "human",
+                "value": "What is the person preparing?\nA. a tea\nB. a salad\nC. eggs\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. a tea"
+            },
+            {
+                "from": "human",
+                "value": "What action not related to making tea did the person do?\nA. na\nB. putting a spoon on top of a slice of bread\nC. clapping hands\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "A. na"
+            },
+            {
+                "from": "human",
+                "value": "What can you say about the temperature of the water being poured?\nA. No water was poured.\nB. The water seems hot.\nC. The water seems cold.\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. The water seems hot."
+            }
+        ]
+    },
+    "30_60_s_youtube_v0_1-liwei_youtube_videos-videos": {
+        "video_path": "30_60_s_youtube_v0_1/liwei_youtube_videos/videos/youtube_video_2024/ytb_fYs8TtubjMU.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat items are initially shown inside the transparent glass bottle?\nA. Wooden stick, metal bolt, nut, metal pin, small black ball\nB. Wooden stick, metal bolt, nut, metal pin, small red ball\nC. Wooden stick, metal bolt, screw, metal pin, small white ball\nD. Wooden stick, metal bolt, nut, metal pin, small white ball\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "D. Wooden stick, metal bolt, nut, metal pin, small white ball."
+            },
+            {
+                "from": "human",
+                "value": "What is the first action performed by the hands in the video?\nA. Disassembling the contents of the bottle\nB. Adjusting the position of the wooden stick and metal pin\nC. Placing the items back into the bottle\nD. Rotating the bottle to show different angles\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "A."
+            },
+            {
+                "from": "human",
+                "value": "Which item is placed into the bottle last during reassembly?\nA. Metal bolt\nB. Nut\nC. Wooden stick\nD. Small white ball\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "C."
+            },
+            {
+                "from": "human",
+                "value": "What is the surface color on which the bottle and its contents are placed?\nA. Blue\nB. Gray\nC. Black\nD. White\nPlease provide your answer by stating the letter followed by the full option."
+            },
+            {
+                "from": "gpt",
+                "value": "B. Gray."
+            },
+            {
+                "from": "human",
+                "value": "How does the video conclude?\nA. With the items scattered on the surface\nB. With the bottle held at an angle, showing the items inside\nC. With the bottle being sealed\nD. With the bottle empty\nPlease respond with only the letter of the correct answer."
+            },
+            {
+                "from": "gpt",
+                "value": "B."
+            }
+        ]
+    }
+}

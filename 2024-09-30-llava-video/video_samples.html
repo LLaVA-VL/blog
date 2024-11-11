@@ -3,42 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video List</title>
+    <title>Video List with Conversations</title>
+    <style>
+        .video-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .video-player {
+            margin-right: 20px;
+        }
+        .conversation {
+            max-width: 400px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .from-human {
+            font-weight: bold;
+            color: #333;
+        }
+        .from-gpt {
+            font-style: italic;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Video List</h1>
+    <h1>Video List with Conversations</h1>
     <div id="video-container"></div>
 
     <script type="module">
         import { videoFiles } from './videoList.js';
 
-        console.log("Loaded video files:", videoFiles);
+        async function fetchConversations() {
+            const response = await fetch('./video_instruction_samples.json');
+            return response.json();
+        }
 
-        const videoContainer = document.getElementById("video-container");
-        const videoPath = "../assets/llava_video_selected/";
+        async function loadVideos() {
+            const videoContainer = document.getElementById("video-container");
+            const conversationsData = await fetchConversations();
+            const videoPath = "../assets/llava_video_selected/";
 
-        videoFiles.forEach((file) => {
-            const videoElement = document.createElement("div");
-            videoElement.classList.add("video-item");
+            videoFiles.forEach((file) => {
+                // Find the conversation object where `video_path` matches this file
+                const conversationEntry = Object.values(conversationsData).find(
+                    entry => entry.video_path.includes(file)
+                );
 
-            // Video Title
-            const title = document.createElement("h3");
-            title.textContent = file;
-            videoElement.appendChild(title);
+                if (conversationEntry) {
+                    const videoElement = document.createElement("div");
+                    videoElement.classList.add("video-item");
 
-            // Video Player
-            const video = document.createElement("video");
-            video.src = videoPath + file;
-            video.controls = true;
-            video.width = 320;
-            video.height = 240;
-            videoElement.appendChild(video);
+                    // Video Player
+                    const videoPlayer = document.createElement("video");
+                    videoPlayer.src = videoPath + file;
+                    videoPlayer.controls = true;
+                    videoPlayer.width = 320;
+                    videoPlayer.height = 240;
+                    videoPlayer.classList.add("video-player");
+                    videoElement.appendChild(videoPlayer);
 
-            console.log("Adding video:", videoPath + file);
+                    // Conversation
+                    const conversationDiv = document.createElement("div");
+                    conversationDiv.classList.add("conversation");
 
-            // Append to container
-            videoContainer.appendChild(videoElement);
-        });
+                    conversationEntry.conversations.forEach(convo => {
+                        const messageDiv = document.createElement("div");
+                        messageDiv.classList.add("message", convo.from === "human" ? "from-human" : "from-gpt");
+                        messageDiv.textContent = convo.from === "human" ? `Human: ${convo.value}` : `GPT: ${convo.value}`;
+                        conversationDiv.appendChild(messageDiv);
+                    });
+
+                    videoElement.appendChild(conversationDiv);
+                    videoContainer.appendChild(videoElement);
+                }
+            });
+        }
+
+        loadVideos();
     </script>
 </body>
 </html>
