@@ -6,9 +6,16 @@
     <title>Video List with Conversations</title>
     <style>
         .video-item {
+            margin-bottom: 20px;
+        }
+        .video-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .content-wrapper {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 20px;
         }
         .video-player {
             margin-right: 20px;
@@ -59,9 +66,14 @@
                     videoElement.classList.add("video-item");
 
                     // Video Title
-                    const title = document.createElement("h3");
+                    const title = document.createElement("div");
+                    title.classList.add("video-title");
                     title.textContent = conversationEntry.video_path;
                     videoElement.appendChild(title);
+
+                    // Wrapper for Video and Conversation
+                    const contentWrapper = document.createElement("div");
+                    contentWrapper.classList.add("content-wrapper");
 
                     // Video Player
                     const videoPlayer = document.createElement("video");
@@ -70,7 +82,7 @@
                     videoPlayer.width = 320;
                     videoPlayer.height = 240;
                     videoPlayer.classList.add("video-player");
-                    videoElement.appendChild(videoPlayer);
+                    contentWrapper.appendChild(videoPlayer);
 
                     // Conversation
                     const conversationDiv = document.createElement("div");
@@ -83,7 +95,8 @@
                         conversationDiv.appendChild(messageDiv);
                     });
 
-                    videoElement.appendChild(conversationDiv);
+                    contentWrapper.appendChild(conversationDiv);
+                    videoElement.appendChild(contentWrapper);
                     videoContainer.appendChild(videoElement);
                 }
             });
