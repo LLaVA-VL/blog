@@ -6,18 +6,33 @@
     <title>Video List</title>
 </head>
 <body>
-    <h1>Available Videos</h1>
-    <ul id="video-list"></ul>
+    <h1>Video List</h1>
+    <div id="video-container"></div>
 
     <script type="module">
-        import videoFiles from './videoList.js';
+        import { videoFiles } from './videoList.js';
 
-        const videoListContainer = document.getElementById('video-list');
+        const videoContainer = document.getElementById("video-container");
 
-        videoFiles.forEach(file => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="${file}" target="_blank">${file}</a>`;
-            videoListContainer.appendChild(listItem);
+        videoFiles.forEach((file) => {
+            const videoElement = document.createElement("div");
+            videoElement.classList.add("video-item");
+
+            // Video Title
+            const title = document.createElement("h3");
+            title.textContent = file;
+            videoElement.appendChild(title);
+
+            // Video Player
+            const video = document.createElement("video");
+            video.src = file;
+            video.controls = true;
+            video.width = 320;
+            video.height = 240;
+            videoElement.appendChild(video);
+
+            // Append to container
+            videoContainer.appendChild(videoElement);
         });
     </script>
 </body>
