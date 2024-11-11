@@ -32,3 +32,4 @@ const videoFiles = [
   "ytb__nUy2Oaf27w.mp4",
   "ytb_fYs8TtubjMU.mp4"
 ];
+export default videoFiles;

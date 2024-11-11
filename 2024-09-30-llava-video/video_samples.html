@@ -3,40 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Gallery</title>
-    <style>
-        /* Simple styling for video gallery */
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-        .video-item {
-            max-width: 400px;
-        }
-    </style>
+    <title>Video List</title>
 </head>
 <body>
-    <h1>Video Gallery</h1>
-    <script src="videoList.js"></script>
-    <script>
-        // videoFiles array is now available to use
-        videoFiles.forEach(video => {
-            const videoItem = document.createElement("div");
-            videoItem.classList.add("video-item");
-            
-            const videoElement = document.createElement("video");
-            videoElement.controls = true;
-            videoElement.width = 400;
+    <h1>Available Videos</h1>
+    <ul id="video-list"></ul>
 
-            const sourceElement = document.createElement("source");
-            sourceElement.src = `../assets/llava_video_selected/${video}`;
-            sourceElement.type = "video/mp4";
+    <script type="module">
+        import videoFiles from './videoList.js';
 
-            videoElement.appendChild(sourceElement);
-            videoItem.appendChild(videoElement);
-            document.getElementById("videoContainer").appendChild(videoItem);
+        const videoListContainer = document.getElementById('video-list');
+
+        videoFiles.forEach(file => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="${file}" target="_blank">${file}</a>`;
+            videoListContainer.appendChild(listItem);
         });
     </script>
 </body>
